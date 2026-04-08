@@ -1,0 +1,44 @@
+.globe-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at center, #0b1220 0%, #050814 50%, #02040a 100%);
+  color: white;
+}
+
+.globe-header {
+  text-align: center;
+  padding: 1.5rem 1rem 0.5rem;
+  z-index: 2;
+}
+
+.globe-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.8rem);
+}
+
+.globe-subtitle {
+  margin-top: 0.5rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  opacity: 0.7;
+}
+
+.globe-container {
+  flex: 1;
+  width: 100%;
+  min-height: 70vh;
+}
+
+.globe-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (max-width: 600px) {
+  .globe-container {
+    min-height: 65vh;
+  }
+}

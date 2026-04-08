@@ -1,0 +1,21 @@
+.experience {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #05000d;
+}
+
+.experience__canvas {
+  position: fixed;
+  inset: 0;
+  
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 1;
+}
+
+.experience__scrollSpace {
+  position: relative;
+  z-index: 0;
+}

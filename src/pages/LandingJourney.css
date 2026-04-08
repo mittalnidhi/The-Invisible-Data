@@ -1,0 +1,35 @@
+.landing-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+
+.landing-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.skip-button {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  z-index: 5;
+  background: transparent;
+  border: 1px solid rgba(245, 240, 233, 0.72);
+  color: #f5f0e9;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  opacity: 0.92;
+  transition: background 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+
+.skip-button:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(245, 240, 233, 0.96);
+}

@@ -3,7 +3,6 @@ import "./Experience.css";
 import * as d3 from "d3";
 import { showTooltip, moveTooltip, hideTooltip } from '../utils';
 import ExperienceViewer from "./ExperienceViewer";
-import storyData from "../data/experiences_dummy.json";
 
 const PHASE_DEPTH = 1100;
 const FOCAL_LENGTH = 760;
@@ -40,172 +39,172 @@ function projectPoint(point, camera, width, height) {
     return { x: sx, y: sy, scale: perspective, dz };
 }
 
-function buildDust(count = 720) {
-    return Array.from({ length: count }, (_, i) => ({
-        x: lerp(-1050, 1050, seeded(i * 1.9 + 3)),
-        y: lerp(-620, 620, seeded(i * 2.7 + 5)),
-        z: lerp(
-            200,
-            -((storyData.length - 1) * PHASE_DEPTH) - 620,
-            seeded(i * 4.1 + 11),
-        ),
-        size: lerp(0.18, 0.5, seeded(i * 5.9 + 13)),
-        alpha: lerp(0.02, 0.08, seeded(i * 7.1 + 17)),
-    }));
-}
+export default function Experience(props) {
+	function buildDust(count = 720) {
+		return Array.from({ length: count }, (_, i) => ({
+			x: lerp(-1050, 1050, seeded(i * 1.9 + 3)),
+			y: lerp(-620, 620, seeded(i * 2.7 + 5)),
+			z: lerp(
+				200,
+				-((props.storyData.length - 1) * PHASE_DEPTH) - 620,
+				seeded(i * 4.1 + 11),
+			),
+			size: lerp(0.18, 0.5, seeded(i * 5.9 + 13)),
+			alpha: lerp(0.02, 0.08, seeded(i * 7.1 + 17)),
+		}));
+	}
 
-function buildGraphTrails(phase, phaseIndex, zCenter) {
-    const trailCount = phase.nodes.length + 8;
-    const trails = [];
+	function buildGraphTrails(phase, phaseIndex, zCenter) {
+		const trailCount = phase.nodes.length + 8;
+		const trails = [];
 
-    for (let t = 0; t < trailCount; t += 1) {
-        const baseSeed = phaseIndex * 700 + t * 47 + 100;
-        const pointCount = Math.floor(6 + seeded(baseSeed + 1) * 7);
+		for (let t = 0; t < trailCount; t += 1) {
+			const baseSeed = phaseIndex * 700 + t * 47 + 100;
+			const pointCount = Math.floor(6 + seeded(baseSeed + 1) * 7);
 
-        const angle = seeded(baseSeed + 2) * Math.PI * 2;
-        const startX =
-            Math.cos(angle) *
-            phase.spreadX *
-            lerp(0.45, 0.95, seeded(baseSeed + 3));
-        const startY = (seeded(baseSeed + 4) - 0.5) * phase.spreadY * 1.45;
-        const startZ = zCenter + (seeded(baseSeed + 5) - 0.5) * 180;
+			const angle = seeded(baseSeed + 2) * Math.PI * 2;
+			const startX =
+				Math.cos(angle) *
+				phase.spreadX *
+				lerp(0.45, 0.95, seeded(baseSeed + 3));
+			const startY = (seeded(baseSeed + 4) - 0.5) * phase.spreadY * 1.45;
+			const startZ = zCenter + (seeded(baseSeed + 5) - 0.5) * 180;
 
-        const pts = [];
-        let px = startX;
-        let py = startY;
-        let pz = startZ;
+			const pts = [];
+			let px = startX;
+			let py = startY;
+			let pz = startZ;
 
-        for (let i = 0; i < pointCount; i += 1) {
-            const dx =
-                (seeded(baseSeed + i * 11 + 10) - 0.5) * phase.spreadX * 0.24;
-            const dy =
-                (seeded(baseSeed + i * 13 + 14) - 0.5) * phase.spreadY * 0.26;
-            const dz = -lerp(34, 90, seeded(baseSeed + i * 17 + 19));
+			for (let i = 0; i < pointCount; i += 1) {
+				const dx =
+					(seeded(baseSeed + i * 11 + 10) - 0.5) * phase.spreadX * 0.24;
+				const dy =
+					(seeded(baseSeed + i * 13 + 14) - 0.5) * phase.spreadY * 0.26;
+				const dz = -lerp(34, 90, seeded(baseSeed + i * 17 + 19));
 
-            px += dx;
-            py += dy;
-            pz += dz;
+				px += dx;
+				py += dy;
+				pz += dz;
 
-            pts.push({
-                x: px,
-                y: py,
-                z: pz,
-                size: lerp(0.28, 0.7, seeded(baseSeed + i * 23 + 22)),
-                alpha: lerp(0.25, 0.52, seeded(baseSeed + i * 29 + 28)),
-                badge:
-                    seeded(baseSeed + i * 31 + 33) > 0.84
-                        ? Math.floor(1 + seeded(baseSeed + i * 37 + 39) * 7)
-                        : null,
-            });
-        }
+				pts.push({
+					x: px,
+					y: py,
+					z: pz,
+					size: lerp(0.28, 0.7, seeded(baseSeed + i * 23 + 22)),
+					alpha: lerp(0.25, 0.52, seeded(baseSeed + i * 29 + 28)),
+					badge:
+						seeded(baseSeed + i * 31 + 33) > 0.84
+							? Math.floor(1 + seeded(baseSeed + i * 37 + 39) * 7)
+							: null,
+				});
+			}
 
-        trails.push(pts);
-    }
+			trails.push(pts);
+		}
 
-    return trails;
-}
+		return trails;
+	}
 
-function buildPhaseWorlds() {
-    return storyData.map((phase, phaseIndex) => {
-        const zCenter = -phaseIndex * PHASE_DEPTH;
-        const cloudCount = 300 + phase.nodes.length * 72;
+	function buildPhaseWorlds() {
+		return props.storyData.map((phase, phaseIndex) => {
+			const zCenter = -phaseIndex * PHASE_DEPTH;
+			const cloudCount = 300 + phase.nodes.length * 72;
 
-        const cloudNodes = Array.from({ length: cloudCount }, (_, i) => {
-            const s1 = seeded(phaseIndex * 10000 + i * 1.17 + 1);
-            const s2 = seeded(phaseIndex * 10000 + i * 2.31 + 7);
-            const s3 = seeded(phaseIndex * 10000 + i * 3.91 + 17);
-            const s4 = seeded(phaseIndex * 10000 + i * 4.83 + 29);
+			const cloudNodes = Array.from({ length: cloudCount }, (_, i) => {
+				const s1 = seeded(phaseIndex * 10000 + i * 1.17 + 1);
+				const s2 = seeded(phaseIndex * 10000 + i * 2.31 + 7);
+				const s3 = seeded(phaseIndex * 10000 + i * 3.91 + 17);
+				const s4 = seeded(phaseIndex * 10000 + i * 4.83 + 29);
 
-            const angle = s1 * Math.PI * 2;
-            const radial = Math.pow(s2, 1.6);
+				const angle = s1 * Math.PI * 2;
+				const radial = Math.pow(s2, 1.6);
 
-            const localX =
-                Math.cos(angle) * phase.spreadX * radial +
-                Math.sin(angle * (2 + phase.turbulence * 4)) *
-                    phase.spreadX *
-                    0.16 +
-                (s4 - 0.5) * phase.spreadX * 0.16;
+				const localX =
+					Math.cos(angle) * phase.spreadX * radial +
+					Math.sin(angle * (2 + phase.turbulence * 4)) *
+						phase.spreadX *
+						0.16 +
+					(s4 - 0.5) * phase.spreadX * 0.16;
 
-            const localY =
-                Math.sin(angle) *
-                    phase.spreadY *
-                    radial *
-                    lerp(0.74, 1.22, s3) +
-                Math.sin((s3 - 0.5) * Math.PI) *
-                    phase.spreadY *
-                    0.2 *
-                    phase.turbulence;
+				const localY =
+					Math.sin(angle) *
+						phase.spreadY *
+						radial *
+						lerp(0.74, 1.22, s3) +
+					Math.sin((s3 - 0.5) * Math.PI) *
+						phase.spreadY *
+						0.2 *
+						phase.turbulence;
 
-            const localZ =
-                zCenter +
-                (s3 - 0.5) * PHASE_DEPTH * 0.74 +
-                radial * PHASE_DEPTH * 0.18;
+				const localZ =
+					zCenter +
+					(s3 - 0.5) * PHASE_DEPTH * 0.74 +
+					radial * PHASE_DEPTH * 0.18;
 
-            return {
-                x: localX,
-                y: localY,
-                z: localZ,
-                size: lerp(0.2, 0.62, 1 - radial),
-                brightness: lerp(0.12, 0.36, 1 - radial),
-            };
-        });
+				return {
+					x: localX,
+					y: localY,
+					z: localZ,
+					size: lerp(0.2, 0.62, 1 - radial),
+					brightness: lerp(0.12, 0.36, 1 - radial),
+				};
+			});
 
-        const cloudEdges = [];
-        for (let i = 0; i < cloudNodes.length; i += 1) {
-            const distances = [];
-            for (let j = 0; j < cloudNodes.length; j += 1) {
-                if (i === j) continue;
-                const dx = cloudNodes[i].x - cloudNodes[j].x;
-                const dy = cloudNodes[i].y - cloudNodes[j].y;
-                const dz = cloudNodes[i].z - cloudNodes[j].z;
-                const d = Math.sqrt(dx * dx + dy * dy + dz * dz);
-                distances.push({ j, d });
-            }
-            distances.sort((a, b) => a.d - b.d);
-            for (let k = 0; k < 3; k += 1) {
-                const candidate = distances[k];
-                if (candidate && candidate.j > i && candidate.d < 96) {
-                    cloudEdges.push([i, candidate.j]);
-                }
-            }
-        }
+			const cloudEdges = [];
+			for (let i = 0; i < cloudNodes.length; i += 1) {
+				const distances = [];
+				for (let j = 0; j < cloudNodes.length; j += 1) {
+					if (i === j) continue;
+					const dx = cloudNodes[i].x - cloudNodes[j].x;
+					const dy = cloudNodes[i].y - cloudNodes[j].y;
+					const dz = cloudNodes[i].z - cloudNodes[j].z;
+					const d = Math.sqrt(dx * dx + dy * dy + dz * dz);
+					distances.push({ j, d });
+				}
+				distances.sort((a, b) => a.d - b.d);
+				for (let k = 0; k < 3; k += 1) {
+					const candidate = distances[k];
+					if (candidate && candidate.j > i && candidate.d < 96) {
+						cloudEdges.push([i, candidate.j]);
+					}
+				}
+			}
 
-        const highlighted = phase.nodes.map((node, idx) => {
-            const rankT = idx / Math.max(phase.nodes.length - 1, 1);
-            const laneX = lerp(
-                -phase.spreadX * 0.9,
-                phase.spreadX * 0.96,
-                rankT,
-            );
-            const laneY =
-                (seeded(phaseIndex * 300 + idx * 27 + 90) - 0.5) *
-                phase.spreadY *
-                1.2;
-            const laneZ =
-                zCenter +
-                (seeded(phaseIndex * 500 + idx * 33 + 190) - 0.5) * 180;
+			const highlighted = phase.nodes.map((node, idx) => {
+				const rankT = idx / Math.max(phase.nodes.length - 1, 1);
+				const laneX = lerp(
+					-phase.spreadX * 0.9,
+					phase.spreadX * 0.96,
+					rankT,
+				);
+				const laneY =
+					(seeded(phaseIndex * 300 + idx * 27 + 90) - 0.5) *
+					phase.spreadY *
+					1.2;
+				const laneZ =
+					zCenter +
+					(seeded(phaseIndex * 500 + idx * 33 + 190) - 0.5) * 180;
 
-            return {
-                ...node,
-                x: laneX,
-                y: laneY,
-                z: laneZ,
-                size: lerp(1.55, 0.8, rankT),
-            };
-        });
+				return {
+					...node,
+					x: laneX,
+					y: laneY,
+					z: laneZ,
+					size: lerp(1.55, 0.8, rankT),
+				};
+			});
 
-        return {
-            ...phase,
-            zCenter,
-            cloudNodes,
-            cloudEdges,
-            highlighted,
-            graphTrails: buildGraphTrails(phase, phaseIndex, zCenter),
-        };
-    });
-}
+			return {
+				...phase,
+				zCenter,
+				cloudNodes,
+				cloudEdges,
+				highlighted,
+				graphTrails: buildGraphTrails(phase, phaseIndex, zCenter),
+			};
+		});
+	}
 
-export default function Experience() {
     const canvasRef = useRef(null);
     const [viewport, setViewport] = useState({
         width: window.innerWidth,
@@ -219,7 +218,9 @@ export default function Experience() {
 
 	const viewerProps = {
 		currentLabel: currentLabel,
-		setCurrentLabel: setCurrentLabel
+		setCurrentLabel: setCurrentLabel,
+		storyData: props.storyData,
+		setStoryData: props.setStoryData
 	}
 
     useEffect(() => {
@@ -257,10 +258,10 @@ export default function Experience() {
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
         const totalScrollable = Math.max(
-            viewport.height * (storyData.length - 1),
+            viewport.height * (props.storyData.length - 1),
             1,
         );
-        const totalDepth = (storyData.length - 1) * PHASE_DEPTH;
+        const totalDepth = (props.storyData.length - 1) * PHASE_DEPTH;
 
         let raf = 0;
         const start = performance.now();
@@ -611,9 +612,9 @@ export default function Experience() {
             <canvas ref={canvasRef} className="experience__canvas" />
             <div
                 className="experience__scrollSpace"
-                style={{ height: `${viewport.height * storyData.length}px` }}
+                style={{ height: `${viewport.height * props.storyData.length}px` }}
             >
-                {storyData.map((phase) => (
+                {props.storyData.map((phase) => (
                     <section
                         key={phase.id}
                         style={{ height: `${viewport.height}px` }}

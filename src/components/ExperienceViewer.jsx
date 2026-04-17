@@ -38,6 +38,18 @@ export default function ExperienceViewer(props) {
             .attr('class', 'story flex-none w-[200px] h-[140px] px-2 overflow-hidden')
             .on('click', (_, d) => handleClick(props.currentLabel.stories.indexOf(d)))
             .text(s => shortenText(s))
+        
+        props.setStoryData((prevStoryData) => {
+            return prevStoryData.map((zone) => {
+                const updatedNodes = zone.nodes.map((node) => {
+                    if(node.label === props.currentLabel.label){
+                        return {...props.currentLabel};
+                    }
+                    return node;
+                });
+                return {...zone, nodes: updatedNodes};
+            });
+        });
     }, [dummy, props.currentLabel.stories])
 
     function addStory(){
@@ -49,7 +61,7 @@ export default function ExperienceViewer(props) {
                 if(prev.stories.at(-1) === prev.stories.at(-2)){
                     prev.stories.pop();
                 }
-                return prev;
+                return {...prev};
             })
             setDummy((prev) => !prev);
             textArea.value = '';

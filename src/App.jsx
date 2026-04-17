@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LandingJourney from "./pages/LandingJourney";
 import Home from "./pages/Home";
@@ -7,6 +8,15 @@ import Colony from "./components/Colony";
 import storyData from "./data/experiences_dummy.json";
 
 export default function App() {
+  const [data, setData] = useState(() => {
+    const saved = sessionStorage.getItem("app_story_data");
+    return saved ? JSON.parse(saved) : storyData;
+  });
+  useEffect(() => {
+    sessionStorage.setItem("app_story_data", JSON.stringify(data));
+    console.log(data);
+  }, [data]);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -14,7 +24,7 @@ export default function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/cluster" element={<Cluster />} />
         <Route path="/colony" element={<Colony />} />
-        <Route path="/experiences" element={<Experience storyData={storyData}/>} />
+        <Route path="/experiences" element={<Experience storyData={data} setStoryData={setData}/>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

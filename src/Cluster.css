@@ -1,0 +1,56 @@
+@keyframes march-6 {
+    from {
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dashoffset: -12;
+    }
+}
+
+.marching-6 {
+    stroke-dasharray: 6;
+    animation: march-6 1s linear infinite;
+}
+
+.marching-6.paused {
+    animation-play-state: paused;
+}
+
+@keyframes march-3 {
+    from {
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dashoffset: -6;
+    }
+}
+
+.marching-3 {
+    stroke-dasharray: 3;
+    animation: march-3 1s linear infinite;
+}
+
+.marching-3.paused {
+    animation-play-state: paused;
+}
+
+#accordion-container {
+    scrollbar-color: hsl(205, 50%, 25%) #fff0;
+}
+
+.symptom-accordion {
+    box-shadow: none;
+    transition: background-color 150ms;
+}
+
+.symptom-accordion:hover {
+    background-color: #5558;
+}
+
+.symptom-accordion.active {
+    background-color: #9998;
+}
+
+.symptom-accordion.active:hover {
+    background-color: #CCC8;
+}

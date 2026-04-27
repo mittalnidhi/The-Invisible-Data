@@ -1,3 +1,11 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #050505;
+  overflow: hidden;
+}
+
 .landing {
   position: fixed;
   inset: 0;
@@ -8,17 +16,101 @@
 canvas {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
 .nav {
   position: fixed;
   top: 20px;
+  left: 20px;
   right: 30px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+  font-family: "Cascadia Code", "Courier New", monospace;
+}
+
+.nav-right {
+  display: flex;
   gap: 30px;
-  color: white;
-  font-family: monospace;
+}
+
+.nav button {
+  background: none;
+  border: none;
+  color: rgba(244, 240, 232, 0.96);
+  cursor: pointer;
+  font-family: "Cascadia Code", "Courier New", monospace;
   font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0;
+}
+
+.type-nav {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  direction: ltr;
+  text-align: left;
+  border-right: 1px solid rgba(244, 240, 232, 0.8);
+}
+
+.type-title {
+  animation: typeTitle 1.1s steps(18) forwards, caretOff 0.1s forwards;
+  animation-delay: 0s, 1.1s;
+}
+
+.type-about {
+  animation: typeAbout 0.4s steps(5) forwards, caretOff 0.1s forwards;
+  animation-delay: 1.25s, 1.65s;
+}
+
+.type-path {
+  animation: typePath 0.35s steps(4) forwards, caretOff 0.1s forwards;
+  animation-delay: 1.75s, 2.1s;
+}
+
+.type-dear {
+  animation: typeDear 0.75s steps(9) forwards, caretOff 0.1s forwards;
+  animation-delay: 2.15s, 2.9s;
+}
+
+.nav button:hover {
+  opacity: 0.55;
+}
+
+@keyframes typeTitle {
+  to {
+    width: 18ch;
+  }
+}
+
+@keyframes typeAbout {
+  to {
+    width: 5ch;
+  }
+}
+
+@keyframes typePath {
+  to {
+    width: 4ch;
+  }
+}
+
+@keyframes typeDear {
+  to {
+    width: 9ch;
+  }
+}
+
+@keyframes caretOff {
+  to {
+    border-right-color: transparent;
+  }
 }
 
 .caption {
@@ -26,8 +118,10 @@ canvas {
   bottom: 50px;
   width: 100%;
   text-align: center;
-  color: white;
-  font-family: monospace;
+  color: rgba(244, 240, 232, 0.85);
+  font-family: "Cascadia Code", "Courier New", monospace;
   font-size: 13px;
   letter-spacing: 2px;
+  pointer-events: none;
+  z-index: 10;
 }

@@ -36,7 +36,7 @@ canvas {
   gap: 30px;
 }
 
-.nav button {
+.nav-button {
   background: none;
   border: none;
   color: rgba(244, 240, 232, 0.96);
@@ -47,15 +47,32 @@ canvas {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 0;
+  text-align: left;
+}
+
+.nav-title-button {
+  width: 18ch;
+}
+
+.nav-about-button {
+  width: 5ch;
+}
+
+.nav-path-button {
+  width: 4ch;
+}
+
+.nav-dear-button {
+  width: 9ch;
 }
 
 .type-nav {
-  display: inline-block;
+  display: block;
   overflow: hidden;
   white-space: nowrap;
   width: 0;
-  direction: ltr;
   text-align: left;
+  direction: ltr;
   border-right: 1px solid rgba(244, 240, 232, 0.8);
 }
 
@@ -79,7 +96,7 @@ canvas {
   animation-delay: 2.15s, 2.9s;
 }
 
-.nav button:hover {
+.nav-button:hover {
   opacity: 0.55;
 }
 

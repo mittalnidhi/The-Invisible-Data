@@ -4,18 +4,9 @@ import "./LandingJourney.css";
 import { ASCII_FRAMES } from "./asciiFrames";
 import { TITLE_ASCII } from "./titleAscii";
 
-const NAV_TYPE_TIME = 2.5;
-const TITLE_APPEAR_TIME = 1.2;
-const TITLE_HOLD_TIME = 3;
-const TITLE_ZOOM_TIME = 4;
-const SHATTER_TIME = 3.8;
-
-const ANIMATION_START =
-  NAV_TYPE_TIME +
-  TITLE_APPEAR_TIME +
-  TITLE_HOLD_TIME +
-  TITLE_ZOOM_TIME +
-  SHATTER_TIME;
+const NAV_TYPE_TIME = 3;
+const TITLE_APPEAR_TIME = 1.4;
+const FLY_TIME = 2.2;
 
 function rand(min, max) {
   return Math.random() * (max - min) + min;
@@ -29,10 +20,6 @@ function smoothstep(t) {
   return t * t * (3 - 2 * t);
 }
 
-function easeOutCubic(t) {
-  return 1 - Math.pow(1 - t, 3);
-}
-
 export default function LandingJourney() {
   const navigate = useNavigate();
 
@@ -40,8 +27,12 @@ export default function LandingJourney() {
   const canvasRef = useRef(null);
   const rafRef = useRef(null);
   const startRef = useRef(performance.now());
+  const flyStartRef = useRef(null);
+  const animationStartRef = useRef(null);
+  const modeRef = useRef("title");
 
   const [caption, setCaption] = useState("");
+  const [mode, setMode] = useState("title");
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -59,6 +50,16 @@ export default function LandingJourney() {
       canvas.style.height = `${h}px`;
 
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function handleClick(e) {
+      if (e.target.closest(".nav")) return;
+
+      if (modeRef.current === "title") {
+        modeRef.current = "fly";
+        setMode("fly");
+        flyStartRef.current = performance.now();
+      }
     }
 
     function draw(now) {
@@ -79,25 +80,31 @@ export default function LandingJourney() {
 
       const titleT = t - NAV_TYPE_TIME;
 
-      if (titleT < TITLE_APPEAR_TIME + TITLE_HOLD_TIME + TITLE_ZOOM_TIME) {
+      if (modeRef.current === "title") {
         setCaption("");
-        drawTitle(ctx, w, h, titleT);
+        drawTitleGlitch(ctx, w, h, titleT);
         rafRef.current = requestAnimationFrame(draw);
         return;
       }
 
-      const shatterT =
-        titleT - TITLE_APPEAR_TIME - TITLE_HOLD_TIME - TITLE_ZOOM_TIME;
+      if (modeRef.current === "fly") {
+        const flyT = (now - flyStartRef.current) / 1000;
 
-      if (shatterT < SHATTER_TIME) {
         setCaption("");
-        drawTitleShatter(ctx, w, h, shatterT);
+        drawTitleFlyAway(ctx, w, h, flyT);
+
+        if (flyT >= FLY_TIME) {
+          modeRef.current = "animation";
+          setMode("animation");
+          animationStartRef.current = performance.now();
+        }
+
         rafRef.current = requestAnimationFrame(draw);
         return;
       }
 
-      // EXISTING ASCII IMAGE ANIMATION — UNCHANGED
-      const animationT = t - ANIMATION_START;
+     
+      const animationT = (now - animationStartRef.current) / 1000;
 
       const duration = 4;
       const index = Math.floor(animationT / duration) % ASCII_FRAMES.length;
@@ -121,52 +128,57 @@ export default function LandingJourney() {
 
     resize();
     window.addEventListener("resize", resize);
+    wrap.addEventListener("click", handleClick);
+
     rafRef.current = requestAnimationFrame(draw);
 
     return () => {
       window.removeEventListener("resize", resize);
+      wrap.removeEventListener("click", handleClick);
       cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
   return (
-    <div ref={wrapRef} className="landing">
+    <div ref={wrapRef} className={`landing ${mode}`}>
       <canvas ref={canvasRef} />
 
       <nav className="nav">
-        <button onClick={() => navigate("/")}>
+        <button className="nav-button nav-title-button" onClick={() => navigate("/")}>
           <span className="type-nav type-title">THE INVISIBLE DATA</span>
         </button>
 
         <div className="nav-right">
-          <button onClick={() => navigate("/about")}>
+          <button className="nav-button nav-about-button" onClick={() => navigate("/about")}>
             <span className="type-nav type-about">ABOUT</span>
           </button>
 
-          <button onClick={() => navigate("/path")}>
+          <button className="nav-button nav-path-button" onClick={() => navigate("/path")}>
             <span className="type-nav type-path">PATH</span>
           </button>
 
-          <button onClick={() => navigate("/dear-peri")}>
+          <button className="nav-button nav-dear-button" onClick={() => navigate("/dear-peri")}>
             <span className="type-nav type-dear">DEAR PERI</span>
           </button>
         </div>
       </nav>
+
+      {mode === "title" && (
+        <div className="click-hint">CLICK / TOUCH TO BEGIN</div>
+      )}
 
       <div className="caption">{caption}</div>
     </div>
   );
 }
 
-
-
 function getTitleLayout(w, h, zoom = 1) {
   const lines = TITLE_ASCII.split("\n").filter((line) => line.trim().length);
   const longest = Math.max(...lines.map((line) => line.length));
 
   const baseFontSize = Math.min(
-    (w * 0.9) / longest / 0.56,
-    (h * 0.62) / lines.length
+    (w * 0.94) / longest / 0.56,
+    (h * 0.66) / lines.length
   );
 
   const fontSize = baseFontSize * zoom;
@@ -183,22 +195,17 @@ function getTitleLayout(w, h, zoom = 1) {
   };
 }
 
-function drawTitle(ctx, w, h, titleT) {
+function drawTitleGlitch(ctx, w, h, titleT) {
   const appear = clamp(titleT / TITLE_APPEAR_TIME, 0, 1);
-
-  const zoomStart = TITLE_APPEAR_TIME + TITLE_HOLD_TIME;
-  const zoomProgress =
-    titleT > zoomStart
-      ? clamp((titleT - zoomStart) / TITLE_ZOOM_TIME, 0, 1)
-      : 0;
-
-  const zoom = 1 + easeOutCubic(zoomProgress) * 0.42;
+  const glitchPower = clamp((titleT - TITLE_APPEAR_TIME) / 2.5, 0.18, 0.75);
 
   const { lines, fontSize, charW, lineH, startX, startY } = getTitleLayout(
     w,
     h,
-    zoom
+    1.06
   );
+
+  const dataChars = ["0", "1", "0", "1", "#", "%", "+", "*"];
 
   ctx.save();
   ctx.font = `700 ${fontSize}px "Cascadia Code", "Courier New", monospace`;
@@ -206,12 +213,46 @@ function drawTitle(ctx, w, h, titleT) {
   ctx.fillStyle = "rgba(244,240,232,0.96)";
 
   lines.forEach((line, y) => {
+    const rowShift =
+      Math.sin(titleT * 20 + y * 0.8) > 0.84
+        ? rand(-32, 32) * glitchPower
+        : 0;
+
     for (let x = 0; x < line.length; x++) {
-      const ch = line[x];
+      let ch = line[x];
       if (ch === " ") continue;
 
-      ctx.globalAlpha = appear;
-      ctx.fillText(ch, startX + x * charW, startY + y * lineH);
+      if (Math.random() < glitchPower * 0.28) {
+        ch = dataChars[(x + y + Math.floor(titleT * 18)) % dataChars.length];
+      }
+
+      if (Math.random() < glitchPower * 0.045) continue;
+
+      const microX =
+        Math.sin(titleT * 34 + x * 0.7 + y * 0.25) > 0.92
+          ? rand(-16, 16) * glitchPower
+          : 0;
+
+      const scanline =
+        Math.sin(y * 0.95 + titleT * 10) > 0.97 - glitchPower * 0.12;
+
+      ctx.globalAlpha =
+        appear *
+        clamp(
+          0.68 +
+            Math.sin(titleT * 9 + x * 0.17 + y * 0.22) *
+              (0.16 + glitchPower * 0.22),
+          0.18,
+          1
+        );
+
+      if (scanline) ctx.globalAlpha *= 0.38;
+
+      ctx.fillText(
+        ch,
+        startX + x * charW + rowShift + microX,
+        startY + y * lineH
+      );
     }
   });
 
@@ -219,17 +260,14 @@ function drawTitle(ctx, w, h, titleT) {
   ctx.restore();
 }
 
-function drawTitleShatter(ctx, w, h, shatterT) {
-  const zoom = 1.42;
+function drawTitleFlyAway(ctx, w, h, flyT) {
+  const progress = smoothstep(clamp(flyT / FLY_TIME, 0, 1));
+
   const { lines, fontSize, charW, lineH, startX, startY } = getTitleLayout(
     w,
     h,
-    zoom
+    1.06
   );
-
-  const progress = clamp(shatterT / SHATTER_TIME, 0, 1);
-  const eased = smoothstep(progress);
-  const fade = clamp(1 - progress * 0.9, 0, 1);
 
   const dataChars = ["0", "1", "0", "1", "#", "%", "+", "*"];
 
@@ -247,23 +285,34 @@ function drawTitleShatter(ctx, w, h, shatterT) {
       const angle = seed * Math.PI * 2;
 
       const ch =
-        dataChars[(x + y + Math.floor(shatterT * 18)) % dataChars.length];
+        dataChars[(x + y + Math.floor(flyT * 26)) % dataChars.length];
 
-      const drift = eased * (120 + Math.abs(seed % 360));
-      const floatX = Math.cos(angle) * drift;
-      const floatY = Math.sin(angle) * drift * 0.45 + eased * h * 0.22;
+      const distance = progress * (130 + Math.abs(seed % 620));
+      const flyX = Math.cos(angle) * distance;
+      const flyY = Math.sin(angle) * distance * 0.58 + progress * h * 0.18;
 
       const dissolve =
-        Math.sin(shatterT * 8 + x * 0.25 + y * 0.35) * eased * 14;
+        Math.sin(flyT * 12 + x * 0.25 + y * 0.35) * progress * 28;
 
-      ctx.globalAlpha = fade;
+      ctx.globalAlpha = clamp(1 - progress * 0.88, 0, 1);
 
       ctx.fillText(
         ch,
-        startX + x * charW + floatX + dissolve,
-        startY + y * lineH + floatY
+        startX + x * charW + flyX + dissolve,
+        startY + y * lineH + flyY
       );
     }
+  });
+
+  ctx.globalAlpha = progress * 0.85;
+  drawAscii({
+    ctx,
+    w,
+    h,
+    t: 0,
+    localT: 0,
+    current: ASCII_FRAMES[0].art,
+    next: ASCII_FRAMES[1]?.art || ASCII_FRAMES[0].art,
   });
 
   ctx.globalAlpha = 1;
@@ -286,7 +335,6 @@ function drawBackground(ctx, w, h) {
   ctx.globalAlpha = 1;
 }
 
-/* ascii animation*/
 
 function drawAscii({ ctx, w, h, t, localT, current, next }) {
   const isGlitch = localT > 0.75;

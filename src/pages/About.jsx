@@ -1,63 +1,266 @@
+import React, { useLayoutEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import "./About.css";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const clamp01 = (v) => Math.max(0, Math.min(1, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+
+function toAsciiNumber(num) {
+  const patterns = {
+    "0": [
+      "   +++++++++   ",
+      " +++++++++++++ ",
+      "+++++     +++++",
+      "+++++     +++++",
+      "+++++     +++++",
+      "+++++     +++++",
+      "+++++     +++++",
+      " +++++++++++++ ",
+      "   +++++++++   ",
+    ],
+    "1": [
+      "     +++++     ",
+      "   +++++++     ",
+      "     +++++     ",
+      "     +++++     ",
+      "     +++++     ",
+      "     +++++     ",
+      "     +++++     ",
+      "     +++++     ",
+      "   +++++++++   ",
+    ],
+    "2": [
+      "  ++++++++++   ",
+      "++++++++++++++ ",
+      "++++      +++++",
+      "          +++++",
+      "       ++++++  ",
+      "    ++++++     ",
+      " ++++++        ",
+      "+++++          ",
+      "+++++++++++++++",
+    ],
+    "3": [
+      "  ++++++++++   ",
+      "++++++++++++++ ",
+      "++++      +++++",
+      "          +++++",
+      "     ++++++++  ",
+      "          +++++",
+      "++++      +++++",
+      "++++++++++++++ ",
+      "  ++++++++++   ",
+    ],
+    "4": [
+      "++++     +++++ ",
+      "++++     +++++ ",
+      "++++     +++++ ",
+      "++++     +++++ ",
+      "+++++++++++++++",
+      "         +++++ ",
+      "         +++++ ",
+      "         +++++ ",
+      "         +++++ ",
+    ],
+    "5": [
+      "+++++++++++++++",
+      "+++++          ",
+      "+++++          ",
+      "++++++++++++   ",
+      "++++++++++++++ ",
+      "          +++++",
+      "++++      +++++",
+      "++++++++++++++ ",
+      "  ++++++++++   ",
+    ],
+    "6": [
+      "   +++++++++   ",
+      " +++++++++++++ ",
+      "+++++          ",
+      "+++++          ",
+      "++++++++++++   ",
+      "++++++++++++++ ",
+      "+++++     +++++",
+      "++++++++++++++ ",
+      "  ++++++++++   ",
+    ],
+    "7": [
+      "+++++++++++++++",
+      "          +++++",
+      "         +++++ ",
+      "        +++++  ",
+      "       +++++   ",
+      "      +++++    ",
+      "     +++++     ",
+      "    +++++      ",
+      "   +++++       ",
+    ],
+    "8": [
+      "  ++++++++++   ",
+      "++++++++++++++ ",
+      "+++++    +++++ ",
+      "+++++    +++++ ",
+      " ++++++++++++  ",
+      "+++++    +++++ ",
+      "+++++    +++++ ",
+      "++++++++++++++ ",
+      "  ++++++++++   ",
+    ],
+    "9": [
+      "  ++++++++++   ",
+      "++++++++++++++ ",
+      "+++++     +++++",
+      "+++++     +++++",
+      "+++++++++++++++",
+      "          +++++",
+      "          +++++",
+      "++++++++++++++ ",
+      "  +++++++++    ",
+    ],
+    "%": [
+      "++++       +   ",
+      "++++      +    ",
+      "        ++     ",
+      "       ++      ",
+      "      ++       ",
+      "     ++        ",
+      "    ++   +++++ ",
+      "   +    +++++  ",
+      "  +     +++++  ",
+    ],
+  };
+
+  const chars = `${num}%`.split("");
+  const rows = Array.from({ length: 9 }, () => "");
+
+  chars.forEach((char) => {
+    const block = patterns[char];
+    if (!block) return;
+
+    block.forEach((line, i) => {
+      rows[i] += line + "   ";
+    });
+  });
+
+  return rows.join("\n");
+}
 
 export default function About() {
   const navigate = useNavigate();
 
+  const stageRef = useRef(null);
+  const textOneRef = useRef(null);
+  const textTwoRef = useRef(null);
+  const boxRef = useRef(null);
+  const asciiNumberRef = useRef(null);
+
+  useLayoutEffect(() => {
+    document.documentElement.style.overflowY = "auto";
+    document.body.style.overflowY = "auto";
+
+    const host = stageRef.current;
+    if (!host) return;
+
+    const ctx = gsap.context(() => {
+      const render = (p) => {
+        const percent = Math.round(lerp(15, 45, p));
+        asciiNumberRef.current.textContent = toAsciiNumber(percent);
+
+        const boxW = lerp(90, window.innerWidth * 0.38, p);
+        const boxH = lerp(70, window.innerHeight * 0.36, p);
+
+        gsap.set(boxRef.current, {
+          width: boxW,
+          height: boxH,
+        });
+
+        const textOneOut = clamp01((p - 0.32) / 0.16);
+        const textTwoIn = clamp01((p - 0.42) / 0.18);
+
+        gsap.set(textOneRef.current, {
+          opacity: 1 - textOneOut,
+          y: -24 * textOneOut,
+        });
+
+        gsap.set(textTwoRef.current, {
+          opacity: textTwoIn,
+          y: 30 - 30 * textTwoIn,
+        });
+      };
+
+      render(0);
+
+      const trigger = ScrollTrigger.create({
+        trigger: ".about",
+        start: "top top",
+        end: "+=2200",
+        scrub: true,
+        pin: host,
+        anticipatePin: 1,
+        onUpdate: (self) => render(self.progress),
+      });
+
+      setTimeout(() => ScrollTrigger.refresh(), 100);
+
+      return () => trigger.kill();
+    }, host);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div style={{ minHeight: "100vh", background: "#05070d", color: "white" }}>
-      
-      {/* NAVBAR */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "20px 40px",
-          borderBottom: "1px solid rgba(255,255,255,0.1)",
-          cursor: "pointer"
-        }}
-      >
-        <div onClick={() => navigate("/")}>The Invisible Data</div>
+    <main className="about">
+      <nav className="aboutNav">
+        <button className="aboutNav__button" onClick={() => navigate("/")}>
+          THE INVISIBLE DATA
+        </button>
 
-        <div style={{ display: "flex", gap: "30px" }}>
-          <span onClick={() => navigate("/")}>Home</span>
-          <span onClick={() => navigate("/path")}>Path</span>
-        </div>
-      </div>
-
-      {/* CONTENT */}
-      <div style={{ padding: "80px 40px", maxWidth: "900px", margin: "auto" }}>
-        
-        <h1 style={{ fontSize: "42px", marginBottom: "20px" }}>
-          About
-        </h1>
-
-        <p style={{ opacity: 0.8, lineHeight: "1.6" }}>
-          Perimenopause is often experienced as a fragmented and invisible phase
-          of life, where symptoms do not appear in isolation but as interconnected
-          patterns. Despite its widespread impact, structured data capturing these
-          lived experiences remains limited.
-        </p>
-
-        <p style={{ marginTop: "20px", opacity: 0.8, lineHeight: "1.6" }}>
-          This project explores how personal narratives and shared experiences can
-          be transformed into visual systems—revealing symptom clusters, behavioral
-          patterns, and emotional landscapes that are often overlooked in clinical
-          data.
-        </p>
-
-        <p style={{ marginTop: "20px", opacity: 0.8, lineHeight: "1.6" }}>
-          By combining qualitative insights with interactive visualization, this
-          work aims to create new ways of understanding and navigating the
-          perimenopausal journey.
-        </p>
-
-        {/* CTA */}
-        <div style={{ marginTop: "50px" }}>
-          <button onClick={() => navigate("/path")}>
-            Choose Your Path →
+        <div className="aboutNav__right">
+          <button className="aboutNav__button" onClick={() => navigate("/about")}>
+            ABOUT
+          </button>
+          <button className="aboutNav__button" onClick={() => navigate("/path")}>
+            PATH
+          </button>
+          <button className="aboutNav__button" onClick={() => navigate("/dear-peri")}>
+            DEAR PERI
           </button>
         </div>
-      </div>
-    </div>
+      </nav>
+
+      <section ref={stageRef} className="about__stage">
+        <div className="about__leftDots" aria-hidden="true">
+          <span className="about__dot about__dot--active" />
+          <span className="about__dot" />
+          <span className="about__dot" />
+        </div>
+
+        <div className="about__copy">
+          <h1 ref={textOneRef} className="about__headline">
+            Perimenopause is a
+            <br />
+            Public Health Crisis.
+            <br />
+            The Data is clear.
+          </h1>
+
+          <h1 ref={textTwoRef} className="about__headline about__headline--two">
+            45% of Women in the
+            <br />
+            World are in Midlife.
+          </h1>
+        </div>
+
+        <div ref={boxRef} className="about__dataBox">
+          <pre ref={asciiNumberRef} className="about__asciiNumber">
+            {toAsciiNumber(20)}
+          </pre>
+        </div>
+      </section>
+    </main>
   );
 }

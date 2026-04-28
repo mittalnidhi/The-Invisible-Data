@@ -1,0 +1,153 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #d8dee7;
+  overflow: hidden;
+}
+
+.path {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e5e5e5 0%, #c7d8ef 100%);
+  color: #051c41;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  overflow: hidden;
+}
+
+/* NAV SAME AS ABOUT / LANDING */
+
+.pathNav {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: 30px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 9999;
+}
+
+.pathNav__right {
+  display: flex;
+  gap: 30px;
+}
+
+.pathNav__button {
+  background: none;
+  border: none;
+  color: #051c41;
+  cursor: pointer;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0;
+}
+
+.pathNav__button:hover {
+  opacity: 0.55;
+}
+
+/* PAGE */
+
+.path__stage {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* RANDOM ASCII GLITCH FIELD */
+
+.path__glitchField {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.path__glitchField span {
+  position: absolute;
+  color: rgba(5, 28, 65, 0.55);
+  animation: floatIntoText 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes floatIntoText {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+
+  25% {
+    opacity: 0.9;
+  }
+
+  70% {
+    opacity: 0.6;
+    transform: translate(
+        calc(50vw - 50%),
+        calc(22vh - 50%)
+      )
+      scale(0.9)
+      rotate(18deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(
+        calc(50vw - 50%),
+        calc(20vh - 50%)
+      )
+      scale(0.2)
+      rotate(0deg);
+  }
+}
+
+/* ASCII TEXT */
+
+.path__asciiTitle {
+  position: absolute;
+  top: 14vh;
+  left: 6vw;
+  right: 6vw;
+  z-index: 3;
+  margin: 0;
+  color: #051c41;
+  font-size: clamp(1.2rem, 4.4vw, 5.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  font-weight: 900;
+  text-transform: uppercase;
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(20px);
+}
+
+.path.is-settled .path__asciiTitle {
+  animation: revealAsciiText 0.9s steps(2) forwards;
+}
+
+@keyframes revealAsciiText {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(20px);
+  }
+
+  45% {
+    opacity: 0.75;
+    filter: blur(2px);
+    transform: translateY(-4px);
+  }
+
+  70% {
+    opacity: 0.35;
+    transform: translateX(-8px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(0, 0);
+  }
+}

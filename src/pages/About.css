@@ -1,0 +1,120 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #050505;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+}
+
+.about {
+  min-height: 3400px;
+  background: #050505;
+  font-family: "Cascadia Code", "Courier New", monospace;
+}
+
+/* NAV */
+
+.aboutNav {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: 30px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 9999;
+}
+
+.aboutNav button {
+  background: none;
+  border: none;
+  color: #e6d3c4;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.aboutNav__right {
+  display: flex;
+  gap: 30px;
+}
+
+/* STAGE */
+
+.about__stage {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: #050505;
+}
+
+/* TEXT */
+
+.about__copy {
+  position: absolute;
+  left: 8vw;
+  top: 18vh;
+  width: 70vw;
+  z-index: 20;
+}
+
+.about__headline {
+  position: absolute;
+  margin: 0;
+  color: #e6d3c4;
+  font-size: clamp(2.8rem, 5.8vw, 7rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+}
+
+.about__headline--two {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* BOXES */
+
+.about__box {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 24px;
+  box-sizing: border-box;
+  transform-origin: bottom right;
+  will-change: width, height, opacity;
+}
+
+/* first/front box */
+.about__box--first {
+  width: 150px;
+  height: 110px;
+  background: #051c41;
+  z-index: 40;
+}
+
+/* second/back box */
+.about__box--second {
+  width: 130px;
+  height: 100px;
+  background: #8fc7ff;
+  z-index: 30;
+  opacity: 0;
+}
+
+/* NUMBERS */
+
+.about__number {
+  color: #e6d3c4;
+  font-size: clamp(2rem, 5vw, 6.5rem);
+  line-height: 0.9;
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  white-space: nowrap;
+}

@@ -1,0 +1,117 @@
+[
+    {
+        "id": "Confusion",
+        "title": "Confusion",
+        "tint": "150,200,255",
+        "spreadX": 420,
+        "spreadY": 250,
+        "turbulence": 0.4,
+        "nodes": [
+            { "label": "Unpredictable Symptoms", "rank": 1, "stories": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras bibendum porta nunc, et consequat risus feugiat eu. Curabitur in turpis vitae quam malesuada cursus eu quis dolor. Sed sit amet lobortis lorem, id elementum nunc. Nam a mauris placerat, efficitur velit nec, feugiat nibh. Proin malesuada turpis ac quam interdum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo interdum velit malesuada ornare. Fusce pretium purus ut dapibus fringilla. Morbi in ultrices nunc. Vestibulum molestie ante non mauris semper, at imperdiet mauris blandit. Vestibulum nisi tortor, tristique id dolor at, eleifend pharetra felis. Quisque quis viverra turpis. Suspendisse laoreet.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis augue tristique, accumsan velit at, pharetra nibh. Ut gravida molestie tellus, at commodo lacus aliquet euismod. Nam ultrices accumsan mauris sed sagittis. Nullam sodales odio et efficitur vestibulum. Donec enim ipsum, laoreet eu tristique a, vestibulum ut justo. Maecenas vitae.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu lorem non elit porta luctus. Aliquam nisi magna, tincidunt nec neque sed, blandit dapibus est. Fusce euismod at urna ut pretium. Proin eget lorem vel diam tempus rutrum a nec justo. Curabitur a dolor dolor. Duis vestibulum purus dolor, quis.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque justo nulla, volutpat id leo et, tempus hendrerit lacus. Aenean nec sollicitudin turpis. Proin diam quam, rhoncus vel hendrerit sed, blandit ac nisi. Cras risus metus, porta vel dictum eget, ullamcorper et nisi. Donec tempus tincidunt mattis. Vivamus commodo aliquet risus."
+            ] },
+            { "label": "Lack of clarity", "rank": 2, "stories": [] },
+            { "label": "Emotional Unstability", "rank": 3, "stories": [] },
+            { "label": "Self- Doubt", "rank": 4, "stories": [] },
+            { "label": "Need for Direction", "rank": 5, "stories": [] }
+        ]
+    },
+    {
+        "id": "transition",
+        "title": "Transitional phase",
+        "tint": "150,200,255",
+        "spreadX": 480,
+        "spreadY": 220,
+        "turbulence": 0.28,
+        "nodes": [
+            { "label": "Loss of Identity", "rank": 1, "stories": [] },
+            { "label": "Autonomy", "rank": 2, "stories": [] },
+            { "label": "Self image", "rank": 3, "stories": [] },
+            { "label": "Career change", "rank": 4, "stories": [] },
+            { "label": "Body trust", "rank": 5, "stories": [] },
+            { "label": "Lack of Confidence", "rank": 6, "stories": [] },
+            { "label": "Relationship changes", "rank": 6, "stories": [] },
+            { "label": "Ageing parents", "rank": 6, "stories": [] }
+        ]
+    },
+
+    {
+        "id": "healthcare",
+        "title": "HEALTHCARE GAPS",
+        "tint": "150,200,255",
+        "spreadX": 360,
+        "spreadY": 210,
+        "turbulence": 0.7,
+        "nodes": [
+            { "label": "Gaslighting", "rank": 1, "stories": [] },
+            { "label": "Lack of treatment", "rank": 2, "stories": [] },
+            { "label": "Dismissal", "rank": 3, "stories": [] },
+            { "label": "Age bias", "rank": 4, "stories": [] },
+            { "label": "Delayed diagnosis", "rank": 5, "stories": [] }
+        ]
+    },
+    {
+        "id": "symptoms",
+        "title": "SYMPTOM OUTBREAK",
+        "tint": "150,200,255",
+        "spreadX": 320,
+        "spreadY": 180,
+        "turbulence": 0.95,
+        "nodes": [
+            { "label": "Sleep disruption", "rank": 1, "stories": [] },
+            { "label": "Brain fog", "rank": 2, "stories": [] },
+            { "label": "Heat spikes", "rank": 3, "stories": [] },
+            { "label": "Body pain", "rank": 4, "stories": [] },
+            { "label": "Mood volatility", "rank": 5, "stories": [] },
+            { "label": "Fatigue", "rank": 6, "stories": [] }
+        ]
+    },
+    {
+        "id": "social",
+        "title": "SOCIAL ANXIETY",
+        "tint": "150,200,255",
+        "spreadX": 300,
+        "spreadY": 165,
+        "turbulence": 0.82,
+        "nodes": [
+            { "label": "Workplace masking", "rank": 1, "stories": [] },
+            { "label": "Withdrawing socially", "rank": 2, "stories": [] },
+            { "label": "Relationship strain", "rank": 3, "stories": [] },
+            { "label": "Public discomfort", "rank": 4, "stories": [] },
+            { "label": "Isolation", "rank": 5, "stories": [] }
+        ]
+    },
+    {
+        "id": "hope",
+        "title": "HOPE",
+        "tint": "150,200,255",
+        "spreadX": 350,
+        "spreadY": 200,
+        "turbulence": 0.5,
+        "nodes": [
+            { "label": "Finding language", "rank": 1, "stories": [] },
+            { "label": "Community knowledge", "rank": 2, "stories": [] },
+            { "label": "Small experiments", "rank": 3, "stories": [] },
+            { "label": "Recognition", "rank": 4, "stories": [] }
+        ]
+    },
+    {
+        "id": "reclaiming",
+        "title": "RECLAIMING SELF",
+        "tint": "150,200,255",
+        "spreadX": 380,
+        "spreadY": 220,
+        "turbulence": 0.34,
+        "nodes": [
+            { "label": "New baseline", "rank": 1, "stories": [] },
+            { "label": "Self trust", "rank": 2, "stories": [] },
+            { "label": "Selective care", "rank": 3, "stories": [] },
+            { "label": "Boundaries", "rank": 4, "stories": [] },
+            { "label": "Reorientation", "rank": 5, "stories": [] }
+        ]
+    }
+]

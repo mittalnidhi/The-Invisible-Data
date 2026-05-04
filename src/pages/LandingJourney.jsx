@@ -1,523 +1,614 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TITLE_ASCII } from "../pages/titleAscii";
+import { ASCII_FRAMES } from "../pages/asciiFrames";
 import "./LandingJourney.css";
-import { ASCII_FRAMES } from "./asciiFrames";
-import { TITLE_ASCII } from "./titleAscii";
-
-const NAV_TYPE_TIME = 3;
-const TITLE_APPEAR_TIME = 1.4;
-const BREAK_TIME = 2.8;
 
 const IMAGE_DURATION = 2.2;
 const FULL_IMAGE_LOOP_TIME = ASCII_FRAMES.length * IMAGE_DURATION;
 
-const POST_GLITCH_TIME = 0.85;
-const COLLAPSE_TIME = 2.7;
+const CAPTION_LINE_1 = "Mapping the perimenopausal data gap";
+const CAPTION_LINE_2 = "in women’s health";
 
-function rand(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-function clamp(v, min, max) {
-  return Math.max(min, Math.min(max, v));
-}
-
-function smoothstep(t) {
-  return t * t * (3 - 2 * t);
-}
+const INTRO_TEXT =
+  "Perimenopause is a midlife women's health issue affecting millions of women across the globe, yet health education and research in this phase is limited. Even when this phase is studied, it does not capture lived experiences of women.";
 
 export default function LandingJourney() {
+  const canvasRef = useRef(null);
   const navigate = useNavigate();
 
-  const wrapRef = useRef(null);
-  const canvasRef = useRef(null);
-  const rafRef = useRef(null);
-  const startRef = useRef(performance.now());
-
-  const breakStartRef = useRef(null);
-  const animationStartRef = useRef(null);
-  const postGlitchStartRef = useRef(null);
-  const collapseStartRef = useRef(null);
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [titleDone, setTitleDone] = useState(false);
+  const [captionLine1, setCaptionLine1] = useState("");
+  const [captionLine2, setCaptionLine2] = useState("");
+  const [mode, setMode] = useState("title");
+  const [introProgress, setIntroProgress] = useState(0);
+  const [showNav, setShowNav] = useState(false);
 
   const modeRef = useRef("title");
-  const hasNavigatedRef = useRef(false);
+  const animationStartRef = useRef(null);
+  const shatterStartRef = useRef(null);
+  const navStartRef = useRef(null);
+  const fadeStartRef = useRef(null);
 
-  const [caption, setCaption] = useState("");
-  const [mode, setMode] = useState("title");
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const titleParticlesRef = useRef([]);
+  const hasNavigatedRef = useRef(false);
+  const touchStartYRef = useRef(null);
+
+  const captionLine1Ref = useRef("");
+  const captionLine2Ref = useRef("");
 
   useEffect(() => {
-    const wrap = wrapRef.current;
+    captionLine1Ref.current = captionLine1;
+  }, [captionLine1]);
+
+  useEffect(() => {
+    captionLine2Ref.current = captionLine2;
+  }, [captionLine2]);
+
+  const restartLanding = (e) => {
+    e.stopPropagation();
+    window.location.href = "/";
+  };
+
+  useEffect(() => {
+    if (mode !== "intro") return;
+
+    const updateProgress = (delta) => {
+      setIntroProgress((prev) => {
+        const next = prev + delta;
+        const clamped = Math.min(Math.max(next, 0), 1);
+
+        if (clamped >= 1 && !hasNavigatedRef.current) {
+          hasNavigatedRef.current = true;
+
+          setTimeout(() => {
+            navigate("/about", { state: { fromLandingCollapse: true } });
+          }, 900);
+        }
+
+        return clamped;
+      });
+    };
+
+    const handleWheel = (e) => {
+      e.preventDefault();
+      updateProgress(e.deltaY * 0.0012);
+    };
+
+    const handleTouchStart = (e) => {
+      touchStartYRef.current = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e) => {
+      if (touchStartYRef.current === null) return;
+
+      const currentY = e.touches[0].clientY;
+      const deltaY = touchStartYRef.current - currentY;
+
+      e.preventDefault();
+      updateProgress(deltaY * 0.0022);
+
+      touchStartYRef.current = currentY;
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: false });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [mode, navigate]);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    function resize() {
-      const w = wrap.clientWidth;
-      const h = wrap.clientHeight;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let animationId;
+    let typedColumns = 0;
+    let time = 0;
 
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      canvas.style.width = `${w}px`;
-      canvas.style.height = `${h}px`;
+    const prepareAscii = () => {
+      const rawLines = TITLE_ASCII.split("\n").filter(
+        (line) => line.replace(/\s/g, "").length > 8
+      );
 
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
+      const minIndex = Math.min(
+        ...rawLines.map((line) => {
+          const first = line.search(/\S/);
+          return first === -1 ? 0 : first;
+        })
+      );
 
-    function handleMove(e) {
-      setCursor({ x: e.clientX, y: e.clientY });
-    }
+      const maxIndex = Math.max(
+        ...rawLines.map((line) => {
+          const last = line.search(/\s*$/);
+          return last;
+        })
+      );
 
-    function handleClick(e) {
-      if (e.target.closest(".nav")) return;
+      let cropped = rawLines.map((line) =>
+        line
+          .slice(minIndex, maxIndex)
+          .replace(/[|:]/g, " ")
+          .replace(/[=]/g, "+")
+      );
 
-      if (modeRef.current === "title") {
-        modeRef.current = "break";
-        setMode("break");
-        breakStartRef.current = performance.now();
-      }
-    }
+      const leftCrop = Math.min(
+        ...cropped.map((line) => {
+          const first = line.search(/[+]/);
+          return first === -1 ? 0 : first;
+        })
+      );
 
-    function draw(now) {
-      const w = wrap.clientWidth;
-      const h = wrap.clientHeight;
-      const t = (now - startRef.current) / 1000;
+      const rightCrop = Math.max(
+        ...cropped.map((line) => line.lastIndexOf("+"))
+      );
 
-      ctx.fillStyle = "#050505";
-      ctx.fillRect(0, 0, w, h);
+      return cropped.map((line) => line.slice(leftCrop, rightCrop + 1));
+    };
 
-      drawBackground(ctx, w, h);
+    const lines = prepareAscii();
+    const longestLine = Math.max(...lines.map((line) => line.length));
 
-      if (t < NAV_TYPE_TIME) {
-        setCaption("");
-        rafRef.current = requestAnimationFrame(draw);
-        return;
-      }
-
-      const titleT = t - NAV_TYPE_TIME;
-
-      if (modeRef.current === "title") {
-        setCaption("");
-        drawTitleGlitch(ctx, w, h, titleT);
-        rafRef.current = requestAnimationFrame(draw);
-        return;
-      }
-
-      if (modeRef.current === "break") {
-        const breakT = (now - breakStartRef.current) / 1000;
-
-        setCaption("");
-        drawTitleShatterFlow(ctx, w, h, breakT);
-
-        if (breakT >= BREAK_TIME) {
-          modeRef.current = "animation";
-          setMode("animation");
-          animationStartRef.current = performance.now();
-        }
-
-        rafRef.current = requestAnimationFrame(draw);
-        return;
-      }
-
-      if (modeRef.current === "animation") {
-        const animationT = (now - animationStartRef.current) / 1000;
-
-        if (animationT >= FULL_IMAGE_LOOP_TIME) {
-          modeRef.current = "postGlitch";
-          setMode("postGlitch");
-          postGlitchStartRef.current = performance.now();
-          rafRef.current = requestAnimationFrame(draw);
-          return;
-        }
-
-        const index = Math.floor(animationT / IMAGE_DURATION) % ASCII_FRAMES.length;
-        const nextIndex = (index + 1) % ASCII_FRAMES.length;
-        const localT = (animationT % IMAGE_DURATION) / IMAGE_DURATION;
-
-        setCaption(ASCII_FRAMES[index].label || "");
-
-        drawAscii({
-          ctx,
-          w,
-          h,
-          t: animationT,
-          localT,
-          current: ASCII_FRAMES[index].art,
-          next: ASCII_FRAMES[nextIndex].art,
-        });
-
-        rafRef.current = requestAnimationFrame(draw);
-        return;
-      }
-
-      if (modeRef.current === "postGlitch") {
-        const glitchT = (now - postGlitchStartRef.current) / 1000;
-
-        setCaption("");
-        drawPostAnimationGlitch(ctx, w, h, glitchT);
-
-        if (glitchT >= POST_GLITCH_TIME) {
-          modeRef.current = "collapse";
-          setMode("collapse");
-          collapseStartRef.current = performance.now();
-        }
-
-        rafRef.current = requestAnimationFrame(draw);
-        return;
-      }
-
-      if (modeRef.current === "collapse") {
-        const collapseT = (now - collapseStartRef.current) / 1000;
-
-        setCaption("");
-        drawBinaryCollapse(ctx, w, h, collapseT);
-
-        if (collapseT >= COLLAPSE_TIME && !hasNavigatedRef.current) {
-          hasNavigatedRef.current = true;
-          navigate("/about", { state: { fromLandingCollapse: true } });
-          return;
-        }
-
-        rafRef.current = requestAnimationFrame(draw);
-      }
-    }
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
 
     resize();
-
     window.addEventListener("resize", resize);
-    wrap.addEventListener("mousemove", handleMove);
-    wrap.addEventListener("click", handleClick);
 
-    rafRef.current = requestAnimationFrame(draw);
+    const getTitleLayout = () => {
+      const sidePadding = 24;
+      const topOffset = -40;
+
+      let fontSize = 18;
+      ctx.font = `${fontSize}px "Cascadia Code", "Courier New", monospace`;
+
+      while (
+        ctx.measureText(lines[0]).width < canvas.width - sidePadding * 2 &&
+        fontSize < 32
+      ) {
+        fontSize += 0.5;
+        ctx.font = `${fontSize}px "Cascadia Code", "Courier New", monospace`;
+      }
+
+      while (
+        ctx.measureText(lines[0]).width > canvas.width - sidePadding * 2 &&
+        fontSize > 5
+      ) {
+        fontSize -= 0.5;
+        ctx.font = `${fontSize}px "Cascadia Code", "Courier New", monospace`;
+      }
+
+      const lineHeight = fontSize * 1.08;
+      const totalHeight = lines.length * lineHeight;
+
+      return {
+        fontSize,
+        lineHeight,
+        startX: sidePadding,
+        startY: canvas.height / 2 - totalHeight / 2 + topOffset,
+        totalHeight,
+      };
+    };
+
+    const createTitleParticles = () => {
+      const { fontSize, lineHeight, startX, startY } = getTitleLayout();
+      const charW = fontSize * 0.6;
+      const particles = [];
+
+      lines.forEach((line, i) => {
+        const visibleLine = line.slice(0, Math.floor(typedColumns));
+
+        for (let x = 0; x < visibleLine.length; x++) {
+          const ch = visibleLine[x];
+          if (ch === " ") continue;
+
+          particles.push({
+            ch,
+            x: startX + x * charW,
+            y: startY + i * lineHeight,
+            vx: (Math.random() - 0.5) * 8,
+            vy: Math.random() * 5 + 3,
+            bounce: Math.random() * 0.45 + 0.35,
+            size: fontSize,
+            floor: canvas.height - 40 - Math.random() * 120,
+          });
+        }
+      });
+
+      const captionFontSize = 28;
+      const captionCharW = captionFontSize * 0.68;
+      const captionY1 = canvas.height - 135;
+      const captionY2 = canvas.height - 95;
+
+      const currentCaptionLine1 = captionLine1Ref.current;
+      const currentCaptionLine2 = captionLine2Ref.current;
+
+      currentCaptionLine1.split("").forEach((ch, i) => {
+        if (ch === " ") return;
+
+        particles.push({
+          ch,
+          x:
+            canvas.width / 2 -
+            (currentCaptionLine1.length * captionCharW) / 2 +
+            i * captionCharW,
+          y: captionY1,
+          vx: (Math.random() - 0.5) * 8,
+          vy: Math.random() * 5 + 3,
+          bounce: Math.random() * 0.45 + 0.35,
+          size: captionFontSize,
+          floor: canvas.height - 35 - Math.random() * 120,
+        });
+      });
+
+      currentCaptionLine2.split("").forEach((ch, i) => {
+        if (ch === " ") return;
+
+        particles.push({
+          ch,
+          x:
+            canvas.width / 2 -
+            (currentCaptionLine2.length * captionCharW) / 2 +
+            i * captionCharW,
+          y: captionY2,
+          vx: (Math.random() - 0.5) * 8,
+          vy: Math.random() * 5 + 3,
+          bounce: Math.random() * 0.45 + 0.35,
+          size: captionFontSize,
+          floor: canvas.height - 35 - Math.random() * 120,
+        });
+      });
+
+      titleParticlesRef.current = particles;
+    };
+
+    window.__startLandingShatter = createTitleParticles;
+
+    const drawTitle = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const { fontSize, lineHeight, startX, startY, totalHeight } =
+        getTitleLayout();
+
+      typedColumns = Math.min(longestLine, typedColumns + 1.6);
+
+      if (typedColumns >= longestLine - 1) {
+        setTitleDone(true);
+      }
+
+      ctx.font = `${fontSize}px "Cascadia Code", "Courier New", monospace`;
+      ctx.textAlign = "left";
+      ctx.textBaseline = "top";
+      ctx.fillStyle = "rgba(244,240,232,0.96)";
+      ctx.globalAlpha = 0.95;
+
+      lines.forEach((line, i) => {
+        const visibleLine = line.slice(0, Math.floor(typedColumns));
+        const y = startY + i * lineHeight;
+
+        ctx.fillText(visibleLine, startX, y);
+
+        if (
+          typedColumns > longestLine * 0.55 &&
+          time % 45 > 35 &&
+          i % 3 === 0
+        ) {
+          ctx.globalAlpha = 0.75;
+          ctx.fillText(visibleLine, startX + 14, y);
+          ctx.globalAlpha = 0.95;
+        }
+
+        if (
+          typedColumns > longestLine * 0.75 &&
+          time % 60 > 50 &&
+          i % 4 === 0
+        ) {
+          ctx.globalAlpha = 0.6;
+          ctx.fillText(visibleLine, startX - 18, y + 1);
+          ctx.globalAlpha = 0.95;
+        }
+      });
+
+      if (typedColumns > longestLine * 0.8 && time % 80 > 62) {
+        for (let i = 0; i < 5; i++) {
+          const sliceY = startY + Math.random() * totalHeight;
+          const sliceH = Math.random() * 8 + 3;
+          const shift = (Math.random() - 0.5) * 40;
+
+          const imageData = ctx.getImageData(0, sliceY, canvas.width, sliceH);
+          ctx.putImageData(imageData, shift, sliceY);
+        }
+      }
+
+      ctx.globalAlpha = 1;
+      time += 1;
+    };
+
+    const drawShatter = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const elapsed = (performance.now() - shatterStartRef.current) / 1000;
+
+      ctx.textAlign = "left";
+      ctx.textBaseline = "top";
+      ctx.fillStyle = "rgba(244,240,232,0.96)";
+
+      titleParticlesRef.current.forEach((p) => {
+        p.vy += 0.55;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.y > p.floor) {
+          p.y = p.floor;
+          p.vy *= -p.bounce;
+          p.vx *= 0.94;
+        }
+
+        ctx.font = `${p.size}px "Cascadia Code", "Courier New", monospace`;
+        ctx.globalAlpha = Math.max(0, 1 - elapsed / 2.2);
+        ctx.fillText(p.ch, p.x, p.y);
+      });
+
+      ctx.globalAlpha = 1;
+
+      if (elapsed > 2.2) {
+        modeRef.current = "navIntro";
+        setMode("navIntro");
+        setShowNav(true);
+        navStartRef.current = performance.now();
+        setCaptionLine1("");
+        setCaptionLine2("");
+      }
+    };
+
+    const drawNavIntro = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const elapsed = (performance.now() - navStartRef.current) / 1000;
+
+      if (elapsed > 3.6) {
+        modeRef.current = "animation";
+        setMode("animation");
+        animationStartRef.current = performance.now();
+      }
+    };
+
+    const drawWomenAnimation = () => {
+      const animationT = (performance.now() - animationStartRef.current) / 1000;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (animationT >= FULL_IMAGE_LOOP_TIME) {
+        modeRef.current = "lastImageFade";
+        setMode("lastImageFade");
+        fadeStartRef.current = performance.now();
+        setCaptionLine1("");
+        setCaptionLine2("");
+        return;
+      }
+
+      const index =
+        Math.floor(animationT / IMAGE_DURATION) % ASCII_FRAMES.length;
+
+      const isLastFrame = index === ASCII_FRAMES.length - 1;
+
+      const nextIndex = isLastFrame
+        ? index
+        : Math.floor(animationT / IMAGE_DURATION + 1) % ASCII_FRAMES.length;
+
+      const localT = (animationT % IMAGE_DURATION) / IMAGE_DURATION;
+
+      setCaptionLine1(ASCII_FRAMES[index].label || "");
+      setCaptionLine2("");
+
+      drawAscii({
+        ctx,
+        w: canvas.width,
+        h: canvas.height,
+        t: animationT,
+        localT,
+        current: ASCII_FRAMES[index].art,
+        next: ASCII_FRAMES[nextIndex].art,
+      });
+    };
+
+    const drawLastImageFade = () => {
+      const elapsed = (performance.now() - fadeStartRef.current) / 1000;
+      const lastFrame = ASCII_FRAMES[ASCII_FRAMES.length - 1];
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      drawAscii({
+        ctx,
+        w: canvas.width,
+        h: canvas.height,
+        t: elapsed * 3,
+        localT: 0.88,
+        current: lastFrame.art,
+        next: lastFrame.art,
+      });
+
+      ctx.fillStyle = "#323741";
+      ctx.globalAlpha = Math.min(1, elapsed / 2.8);
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.globalAlpha = 1;
+
+      if (elapsed > 2.8) {
+        modeRef.current = "intro";
+        setMode("intro");
+      }
+    };
+
+    const draw = () => {
+      if (modeRef.current === "title") drawTitle();
+      if (modeRef.current === "shatter") drawShatter();
+      if (modeRef.current === "navIntro") drawNavIntro();
+      if (modeRef.current === "animation") drawWomenAnimation();
+      if (modeRef.current === "lastImageFade") drawLastImageFade();
+
+      if (modeRef.current === "intro") {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+
+      animationId = requestAnimationFrame(draw);
+    };
+
+    draw();
 
     return () => {
+      cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resize);
-      wrap.removeEventListener("mousemove", handleMove);
-      wrap.removeEventListener("click", handleClick);
-      cancelAnimationFrame(rafRef.current);
+      delete window.__startLandingShatter;
     };
   }, [navigate]);
 
+  useEffect(() => {
+    if (!titleDone || modeRef.current !== "title") return;
+
+    let i = 0;
+    let secondTimer;
+
+    const firstTimer = setInterval(() => {
+      i += 1;
+      setCaptionLine1(CAPTION_LINE_1.slice(0, i));
+
+      if (i >= CAPTION_LINE_1.length) {
+        clearInterval(firstTimer);
+
+        let j = 0;
+        secondTimer = setInterval(() => {
+          j += 1;
+          setCaptionLine2(CAPTION_LINE_2.slice(0, j));
+
+          if (j >= CAPTION_LINE_2.length) {
+            clearInterval(secondTimer);
+          }
+        }, 85);
+      }
+    }, 85);
+
+    return () => {
+      clearInterval(firstTimer);
+      clearInterval(secondTimer);
+    };
+  }, [titleDone]);
+
+  const handleClick = (e) => {
+    if (e.target.closest(".nav")) return;
+    if (modeRef.current !== "title") return;
+
+    window.__startLandingShatter?.();
+
+    modeRef.current = "shatter";
+    setMode("shatter");
+    shatterStartRef.current = performance.now();
+  };
+
+  const textValue = Math.round(190 + introProgress * 65);
+
   return (
-    <div ref={wrapRef} className={`landing ${mode}`}>
+    <main
+      className={`landing ${mode}`}
+      onClick={handleClick}
+      onMouseMove={(e) => setMouse({ x: e.clientX, y: e.clientY })}
+    >
       <canvas ref={canvasRef} />
 
-      <nav className="nav">
-        <button className="nav-button nav-title-button" onClick={() => navigate("/")}>
-          <span className="type-nav type-title">THE INVISIBLE DATA</span>
-        </button>
-
-        <div className="nav-right">
-          <button className="nav-button nav-about-button" onClick={() => navigate("/about")}>
-            <span className="type-nav type-about">ABOUT</span>
+      {showNav && mode !== "title" && (
+        <nav className="nav nav-typing">
+          <button className="nav-button nav-title-button" onClick={restartLanding}>
+            <span className="type-nav type-title">THE INVISIBLE DATA</span>
           </button>
 
-          <button className="nav-button nav-path-button" onClick={() => navigate("/path")}>
-            <span className="type-nav type-path">PATH</span>
-          </button>
+          <div className="nav-right">
+            <button
+              className="nav-button nav-about-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate("/about");
+              }}
+            >
+              <span className="type-nav type-about">ABOUT</span>
+            </button>
 
-          <button className="nav-button nav-dear-button" onClick={() => navigate("/dear-peri")}>
-            <span className="type-nav type-dear">DEAR PERI</span>
-          </button>
-        </div>
-      </nav>
+            <button
+              className="nav-button nav-path-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate("/path");
+              }}
+            >
+              <span className="type-nav type-path">PATH</span>
+            </button>
+
+            <button
+              className="nav-button nav-dear-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate("/dear-peri");
+              }}
+            >
+              <span className="type-nav type-dear">DEAR PERI</span>
+            </button>
+          </div>
+        </nav>
+      )}
 
       {mode === "title" && (
         <div
           className="cursor-tip"
           style={{
-            left: cursor.x + 16,
-            top: cursor.y + 16,
+            left: mouse.x + 16,
+            top: mouse.y + 16,
           }}
         >
           click
         </div>
       )}
 
-      <div className="caption">{caption}</div>
-    </div>
+      {mode === "intro" && (
+        <div
+          className="scroll-tip"
+          style={{
+            left: mouse.x + 16,
+            top: mouse.y + 16,
+          }}
+        >
+          scroll
+        </div>
+      )}
+
+      {mode === "title" && (
+        <div className="caption">
+          <span>{captionLine1}</span>
+          <span>{captionLine2}</span>
+        </div>
+      )}
+
+      {mode === "intro" && (
+        <section className="intro-scroll-lock">
+          <p
+            className="intro-scroll-text"
+            style={{
+              opacity: 0.3 + introProgress * 0.7,
+              color: `rgb(${textValue}, ${textValue}, ${textValue})`,
+              transform: `translate(-50%, ${72 - introProgress * 108}vh)`,
+            }}
+          >
+            {INTRO_TEXT}
+          </p>
+        </section>
+      )}
+    </main>
   );
 }
-
-/* ================= TITLE ================= */
-
-function getTitleLayout(w, h, zoom = 1) {
-  const lines = TITLE_ASCII.split("\n").filter((line) => line.trim().length);
-  const longest = Math.max(...lines.map((line) => line.length));
-
-  const baseFontSize = Math.min(
-    (w * 0.84) / longest / 0.56,
-    (h * 0.7) / lines.length
-  );
-
-  const fontSize = baseFontSize * zoom;
-  const charW = fontSize * 0.56;
-  const lineH = fontSize * 0.78;
-
-  return {
-    lines,
-    fontSize,
-    charW,
-    lineH,
-    startX: w / 2 - (longest * charW) / 2,
-    startY: h / 2 - (lines.length * lineH) / 2,
-  };
-}
-
-function drawTitleGlitch(ctx, w, h, titleT) {
-  const appear = clamp(titleT / TITLE_APPEAR_TIME, 0, 1);
-  const glitchPower = clamp((titleT - TITLE_APPEAR_TIME) / 2.5, 0.12, 0.7);
-
-  const { lines, fontSize, charW, lineH, startX, startY } = getTitleLayout(
-    w,
-    h,
-    1.04
-  );
-
-  const dataChars = ["0", "1", "#", "%", "+", "*"];
-
-  ctx.save();
-  ctx.font = `700 ${fontSize}px "Cascadia Code", "Courier New", monospace`;
-  ctx.textBaseline = "top";
-  ctx.fillStyle = "rgba(244,240,232,0.96)";
-
-  lines.forEach((line, y) => {
-    const horizontalShift =
-      Math.sin(titleT * 21 + y * 0.9) > 0.82
-        ? rand(-38, 38) * glitchPower
-        : 0;
-
-    const verticalShift =
-      Math.sin(titleT * 16 + y * 1.7) > 0.9
-        ? rand(-18, 18) * glitchPower
-        : 0;
-
-    for (let x = 0; x < line.length; x++) {
-      let ch = line[x];
-      if (ch === " ") continue;
-
-      if (Math.random() < glitchPower * 0.22) {
-        ch = dataChars[(x + y + Math.floor(titleT * 18)) % dataChars.length];
-      }
-
-      if (Math.random() < glitchPower * 0.035) continue;
-
-      const columnShift =
-        Math.sin(titleT * 18 + x * 0.42) > 0.94
-          ? rand(-28, 28) * glitchPower
-          : 0;
-
-      ctx.globalAlpha =
-        appear *
-        clamp(
-          0.72 +
-            Math.sin(titleT * 9 + x * 0.17 + y * 0.22) *
-              (0.12 + glitchPower * 0.22),
-          0.18,
-          1
-        );
-
-      ctx.fillText(
-        ch,
-        startX + x * charW + horizontalShift,
-        startY + y * lineH + verticalShift + columnShift
-      );
-    }
-  });
-
-  ctx.globalAlpha = 1;
-  ctx.restore();
-}
-
-function drawTitleShatterFlow(ctx, w, h, breakT) {
-  const progress = smoothstep(clamp(breakT / BREAK_TIME, 0, 1));
-  const { lines, fontSize, charW, lineH, startX, startY } = getTitleLayout(
-    w,
-    h,
-    1.04
-  );
-
-  const dataChars = ["0", "1", "#", "%", "+", "*"];
-
-  ctx.save();
-  ctx.font = `700 ${fontSize}px "Cascadia Code", "Courier New", monospace`;
-  ctx.textBaseline = "top";
-  ctx.fillStyle = "rgba(244,240,232,0.96)";
-
-  lines.forEach((line, y) => {
-    for (let x = 0; x < line.length; x++) {
-      if (line[x] === " ") continue;
-
-      const seed = Math.sin(x * 91.7 + y * 53.2) * 10000;
-      const seed2 = Math.cos(x * 41.2 + y * 77.6) * 10000;
-
-      const ch = dataChars[(x + y + Math.floor(breakT * 28)) % dataChars.length];
-
-      const startCharX = startX + x * charW;
-      const startCharY = startY + y * lineH;
-
-      const fractureX = Math.sign(seed) * Math.abs(seed % 190) * progress;
-      const fractureY = Math.sign(seed2) * Math.abs(seed2 % 90) * progress;
-
-      const flowX =
-        Math.sin(breakT * 1.5 + x * 0.15 + y * 0.1) * w * 0.28 * progress +
-        Math.cos(breakT * 0.9 + y * 0.35) * 70 * progress;
-
-      const flowY =
-        Math.cos(breakT * 1.2 + x * 0.11) * h * 0.18 * progress +
-        Math.sin(breakT * 2.1 + y * 0.2) * 44 * progress;
-
-      const wrapX = ((startCharX + fractureX + flowX) % (w + 120)) - 60;
-      const yPos = startCharY + fractureY + flowY;
-
-      ctx.globalAlpha = clamp(1 - progress * 0.82, 0, 1);
-      ctx.fillText(ch, wrapX, yPos);
-    }
-  });
-
-  ctx.globalAlpha = 1;
-  ctx.restore();
-}
-
-/* ================= END GLITCH ================= */
-
-function drawPostAnimationGlitch(ctx, w, h, glitchT) {
-  const progress = clamp(glitchT / POST_GLITCH_TIME, 0, 1);
-  const lastFrame = ASCII_FRAMES[ASCII_FRAMES.length - 1].art;
-
-  ctx.save();
-
-  ctx.globalAlpha = clamp(1 - progress * 1.4, 0, 1);
-  drawAscii({
-    ctx,
-    w,
-    h,
-    t: glitchT * 9,
-    localT: 0.98,
-    current: lastFrame,
-    next: lastFrame,
-  });
-
-  for (let i = 0; i < 55; i++) {
-    const y = rand(0, h);
-    const sliceH = rand(1, 12);
-    const shift = rand(-260, 260) * progress;
-
-    ctx.globalAlpha = rand(0.04, 0.2) * progress;
-    ctx.fillStyle = "rgba(244,240,232,0.9)";
-    ctx.fillRect(shift, y, w, sliceH);
-  }
-
-  ctx.globalAlpha = smoothstep(progress);
-  ctx.fillStyle = "#050505";
-  ctx.fillRect(0, 0, w, h);
-
-  const chars = ["0", "1", "|", "/", "\\", ".", "*", "+", "#", "%"];
-
-  for (let i = 0; i < 190; i++) {
-    const seed = Math.sin(i * 71.91) * 10000;
-    const seed2 = Math.cos(i * 39.28) * 10000;
-
-    const x = Math.abs(seed % w) + Math.sin(glitchT * 2.1 + i) * 16;
-    const y = Math.abs(seed2 % h) + Math.cos(glitchT * 1.8 + i) * 12;
-
-    ctx.font = `700 ${8 + Math.abs(seed % 7)}px "Cascadia Code", "Courier New", monospace`;
-    ctx.globalAlpha = smoothstep(progress) * (0.2 + Math.abs(seed % 0.55));
-    ctx.fillStyle = "rgba(244,240,232,0.85)";
-    ctx.fillText(chars[i % chars.length], x, y);
-  }
-
-  ctx.globalAlpha = 1;
-  ctx.restore();
-}
-
-/* ================= FALL + BOUNCE ================= */
-
-function drawBinaryCollapse(ctx, w, h, collapseT) {
-  const progress = clamp(collapseT / COLLAPSE_TIME, 0, 1);
-  const chars = ["0", "1", "|", "/", "\\", ".", "*", "+", "#", "%"];
-
-  ctx.save();
-
-  ctx.fillStyle = "#050505";
-  ctx.fillRect(0, 0, w, h);
-
-  ctx.textBaseline = "top";
-  ctx.fillStyle = "rgba(244,240,232,0.9)";
-
-  for (let i = 0; i < 320; i++) {
-    const seed = Math.sin(i * 91.731) * 10000;
-    const seed2 = Math.cos(i * 47.291) * 10000;
-    const seed3 = Math.sin(i * 17.731) * 10000;
-
-    const startX = Math.abs(seed % w);
-    const startY = Math.abs(seed2 % h);
-
-    const delay = Math.abs(seed3 % 0.22);
-    const local = clamp((progress - delay) / (1 - delay), 0, 1);
-
-    const fall = smoothstep(local);
-
-    const size = 8 + Math.abs(seed % 9);
-    ctx.font = `700 ${size}px "Cascadia Code", "Courier New", monospace`;
-
-    const drift =
-      Math.sin(collapseT * 2.8 + i * 0.13) * 38 * (1 - fall) +
-      Math.sin(collapseT * 5.7 + i) * 10;
-
-    const gravity = fall * fall * h * (0.95 + Math.abs(seed2 % 0.42));
-
-    let x = startX + drift;
-    let y = startY + gravity;
-
-    const floor =
-      h -
-      22 -
-      Math.abs(seed % 105) -
-      Math.sin(i * 0.33) * 26;
-
-    if (y > floor) {
-      const bounceEnergy = Math.pow(1 - local, 1.45);
-      const bounce =
-        Math.abs(Math.sin(collapseT * 11 + i * 0.08)) *
-        (26 + Math.abs(seed % 70)) *
-        bounceEnergy;
-
-      y = floor - bounce;
-      x += Math.sin(collapseT * 7 + i) * 16 * bounceEnergy;
-    }
-
-    const fade = clamp(1 - (progress - 0.88) / 0.12, 0, 1);
-
-    ctx.globalAlpha =
-      clamp(0.22 + local * 0.68, 0, 0.9) *
-      fade *
-      (0.48 + Math.abs(seed % 0.42));
-
-    ctx.fillText(chars[(i + Math.floor(collapseT * 20)) % chars.length], x, y);
-  }
-
-  ctx.globalAlpha = 1;
-  ctx.restore();
-}
-
-/* ================= BACKGROUND ================= */
-
-function drawBackground(ctx, w, h) {
-  ctx.font = `10px "Cascadia Code", "Courier New", monospace`;
-  ctx.fillStyle = "rgba(244,240,232,0.75)";
-
-  for (let y = 60; y < h; y += 12) {
-    for (let x = 20; x < w; x += 14) {
-      ctx.globalAlpha = 0.05;
-      ctx.fillText(".", x, y);
-    }
-  }
-
-  ctx.globalAlpha = 1;
-}
-
-/* ================= ASCII IMAGE ANIMATION ================= */
 
 function drawAscii({ ctx, w, h, t, localT, current, next }) {
   const isGlitch = localT > 0.75;
@@ -537,13 +628,12 @@ function drawAscii({ ctx, w, h, t, localT, current, next }) {
   const dataChars = ["0", "1", "#", "@", "%"];
 
   ctx.font = `${fontSize}px "Courier New", monospace`;
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "rgba(244,240,232,0.96)";
+  ctx.textBaseline = "top";
 
   lines.forEach((line, y) => {
     const shift =
-      isGlitch && Math.random() > 0.7
-        ? rand(-80, 80) * transitionT
-        : 0;
+      isGlitch && Math.random() > 0.7 ? rand(-80, 80) * transitionT : 0;
 
     for (let x = 0; x < line.length; x++) {
       let ch = line[x];
@@ -563,4 +653,8 @@ function drawAscii({ ctx, w, h, t, localT, current, next }) {
   });
 
   ctx.globalAlpha = 1;
+}
+
+function rand(min, max) {
+  return Math.random() * (max - min) + min;
 }

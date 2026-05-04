@@ -2,165 +2,31 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #050505;
+  background: #3d4650;
   overflow: hidden;
 }
 
 .landing {
   position: fixed;
   inset: 0;
-  background: #050505;
   overflow: hidden;
   cursor: none;
+  background: #323741;
 }
 
+.landing.navIntro,
 .landing.animation,
-.landing.collapse,
-.landing.postGlitch {
-  cursor: default;
+.landing.lastImageFade,
+.landing.intro {
+  cursor: auto;
 }
 
 canvas {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   display: block;
-}
-
-.landing.postGlitch canvas,
-.landing.collapse canvas {
-  animation: none;
-  transform: none;
-}
-
-/* NAV */
-
-.nav {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  right: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 999;
-  font-family: "Cascadia Code", "Courier New", monospace;
-}
-
-.nav-right {
-  display: flex;
-  gap: 30px;
-}
-
-.nav-button {
-  background: none;
-  border: none;
-  color: rgba(244, 240, 232, 0.96);
-  cursor: pointer;
-  font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 0;
-  text-align: left;
-}
-
-.nav-title-button {
-  width: 21ch;
-}
-
-.nav-about-button {
-  width: 7ch;
-}
-
-.nav-path-button {
-  width: 6ch;
-}
-
-.nav-dear-button {
-  width: 11ch;
-}
-
-.type-nav {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  max-width: max-content;
-  text-align: left;
-  direction: ltr;
-  border-right: 1px solid rgba(244, 240, 232, 0.8);
-  vertical-align: bottom;
-}
-
-.type-title {
-  animation: typeTitle 1.25s steps(18, end) forwards, caretOff 0.1s forwards;
-  animation-delay: 0s, 1.25s;
-}
-
-.type-about {
-  animation: typeAbout 0.45s steps(5, end) forwards, caretOff 0.1s forwards;
-  animation-delay: 1.35s, 1.8s;
-}
-
-.type-path {
-  animation: typePath 0.4s steps(4, end) forwards, caretOff 0.1s forwards;
-  animation-delay: 1.9s, 2.3s;
-}
-
-.type-dear {
-  animation: typeDear 0.85s steps(9, end) forwards, caretOff 0.1s forwards;
-  animation-delay: 2.4s, 3.25s;
-}
-
-.nav-button:hover {
-  opacity: 0.55;
-}
-
-@keyframes typeTitle {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 21ch;
-  }
-}
-
-@keyframes typeAbout {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 7ch;
-  }
-}
-
-@keyframes typePath {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 6ch;
-  }
-}
-
-@keyframes typeDear {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 11ch;
-  }
-}
-
-@keyframes caretOff {
-  to {
-    border-right-color: transparent;
-  }
 }
 
 /* CURSOR */
@@ -168,20 +34,19 @@ canvas {
 .cursor-tip {
   position: fixed;
   z-index: 1000;
-  color: rgba(244, 240, 232, 0.9);
+  color: #ffffff;
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: 11px;
+  font-size: clamp(13px, 1.2vw, 18px);
   letter-spacing: 0.08em;
   text-transform: lowercase;
   pointer-events: none;
-  mix-blend-mode: difference;
-  animation: cursorFlicker 1.2s infinite;
+  animation: cursorFlicker 1s steps(2) infinite;
 }
 
 @keyframes cursorFlicker {
   0%,
   100% {
-    opacity: 0.9;
+    opacity: 1;
   }
 
   50% {
@@ -193,13 +58,316 @@ canvas {
 
 .caption {
   position: fixed;
-  bottom: 50px;
-  width: 100%;
-  text-align: center;
-  color: rgba(244, 240, 232, 0.85);
+  left: 50%;
+  bottom: clamp(64px, 12vh, 140px);
+  z-index: 20;
+
+  width: min(88vw, 1100px);
+  min-height: clamp(52px, 8vh, 88px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(5px, 1vw, 8px);
+
+  transform: translateX(-50%);
+
+  color: #bebfc1;
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: 13px;
-  letter-spacing: 2px;
+  font-size: clamp(15px, 2.2vw, 34px);
+  font-weight: 700;
+  letter-spacing: clamp(0.08em, 0.8vw, 0.16em);
+  line-height: 1.25;
+  text-align: center;
+
   pointer-events: none;
-  z-index: 10;
+}
+
+.fade-out {
+  animation: fadeOut 0.6s ease forwards;
+}
+
+.fade-out .cursor-tip {
+  opacity: 0;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+}
+
+/* NAVIGATION */
+
+.nav {
+  position: fixed;
+  top: clamp(16px, 3vh, 28px);
+  left: clamp(16px, 3vw, 32px);
+  right: clamp(16px, 3vw, 32px);
+  z-index: 200;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(14px, 4vw, 60px);
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(12px, 1.35vw, 18px);
+  letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
+  color: #ffffff;
+
+  pointer-events: auto;
+}
+
+.nav-button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+
+  color: #ffffff;
+  font: inherit;
+  cursor: pointer;
+
+  overflow: hidden;
+  white-space: nowrap;
+  outline: none;
+  box-shadow: none;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  pointer-events: auto;
+}
+
+.nav-button:hover {
+  color: #bebfc1;
+}
+
+.nav-title-button {
+  text-align: left;
+  flex: 0 1 auto;
+  max-width: 52vw;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px, 3vw, 34px);
+  margin-left: auto;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.type-nav {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  opacity: 1;
+}
+
+.type-title {
+  animation: typeTitle 1.4s steps(18) forwards;
+}
+
+.type-about {
+  animation: typeAbout 0.5s steps(5) forwards;
+  animation-delay: 1.45s;
+}
+
+.type-path {
+  animation: typePath 0.45s steps(4) forwards;
+  animation-delay: 1.95s;
+}
+
+.type-dear {
+  animation: typeDear 0.8s steps(9) forwards;
+  animation-delay: 2.4s;
+}
+
+@keyframes typeTitle {
+  from {
+    width: 0;
+  }
+  to {
+    width: 18ch;
+  }
+}
+
+@keyframes typeAbout {
+  from {
+    width: 0;
+  }
+  to {
+    width: 5ch;
+  }
+}
+
+@keyframes typePath {
+  from {
+    width: 0;
+  }
+  to {
+    width: 4ch;
+  }
+}
+
+@keyframes typeDear {
+  from {
+    width: 0;
+  }
+  to {
+    width: 9ch;
+  }
+}
+
+/* INTRO SCROLL TEXT */
+
+.intro-scroll-lock {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #323741;
+  overflow: hidden;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.intro-scroll-text {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+
+  width: min(980px, 84vw);
+  margin: 0;
+
+  color: #bebfc1;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(28px, 4.8vw, 72px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: clamp(-0.045em, -0.3vw, -0.015em);
+
+  transition:
+    transform 0.35s ease-out,
+    opacity 0.35s ease-out,
+    color 0.35s ease-out;
+
+  will-change: transform, opacity, color;
+}
+
+/* TABLET */
+
+@media (max-width: 1024px) {
+  .nav {
+    font-size: clamp(12px, 1.8vw, 16px);
+  }
+
+  .nav-right {
+    gap: clamp(14px, 2.4vw, 28px);
+  }
+
+  .caption {
+    width: 84vw;
+    font-size: clamp(18px, 2.6vw, 28px);
+  }
+
+  .intro-scroll-text {
+    width: 86vw;
+    font-size: clamp(34px, 5.6vw, 62px);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .caption {
+    bottom: clamp(72px, 10vh, 96px);
+    width: 86vw;
+    font-size: clamp(14px, 4vw, 20px);
+    letter-spacing: 0.09em;
+  }
+
+  .nav {
+    top: 18px;
+    left: 16px;
+    right: 16px;
+    font-size: clamp(10px, 2.7vw, 13px);
+    letter-spacing: 0.06em;
+    gap: 12px;
+  }
+
+  .nav-title-button {
+    max-width: 46vw;
+  }
+
+  .nav-right {
+    gap: clamp(8px, 2.4vw, 14px);
+  }
+
+  .intro-scroll-text {
+    width: 86vw;
+    font-size: clamp(30px, 8vw, 46px);
+    line-height: 1.12;
+  }
+}
+
+/* mobile */
+
+@media (max-width: 480px) {
+  .nav {
+    font-size: clamp(9px, 2.5vw, 11px);
+    left: 12px;
+    right: 12px;
+  }
+
+  .nav-right {
+    gap: 9px;
+  }
+
+  .nav-title-button {
+    max-width: 42vw;
+  }
+
+  .caption {
+    bottom: 76px;
+    width: 88vw;
+    font-size: 14px;
+  }
+
+  .intro-scroll-text {
+    width: 88vw;
+    font-size: clamp(28px, 8.4vw, 40px);
+  }
+}
+
+
+@media (max-height: 620px) {
+  .caption {
+    bottom: 48px;
+    font-size: clamp(13px, 2.2vw, 22px);
+  }
+
+  .intro-scroll-text {
+    font-size: clamp(24px, 5.8vh, 48px);
+    line-height: 1.08;
+  }
+
+  .nav {
+    top: 12px;
+  }
+}
+.scroll-tip {
+  position: fixed;
+  z-index: 1000;
+  color: #ffffff;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(13px, 1.2vw, 18px);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  pointer-events: none;
+  animation: cursorFlicker 1s steps(2) infinite;
 }

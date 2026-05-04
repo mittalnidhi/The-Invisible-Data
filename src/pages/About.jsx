@@ -178,18 +178,20 @@ export default function About() {
           height: boxH,
         });
 
-        const textOneOut = clamp01((p - 0.32) / 0.16);
-        const textTwoIn = clamp01((p - 0.42) / 0.18);
+       const textSwitchPoint = (43 - 15) / (45 - 15);
 
-        gsap.set(textOneRef.current, {
-          opacity: 1 - textOneOut,
-          y: -24 * textOneOut,
-        });
+const textOneOut = clamp01((p - textSwitchPoint) / 0.04);
+const textTwoIn = clamp01((p - textSwitchPoint) / 0.06);
 
-        gsap.set(textTwoRef.current, {
-          opacity: textTwoIn,
-          y: 30 - 30 * textTwoIn,
-        });
+gsap.set(textOneRef.current, {
+  opacity: 1 - textOneOut,
+  y: -24 * textOneOut,
+});
+
+gsap.set(textTwoRef.current, {
+  opacity: textTwoIn,
+  y: 30 - 30 * textTwoIn,
+});
       };
 
       render(0);

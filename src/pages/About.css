@@ -2,52 +2,103 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #050505;
+  background: #323741;
   overflow-x: hidden;
   overflow-y: auto !important;
 }
 
 .about {
-  min-height: 3400px;
-  background: #050505;
+  min-height: 3200px;
+  background: #323741;
   font-family: "Cascadia Code", "Courier New", monospace;
+  overflow: visible;
 }
 
-/* NAV */
+/* NAVBAR (same as landing, no typing) */
 
 .aboutNav {
   position: fixed;
-  top: 20px;
-  left: 20px;
-  right: 30px;
+  top: clamp(16px, 3vh, 28px);
+  left: clamp(16px, 3vw, 32px);
+  right: clamp(16px, 3vw, 32px);
+  z-index: 9999;
+
   display: flex;
   justify-content: space-between;
-  z-index: 9999;
-}
+  align-items: center;
+  gap: clamp(14px, 4vw, 60px);
 
-.aboutNav button {
-  background: none;
-  border: none;
-  color: #e6d3c4;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  cursor: pointer;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(12px, 1.35vw, 18px);
+  letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
+  color: #ffffff;
 }
 
 .aboutNav__right {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px, 3vw, 34px);
+  margin-left: auto;
 }
 
-/* STAGE */
+.aboutNav__button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  color: #ffffff;
+  cursor: pointer;
+
+  font: inherit;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.aboutNav__button:hover {
+  color: #bebfc1;
+}
+
+/* PAGE */
 
 .about__stage {
   position: relative;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background: #050505;
+  background: #323741;
+}
+
+/* LEFT DOTS */
+
+.about__leftDots {
+  position: absolute;
+  left: clamp(18px, 3vw, 34px);
+  top: 54%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 30;
+}
+
+.about__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #777;
+  opacity: 0.45;
+}
+
+.about__dot--active {
+  background: #ffffff;
+  opacity: 1;
 }
 
 /* TEXT */
@@ -56,65 +107,99 @@ body {
   position: absolute;
   left: 8vw;
   top: 18vh;
-  width: 70vw;
-  z-index: 20;
+  width: 72vw;
+  z-index: 10;
 }
 
 .about__headline {
   position: absolute;
   margin: 0;
-  color: #e6d3c4;
-  font-size: clamp(2.8rem, 5.8vw, 7rem);
-  line-height: 1;
-  letter-spacing: -0.05em;
+  color: #ffffff;
+  font-size: clamp(2.8rem, 5.8vw, 7.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.06em;
   font-weight: 700;
+  will-change: opacity, transform;
 }
 
 .about__headline--two {
   opacity: 0;
   transform: translateY(30px);
+  font-size: clamp(2.1rem, 4.4vw, 5.4rem);
 }
 
-/* BOXES */
+/* BLUE BOX */
 
-.about__box {
+.about__dataBox {
   position: absolute;
   right: 0;
   bottom: 0;
-  overflow: hidden;
+
+  width: 160px;
+  height: 120px;
+
+  background: #051c41;
+  z-index: 50;
+
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 24px;
+
+  padding: 12px;
   box-sizing: border-box;
-  transform-origin: bottom right;
-  will-change: width, height, opacity;
+
+  overflow: hidden;
 }
 
-/* first/front box */
-.about__box--first {
-  width: 150px;
-  height: 110px;
-  background: #051c41;
-  z-index: 40;
-}
+/* ASCII NUMBER (NO FLICKER NOW) */
 
-/* second/back box */
-.about__box--second {
-  width: 130px;
-  height: 100px;
-  background: #8fc7ff;
-  z-index: 30;
-  opacity: 0;
-}
-
-/* NUMBERS */
-
-.about__number {
-  color: #e6d3c4;
-  font-size: clamp(2rem, 5vw, 6.5rem);
-  line-height: 0.9;
+.about__asciiNumber {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  margin: 0;
+  color: #ffffff;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(5px, 0.65vw, 12px);
+  line-height: 0.88;
+  letter-spacing: -1px;
   font-weight: 900;
-  letter-spacing: -0.08em;
-  white-space: nowrap;
+  white-space: pre;
+  text-align: left;
+
+  text-shadow:
+    1px 0 rgba(255, 255, 255, 0.18),
+    -1px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .aboutNav {
+    top: 18px;
+    left: 16px;
+    right: 16px;
+    font-size: clamp(10px, 2.7vw, 13px);
+    letter-spacing: 0.06em;
+    gap: 12px;
+  }
+
+  .aboutNav__right {
+    gap: clamp(8px, 2.4vw, 14px);
+  }
+
+  .about__copy {
+    left: 10vw;
+    top: 20vh;
+    width: 82vw;
+  }
+
+  .about__headline {
+    font-size: clamp(2rem, 10vw, 4rem);
+    line-height: 1.02;
+  }
+
+  .about__headline--two {
+    font-size: clamp(1.7rem, 8vw, 3.4rem);
+  }
 }

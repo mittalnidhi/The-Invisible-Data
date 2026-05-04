@@ -593,19 +593,21 @@ export default function LandingJourney() {
       )}
 
       {mode === "intro" && (
-        <section className="intro-scroll-lock">
-          <p
-            className="intro-scroll-text"
-            style={{
-              opacity: 0.3 + introProgress * 0.7,
-              color: `rgb(${textValue}, ${textValue}, ${textValue})`,
-              transform: `translate(-50%, ${72 - introProgress * 108}vh)`,
-            }}
-          >
-            {INTRO_TEXT}
-          </p>
-        </section>
-      )}
+  <section className="intro-scroll-lock">
+    <p
+      className="intro-scroll-text"
+      style={{
+        opacity: 0.3 + introProgress * 0.7,
+        color: `rgb(${190 + introProgress * 65}, ${
+          190 + introProgress * 65
+        }, ${190 + introProgress * 65})`,
+        transform: `translate(-50%, ${72 - introProgress * 108}vh)`,
+      }}
+    >
+      {INTRO_TEXT}
+    </p>
+  </section>
+)}
     </main>
   );
 }

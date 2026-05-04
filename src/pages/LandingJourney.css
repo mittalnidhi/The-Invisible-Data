@@ -224,40 +224,7 @@ canvas {
   }
 }
 
-/* INTRO SCROLL TEXT */
 
-.intro-scroll-lock {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  background: #323741;
-  overflow: hidden;
-  pointer-events: auto;
-  touch-action: none;
-}
-
-.intro-scroll-text {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-
-  width: min(980px, 84vw);
-  margin: 0;
-
-  color: #bebfc1;
-  font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(28px, 4.8vw, 72px);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: clamp(-0.045em, -0.3vw, -0.015em);
-
-  transition:
-    transform 0.35s ease-out,
-    opacity 0.35s ease-out,
-    color 0.35s ease-out;
-
-  will-change: transform, opacity, color;
-}
 
 /* TABLET */
 
@@ -370,4 +337,35 @@ canvas {
   text-transform: lowercase;
   pointer-events: none;
   animation: cursorFlicker 1s steps(2) infinite;
+}
+
+.intro-scroll-lock {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #323741;
+  overflow: hidden;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.intro-scroll-text {
+  position: absolute;
+  left: 50%;
+  bottom: 30;
+
+  width: min(1000px, 86vw);
+  margin: 0;
+
+  color: #bebfc1; /* base grey */
+  font-family: "Cascadia Code", "Courier New", monospace;
+
+  font-size: clamp(30px, 4rem, 85px);  /* bigger */
+  font-weight: 700;
+
+  line-height: 1.10; /* more spacing between lines */
+  letter-spacing: -0.02em;
+
+  transition: transform 0.35s ease-out, color 0.35s ease-out;
+  will-change: transform, color;
 }

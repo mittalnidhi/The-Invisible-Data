@@ -29,9 +29,10 @@ canvas {
   display: block;
 }
 
-/* CURSOR */
+/* cursor */
 
-.cursor-tip {
+.cursor-tip,
+.scroll-tip {
   position: fixed;
   z-index: 1000;
   color: #ffffff;
@@ -48,296 +49,78 @@ canvas {
   100% {
     opacity: 1;
   }
-
   50% {
     opacity: 0.35;
   }
 }
 
-/* CAPTION */
+/*  caption*/
 
 .caption {
   position: fixed;
   left: 50%;
-  bottom: clamp(64px, 12vh, 140px);
+  bottom: 27vh; 
   z-index: 20;
 
   width: min(88vw, 1100px);
-  min-height: clamp(52px, 8vh, 88px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(5px, 1vw, 8px);
+  gap: 9px;
 
   transform: translateX(-50%);
 
-  color: #bebfc1;
+  color: #b1b2b2;
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(15px, 2.2vw, 34px);
-  font-weight: 700;
-  letter-spacing: clamp(0.08em, 0.8vw, 0.16em);
-  line-height: 1.25;
+
+  font-size: clamp(20px, 2.8vw, 44px);
+  font-weight: 900;
+
+  letter-spacing: 0.14em;
+  line-height: 1.2;
   text-align: center;
 
   pointer-events: none;
 }
 
-.fade-out {
-  animation: fadeOut 0.6s ease forwards;
-}
-
-.fade-out .cursor-tip {
-  opacity: 0;
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    transform: scale(1.02);
-  }
-}
-
-/* NAVIGATION */
+/* nav bar */
 
 .nav {
   position: fixed;
   top: clamp(16px, 3vh, 28px);
-  left: clamp(16px, 3vw, 32px);
-  right: clamp(16px, 3vw, 32px);
+  left: clamp(16px, 1.7vw, 32px);
+  right: clamp(16px, 1.7vw, 32px);
   z-index: 200;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: clamp(14px, 4vw, 60px);
 
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(12px, 1.35vw, 18px);
   letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
   color: #ffffff;
-
-  pointer-events: auto;
 }
 
 .nav-button {
   border: 0;
   background: transparent;
-  padding: 0;
-  margin: 0;
-
   color: #ffffff;
   font: inherit;
   cursor: pointer;
-
-  overflow: hidden;
-  white-space: nowrap;
-  outline: none;
-  box-shadow: none;
-
-  appearance: none;
-  -webkit-appearance: none;
-
-  pointer-events: auto;
 }
 
 .nav-button:hover {
   color: #bebfc1;
 }
 
-.nav-title-button {
-  text-align: left;
-  flex: 0 1 auto;
-  max-width: 52vw;
-}
-
 .nav-right {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
   gap: clamp(12px, 3vw, 34px);
-  margin-left: auto;
-  flex: 1 1 auto;
-  min-width: 0;
 }
 
-.type-nav {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  opacity: 1;
-}
-
-.type-title {
-  animation: typeTitle 1.4s steps(18) forwards;
-}
-
-.type-about {
-  animation: typeAbout 0.5s steps(5) forwards;
-  animation-delay: 1.45s;
-}
-
-.type-path {
-  animation: typePath 0.45s steps(4) forwards;
-  animation-delay: 1.95s;
-}
-
-.type-dear {
-  animation: typeDear 0.8s steps(9) forwards;
-  animation-delay: 2.4s;
-}
-
-@keyframes typeTitle {
-  from {
-    width: 0;
-  }
-  to {
-    width: 18ch;
-  }
-}
-
-@keyframes typeAbout {
-  from {
-    width: 0;
-  }
-  to {
-    width: 5ch;
-  }
-}
-
-@keyframes typePath {
-  from {
-    width: 0;
-  }
-  to {
-    width: 4ch;
-  }
-}
-
-@keyframes typeDear {
-  from {
-    width: 0;
-  }
-  to {
-    width: 9ch;
-  }
-}
-
-
-
-/* TABLET */
-
-@media (max-width: 1024px) {
-  .nav {
-    font-size: clamp(12px, 1.8vw, 16px);
-  }
-
-  .nav-right {
-    gap: clamp(14px, 2.4vw, 28px);
-  }
-
-  .caption {
-    width: 84vw;
-    font-size: clamp(18px, 2.6vw, 28px);
-  }
-
-  .intro-scroll-text {
-    width: 86vw;
-    font-size: clamp(34px, 5.6vw, 62px);
-  }
-}
-
-/* MOBILE */
-
-@media (max-width: 768px) {
-  .caption {
-    bottom: clamp(72px, 10vh, 96px);
-    width: 86vw;
-    font-size: clamp(14px, 4vw, 20px);
-    letter-spacing: 0.09em;
-  }
-
-  .nav {
-    top: 18px;
-    left: 16px;
-    right: 16px;
-    font-size: clamp(10px, 2.7vw, 13px);
-    letter-spacing: 0.06em;
-    gap: 12px;
-  }
-
-  .nav-title-button {
-    max-width: 46vw;
-  }
-
-  .nav-right {
-    gap: clamp(8px, 2.4vw, 14px);
-  }
-
-  .intro-scroll-text {
-    width: 86vw;
-    font-size: clamp(30px, 8vw, 46px);
-    line-height: 1.12;
-  }
-}
-
-/* mobile */
-
-@media (max-width: 480px) {
-  .nav {
-    font-size: clamp(9px, 2.5vw, 11px);
-    left: 12px;
-    right: 12px;
-  }
-
-  .nav-right {
-    gap: 9px;
-  }
-
-  .nav-title-button {
-    max-width: 42vw;
-  }
-
-  .caption {
-    bottom: 76px;
-    width: 88vw;
-    font-size: 14px;
-  }
-
-  .intro-scroll-text {
-    width: 88vw;
-    font-size: clamp(28px, 8.4vw, 40px);
-  }
-}
-
-
-@media (max-height: 620px) {
-  .caption {
-    bottom: 48px;
-    font-size: clamp(13px, 2.2vw, 22px);
-  }
-
-  .intro-scroll-text {
-    font-size: clamp(24px, 5.8vh, 48px);
-    line-height: 1.08;
-  }
-
-  .nav {
-    top: 12px;
-  }
-}
-.scroll-tip {
-  position: fixed;
-  z-index: 1000;
-  color: #ffffff;
-  font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(13px, 1.2vw, 18px);
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
-  pointer-events: none;
-  animation: cursorFlicker 1s steps(2) infinite;
-}
+/* intro text */
 
 .intro-scroll-lock {
   position: fixed;
@@ -345,27 +128,63 @@ canvas {
   z-index: 50;
   background: #323741;
   overflow: hidden;
-  pointer-events: auto;
   touch-action: none;
 }
 
 .intro-scroll-text {
   position: absolute;
   left: 50%;
-  bottom: 30;
+  bottom: 30px;
 
   width: min(1000px, 86vw);
-  margin: 0;
 
-  color: #bebfc1; /* base grey */
-  font-family: "Cascadia Code", "Courier New", monospace;
+  color: #bebfc1;
+  font-family: "Cascadia Code", monospace;
 
-  font-size: clamp(30px, 4rem, 85px);  /* bigger */
+  font-size: clamp(30px, 4rem, 85px);
   font-weight: 700;
 
-  line-height: 1.10; /* more spacing between lines */
+  line-height: 1.1;
   letter-spacing: -0.02em;
 
+  transform: translateX(-50%);
   transition: transform 0.35s ease-out, color 0.35s ease-out;
-  will-change: transform, color;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .caption {
+    font-size: clamp(18px, 3vw, 34px);
+  }
+
+  .intro-scroll-text {
+    font-size: clamp(34px, 5.6vw, 62px);
+  }
+}
+
+@media (max-width: 768px) {
+  .caption {
+    font-size: clamp(14px, 4vw, 24px);
+  }
+
+  .nav {
+    font-size: clamp(10px, 2.7vw, 13px);
+  }
+
+  .intro-scroll-text {
+    font-size: clamp(30px, 8vw, 46px);
+  }
+}
+
+@media (max-width: 480px) {
+  .caption {
+    font-size: 13px;
+  }
+}
+
+@media (max-height: 620px) {
+  .nav {
+    top: 12px;
+  }
 }

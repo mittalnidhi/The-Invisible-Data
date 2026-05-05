@@ -167,8 +167,11 @@ export default function About() {
 
     const ctx = gsap.context(() => {
       const render = (p) => {
-        const percent = Math.round(lerp(15, 45, p));
-        asciiNumberRef.current.textContent = toAsciiNumber(percent);
+        const percent = Math.round(lerp(1, 30, p));
+
+        if (asciiNumberRef.current) {
+          asciiNumberRef.current.textContent = toAsciiNumber(percent);
+        }
 
         const boxW = lerp(90, window.innerWidth * 0.38, p);
         const boxH = lerp(70, window.innerHeight * 0.36, p);
@@ -178,20 +181,20 @@ export default function About() {
           height: boxH,
         });
 
-       const textSwitchPoint = (43 - 15) / (45 - 15);
+        const textSwitchPoint = (25 - 1) / (30 - 1);
 
-const textOneOut = clamp01((p - textSwitchPoint) / 0.04);
-const textTwoIn = clamp01((p - textSwitchPoint) / 0.06);
+        const textOneOut = clamp01((p - textSwitchPoint) / 0.04);
+        const textTwoIn = clamp01((p - textSwitchPoint) / 0.06);
 
-gsap.set(textOneRef.current, {
-  opacity: 1 - textOneOut,
-  y: -24 * textOneOut,
-});
+        gsap.set(textOneRef.current, {
+          opacity: 1 - textOneOut,
+          y: -24 * textOneOut,
+        });
 
-gsap.set(textTwoRef.current, {
-  opacity: textTwoIn,
-  y: 30 - 30 * textTwoIn,
-});
+        gsap.set(textTwoRef.current, {
+          opacity: textTwoIn,
+          y: 30 - 30 * textTwoIn,
+        });
       };
 
       render(0);
@@ -228,7 +231,10 @@ gsap.set(textTwoRef.current, {
           <button className="aboutNav__button" onClick={() => navigate("/path")}>
             PATH
           </button>
-          <button className="aboutNav__button" onClick={() => navigate("/dear-peri")}>
+          <button
+            className="aboutNav__button"
+            onClick={() => navigate("/dear-peri")}
+          >
             DEAR PERI
           </button>
         </div>
@@ -251,15 +257,17 @@ gsap.set(textTwoRef.current, {
           </h1>
 
           <h1 ref={textTwoRef} className="about__headline about__headline--two">
-            45% of Women in the
+            At any given time,
             <br />
-            World are in Midlife.
+            around 50 million women
+            <br />
+            in the U.S are in Perimenopause.
           </h1>
         </div>
 
         <div ref={boxRef} className="about__dataBox">
           <pre ref={asciiNumberRef} className="about__asciiNumber">
-            {toAsciiNumber(20)}
+            {toAsciiNumber(1)}
           </pre>
         </div>
       </section>

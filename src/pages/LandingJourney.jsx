@@ -7,8 +7,8 @@ import "./LandingJourney.css";
 const IMAGE_DURATION = 2.2;
 const FULL_IMAGE_LOOP_TIME = ASCII_FRAMES.length * IMAGE_DURATION;
 
-const CAPTION_LINE_1 = "Mapping the perimenopausal data gap";
-const CAPTION_LINE_2 = "in women’s health";
+const CAPTION_LINE_1 = "Mapping the Perimenopausal Data Gap";
+const CAPTION_LINE_2 = "in Women’s Health";
 
 const INTRO_TEXT =
   "Perimenopause is a midlife women's health issue affecting millions of women across the globe, yet health education and research in this phase is limited. Even when this phase is studied, it does not capture lived experiences of women.";

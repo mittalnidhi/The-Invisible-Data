@@ -140,7 +140,6 @@ function toAsciiNumber(num) {
   chars.forEach((char) => {
     const block = patterns[char];
     if (!block) return;
-
     block.forEach((line, i) => {
       rows[i] += line + "   ";
     });
@@ -157,6 +156,7 @@ export default function About() {
   const textOneRef = useRef(null);
   const textTwoRef = useRef(null);
   const textThreeRef = useRef(null);
+  const textFourRef = useRef(null);
 
   const boxOneRef = useRef(null);
   const asciiNumberOneRef = useRef(null);
@@ -164,8 +164,12 @@ export default function About() {
   const boxTwoRef = useRef(null);
   const asciiNumberTwoRef = useRef(null);
 
+  const boxThreeRef = useRef(null);
+  const asciiNumberThreeRef = useRef(null);
+
   const dotOneRef = useRef(null);
   const dotTwoRef = useRef(null);
+  const dotThreeRef = useRef(null);
 
   useLayoutEffect(() => {
     document.documentElement.style.overflowY = "auto";
@@ -176,10 +180,6 @@ export default function About() {
 
     const ctx = gsap.context(() => {
       const render = (p) => {
-        /**
-         * FIRST BOX
-         * 1% → 30%
-         */
         const firstBoxEnd = 0.65;
         const firstP = clamp01(p / firstBoxEnd);
 
@@ -194,9 +194,6 @@ export default function About() {
           height: lerp(70, Math.min(window.innerHeight * 0.36, 300), firstP),
         });
 
-        /**
-         * TEXT CHANGE AT 25%
-         */
         const textSwitchPoint = ((25 - 1) / (30 - 1)) * firstBoxEnd;
 
         const textOneOut = clamp01((p - textSwitchPoint) / 0.04);
@@ -213,12 +210,12 @@ export default function About() {
         });
 
         /**
-         * SECOND BOX
-         * Starts only after first box reaches 30%
-         * 30% → 45%
+         * second box
+         * same start, shorter duration so third box can appear
          */
         const secondStart = firstBoxEnd;
-        const secondP = clamp01((p - secondStart) / 0.35);
+        const secondDuration = 0.23;
+        const secondP = clamp01((p - secondStart) / secondDuration);
 
         const secondPercent = Math.round(lerp(1, 45, secondP));
 
@@ -226,10 +223,6 @@ export default function About() {
           asciiNumberTwoRef.current.textContent = toAsciiNumber(secondPercent);
         }
 
-        /**
-         * DOT ACTIVATION
-         * Second dot activates when second box reaches 15%
-         */
         const secondLiveValue = lerp(1, 45, secondP);
 
         if (secondLiveValue >= 15) {
@@ -250,12 +243,9 @@ export default function About() {
           opacity: secondP,
         });
 
-        /**
-         * THIRD TEXT
-         * Shows only when second box starts
-         */
         const thirdTextSwitchPoint =
-          secondStart + ((38 - 30) / (45 - 30)) * 0.35;
+          secondStart + ((38 - 30) / (45 - 30)) * secondDuration;
+
         const textTwoOut = clamp01((p - thirdTextSwitchPoint) / 0.05);
         const textThreeIn = clamp01((p - thirdTextSwitchPoint) / 0.08);
 
@@ -268,6 +258,51 @@ export default function About() {
           opacity: textThreeIn,
           y: 30 - 30 * textThreeIn,
         });
+
+        /**
+         * third box
+         * starts after second reaches 45%
+         * 0% → 70%
+         */
+        const thirdStart = secondStart + secondDuration;
+        const thirdDuration = 0.12;
+        const thirdP = clamp01((p - thirdStart) / thirdDuration);
+
+        const thirdPercent = Math.round(lerp(0, 70, thirdP));
+
+        if (asciiNumberThreeRef.current) {
+          asciiNumberThreeRef.current.textContent = toAsciiNumber(thirdPercent);
+        }
+
+        gsap.set(boxThreeRef.current, {
+          width: lerp(140, Math.min(window.innerWidth * 0.50, 720), thirdP),
+          height: lerp(110, Math.min(window.innerHeight * 0.70, 700), thirdP),
+          x: 0,
+          y: 0,
+          right: 0,
+          bottom: 0,
+          opacity: thirdP,
+        });
+
+        if (thirdPercent >= 15) {
+          dotTwoRef.current.classList.remove("about__dot--active");
+          dotThreeRef.current.classList.add("about__dot--active");
+        } else {
+          dotThreeRef.current.classList.remove("about__dot--active");
+        }
+
+        const textThreeFade = clamp01((thirdPercent - 40) / (60 - 40));
+        const textFourIn = clamp01((thirdPercent - 62) / 6);
+
+        gsap.set(textThreeRef.current, {
+          opacity: textThreeIn * (1 - textThreeFade),
+          y: -22 * textThreeFade,
+        });
+
+        gsap.set(textFourRef.current, {
+          opacity: textFourIn,
+          y: 30 - 30 * textFourIn,
+        });
       };
 
       render(0);
@@ -275,7 +310,7 @@ export default function About() {
       const trigger = ScrollTrigger.create({
         trigger: ".about",
         start: "top top",
-        end: "+=2200",
+        end: "+=3000",
         scrub: true,
         pin: host,
         anticipatePin: 1,
@@ -317,7 +352,7 @@ export default function About() {
         <div className="about__leftDots" aria-hidden="true">
           <span ref={dotOneRef} className="about__dot about__dot--active" />
           <span ref={dotTwoRef} className="about__dot" />
-          <span className="about__dot" />
+          <span ref={dotThreeRef} className="about__dot" />
         </div>
 
         <div className="about__copy">
@@ -344,6 +379,26 @@ export default function About() {
             <br />
             are in midlife.
           </h1>
+
+          <h1 ref={textFourRef} className="about__headline about__headline--two">
+            About 70%
+            <br />
+            of women report
+            <br />
+             not receiving
+            <br />
+            adequate care
+            <br />
+            during 
+            <br />
+            perimenopause.
+          </h1>
+        </div>
+
+        <div ref={boxThreeRef} className="about__dataBox about__dataBox--three">
+          <pre ref={asciiNumberThreeRef} className="about__asciiNumber">
+            {toAsciiNumber(0)}
+          </pre>
         </div>
 
         <div ref={boxTwoRef} className="about__dataBox about__dataBox--two">

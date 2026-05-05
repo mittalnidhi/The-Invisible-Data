@@ -14,7 +14,7 @@ body {
   overflow: visible;
 }
 
-/* NAVBAR (same as landing, no typing) */
+/* navbar */
 
 .aboutNav {
   position: fixed;
@@ -65,7 +65,7 @@ body {
   color: #bebfc1;
 }
 
-/* PAGE */
+/* page */
 
 .about__stage {
   position: relative;
@@ -75,7 +75,7 @@ body {
   background: #323741;
 }
 
-/* LEFT DOTS */
+/* left dots */
 
 .about__leftDots {
   position: absolute;
@@ -101,7 +101,7 @@ body {
   opacity: 1;
 }
 
-/* TEXT */
+/* text */
 
 .about__copy {
   position: absolute;
@@ -116,9 +116,9 @@ body {
   margin: 0;
   color: #ffffff;
   font-size: clamp(2.8rem, 5.8vw, 7.2rem);
-  line-height: 0.98;
-  letter-spacing: -0.06em;
-  font-weight: 700;
+  line-height: 1.20;
+  letter-spacing: -0.001em;
+  font-weight: 600;
   will-change: opacity, transform;
 }
 
@@ -128,7 +128,7 @@ body {
   font-size: clamp(2.1rem, 4.4vw, 5.4rem);
 }
 
-/* BLUE BOX */
+/* blue box */
 
 .about__dataBox {
   position: absolute;
@@ -151,7 +151,7 @@ body {
   overflow: hidden;
 }
 
-/* ASCII NUMBER (NO FLICKER NOW) */
+/* ASCII num  */
 
 .about__asciiNumber {
   position: absolute;
@@ -172,7 +172,7 @@ body {
     -1px 0 rgba(0, 0, 0, 0.45);
 }
 
-/* RESPONSIVE */
+/* responsive */
 
 @media (max-width: 768px) {
   .aboutNav {
@@ -196,7 +196,7 @@ body {
 
   .about__headline {
     font-size: clamp(2rem, 10vw, 4rem);
-    line-height: 1.02;
+    line-height: 1.10;
   }
 
   .about__headline--two {
@@ -230,4 +230,14 @@ body {
   background: #255a97;
   z-index: 45;
   opacity: 0;
+}
+.about__dataBox--three {
+  background: #417cbe;
+  z-index: 40;
+  opacity: 0;
+  right: 0;
+  bottom: 0;
+}
+.about__headline {
+  font-size: clamp(2.8rem, 4vw, 7.2rem);
 }

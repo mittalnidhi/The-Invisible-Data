@@ -188,3 +188,50 @@ canvas {
     top: 12px;
   }
 }
+/* nav typewriter */
+
+.nav-typing .type-nav {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0ch;
+  animation-fill-mode: forwards;
+  animation-timing-function: steps(var(--chars), end);
+}
+
+.type-title {
+  --chars: 18;
+  animation-name: typeNav;
+  animation-duration: 1.25s;
+  animation-delay: 0s;
+}
+
+.type-about {
+  --chars: 5;
+  animation-name: typeNav;
+  animation-duration: 0.45s;
+  animation-delay: 1.3s;
+}
+
+.type-path {
+  --chars: 4;
+  animation-name: typeNav;
+  animation-duration: 0.38s;
+  animation-delay: 1.8s;
+}
+
+.type-dear {
+  --chars: 9;
+  animation-name: typeNav;
+  animation-duration: 0.7s;
+  animation-delay: 2.25s;
+}
+
+@keyframes typeNav {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: calc(var(--chars) * 1ch);
+  }
+}

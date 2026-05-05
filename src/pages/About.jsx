@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -8,6 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
 const lerp = (a, b, t) => a + (b - a) * t;
+
+const FINAL_TEXT =
+  "In the absence of clinical support, many women turn to online communities to commiserate and share experiences from their everyday lives. These spaces act as a virtual sisterhood; where women share their experiences, find validation, and exchange information, forming a sense of community and solidarity. This research translates these conversations into collective insights and makes these health experiences visible through narrative driven data visualizations.";
 
 function toAsciiNumber(num) {
   const patterns = {
@@ -158,6 +161,11 @@ export default function About() {
   const textThreeRef = useRef(null);
   const textFourRef = useRef(null);
 
+  const finalBaseTextRef = useRef(null);
+  const finalTypedTextRef = useRef(null);
+
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
   const boxOneRef = useRef(null);
   const asciiNumberOneRef = useRef(null);
 
@@ -170,6 +178,12 @@ export default function About() {
   const dotOneRef = useRef(null);
   const dotTwoRef = useRef(null);
   const dotThreeRef = useRef(null);
+
+  const hasReachedSeventyRef = useRef(false);
+  const pathScrollCountRef = useRef(0);
+  const hasNavigatedToPathRef = useRef(false);
+  const hasStartedFinalTextRef = useRef(false);
+  const typeTimerRef = useRef(null);
 
   useLayoutEffect(() => {
     document.documentElement.style.overflowY = "auto";
@@ -209,10 +223,6 @@ export default function About() {
           y: 30 - 30 * textTwoIn,
         });
 
-        /**
-         * second box
-         * same start, shorter duration so third box can appear
-         */
         const secondStart = firstBoxEnd;
         const secondDuration = 0.23;
         const secondP = clamp01((p - secondStart) / secondDuration);
@@ -259,16 +269,15 @@ export default function About() {
           y: 30 - 30 * textThreeIn,
         });
 
-        /**
-         * third box
-         * starts after second reaches 45%
-         * 0% → 70%
-         */
         const thirdStart = secondStart + secondDuration;
         const thirdDuration = 0.12;
         const thirdP = clamp01((p - thirdStart) / thirdDuration);
 
         const thirdPercent = Math.round(lerp(0, 70, thirdP));
+
+        if (thirdPercent >= 70) {
+          hasReachedSeventyRef.current = true;
+        }
 
         if (asciiNumberThreeRef.current) {
           asciiNumberThreeRef.current.textContent = toAsciiNumber(thirdPercent);
@@ -325,8 +334,83 @@ export default function About() {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const handleWheel = (e) => {
+      if (!hasReachedSeventyRef.current) return;
+      if (hasNavigatedToPathRef.current) return;
+
+      if (e.deltaY > 0) {
+        pathScrollCountRef.current += 1;
+      }
+
+      if (pathScrollCountRef.current >= 6 && !hasStartedFinalTextRef.current) {
+        hasStartedFinalTextRef.current = true;
+
+        gsap.to(
+          [
+            boxOneRef.current,
+            boxTwoRef.current,
+            boxThreeRef.current,
+            textOneRef.current,
+            textTwoRef.current,
+            textThreeRef.current,
+            textFourRef.current,
+          ],
+          {
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          }
+        );
+
+        gsap.to(finalBaseTextRef.current, {
+          opacity: 0.28,
+          duration: 0.8,
+          delay: 0.35,
+          ease: "power2.out",
+        });
+
+        gsap.set(finalTypedTextRef.current, {
+          opacity: 1,
+        });
+
+        let i = 0;
+
+        typeTimerRef.current = setInterval(() => {
+          i += 1;
+
+          if (finalTypedTextRef.current) {
+            finalTypedTextRef.current.textContent = FINAL_TEXT.slice(0, i);
+          }
+
+          if (i >= FINAL_TEXT.length) {
+            clearInterval(typeTimerRef.current);
+          }
+        }, 60);
+      }
+
+      if (pathScrollCountRef.current >= 14) {
+        hasNavigatedToPathRef.current = true;
+        navigate("/path");
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+
+      if (typeTimerRef.current) {
+        clearInterval(typeTimerRef.current);
+      }
+    };
+  }, [navigate]);
+
   return (
-    <main className="about">
+    <main
+      className="about"
+      onMouseMove={(e) => setMouse({ x: e.clientX, y: e.clientY })}
+    >
       <nav className="aboutNav">
         <button className="aboutNav__button" onClick={() => navigate("/")}>
           THE INVISIBLE DATA
@@ -385,14 +469,22 @@ export default function About() {
             <br />
             of women report
             <br />
-             not receiving
+            not receiving
             <br />
             adequate care
             <br />
-            during 
+            during
             <br />
             perimenopause.
           </h1>
+        </div>
+
+        <div className="about__finalText">
+          <p ref={finalBaseTextRef} className="about__finalTextBase">
+            {FINAL_TEXT}
+          </p>
+
+          <p ref={finalTypedTextRef} className="about__finalTextTyped" />
         </div>
 
         <div ref={boxThreeRef} className="about__dataBox about__dataBox--three">
@@ -413,6 +505,16 @@ export default function About() {
           </pre>
         </div>
       </section>
+
+      <div
+        className="about-scroll-tip"
+        style={{
+          left: `${mouse.x + 16}px`,
+          top: `${mouse.y + 16}px`,
+        }}
+      >
+        scroll
+      </div>
     </main>
   );
 }

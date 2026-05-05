@@ -241,3 +241,49 @@ body {
 .about__headline {
   font-size: clamp(2.8rem, 4vw, 7.2rem);
 }
+.about-scroll-tip {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  pointer-events: none;
+
+  color: #ffffff;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(13px, 1.2vw, 18px);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+
+  animation: cursorFlicker 1s steps(2) infinite;
+}
+.about__finalText {
+  position: absolute;
+  left: 8vw;
+  top: 18vh;
+  width: min(58vw, 900px);
+  z-index: 120;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(1.3rem, 2.1vw, 2.6rem);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+
+  pointer-events: none;
+}
+
+.about__finalTextBase,
+.about__finalTextTyped {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.about__finalTextBase {
+  color: #b9bcc0;
+  opacity: 0;
+}
+
+.about__finalTextTyped {
+  color: #ffffff;
+  opacity: 1;
+}

@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Path.css";
+import finalSil from "../assets/sinal sil.png";
+import symp_cluster from "../assets/symp_cluster.png";
 
-const FINAL_TEXT = "WE MEET YOU WHERE YOU ARE AT YOUR JOURNEY";
 
 export default function Path() {
   const navigate = useNavigate();
@@ -53,37 +54,40 @@ export default function Path() {
       title: "SYMPTOMS",
       back: "Open Colony of Symptoms.",
       route: "/colony",
+      image: finalSil,
     },
     {
       title: "CLUSTER",
       back: "Open Symptom Cluster.",
       route: "/cluster",
+      image: symp_cluster,
     },
     {
       title: "EXPERIENCE",
       back: "Read lived experience stories.",
       route: "/experiences",
+      image: "/images/experience.jpg",
     },
   ];
 
   return (
     <main className="path">
-      <nav className="pathNav">
-        <button className="pathNav__button" onClick={() => navigate("/")}>
+      <nav className="aboutNav">
+        <button className="aboutNav__button" onClick={() => navigate("/")}>
           THE INVISIBLE DATA
         </button>
 
-        <div className="pathNav__right">
-          <button className="pathNav__button" onClick={() => navigate("/about")}>
+        <div className="aboutNav__right">
+          <button className="aboutNav__button" onClick={() => navigate("/about")}>
             ABOUT
           </button>
 
-          <button className="pathNav__button" onClick={() => navigate("/path")}>
+          <button className="aboutNav__button" onClick={() => navigate("/path")}>
             PATH
           </button>
 
           <button
-            className="pathNav__button"
+            className="aboutNav__button"
             onClick={() => navigate("/dear-peri")}
           >
             DEAR PERI
@@ -133,11 +137,14 @@ export default function Path() {
         <h1
           className="path__title"
           style={{
-            opacity: 0.2 + scrollP * 0.8,
-            filter: `blur(${8 - scrollP * 8}px)`,
+            opacity: Math.min(1, 0.3 + scrollP * 1.2),
           }}
         >
-          {FINAL_TEXT}
+          <span className="path__titleMain">
+            WE MEET YOU WHERE YOU ARE AT YOUR JOURNEY
+          </span>
+          <br />
+          <span className="path__titleSub">Choose your path</span>
         </h1>
 
         <div
@@ -147,7 +154,7 @@ export default function Path() {
           }}
         >
           {cards.map((card, index) => {
-            const offsets = [-270, 0, 270];
+            const offsets = [-300, 0, 300];
             const scale = 0.65 + cardsVisible * 0.35;
             const x = offsets[index] * cardsVisible;
             const y = (1 - cardsVisible) * 80;
@@ -163,7 +170,12 @@ export default function Path() {
               >
                 <span className="pathCard__inner">
                   <span className="pathCard__face pathCard__front">
-                    {card.title}
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="pathCard__image"
+                    />
+                    <span className="pathCard__title">{card.title}</span>
                   </span>
 
                   <span className="pathCard__face pathCard__back">

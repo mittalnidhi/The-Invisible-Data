@@ -153,10 +153,19 @@ export default function About() {
   const navigate = useNavigate();
 
   const stageRef = useRef(null);
+
   const textOneRef = useRef(null);
   const textTwoRef = useRef(null);
-  const boxRef = useRef(null);
-  const asciiNumberRef = useRef(null);
+  const textThreeRef = useRef(null);
+
+  const boxOneRef = useRef(null);
+  const asciiNumberOneRef = useRef(null);
+
+  const boxTwoRef = useRef(null);
+  const asciiNumberTwoRef = useRef(null);
+
+  const dotOneRef = useRef(null);
+  const dotTwoRef = useRef(null);
 
   useLayoutEffect(() => {
     document.documentElement.style.overflowY = "auto";
@@ -167,21 +176,28 @@ export default function About() {
 
     const ctx = gsap.context(() => {
       const render = (p) => {
-        const percent = Math.round(lerp(1, 30, p));
+        /**
+         * FIRST BOX
+         * 1% → 30%
+         */
+        const firstBoxEnd = 0.65;
+        const firstP = clamp01(p / firstBoxEnd);
 
-        if (asciiNumberRef.current) {
-          asciiNumberRef.current.textContent = toAsciiNumber(percent);
+        const firstPercent = Math.round(lerp(1, 30, firstP));
+
+        if (asciiNumberOneRef.current) {
+          asciiNumberOneRef.current.textContent = toAsciiNumber(firstPercent);
         }
 
-        const boxW = lerp(90, window.innerWidth * 0.38, p);
-        const boxH = lerp(70, window.innerHeight * 0.36, p);
-
-        gsap.set(boxRef.current, {
-          width: boxW,
-          height: boxH,
+        gsap.set(boxOneRef.current, {
+          width: lerp(90, Math.min(window.innerWidth * 0.30, 460), firstP),
+          height: lerp(70, Math.min(window.innerHeight * 0.36, 300), firstP),
         });
 
-        const textSwitchPoint = (25 - 1) / (30 - 1);
+        /**
+         * TEXT CHANGE AT 25%
+         */
+        const textSwitchPoint = ((25 - 1) / (30 - 1)) * firstBoxEnd;
 
         const textOneOut = clamp01((p - textSwitchPoint) / 0.04);
         const textTwoIn = clamp01((p - textSwitchPoint) / 0.06);
@@ -194,6 +210,63 @@ export default function About() {
         gsap.set(textTwoRef.current, {
           opacity: textTwoIn,
           y: 30 - 30 * textTwoIn,
+        });
+
+        /**
+         * SECOND BOX
+         * Starts only after first box reaches 30%
+         * 30% → 45%
+         */
+        const secondStart = firstBoxEnd;
+        const secondP = clamp01((p - secondStart) / 0.35);
+
+        const secondPercent = Math.round(lerp(1, 45, secondP));
+
+        if (asciiNumberTwoRef.current) {
+          asciiNumberTwoRef.current.textContent = toAsciiNumber(secondPercent);
+        }
+
+        /**
+         * DOT ACTIVATION
+         * Second dot activates when second box reaches 15%
+         */
+        const secondLiveValue = lerp(1, 45, secondP);
+
+        if (secondLiveValue >= 15) {
+          dotOneRef.current.classList.remove("about__dot--active");
+          dotTwoRef.current.classList.add("about__dot--active");
+        } else {
+          dotOneRef.current.classList.add("about__dot--active");
+          dotTwoRef.current.classList.remove("about__dot--active");
+        }
+
+        gsap.set(boxTwoRef.current, {
+          width: lerp(110, Math.min(window.innerWidth * 0.40, 580), secondP),
+          height: lerp(85, Math.min(window.innerHeight * 0.50, 420), secondP),
+          x: 0,
+          y: 0,
+          right: 0,
+          bottom: 0,
+          opacity: secondP,
+        });
+
+        /**
+         * THIRD TEXT
+         * Shows only when second box starts
+         */
+        const thirdTextSwitchPoint =
+          secondStart + ((38 - 30) / (45 - 30)) * 0.35;
+        const textTwoOut = clamp01((p - thirdTextSwitchPoint) / 0.05);
+        const textThreeIn = clamp01((p - thirdTextSwitchPoint) / 0.08);
+
+        gsap.set(textTwoRef.current, {
+          opacity: textTwoIn * (1 - textTwoOut),
+          y: -22 * textTwoOut,
+        });
+
+        gsap.set(textThreeRef.current, {
+          opacity: textThreeIn,
+          y: 30 - 30 * textThreeIn,
         });
       };
 
@@ -242,8 +315,8 @@ export default function About() {
 
       <section ref={stageRef} className="about__stage">
         <div className="about__leftDots" aria-hidden="true">
-          <span className="about__dot about__dot--active" />
-          <span className="about__dot" />
+          <span ref={dotOneRef} className="about__dot about__dot--active" />
+          <span ref={dotTwoRef} className="about__dot" />
           <span className="about__dot" />
         </div>
 
@@ -263,10 +336,24 @@ export default function About() {
             <br />
             in the U.S are in Perimenopause.
           </h1>
+
+          <h1 ref={textThreeRef} className="about__headline about__headline--two">
+            Around 45% women
+            <br />
+            in the world
+            <br />
+            are in midlife.
+          </h1>
         </div>
 
-        <div ref={boxRef} className="about__dataBox">
-          <pre ref={asciiNumberRef} className="about__asciiNumber">
+        <div ref={boxTwoRef} className="about__dataBox about__dataBox--two">
+          <pre ref={asciiNumberTwoRef} className="about__asciiNumber">
+            {toAsciiNumber(30)}
+          </pre>
+        </div>
+
+        <div ref={boxOneRef} className="about__dataBox">
+          <pre ref={asciiNumberOneRef} className="about__asciiNumber">
             {toAsciiNumber(1)}
           </pre>
         </div>

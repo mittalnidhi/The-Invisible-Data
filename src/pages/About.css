@@ -203,3 +203,31 @@ body {
     font-size: clamp(1.7rem, 8vw, 3.4rem);
   }
 }
+.about__dataBox--two {
+  background: #597997;
+  z-index: 45;
+  opacity: 0;
+    right: 0;
+  bottom: 0;
+}
+
+.about__dataBox--two .about__asciiNumber {
+  color: #ffffff;
+}
+
+.about__boxLabel {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+
+  color: #fcfcfc;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(1.8rem, 4vw, 5.2rem);
+  font-weight: 900;
+  letter-spacing: -0.08em;
+}
+.about__dataBox--two {
+  background: #255a97;
+  z-index: 45;
+  opacity: 0;
+}

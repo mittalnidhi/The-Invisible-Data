@@ -8,35 +8,34 @@ const sections = [
     statement: "Collective stories make invisible patterns visible.",
     subtext:
       "Explore shared perimenopause experiences gathered from digital communities.",
-    middleText: "From shared stories, patterns begin to surface.",
     route: "/collective-data",
     type: "data",
   },
+
   {
     title: "In situ Sense Making",
     statement: "Bodies make meaning through everyday life.",
     subtext:
-      "Understand how symptoms are interpreted through food, sleep, work, care, and daily routines.",
-    middleText: "Meaning forms in the small details of everyday life.",
-    route: "/sense-making",
+      "Understand how symptoms are interpreted through relationships, identity, work, autonomy, body image, dismissal, sexual life, and medical costs.",
+    route: "/insitu",
     type: "sense",
   },
+
   {
     title: "Workshop Photos",
     statement: "Care often begins through conversation.",
     subtext:
       "View visual traces from participatory workshops and collective reflection.",
-    middleText: "Conversation becomes a way to see what is often unseen.",
     route: "/workshop-photos",
     type: "workshop",
   },
+
   {
     title: "Collect Your Own Data",
     statement: "Personal data can become body literacy.",
     subtext:
       "Begin mapping your own symptoms, triggers, patterns, and care journey.",
-    middleText: "Your body holds patterns worth noticing.",
-    route: "/collect-your-own-data",
+    route: "/personal-data",
     type: "collect",
   },
 ];
@@ -44,6 +43,8 @@ const sections = [
 export default function DearPeri() {
   return (
     <main className="dearPeri">
+      {/* NAV */}
+
       <nav className="dearPeriNav">
         <Link to="/" className="dearPeriNav__brand">
           THE INVISIBLE DATA
@@ -56,6 +57,8 @@ export default function DearPeri() {
         </div>
       </nav>
 
+      {/* HERO */}
+
       <section className="dearPeriHero">
         <h1>
           Dear Peri is a space
@@ -64,44 +67,57 @@ export default function DearPeri() {
         </h1>
 
         <p>
-          Collective stories, sense-making, workshop memories, and personal data
-          reflections.
+          Collective stories, sense-making, workshop memories, and personal
+          data reflections.
         </p>
 
-        <div className="scrollHint">SCROLL</div>
+        <div className="scrollCue">
+          <span>SCROLL</span>
+          <i />
+        </div>
       </section>
 
-      <section className="dearPeriJourney">
+      {/* TIMELINE */}
+
+      <section className="dearPeriTimeline">
         {sections.map((item, index) => (
-          <article className="journeySection" key={item.title}>
-            <div className="timelineConnector">
-              <div className="timelineDot" />
-              <div className="timelineLine timelineLine--top" />
+          <article className="timelineRow" key={item.title}>
+            {/* TOP CONNECTOR */}
+
+            <div className="segmentTop">
+              <div className="segmentDot" />
+              <div className="segmentLine" />
+              <div className="segmentDot" />
             </div>
 
-            <div className="journeyText">
+            {/* CLICKABLE CIRCLE */}
+
+            <Link
+              to={item.route}
+              className="timelineCircle"
+            >
+              <CircleAnimation type={item.type} />
+
+              <span className="timelineCircleLabel">
+                {item.title}
+              </span>
+            </Link>
+
+            {/* TEXT */}
+
+            <div className="timelineText">
               <h2>{item.statement}</h2>
               <p>{item.subtext}</p>
             </div>
 
-            <Link
-              to={item.route}
-              className="journeyCircle"
-              aria-label={`Open ${item.title}`}
-            >
-              <CircleAnimation type={item.type} />
-              <span>{item.title}</span>
-            </Link>
+            {/* BOTTOM CONNECTOR */}
 
             {index !== sections.length - 1 && (
-              <>
-                <div className="journeyMiddleText">{item.middleText}</div>
-
-                <div className="timelineConnector timelineConnector--bottom">
-                  <div className="timelineLine timelineLine--bottom" />
-                  <div className="timelineDot timelineDot--bottom" />
-                </div>
-              </>
+              <div className="segmentBottom">
+                <div className="segmentDot" />
+                <div className="segmentLine" />
+                <div className="segmentDot" />
+              </div>
             )}
           </article>
         ))}
@@ -110,52 +126,154 @@ export default function DearPeri() {
   );
 }
 
+/* -------------------------------- */
+/* MAIN SWITCHER */
+/* -------------------------------- */
+
 function CircleAnimation({ type }) {
-  if (type === "data") {
-    return (
-      <div className="circleArt circleArt--data">
-        <i>hot flashes</i>
-        <i>sleep</i>
-        <i>brain fog</i>
-        <i>mood</i>
-        <b />
-        <b />
-        <b />
-      </div>
-    );
-  }
+  if (type === "data") return <CollectiveDataArt />;
+  if (type === "sense") return <SenseMakingArt />;
+  if (type === "workshop") return <WorkshopArt />;
+  return <CollectOwnDataArt />;
+}
 
-  if (type === "sense") {
-    return (
-      <div className="circleArt circleArt--sense">
-        <div className="bodyIcon" />
-        <em>food</em>
-        <em>sleep</em>
-        <em>work</em>
-        <em>care</em>
-      </div>
-    );
-  }
+/* -------------------------------- */
+/* COLLECTIVE DATA */
+/* -------------------------------- */
 
-  if (type === "workshop") {
-    return (
-      <div className="circleArt circleArt--workshop">
-        <div className="paper paper--one" />
-        <div className="paper paper--two" />
-        <div className="pen" />
-      </div>
-    );
-  }
+function CollectiveDataArt() {
+  const words = [
+    "sleep",
+    "food",
+    "low libido",
+    "triggers",
+    "hot flashes",
+    "brain fog",
+    "weight gain",
+    "infertility",
+    "breast pain",
+  ];
 
   return (
-    <div className="circleArt circleArt--collect">
-      <div className="phoneIcon">
+    <div className="circleArt circleArt--dataWords">
+      <div className="dataGrid">
+        {Array.from({ length: 45 }).map((_, i) => (
+          <i key={i} />
+        ))}
+      </div>
+
+      <div className="dataBars">
+        <b />
+        <b />
+        <b />
+        <b />
+        <b />
+      </div>
+
+      {words.map((word, i) => (
+        <em
+          key={word}
+          className={`dataWord dataWord--${i + 1}`}
+        >
+          {word}
+        </em>
+      ))}
+    </div>
+  );
+}
+
+/* -------------------------------- */
+/* IN SITU */
+/* -------------------------------- */
+
+function SenseMakingArt() {
+  const words = [
+    "relationship",
+    "identity",
+    "work",
+    "autonomy",
+    "body image",
+    "dismissal",
+    "sexual life",
+    "medical costs",
+  ];
+
+  return (
+    <div className="circleArt circleArt--senseImage">
+      <img
+        src="/arc-assets/insitu-women.png"
+        alt="Women sitting around a table"
+        className="senseWomenImage"
+      />
+
+      {words.map((word, i) => (
+        <em
+          key={word}
+          className={`senseFloating senseFloating--${i + 1}`}
+        >
+          {word}
+        </em>
+      ))}
+    </div>
+  );
+}
+
+/* -------------------------------- */
+/* WORKSHOP */
+/* -------------------------------- */
+
+function WorkshopArt() {
+  return (
+    <div className="circleArt circleArt--workshopNew">
+      <div className="workshopBoard">
+        <span>what</span>
+        <span>does care</span>
+        <span>look like?</span>
+      </div>
+
+      <div className="workshopSheet sheet--one">
         <span />
         <span />
         <span />
       </div>
-      <div className="ring ring--one" />
-      <div className="ring ring--two" />
+
+      <div className="workshopSheet sheet--two">
+        <span />
+        <span />
+      </div>
+
+      <div className="stickyNote sticky--one">
+        draw
+      </div>
+
+      <div className="stickyNote sticky--two">
+        map
+      </div>
+
+      <div className="markerPen" />
+      <div className="workshopHand" />
+    </div>
+  );
+}
+
+/* -------------------------------- */
+/* PERSONAL DATA */
+/* -------------------------------- */
+
+function CollectOwnDataArt() {
+  return (
+    <div className="circleArt circleArt--collect">
+      <div className="phone">
+        <span />
+        <span />
+        <span />
+      </div>
+
+      <div className="phoneCircle" />
+
+      <div className="collectRing ring1" />
+      <div className="collectRing ring2" />
+      <div className="collectRing ring3" />
     </div>
   );
 }

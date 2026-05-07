@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Path.css";
 import finalSil from "../assets/sinal sil.png";
 import symp_cluster from "../assets/symp_cluster.png";
+import experiences from "../assets/experiences.png";
 
 
 export default function Path() {
@@ -51,22 +52,22 @@ export default function Path() {
 
   const cards = [
     {
-      title: "SYMPTOMS",
-      back: "Open Colony of Symptoms.",
+      title: "Colony of Symptoms",
+      back: "Represents a wide range of symptoms observed in this phase",
       route: "/colony",
       image: finalSil,
     },
     {
-      title: "CLUSTER",
-      back: "Open Symptom Cluster.",
+      title: "Symptom Cluster",
+      back: "Perimenopausal Symptoms appear in clusters rather than in isolation.",
       route: "/cluster",
       image: symp_cluster,
     },
     {
-      title: "EXPERIENCE",
+      title: "Slices of Life",
       back: "Read lived experience stories.",
       route: "/experiences",
-      image: "/images/experience.jpg",
+      image: experiences,
     },
   ];
 
@@ -141,7 +142,7 @@ export default function Path() {
           }}
         >
           <span className="path__titleMain">
-            WE MEET YOU WHERE YOU ARE AT YOUR JOURNEY
+            We meet you where you are at your journey
           </span>
           <br />
           <span className="path__titleSub">Choose your path</span>

@@ -1,0 +1,671 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #d8dee7;
+  overflow-x: hidden;
+}
+
+.dearPeri {
+  min-height: 100vh;
+  background: #d8dee7;
+  color: #051c41;
+}
+
+/* NAV */
+
+.dearPeriNav {
+  position: fixed;
+  top: 20px;
+  left: 28px;
+  right: 28px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+}
+
+.dearPeriNav a {
+  color: #051c41;
+  text-decoration: none;
+}
+
+.dearPeriNav__brand {
+  font-weight: 700;
+}
+
+.dearPeriNav__links {
+  display: flex;
+  gap: 34px;
+}
+
+/* HERO */
+
+.dearPeriHero {
+  min-height: 100vh;
+  padding: 120px 6vw 80px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.dearPeriHero h1 {
+  margin: 0;
+  max-width: 1200px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(58px, 9vw, 150px);
+  line-height: 0.98;
+  letter-spacing: -0.08em;
+  font-weight: 900;
+}
+
+.dearPeriHero p {
+  margin: 44px auto 0;
+  max-width: 760px;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(14px, 1.3vw, 20px);
+  line-height: 1.7;
+  color: rgba(5, 28, 65, 0.72);
+}
+
+.scrollHint {
+  margin-top: 90px;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  opacity: 0.65;
+}
+
+/* JOURNEY */
+
+.dearPeriJourney {
+  width: 100%;
+}
+
+.journeySection {
+  min-height: 145vh;
+  padding: 6vh 6vw 10vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.journeyText {
+  margin: 64px auto 70px;
+  width: min(900px, 92vw);
+
+  opacity: 0;
+  transform: translateY(42px);
+
+  animation: revealUp linear forwards;
+  animation-timeline: view();
+  animation-range: entry 18% cover 42%;
+}
+
+.journeyText h2 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 6.4vw, 104px);
+  line-height: 1.05;
+  letter-spacing: -0.07em;
+  font-weight: 900;
+}
+
+.journeyText p {
+  margin: 32px auto 0;
+  max-width: 680px;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(13px, 1.1vw, 17px);
+  line-height: 1.75;
+  color: rgba(5, 28, 65, 0.68);
+}
+
+/* CONNECTORS */
+
+.timelineConnector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timelineConnector--bottom {
+  margin-top: 48px;
+}
+
+.timelineDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #051c41;
+  z-index: 2;
+
+  opacity: 0;
+  transform: scale(0.4);
+
+  animation: revealDot linear forwards;
+  animation-timeline: view();
+  animation-range: entry 10% cover 22%;
+}
+
+.timelineDot--bottom {
+  animation-range: entry 70% cover 86%;
+}
+
+.timelineLine {
+  width: 1.5px;
+  background: #051c41;
+
+  transform-origin: top;
+  transform: scaleY(0);
+
+  animation: drawLine linear forwards;
+  animation-timeline: view();
+}
+
+.timelineLine--top {
+  height: 110px;
+  margin-top: -1px;
+  animation-range: entry 12% cover 32%;
+}
+
+.timelineLine--bottom {
+  height: 130px;
+  margin-bottom: -1px;
+  animation-range: entry 55% cover 82%;
+}
+
+/* MIDDLE TEXT BETWEEN CIRCLE AND NEXT DOT */
+
+.journeyMiddleText {
+  margin-top: 52px;
+  max-width: 580px;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(12px, 1vw, 15px);
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: rgba(5, 28, 65, 0.62);
+
+  opacity: 0;
+  transform: translateY(20px);
+
+  animation: revealUp linear forwards;
+  animation-timeline: view();
+  animation-range: entry 30% cover 45%;
+}
+
+/* CIRCLE */
+
+.journeyCircle {
+  position: relative;
+
+  width: clamp(240px, 30vw, 390px);
+  height: clamp(240px, 30vw, 390px);
+
+  border: 2px solid #051c41;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #051c41;
+  text-decoration: none;
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(55px) scale(0.95);
+
+  animation: revealCircle linear forwards;
+  animation-timeline: view();
+  animation-range: entry 20% cover 48%;
+
+  transition: transform 0.45s ease, background 0.45s ease;
+}
+
+.journeyCircle:hover {
+  transform: translateY(0) scale(1.035);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.journeyCircle span {
+  position: absolute;
+  bottom: 15%;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(11px, 0.9vw, 14px);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+/* CIRCLE ART */
+
+.circleArt {
+  position: relative;
+  width: 70%;
+  height: 70%;
+  font-family: "Cascadia Code", "Courier New", monospace;
+}
+
+/* Collective Data */
+
+.circleArt--data i {
+  position: absolute;
+  font-style: normal;
+  font-size: clamp(9px, 0.75vw, 12px);
+  animation: floatText 4s ease-in-out infinite;
+}
+
+.circleArt--data i:nth-child(1) {
+  top: 12%;
+  left: 18%;
+}
+
+.circleArt--data i:nth-child(2) {
+  top: 34%;
+  right: 10%;
+  animation-delay: 0.5s;
+}
+
+.circleArt--data i:nth-child(3) {
+  bottom: 36%;
+  left: 5%;
+  animation-delay: 1s;
+}
+
+.circleArt--data i:nth-child(4) {
+  bottom: 18%;
+  right: 22%;
+  animation-delay: 1.5s;
+}
+
+.circleArt--data b {
+  position: absolute;
+  border: 1.5px solid #051c41;
+  border-radius: 50%;
+  animation: pulseCluster 4.5s ease-in-out infinite;
+}
+
+.circleArt--data b:nth-of-type(1) {
+  width: 54px;
+  height: 54px;
+  top: 35%;
+  left: 38%;
+}
+
+.circleArt--data b:nth-of-type(2) {
+  width: 96px;
+  height: 96px;
+  top: 27%;
+  left: 29%;
+  animation-delay: 0.6s;
+}
+
+.circleArt--data b:nth-of-type(3) {
+  width: 138px;
+  height: 138px;
+  top: 18%;
+  left: 20%;
+  animation-delay: 1.2s;
+}
+
+/* Sense */
+
+.bodyIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 54px;
+  height: 96px;
+  border: 2px solid #051c41;
+  border-radius: 34px 34px 24px 24px;
+
+  transform: translate(-50%, -50%);
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.bodyIcon::before {
+  content: "";
+  position: absolute;
+  top: -35px;
+  left: 50%;
+
+  width: 30px;
+  height: 30px;
+  border: 2px solid #051c41;
+  border-radius: 50%;
+
+  transform: translateX(-50%);
+}
+
+.circleArt--sense em {
+  position: absolute;
+  font-style: normal;
+  font-size: 11px;
+  animation: floatText 4s ease-in-out infinite;
+}
+
+.circleArt--sense em:nth-child(2) {
+  top: 12%;
+  left: 16%;
+}
+
+.circleArt--sense em:nth-child(3) {
+  top: 16%;
+  right: 14%;
+  animation-delay: 0.7s;
+}
+
+.circleArt--sense em:nth-child(4) {
+  bottom: 22%;
+  left: 12%;
+  animation-delay: 1.4s;
+}
+
+.circleArt--sense em:nth-child(5) {
+  bottom: 18%;
+  right: 18%;
+  animation-delay: 2s;
+}
+
+/* Workshop */
+
+.paper {
+  position: absolute;
+  width: 66px;
+  height: 92px;
+  border: 2px solid #051c41;
+  animation: paperFloat 4.5s ease-in-out infinite;
+}
+
+.paper--one {
+  top: 28%;
+  left: 22%;
+  transform: rotate(-10deg);
+}
+
+.paper--two {
+  top: 36%;
+  right: 22%;
+  transform: rotate(12deg);
+  animation-delay: 1s;
+}
+
+.pen {
+  position: absolute;
+  width: 96px;
+  height: 5px;
+  background: #051c41;
+  top: 47%;
+  left: 36%;
+  transform: rotate(-28deg);
+  animation: penMove 3s ease-in-out infinite;
+}
+
+/* Collect */
+
+.phoneIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 68px;
+  height: 122px;
+  border: 2px solid #051c41;
+  border-radius: 18px;
+
+  transform: translate(-50%, -50%);
+}
+
+.phoneIcon span {
+  display: block;
+  width: 38px;
+  height: 2px;
+  background: #051c41;
+  margin: 24px auto;
+  animation: scanLine 3s ease-in-out infinite;
+}
+
+.ring {
+  position: absolute;
+  inset: 26%;
+  border: 1.5px solid #051c41;
+  border-radius: 50%;
+  animation: pulseRing 4s ease-out infinite;
+}
+
+.ring--two {
+  animation-delay: 1.4s;
+}
+
+/* ANIMATIONS */
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealCircle {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes drawLine {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes revealDot {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes floatText {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translateY(-14px);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseCluster {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scaleY(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scaleY(1.06);
+  }
+}
+
+@keyframes paperFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -14px;
+  }
+}
+
+@keyframes penMove {
+  0%,
+  100% {
+    transform: rotate(-28deg) translateX(0);
+  }
+
+  50% {
+    transform: rotate(-28deg) translateX(22px);
+  }
+}
+
+@keyframes scanLine {
+  0%,
+  100% {
+    transform: translateX(-6px);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateX(6px);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.85;
+  }
+
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .dearPeriNav {
+    font-size: 12px;
+    left: 18px;
+    right: 18px;
+  }
+
+  .dearPeriNav__links {
+    gap: 18px;
+  }
+
+  .dearPeriHero h1 {
+    font-size: clamp(52px, 14vw, 96px);
+  }
+
+  .journeySection {
+    min-height: 125vh;
+    padding-inline: 20px;
+  }
+
+  .journeyText {
+    margin: 54px auto 62px;
+  }
+
+  .journeyText h2 {
+    font-size: clamp(42px, 11vw, 76px);
+  }
+
+  .journeyCircle {
+    width: clamp(230px, 62vw, 330px);
+    height: clamp(230px, 62vw, 330px);
+  }
+}
+
+@media (max-width: 560px) {
+  .dearPeriNav {
+    top: 16px;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 11px;
+  }
+
+  .dearPeriNav__links {
+    gap: 16px;
+  }
+
+  .dearPeriHero {
+    padding: 120px 22px 70px;
+  }
+
+  .dearPeriHero h1 {
+    font-size: clamp(46px, 15vw, 72px);
+    letter-spacing: -0.065em;
+  }
+
+  .dearPeriHero p {
+    margin-top: 28px;
+    font-size: 13px;
+  }
+
+  .journeySection {
+    min-height: 118vh;
+  }
+
+  .journeyText h2 {
+    font-size: clamp(38px, 13vw, 64px);
+    letter-spacing: -0.06em;
+  }
+
+  .journeyText p {
+    font-size: 12px;
+  }
+
+  .journeyCircle {
+    width: 235px;
+    height: 235px;
+  }
+
+  .timelineLine--top {
+    height: 76px;
+  }
+
+  .timelineLine--bottom {
+    height: 90px;
+  }
+
+  .journeyMiddleText {
+    margin-top: 42px;
+    font-size: 11px;
+  }
+
+  .circleArt--data i,
+  .circleArt--sense em {
+    font-size: 9px;
+  }
+}

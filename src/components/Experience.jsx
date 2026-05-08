@@ -495,14 +495,14 @@ export default function Experience(props) {
     					const labelY = p.y - 4;
 
                         ctx.fillStyle = node.label === hoveredLabel ? `rgba(255,255,255,${0.84 * proximityFade})` : `rgba(${world.tint},${0.84 * proximityFade})`;
-                        ctx.font = `600 ${Math.max(10, 17 - i)}px Inter, Arial, sans-serif`;
+                        ctx.font = `600 ${Math.max(10, 25 - i)}px Inter, Arial, sans-serif`;
                         ctx.textAlign = "left";
                         ctx.textBaseline = "bottom";
                         ctx.fillText(node.label, p.x + 10, p.y - 4);
 						const metrics = ctx.measureText(node.label);
 
                         ctx.fillStyle = node.label === hoveredLabel ? `rgba(255,255,255,${0.62 * proximityFade})` : `rgba(${world.tint},${0.62 * proximityFade})`;
-                        ctx.font = "500 10px Inter, Arial, sans-serif";
+                        ctx.font = "500 15px Inter, Arial, sans-serif";
                         ctx.fillText(`#${node.rank}`, p.x + 10, p.y + 10);
 						
 						const textWidth = metrics.width;
@@ -661,11 +661,9 @@ function ExperiencesNavBar(){
             <div>
                 <h1 className='colony-title text-center mt-8'>Experiences</h1>
             </div>          
-            <div className='justify-self-end flex flex-row justify-end-safe gap-6 z-50'>
+            <div className='justify-self-end flex flex-row justify-end-safe gap-12 z-50'>
                 <a href={'/colony'}>Colony of Symptoms</a>
-                <a href={'/cluster'}>Symptom Clusters</a>
-                <span className='navbar-divider-right'></span>
-                <a href={'/'} className='mr-16'>Dear Peri</a>
+                <a href={'/cluster'} className='mr-16'>Symptom Clusters</a>
             </div>               
         </div>       
     )

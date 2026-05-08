@@ -3,7 +3,7 @@
     font-family: 'Inter', 'Courier';
     font-weight: 400;
     line-height: 1.2;
-    background-image: url("image 131.png");
+    background-image: url("/image 131.png");
     background-size:cover;
     overflow: auto;
     pointer-events: auto;
@@ -135,6 +135,6 @@
 }
 
 .silhouette {
-    background-image: url("Nidhi-ColonyViz-sil.png");
+    background-image: url("/Nidhi-ColonyViz-sil.png");
     background-size: cover;
 }

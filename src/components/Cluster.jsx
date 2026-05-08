@@ -27,14 +27,14 @@ export default function Cluster(props){
         <div className='relative colony-main flex flex-col h-full w-full z-30'>
             <ClusterNavBar />
             <div className='flex flex-row gap-20 justify-between w-[90vw] h-[75vh] min-h-190 my-8 mx-auto text-white'>
-                <div className='relative flex-1 flex flex-col h-[55vh] min-w-[300px] mt-12'>
+                <div className='relative flex-1 flex flex-col h-[55vh] min-w-[300px]'>
                     <div className='relative flex flex-col h-full gap-4 z-20 box-sizing py-15'>
-                        <h5 className='filter-header ml-3'>Select a Symptom</h5>
+                        <h5 className='filter-header ml-3 mb-7'>Select a Symptom</h5>
                         <ClusterSymptoms {...chartProps}/>                    
                     </div>
                     <div className='absolute gray-panel w-full h-full top-0 left-0 z-10' />           
                 </div>
-                <div className='flex-2 h-full mt-12'>
+                <div className='flex-2 h-full'>
                     <div className='w-[37vw] aspect-3/2 mx-auto bg-white rounded-2xl'>
                         <ClusterChart {...chartProps}/>
                     </div>                   
@@ -46,7 +46,7 @@ export default function Cluster(props){
                         </div>
                         <div className='absolute gray-panel w-full h-full top-0 left-0 z-10' />
                     </div>
-                    <div className='flex-1 m-5'>
+                    <div className='flex-1 m-5 mt-10'>
                         <button className='clear-filter' onClick={clearFilters}>Reset Filters</button>
                     </div>
                 </div>
@@ -93,11 +93,9 @@ function ClusterNavBar(){
             <div>
                 <h1 className='colony-title text-center mt-8'>Symptom Cluster</h1>
             </div>          
-            <div className='justify-self-end flex flex-row justify-end-safe gap-6 z-50'>
+            <div className='justify-self-end flex flex-row justify-end-safe gap-12 z-50'>
                 <a href={'/colony'}>Colony of Symptoms</a>
-                <span className='navbar-divider-right'></span>
-                <a href={'/experiences'}>Experiences</a>
-                <a href={'/'} className='mr-16'>Dear Peri</a>
+                <a href={'/experiences'} className='mr-16'>Experiences</a>
             </div>               
         </div>       
     )

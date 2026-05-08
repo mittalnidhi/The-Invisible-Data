@@ -202,7 +202,7 @@ function drawLegend(legendElement, size){
 
     const text = svg.append('g')
         .attr('fill', 'white')
-        .attr('font-size', 10)
+        .attr('font-size', 15)
 
     text.append('text')
         .text('More frequent')

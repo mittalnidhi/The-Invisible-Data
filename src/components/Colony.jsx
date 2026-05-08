@@ -67,14 +67,14 @@ export default function Colony(props){
             <div className='flex flex-row justify-between w-[90vw] h-[75vh] min-h-190 my-8 mx-auto text-white'>
                 <div className='relative flex flex-col h-full w-3/10 min-w-[480px]'>
                     <div className='gray-panel-content flex flex-col h-full gap-4 z-20'>
-                        <div className='flex flex-row gap-4 items-baseline'>
+                        <div className='flex flex-row gap-4 items-baseline mb-3'>
                             <h5 className='filter-header-main'>Select a Symptom</h5>
                             <Ornament />
                         </div>           
                         <ColonySymptoms {...symptomsProps}/>
-                        <h5 className='filter-header mt-3'>View</h5>
+                        <h5 className='filter-header mt-8'>View</h5>
                         <ColonySelectorDivided {...viewProps}/>
-                        <div className='flex flex-row items-center mt-3'>
+                        <div className='flex flex-row items-center mt-8'>
                             <h5 className='filter-header'>Stage</h5>
                             <div className='ml-15'>
                                 <ColonySelectorPill {...stageProps}/>
@@ -86,14 +86,14 @@ export default function Colony(props){
                 <div className='h-full'>
                     <ColonySilhouette {...silhouetteProps}/>
                 </div>
-                <div className='relative flex flex-col h-4/5 w-3/10 min-w-[480px]'>
-                    <div className='relative flex-3 h-full'>
+                <div className='relative flex flex-col h-9/10 w-3/10 min-w-[480px]'>
+                    <div className='relative h-full'>
                         <div className='gray-panel-content relative flex flex-col h-full gap-6 z-20'>
                             <div className='flex flex-row gap-4 items-baseline'>
                                 <h5 className='filter-header-main'>Hormones</h5>
                                 <Ornament />
                             </div>
-                            <div className='relative w-full h-30 mx-auto'>
+                            <div className='relative w-full h-50 mx-auto'>
                                 <HormoneGraph {...hormoneProps}/>
                             </div>                           
                             <ColonySelectorDivided {...hormoneProps}/>
@@ -101,13 +101,13 @@ export default function Colony(props){
                                 <h5 className='filter-header-main'>Age</h5>
                                 <Ornament />
                             </div>  
-                            <div className='relative w-full h-30 mx-auto'>
+                            <div className='relative w-full h-50 mx-auto'>
                                 <AgeGraph />
                             </div>   
                         </div>
                         <div className='absolute gray-panel w-full h-full top-0 left-0 z-10' />
                     </div>
-                    <div className='flex-1 m-5'>
+                    <div className='flex-1 m-5 mt-10'>
                         <button className='clear-filter' onClick={clearFilters}>Clear Filters</button>
                     </div>
                 </div>
@@ -144,16 +144,14 @@ function ColonyNavBar(){
                 <a href={'/'} ref={leftArrowRef}><span className='relative inline-block'><img src='leftArrow.svg' className='inline h-6 ml-16 mr-3'/></span>Path</a>
                 <span className='navbar-divider-left'></span>
                 <a href={'/'}><img src='home.svg' style={{height: '20px'}} /></a>
-                <img src='info.svg' style={{height: '20px'}} onMouseOver={(e) => showTooltip(e, paragraph, tooltipRef.current)} onMouseOut={(e) => hideTooltip(tooltipRef.current)}/>
+                <img src='/info.svg' style={{height: '20px'}} onMouseOver={(e) => showTooltip(e, paragraph, tooltipRef.current)} onMouseOut={(e) => hideTooltip(tooltipRef.current)}/>
             </div> 
             <div>
                 <h1 className='colony-title text-center mt-8'>Colony of Symptoms</h1>
             </div>          
-            <div className='justify-self-end flex flex-row justify-end-safe gap-6 z-50'>
+            <div className='justify-self-end flex flex-row justify-end-safe gap-12 z-50'>
                 <a href={'/cluster'}>Symptom Cluster</a>
-                <span className='navbar-divider-right'></span>
-                <a href={'/experiences'}>Experiences</a>
-                <a href={'/'} className='mr-16'>Dear Peri</a>
+                <a href={'/experiences'} className='mr-16'>Experiences</a>
             </div>               
         </div>       
     )

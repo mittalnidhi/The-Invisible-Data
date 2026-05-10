@@ -1,0 +1,140 @@
+.colony-main {
+    color: white;
+    font-family: 'Inter', 'Courier';
+    font-weight: 400;
+    line-height: 1.2;
+    background-image: url("/image 131.png");
+    background-size:cover;
+    overflow: auto;
+    pointer-events: auto;
+}
+
+.colony-title {
+    color: white;
+    font-family: 'Fragment Mono', Courier, monospace;
+    font-size: 18pt;
+}
+
+.navbar-divider-left {
+    display: inline;
+    border: 1px solid #444;
+    height: 20px;
+}
+
+.navbar-divider-right {
+    display: inline;
+    border: 1px solid #BBB;
+    height: 20px;
+}
+
+.blue-button {
+    background-color: #A4C4CC;
+    color: #2F3F4F;
+    padding: 8px 12px;
+    margin: 0 40px;
+    border-radius: 4px;
+    transition: background-color 150ms;
+}
+
+.blue-button:hover {
+    background-color: #BEE2EB;
+}
+
+#colony-tooltip {
+    background-color: #0008;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 20;
+}
+
+.gray-panel {
+    background-color: #c2c5d0;
+    mix-blend-mode: color-burn;
+    border: 2px solid #45144B;
+    border-radius: 60px;
+    filter: drop-shadow(0px 2px 2px dimgray);
+}
+
+.gray-panel-content { 
+    padding: 60px 20px;
+}
+
+.filter-header-main {
+    font-size: 20pt;
+    font-weight: 500;
+    padding-left: 20px;
+}
+
+.filter-header-main + * {
+    padding-right: 20px;
+}
+
+.filter-header {
+    font-size: 18pt;
+    font-weight: 500;
+    padding-left: 20px;
+}
+
+.divided-option {
+    border-bottom: 2px solid #E9ADDF00;
+    cursor: pointer;
+    transition: border-bottom-color 200ms;
+}
+
+.divided-option:hover {
+    border-bottom: 2px solid hsl(310, 30%, 90%, 50%); 
+}
+
+.divided-option-selected {
+    border-bottom: 2px solid #E9ADDF; 
+}
+
+.divided-option-selected:hover {
+    border-bottom: 2px solid #E9ADDF; 
+}
+
+.pill-container {
+    background-color: #3A4041;
+    border: 4px solid #3A4041;
+    border-radius: 20px;
+}
+
+.pill-option {
+    padding: 4px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 200ms, color 200ms;
+}
+
+.pill-option:hover {
+    background-color: #5c6668;
+}
+
+.pill-option-selected {
+    background-color: #E4E9EA;
+    color: #2F3F4F;
+}
+
+.pill-option-selected:hover {
+    background-color: #ffffff;
+}
+
+.clear-filter {
+    font-size: 15pt;
+    color: black;
+    background-color: #FEFCFC;
+    padding: 5px 7px;
+    border-radius: 5px;
+    filter: drop-shadow(0px 0px 0px black);
+    transition: background-color 200ms, filter 200ms;
+}
+
+.clear-filter:hover {
+    background-color: #C0F7DF;
+    filter: drop-shadow(0px 2px 4px black);
+}
+
+.silhouette {
+    background-image: url("/Nidhi-ColonyViz-sil.png");
+    background-size: cover;
+}

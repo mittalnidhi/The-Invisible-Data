@@ -17,7 +17,7 @@
 	display: block;
 	z-index: 1;
 
-	background-image: url("image 131.png");
+	background-image: url("/image 131.png");
 	background-size: cover;
 
 	pointer-events: all;

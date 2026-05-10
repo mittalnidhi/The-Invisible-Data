@@ -1,0 +1,79 @@
+{
+    "Intense": [
+        "Hot Flashes & Night Sweat",
+        "Brain Fog",
+        "Depression",
+        "Anxiety",
+        "Anger",
+        "Frequent Urination"
+    ],
+    "Less Frequent": [
+        "Dry Mouth",
+        "Food Intolerance",
+        "Disorientation",
+        "Decreased Attention",
+        "Loss of Motivation",
+        "Low Self Esteem",
+        "Mental Fatigue"
+    ],
+    "High Frequency": [
+        "Fluctuation in Cycles",
+        "Hot Flashes & Night Sweat",
+        "Stress",
+        "Anxiety",
+        "Insomnia",
+        "Brain Fog" 
+    ],
+    "Early": [
+        "Fluctuation in Cycles",
+        "Breast Tenderness / Pain",
+        "Weight Gain",
+        "Migraine"
+    ],
+    "Late": [
+        "Hot Flashes & Night Sweat",
+        "Heart Palpitations",
+        "Chills",
+        "Temperature Sensitivity",
+        "Brain Fog",
+        "Depression",
+        "Insomnia",
+        "Fatigue",
+        "Vivid Dreams",
+        "Fluctuation in Cycles"
+    ],
+    "FSH": [
+        "Hot Flashes & Night Sweat",
+        "Fluctuation in Cycles"
+    ],
+    "Estrogen": [
+        "Vaginal Dryness & Irritation",
+        "Insomnia",
+        "Hot Flashes & Night Sweat",
+        "Brain Fog",
+        "Painful Intercourse",
+        "Mood Swing",
+        "Anxiety",
+        "Heart Palpitations",
+        "ADHD",
+        "Weight Gain",
+        "Bone Health",
+        "Frequent Urination",
+        "Breast Tenderness / Pain"
+    ],
+    "Progesterone": [
+        "Insomnia",
+        "Fluctuation in Cycles",
+        "Breast Tenderness / Pain",
+        "Migraine",
+        "Low/High Libido",
+        "Memory Lapse"
+    ],
+    "Testosterone": [
+        "Depression",
+        "Decreased Attention",
+        "Mood Swing",
+        "Low/High Libido",
+        "Bone Health"
+    ]
+}

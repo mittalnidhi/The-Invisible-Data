@@ -62,19 +62,19 @@ export default function Colony(props){
     }
 
     return (
-        <div className='relative colony-main flex flex-col h-full w-full z-30'>
+        <div className='relative colony-main flex flex-col h-[100vh] w-full z-30'>
             <ColonyNavBar />
             <div className='flex flex-row justify-between w-[90vw] h-[75vh] min-h-190 my-8 mx-auto text-white'>
-                <div className='relative flex flex-col h-full w-3/10 min-w-[480px]'>
+                <div className='relative flex flex-col h-fit w-3/10 min-w-[480px]'>
                     <div className='gray-panel-content flex flex-col h-full gap-4 z-20'>
-                        <div className='flex flex-row gap-4 items-baseline mb-3'>
+                        <div className='flex flex-row gap-4 items-baseline mb-8'>
                             <h5 className='filter-header-main'>Select a Symptom</h5>
                             <Ornament />
                         </div>           
                         <ColonySymptoms {...symptomsProps}/>
-                        <h5 className='filter-header mt-8'>View</h5>
+                        <h5 className='filter-header mt-16'>View</h5>
                         <ColonySelectorDivided {...viewProps}/>
-                        <div className='flex flex-row items-center mt-8'>
+                        <div className='flex flex-row items-center mt-16'>
                             <h5 className='filter-header'>Stage</h5>
                             <div className='ml-15'>
                                 <ColonySelectorPill {...stageProps}/>
@@ -87,7 +87,7 @@ export default function Colony(props){
                     <ColonySilhouette {...silhouetteProps}/>
                 </div>
                 <div className='relative flex flex-col h-9/10 w-3/10 min-w-[480px]'>
-                    <div className='relative h-full'>
+                    <div className='relative h-fit'>
                         <div className='gray-panel-content relative flex flex-col h-full gap-6 z-20'>
                             <div className='flex flex-row gap-4 items-baseline'>
                                 <h5 className='filter-header-main'>Hormones</h5>
@@ -97,7 +97,7 @@ export default function Colony(props){
                                 <HormoneGraph {...hormoneProps}/>
                             </div>                           
                             <ColonySelectorDivided {...hormoneProps}/>
-                            <div className='flex flex-row mt-2 gap-4 items-baseline'>
+                            <div className='flex flex-row mt-12 gap-4 items-baseline'>
                                 <h5 className='filter-header-main'>Age</h5>
                                 <Ornament />
                             </div>  

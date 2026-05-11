@@ -124,8 +124,8 @@ function plotPoints(svgElement, circlesGrp, linesGrp, tooltipElement, data, size
                 circles.transition()
                     .duration(200)
                     .attr('r', function(d){
-                        if(props.currentSymptom === d.name) return 6;
-                        return 4;
+                        if(props.currentSymptom === d.name) return 8;
+                        return 6;
                     })
             },
             function(update){

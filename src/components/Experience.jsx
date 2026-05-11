@@ -40,19 +40,19 @@ function projectPoint(point, camera, width, height) {
 }
 
 export default function Experience(props) {
-	function buildDust(count = 720) {
-		return Array.from({ length: count }, (_, i) => ({
-			x: lerp(-1050, 1050, seeded(i * 1.9 + 3)),
-			y: lerp(-620, 620, seeded(i * 2.7 + 5)),
-			z: lerp(
-				200,
-				-((props.storyData.length - 1) * PHASE_DEPTH) - 620,
-				seeded(i * 4.1 + 11),
-			),
-			size: lerp(0.18, 0.5, seeded(i * 5.9 + 13)),
-			alpha: lerp(0.02, 0.08, seeded(i * 7.1 + 17)),
-		}));
-	}
+	// function buildDust(count = 128) {
+	// 	return Array.from({ length: count }, (_, i) => ({
+	// 		x: lerp(-1050, 1050, seeded(i * 1.9 + 3)),
+	// 		y: lerp(-620, 620, seeded(i * 2.7 + 5)),
+	// 		z: lerp(
+	// 			200,
+	// 			-((props.storyData.length - 1) * PHASE_DEPTH) - 620,
+	// 			seeded(i * 4.1 + 11),
+	// 		),
+	// 		size: lerp(0.18, 0.5, seeded(i * 5.9 + 13)),
+	// 		alpha: lerp(0.02, 0.08, seeded(i * 7.1 + 17)),
+	// 	}));
+	// }
 
 	function buildGraphTrails(phase, phaseIndex, zCenter) {
 		const trailCount = phase.nodes.length + 8;
@@ -108,7 +108,7 @@ export default function Experience(props) {
 	function buildPhaseWorlds() {
 		return props.storyData.map((phase, phaseIndex) => {
 			const zCenter = -phaseIndex * PHASE_DEPTH;
-			const cloudCount = 300 + phase.nodes.length * 72;
+			const cloudCount = 100 + phase.nodes.length * 24;
 
 			const cloudNodes = Array.from({ length: cloudCount }, (_, i) => {
 				const s1 = seeded(phaseIndex * 10000 + i * 1.17 + 1);
@@ -213,7 +213,7 @@ export default function Experience(props) {
     const [scrollY, setScrollY] = useState(0);
 
     const worlds = useMemo(() => buildPhaseWorlds(), []);
-    const dust = useMemo(() => buildDust(), []);
+    // const dust = useMemo(() => buildDust(), []);
 	const [currentLabel, setCurrentLabel] = useState({label: 'none', stories: []});
 
 	const viewerProps = {
@@ -309,25 +309,25 @@ export default function Experience(props) {
             };
 
 			// Dust
-            for (let i = 0; i < dust.length; i += 1) {
-                const d = dust[i];
-                const p = projectPoint(
-                    {
-                        x: d.x + Math.sin(t * 0.06 + i) * 4,
-                        y: d.y + Math.cos(t * 0.05 + i * 0.2) * 3,
-                        z: d.z,
-                    },
-                    camera,
-                    viewport.width,
-                    viewport.height,
-                );
-                if (!p) continue;
+            // for (let i = 0; i < dust.length; i += 1) {
+            //     const d = dust[i];
+            //     const p = projectPoint(
+            //         {
+            //             x: d.x + Math.sin(t * 0.06 + i) * 4,
+            //             y: d.y + Math.cos(t * 0.05 + i * 0.2) * 3,
+            //             z: d.z,
+            //         },
+            //         camera,
+            //         viewport.width,
+            //         viewport.height,
+            //     );
+            //     if (!p) continue;
 
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, d.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0,125,255,1)`;
-                ctx.fill();
-            }
+            //     ctx.beginPath();
+            //     ctx.arc(p.x, p.y, d.size, 0, Math.PI * 2);
+            //     ctx.fillStyle = `rgba(0,125,255,1)`;
+            //     ctx.fill();
+            // }
 
             let activeWorld = worlds[0];
             let minDist = Infinity;
@@ -547,7 +547,7 @@ export default function Experience(props) {
 
         raf = requestAnimationFrame(draw);
         return () => cancelAnimationFrame(raf);
-    }, [viewport, scrollY, worlds, dust]);
+    }, [viewport, scrollY, worlds]);
 
 	useEffect(() => {
 		const canvas = canvasRef.current;

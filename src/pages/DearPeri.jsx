@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./DearPeri.css";
+import workshop1 from "../assets/workshop-1.jpg";
 
 const sections = [
   {
@@ -40,13 +41,20 @@ const sections = [
   },
 ];
 
+/* AUTO LOAD ALL WORKSHOP IMAGES */
+
+const photoModules = import.meta.glob(
+  "../assets/workshop-*.{jpg,jpeg,png,webp}",
+  {
+    eager: true,
+    import: "default",
+  }
+);
+
+const photos = Object.values(photoModules);
+
 export default function DearPeri() {
   const [activePhoto, setActivePhoto] = useState(0);
-
-  const photos = Array.from(
-    { length: 8 },
-    (_, i) => `/arc-assets/workshop-${i + 1}.jpg`
-  );
 
   const prevPhoto = () => {
     setActivePhoto((prev) =>
@@ -106,11 +114,11 @@ export default function DearPeri() {
         </h1>
 
         <p>
-          Collective stories, sense-making, workshop memories, and
-          personal data reflections.
+          Collective stories, sense-making, workshop memories,
+          and personal data reflections.
         </p>
 
-        {/* LANDSCAPE CAROUSEL */}
+        {/* LANDSCAPE PHOTO CAROUSEL */}
 
         <div className="dearPeriCarousel">
           <button
@@ -121,10 +129,12 @@ export default function DearPeri() {
           </button>
 
           <div className="carouselLandscape">
-            <img
-              src={photos[activePhoto]}
-              alt={`Workshop ${activePhoto + 1}`}
-            />
+            {photos.length > 0 && (
+              <img
+                src={photos[activePhoto]}
+                alt={`Workshop ${activePhoto + 1}`}
+              />
+            )}
           </div>
 
           <button
@@ -145,7 +155,10 @@ export default function DearPeri() {
 
       <section className="dearPeriTimeline">
         {sections.map((item, index) => (
-          <article className="timelineRow" key={item.title}>
+          <article
+            className="timelineRow"
+            key={item.title}
+          >
             {/* TOP CONNECTOR */}
 
             <div className="segmentTop">

@@ -20,7 +20,10 @@ const womenData = [
     years: 2,
     age: 36,
     ethnicity: "South Asian",
-    worstSymptom: "Hot flashes",
+    initialSymptom: "Irregular periods",
+    challengingSymptom: "Hot flashes",
+    mostPersistentSymptom: "low libido",
+    overlookedSymptoms: "Fatigue, brain fog",
     otherSymptoms: "Fatigue, brain fog, irregular periods",
   },
   {
@@ -28,7 +31,10 @@ const womenData = [
     years: 15,
     age: 56,
     ethnicity: "White",
-    worstSymptom: "Low libido",
+    initialSymptom: "Irregular periods",
+    challengingSymptom: "Hot flashes",
+    mostPersistentSymptom: "low libido",
+    overlookedSymptoms: "Fatigue, brain fog",
     otherSymptoms: "Dryness, insomnia, joint pain",
   },
   {
@@ -36,7 +42,10 @@ const womenData = [
     years: 5,
     age: 43,
     ethnicity: "Black",
-    worstSymptom: "Heavy bleeding",
+    initialSymptom: "Irregular periods",
+    challengingSymptom: "Hot flashes",
+    mostPersistentSymptom: "low libido",
+    overlookedSymptoms: "Fatigue, brain fog",
     otherSymptoms: "Cramps, anxiety, fatigue",
   },
   {
@@ -44,7 +53,10 @@ const womenData = [
     years: 8,
     age: 48,
     ethnicity: "Latina",
-    worstSymptom: "Night sweats",
+    initialSymptom: "Irregular periods",
+    challengingSymptom: "Hot flashes",
+    mostPersistentSymptom: "low libido",
+    overlookedSymptoms: "Fatigue, brain fog",
     otherSymptoms: "Sleep disruption, mood swings, headaches",
   },
   {
@@ -52,7 +64,10 @@ const womenData = [
     years: 1.5,
     age: 39,
     ethnicity: "East Asian",
-    worstSymptom: "Brain fog",
+    initialSymptom: "Irregular periods",
+    challengingSymptom: "Hot flashes",
+    mostPersistentSymptom: "low libido",
+    overlookedSymptoms: "Fatigue, brain fog",
     otherSymptoms: "Memory issues, fatigue, anxiety",
   },
   {
@@ -60,7 +75,10 @@ const womenData = [
     years: 12,
     age: 52,
     ethnicity: "Mixed ethnicity",
-    worstSymptom: "Insomnia",
+    initialSymptom: "Irregular periods",
+    challengingSymptom: "Hot flashes",
+    mostPersistentSymptom: "low libido",
+    overlookedSymptoms: "Fatigue, brain fog",
     otherSymptoms: "Night sweats, hot flashes, body aches",
   },
   {
@@ -68,7 +86,10 @@ const womenData = [
     years: 10,
     age: 50,
     ethnicity: "South Asian",
-    worstSymptom: "Joint pain",
+    initialSymptom: "Irregular periods",
+    challengingSymptom: "Hot flashes",
+    mostPersistentSymptom: "low libido",
+    overlookedSymptoms: "Fatigue, brain fog",
     otherSymptoms: "Fatigue, irregular periods, bloating",
   },
   {
@@ -76,7 +97,10 @@ const womenData = [
     years: 6,
     age: 45,
     ethnicity: "Middle Eastern",
-    worstSymptom: "Anxiety",
+    initialSymptom: "Irregular periods",
+    challengingSymptom: "Hot flashes",
+    mostPersistentSymptom: "low libido",
+    overlookedSymptoms: "Fatigue, brain fog",
     otherSymptoms: "Mood swings, brain fog, sleep disruption",
   },
   {
@@ -84,7 +108,10 @@ const womenData = [
     years: 9,
     age: 47,
     ethnicity: "Native American",
-    worstSymptom: "Vaginal dryness",
+    initialSymptom: "Irregular periods",
+    challengingSymptom: "Hot flashes",
+    mostPersistentSymptom: "low libido",
+    overlookedSymptoms: "Fatigue, brain fog",
     otherSymptoms: "Low libido, urinary urgency, fatigue",
   },
   {
@@ -92,7 +119,10 @@ const womenData = [
     years: 10,
     age: 51,
     ethnicity: "Black",
-    worstSymptom: "Hot flashes",
+    initialSymptom: "Irregular periods",
+    challengingSymptom: "Hot flashes",
+    mostPersistentSymptom: "low libido",
+    overlookedSymptoms: "Fatigue, brain fog",
     otherSymptoms: "Night sweats, fatigue, anxiety",
   },
 ];
@@ -357,8 +387,23 @@ function CollectiveSymptomGraph() {
             </div>
 
             <div>
-              <span>Worst Symptom</span>
-              <strong>{activeWoman.worstSymptom}</strong>
+              <span>Years in Perimenopause</span>
+              <strong>{activeWoman.years} yrs</strong>
+            </div>
+
+            <div>
+              <span>Initial Symptom</span>
+              <strong>{activeWoman.initialSymptom}</strong>
+            </div>
+
+            <div>
+              <span>Challenging Symptom</span>
+              <strong>{activeWoman.challengingSymptom}</strong>
+            </div>
+
+            <div>
+              <span>Most persistent Symptom</span>
+              <strong>{activeWoman.mostPersistentSymptom}</strong>
             </div>
 
             <div>
@@ -367,9 +412,11 @@ function CollectiveSymptomGraph() {
             </div>
 
             <div>
-              <span>Years in Perimenopause</span>
-              <strong>{activeWoman.years} yrs</strong>
+              <span>Symptoms Overlooked by Doctors</span>
+              <strong>{activeWoman.overlookedSymptoms}</strong>
             </div>
+
+            
           </div>
         </div>
       )}
@@ -377,12 +424,137 @@ function CollectiveSymptomGraph() {
   );
 }
 
+function TreatmentEffectivenessGrid() {
+  const [filter, setFilter] = useState("all");
+
+  const treatments = [
+  { name: "HRT", type: "medical" },
+  { name: "LEVOTHYROXINE", type: "medical" },
+  { name: "ANTI-DEPRESSANT", type: "medical" },
+  { name: "GLP-1", type: "medical" },
+  { name: "NSAID", type: "medical" },
+  { name: "STEROID JOINT INJECTION", type: "medical" },
+  { name: "IUD", type: "medical" },
+  { name: "CORTISOL SHOT", type: "medical" },
+  { name: "ACCUTANE", type: "medical" },
+
+  { name: "ACUPUNCTURE", type: "nonmedical" },
+  { name: "MAGNESIUM", type: "nonmedical" },
+  { name: "CBT", type: "nonmedical" },
+  { name: "YOGA", type: "nonmedical" },
+  { name: "WALKING", type: "nonmedical" },
+  { name: "SLEEP HYGIENE", type: "nonmedical" },
+  { name: "MEDITATION", type: "nonmedical" },
+  { name: "DIET CHANGE", type: "nonmedical" },
+];
+
+  const symptoms = [
+  "Hot Flash",
+  "Insomnia",
+  "Brain Fog",
+  "Weight Gain",
+  "Anxiety",
+  "Frozen Shoulder",
+  "Cramps",
+  "Body Aches",
+  "Breast Tenderness",
+  "Panic",
+];
+
+  const visibleTreatments =
+    filter === "all"
+      ? treatments
+      : treatments.filter((t) => t.type === filter);
+
+  return (
+    <section className="treatmentGridSection">
+      <div className="treatmentGridHeader">
+        <div>
+          <p>TREATMENT MAP</p>
+          <h2>Medical & non-medical treatments: effectiveness and side effects.</h2>
+        </div>
+
+        <div className="treatmentFilters">
+          <button
+            className={filter === "all" ? "active" : ""}
+            onClick={() => setFilter("all")}
+          >
+            All Treatments
+          </button>
+
+          <button
+            className={filter === "medical" ? "active" : ""}
+            onClick={() => setFilter("medical")}
+          >
+            Medical Treatments
+          </button>
+
+          <button
+            className={filter === "nonmedical" ? "active" : ""}
+            onClick={() => setFilter("nonmedical")}
+          >
+            Non-Medical Treatments
+          </button>
+        </div>
+      </div>
+
+      <div className="treatmentGridWrap">
+        <div className="treatmentGrid">
+
+          {symptoms.map((symptom, i) => (
+            <div className="treatmentGrid__xLabel" key={`symptom-${i}`}>
+              {symptom}
+            </div>
+          ))}
+
+          {visibleTreatments.map((treatment) => (
+            <React.Fragment key={treatment.name}>
+              <div className="treatmentGrid__yLabel">{treatment.name}</div>
+
+              {symptoms.map((_, i) => (
+                <div className="treatmentCell" key={`${treatment.name}-${i}`}>
+                  {/* leave empty, fill later */}
+                </div>
+              ))}
+            </React.Fragment>
+          ))}
+        </div>
+
+        <aside className="treatmentGuide">
+          <h3>Effectiveness Guide</h3>
+
+          <div className="guideItem">
+            <span className="effectBox effectBox--less" />
+            <p>Less effective<br />{"< 50% filled"}</p>
+          </div>
+
+          <div className="guideItem">
+            <span className="effectBox effectBox--medium" />
+            <p>Moderate effective<br />~ 50% filled</p>
+          </div>
+
+          <div className="guideItem">
+            <span className="effectBox effectBox--full" />
+            <p>Very effective<br />fully filled</p>
+          </div>
+
+          <div className="guideItem guideItem--sideEffect">
+            <span className="sideEffectDot" />
+            <p>Led to another symptom / side effect</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+
 export default function CollectiveData() {
   return (
     <main className="collectiveData">
       <nav className="nav">
         <Link to="/" className="nav__brand">
-          THE INVISIBLE DATA
+          INVISIBLE DATA
         </Link>
 
         <div className="nav__links">
@@ -393,9 +565,8 @@ export default function CollectiveData() {
       </nav>
 
       <section className="collectiveData__subnav">
-        <NavLink to="/collective-data">CollectiveData</NavLink>
+        <NavLink to="/collective-data">Collective Data</NavLink>
         <NavLink to="/insitu">Sense Making</NavLink>
-        <NavLink to="/workshop-photos">Workshop Photos</NavLink>
         <NavLink to="/personal-data">Engage with your own data</NavLink>
       </section>
 
@@ -407,6 +578,7 @@ export default function CollectiveData() {
       <RingGuide />
 
       <CollectiveSymptomGraph />
+      <TreatmentEffectivenessGrid />
 
       <section className="collectiveData__placeholder">
         <p>More collective data visualizations will continue here.</p>

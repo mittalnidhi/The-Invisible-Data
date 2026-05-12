@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import "./DearPeri.css";
 import workshop1 from "../assets/workshop-1.jpg";
 
+
 const sections = [
   {
     title: "Collective Data",
     statement: "Collective stories make invisible patterns visible.",
     subtext:
-      "Explore shared perimenopause experiences gathered from digital communities.",
+      "Explore shared perimenopause experiences gathered from participatory workshop (click).",
     route: "/collective-data",
     type: "data",
   },
@@ -17,31 +18,23 @@ const sections = [
     title: "In situ Sense Making",
     statement: "Bodies make meaning through everyday life.",
     subtext:
-      "Understand how symptoms are interpreted through relationships, identity, work, autonomy, body image, dismissal, sexual life, and medical costs.",
+      "Understand how symptoms are interpreted through relationships, identity, work, autonomy, body image, dismissal, sexual life, and medical costs (click).",
     route: "/insitu",
     type: "sense",
-  },
-
-  {
-    title: "Workshop Photos",
-    statement: "Care often begins through conversation.",
-    subtext:
-      "View visual traces from participatory workshops and collective reflection.",
-    route: "/workshop-photos",
-    type: "workshop",
   },
 
   {
     title: "Collect Your Own Data",
     statement: "Personal data can become body literacy.",
     subtext:
-      "Begin mapping your own symptoms, triggers, patterns, and care journey.",
+      "Begin mapping your own symptoms, triggers, patterns, and care journey (click).",
     route: "/personal-data",
     type: "collect",
   },
+
 ];
 
-/* AUTO LOAD ALL WORKSHOP IMAGES */
+/* auto load all workshop images */
 
 const photoModules = import.meta.glob(
   "../assets/workshop-*.{jpg,jpeg,png,webp}",
@@ -70,7 +63,7 @@ export default function DearPeri() {
 
   return (
     <main className="dearPeri">
-      {/* NAVBAR */}
+      {/* navbar */}
 
       <nav className="nav">
         <button
@@ -104,7 +97,7 @@ export default function DearPeri() {
         </div>
       </nav>
 
-      {/* HERO */}
+      {/* hero */}
 
       <section className="dearPeriHero">
         <h1>
@@ -118,7 +111,7 @@ export default function DearPeri() {
           and personal data reflections.
         </p>
 
-        {/* LANDSCAPE PHOTO CAROUSEL */}
+        {/* landscape photo carousel */}
 
         <div className="dearPeriCarousel">
           <button
@@ -145,13 +138,10 @@ export default function DearPeri() {
           </button>
         </div>
 
-        <div className="scrollCue">
-          <span>SCROLL</span>
-          <i />
-        </div>
+        
       </section>
 
-      {/* TIMELINE */}
+      {/* timeline */}
 
       <section className="dearPeriTimeline">
         {sections.map((item, index) => (
@@ -159,15 +149,15 @@ export default function DearPeri() {
             className="timelineRow"
             key={item.title}
           >
-            {/* TOP CONNECTOR */}
+            {/* top connector */}
 
             <div className="segmentTop">
-              <div className="segmentDot" />
+              
               <div className="segmentLine" />
               <div className="segmentDot" />
             </div>
 
-            {/* CLICKABLE CIRCLE */}
+            {/* clickable carousel */}
 
             <Link
               to={item.route}
@@ -180,20 +170,20 @@ export default function DearPeri() {
               </span>
             </Link>
 
-            {/* TEXT */}
+            {/* text */}
 
             <div className="timelineText">
               <h2>{item.statement}</h2>
               <p>{item.subtext}</p>
             </div>
 
-            {/* BOTTOM CONNECTOR */}
+            {/* bottom connector */}
 
             {index !== sections.length - 1 && (
               <div className="segmentBottom">
                 <div className="segmentDot" />
                 <div className="segmentLine" />
-                <div className="segmentDot" />
+                
               </div>
             )}
           </article>
@@ -203,9 +193,8 @@ export default function DearPeri() {
   );
 }
 
-/* -------------------------------- */
-/* MAIN SWITCHER */
-/* -------------------------------- */
+/* main switcher */
+
 
 function CircleAnimation({ type }) {
   if (type === "data") return <CollectiveDataArt />;
@@ -214,9 +203,9 @@ function CircleAnimation({ type }) {
   return <CollectOwnDataArt />;
 }
 
-/* -------------------------------- */
-/* COLLECTIVE DATA */
-/* -------------------------------- */
+
+/* collective data */
+
 
 function CollectiveDataArt() {
   const words = [
@@ -259,9 +248,9 @@ function CollectiveDataArt() {
   );
 }
 
-/* -------------------------------- */
-/* IN SITU */
-/* -------------------------------- */
+
+/* in-situ part */
+
 
 function SenseMakingArt() {
   const words = [
@@ -295,9 +284,9 @@ function SenseMakingArt() {
   );
 }
 
-/* -------------------------------- */
-/* WORKSHOP */
-/* -------------------------------- */
+
+/* workshop */
+
 
 function WorkshopArt() {
   return (
@@ -333,24 +322,54 @@ function WorkshopArt() {
   );
 }
 
-/* -------------------------------- */
-/* PERSONAL DATA */
-/* -------------------------------- */
+/* personal data */
+
 
 function CollectOwnDataArt() {
+  const words = [
+    "food",
+    "triggers",
+    "avoid",
+    "include",
+    "mapping",
+    "pattern",
+    "community",
+    "care team",
+    "my journey",
+    "data",
+  ];
+
   return (
-    <div className="circleArt circleArt--collect">
-      <div className="phone">
+    <div className="circleArt circleArt--collectNew">
+      <div className="paper paper--one">
+        <span />
         <span />
         <span />
         <span />
       </div>
 
-      <div className="phoneCircle" />
+      <div className="paper paper--two">
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
 
-      <div className="collectRing ring1" />
-      <div className="collectRing ring2" />
-      <div className="collectRing ring3" />
+      <div className="paper paper--three">
+        <span />
+        <span />
+        <span />
+      </div>
+
+      <div className="penMain">
+        <span />
+      </div>
+
+      {words.map((word, i) => (
+        <em key={word} className={`collectWord collectWord--${i + 1}`}>
+          {word}
+        </em>
+      ))}
     </div>
   );
 }

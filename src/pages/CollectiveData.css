@@ -236,16 +236,19 @@ body {
 
 /* graph */
 .collectiveGraphBlock {
-  width: 100%;
-  min-height: 760px;
-  display: flex;
-  flex-direction: column;
+  width: min(1180px, 92vw);
+  min-height: 560px;
+
+  display: grid;
+  grid-template-columns: 480px 1fr;
   align-items: center;
-  margin-top: 40px; /* more gap before graph */
+  gap: 56px;
+
+  margin: 40px auto 0;
 }
 
 .d3SymptomGraph {
-  width: min(76vw, 560px);
+  width: 460px;
   height: auto;
   overflow: visible;
 }
@@ -342,9 +345,12 @@ body {
 
 /* hover info*/
 .hoverInfoPanel {
-  width: min(900px, 86vw);
-  margin-top: 42px;
-  text-align: center;
+  width: 100%;
+  min-height: 280px;
+
+  margin-top: 0;
+  text-align: left;
+
   animation: fadeInInfo 0.2s ease forwards;
 }
 
@@ -362,9 +368,9 @@ body {
 
 .hoverInfoPanel__line {
   height: 1px;
-  width: min(420px, 64vw);
+  width: 100%;
   background: rgba(241, 243, 245, 0.35);
-  margin: 0 auto 12px;
+  margin: 0 0 18px;
 }
 
 .hoverInfoPanel h2 {
@@ -431,16 +437,227 @@ body {
     grid-template-columns: repeat(2, auto);
   }
 
-  .d3SymptomGraph {
-    width: min(94vw, 520px);
-  }
-
-  .hoverInfoPanel__grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
   .collectiveGraphBlock {
-    min-height: 820px;
+  width: 92vw;
+  min-height: 820px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.d3SymptomGraph {
+  width: min(88vw, 420px);
+}
+
+.hoverInfoPanel {
+  width: min(88vw, 520px);
+  text-align: center;
+}
+
+.hoverInfoPanel__grid {
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+}
+/* treatment effectiveness grid */
+
+.treatmentGridSection {
+  width: min(1180px, 92vw);
+  margin: 120px auto 0;
+}
+
+.treatmentGridHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+  margin-bottom: 36px;
+}
+
+.treatmentGridHeader p {
+  margin: 0 0 10px;
+  color: rgba(241, 243, 245, 0.65);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+}
+
+.treatmentGridHeader h2 {
+  margin: 0;
+  max-width: 680px;
+  color: #f1f3f5;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: clamp(20px, 2.2vw, 30px);
+  line-height: 1.25;
+}
+
+.treatmentFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 220px;
+}
+
+.treatmentFilters button {
+  border: 1px solid rgba(241, 243, 245, 0.45);
+  background: transparent;
+  color: #f1f3f5;
+  padding: 14px 18px;
+  border-radius: 999px;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.treatmentFilters button.active,
+.treatmentFilters button:hover {
+  background: #f1f3f5;
+  color: #06111f;
+}
+
+.treatmentGridWrap {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 44px;
+  align-items: start;
+}
+
+.treatmentGrid {
+  display: grid;
+  grid-template-columns: 170px repeat(10, 64px);
+  grid-template-rows: repeat(17, 54px) 120px;
+  align-items: stretch;
+}
+
+/* empty top-left space */
+.treatmentGrid__corner {
+  display: none;
+}
+
+/* Y axis treatments */
+.treatmentGrid__yLabel {
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding-right: 16px;
+
+  color: #f1f3f5;
+  font-size: 11px;
+  line-height: 1.15;
+  text-align: right;
+
+  transform: rotate(-28deg);
+  transform-origin: right center;
+
+  border: 0;
+}
+
+/* X axis symptoms */
+.treatmentGrid__xLabel {
+  grid-row: 18;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding-top: 14px;
+
+  color: #f1f3f5;
+  font-size: 10px;
+  line-height: 1.1;
+  text-align: left;
+
+  transform: rotate(-35deg);
+  transform-origin: top center;
+
+  border: 0;
+}
+
+/* grid cells */
+.treatmentCell {
+  position: relative;
+  width: 64px;
+  height: 54px;
+
+  border-right: 1px solid rgba(241, 243, 245, 0.45);
+  border-bottom: 1px solid rgba(241, 243, 245, 0.45);
+
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* add top and left border only for actual grid */
+.treatmentCell:nth-of-type(12n + 12) {
+  border-left: 1px solid rgba(241, 243, 245, 0.45);
+}
+
+.treatmentCell:nth-of-type(-n + 11) {
+  border-top: 1px solid rgba(241, 243, 245, 0.45);
+}
+
+.treatmentGuide {
+  border: 1px solid rgba(241, 243, 245, 0.35);
+  padding: 24px;
+  border-radius: 18px;
+}
+
+.treatmentGuide h3 {
+  margin: 0 0 22px;
+  color: #f1f3f5;
+  font-size: 14px;
+}
+
+.guideItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.guideItem p {
+  margin: 0;
+  color: rgba(241, 243, 245, 0.82);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.effectBox {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(241, 243, 245, 0.55);
+  flex-shrink: 0;
+}
+
+.effectBox--less {
+  background: linear-gradient(135deg, #ff2b2b 0 28%, transparent 28%);
+}
+
+.effectBox--medium {
+  background: linear-gradient(135deg, #ff2b2b 0 50%, transparent 50%);
+}
+
+.effectBox--full {
+  background: #ff2b2b;
+}
+
+.sideEffectDot {
+  width: 18px;
+  height: 18px;
+  background: #18b83f;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .treatmentGridHeader,
+  .treatmentGridWrap {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .treatmentGrid {
+    overflow-x: auto;
+    min-width: 860px;
   }
 }

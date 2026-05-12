@@ -8,7 +8,6 @@ import DearPeri from "./pages/DearPeri";
 
 import CollectiveData from "./pages/CollectiveData";
 import Insitu from "./pages/Insitu";
-import WorkshopPhotos from "./pages/WorkshopPhotos";
 import PersonalData from "./pages/PersonalData";
 import Experience from "./components/Experience";
 import Cluster from "./components/Cluster";
@@ -47,11 +46,6 @@ export default function App() {
         <Route
           path="/insitu"
           element={<Insitu />}
-        />
-
-        <Route
-          path="/workshop-photos"
-          element={<WorkshopPhotos />}
         />
 
         <Route

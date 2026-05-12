@@ -1036,3 +1036,172 @@ body {
   mix-blend-mode: multiply;
   opacity: 0.9;
 }
+/* COLLECT YOUR OWN DATA ART */
+
+.circleArt--collectNew {
+  position: relative;
+  width: 78%;
+  height: 78%;
+  font-family: "Cascadia Code", "Courier New", monospace;
+}
+
+/* fixed papers */
+
+.paper {
+  position: absolute;
+  border: 1.5px solid #051c41;
+  background: rgba(255, 255, 255, 0.14);
+  box-sizing: border-box;
+}
+
+.paper span {
+  display: block;
+  height: 1px;
+  background: #051c41;
+  margin: 10px 9px;
+  opacity: 0.65;
+}
+
+.paper--one {
+  width: 66px;
+  height: 86px;
+  left: 16%;
+  top: 30%;
+}
+
+.paper--two {
+  width: 62px;
+  height: 82px;
+  right: 16%;
+  top: 30%;
+}
+
+.paper--three {
+  width: 74px;
+  height: 54px;
+  left: 50%;
+  bottom: 18%;
+  transform: translateX(-50%);
+}
+
+/* pen */
+
+.penMain {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 8px;
+  height: 108px;
+  transform: translate(-50%, -50%);
+
+  background: #051c41;
+  border-radius: 8px;
+}
+
+.penMain::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 16px;
+  height: 18px;
+  transform: translateX(-50%);
+  border-radius: 7px 7px 3px 3px;
+  background: #051c41;
+}
+
+.penMain::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 16px solid #051c41;
+}
+
+.penMain span {
+  position: absolute;
+  right: -8px;
+  top: 12px;
+  width: 7px;
+  height: 42px;
+  border: 1.3px solid #051c41;
+  border-left: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* animated words only */
+
+.collectWord {
+  position: absolute;
+  font-style: normal;
+  font-size: clamp(7px, 0.75vw, 11px);
+  color: #051c41;
+  white-space: nowrap;
+  opacity: 0;
+  animation: typeWord 9s steps(14, end) infinite;
+}
+
+.collectWord--1 {
+  top: 6%;
+  left: 38%;
+  animation-delay: 0s;
+}
+
+.collectWord--2 {
+  top: 18%;
+  left: 10%;
+  animation-delay: 0.5s;
+}
+
+.collectWord--3 {
+  top: 18%;
+  right: 12%;
+  animation-delay: 1s;
+}
+
+.collectWord--4 {
+  top: 45%;
+  left: 1%;
+  animation-delay: 1.5s;
+}
+
+.collectWord--5 {
+  top: 45%;
+  right: 0;
+  animation-delay: 2s;
+}
+
+.collectWord--6 {
+  bottom: 28%;
+  left: 4%;
+  animation-delay: 2.5s;
+}
+
+.collectWord--7 {
+  bottom: 25%;
+  right: 2%;
+  animation-delay: 3s;
+}
+
+.collectWord--8 {
+  bottom: 8%;
+  left: 10%;
+  animation-delay: 3.5s;
+}
+
+.collectWord--9 {
+  bottom: 8%;
+  right: 8%;
+  animation-delay: 4s;
+}
+
+.collectWord--10 {
+  top: 62%;
+  left: 45%;
+  animation-delay: 4.5s;
+}

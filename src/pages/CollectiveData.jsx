@@ -598,33 +598,47 @@ const getCell = (treatment, symptom) => {
           ))}
         </div>
 
-          <div className="treatmentMatrix">
+          <div
+            className="treatmentMatrix"
+            style={{
+              gridTemplateColumns: `repeat(${symptoms.length}, 72px)`,
+            }}
+          >
             {visibleTreatments.map((treatment) =>
-              symptoms.map((_, i) => (
-                <div
-                  className={`treatmentCell ${
-                    getCell(treatment.name, symptoms[i])?.level === "high"
-                      ? "treatmentCell--high"
-                      : getCell(treatment.name, symptoms[i])?.level === "medium"
-                      ? "treatmentCell--medium"
-                      : getCell(treatment.name, symptoms[i])?.level === "low"
-                      ? "treatmentCell--low"
-                      : ""
-                  }`}
-                  key={`${treatment.name}-${i}`}
-                >
-                  {getCell(treatment.name, symptoms[i])?.sideEffect && (
-                    <span
-                      className="treatmentSideEffectDot"
-                      title={getCell(treatment.name, symptoms[i]).sideEffect}
-                    />
-                  )}
-                </div>
-              ))
+              symptoms.map((symptom) => {
+                const cell = getCell(treatment.name, symptom);
+
+                return (
+                  <div
+                    key={`${treatment.name}-${symptom}`}
+                    className={`treatmentCell ${
+                      cell?.level === "high"
+                        ? "treatmentCell--high"
+                        : cell?.level === "medium"
+                        ? "treatmentCell--medium"
+                        : cell?.level === "low"
+                        ? "treatmentCell--low"
+                        : ""
+                    }`}
+                  >
+                    {cell?.sideEffect && (
+                      <span
+                        className="treatmentSideEffectDot"
+                        title={cell.sideEffect}
+                      />
+                    )}
+                  </div>
+                );
+              })
             )}
           </div>
 
-          <div className="treatmentXAxis">
+          <div
+            className="treatmentXAxis"
+            style={{
+              gridTemplateColumns: `repeat(${symptoms.length}, 72px)`,
+            }}
+          >
             {symptoms.map((symptom, i) => (
               <div className="treatmentGrid__xLabel" key={`symptom-${i}`}>
                 {symptom}

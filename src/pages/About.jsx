@@ -411,26 +411,37 @@ export default function About() {
       className="about"
       onMouseMove={(e) => setMouse({ x: e.clientX, y: e.clientY })}
     >
-      <nav className="aboutNav">
-        <button className="aboutNav__button" onClick={() => navigate("/")}>
-          THE INVISIBLE DATA
+      <nav className="nav">
+      <button
+        className="nav-button nav-title-button"
+        onClick={() => navigate("/")}
+      >
+        INVISIBLE DATA
+      </button>
+
+      <div className="nav-right">
+        <button
+          className="nav-button"
+          onClick={() => navigate("/about")}
+        >
+          ABOUT
         </button>
 
-        <div className="aboutNav__right">
-          <button className="aboutNav__button" onClick={() => navigate("/about")}>
-            ABOUT
-          </button>
-          <button className="aboutNav__button" onClick={() => navigate("/path")}>
-            PATH
-          </button>
-          <button
-            className="aboutNav__button"
-            onClick={() => navigate("/dear-peri")}
-          >
-            DEAR PERI
-          </button>
-        </div>
-      </nav>
+        <button
+          className="nav-button"
+          onClick={() => navigate("/path")}
+        >
+          PATH
+        </button>
+
+        <button
+          className="nav-button"
+          onClick={() => navigate("/dear-peri")}
+        >
+          DEAR PERI
+        </button>
+      </div>
+    </nav>
 
       <section ref={stageRef} className="about__stage">
         <div className="about__leftDots" aria-hidden="true">

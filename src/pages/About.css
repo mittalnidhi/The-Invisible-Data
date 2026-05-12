@@ -16,53 +16,106 @@ body {
 
 /* navbar */
 
-.aboutNav {
+/* navbar */
+
+.nav {
   position: fixed;
   top: clamp(16px, 3vh, 28px);
-  left: clamp(16px, 3vw, 32px);
-  right: clamp(16px, 3vw, 32px);
+  left: clamp(16px, 1.7vw, 32px);
+  right: clamp(16px, 1.7vw, 32px);
   z-index: 9999;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: clamp(14px, 4vw, 60px);
 
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(12px, 1.35vw, 18px);
   letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
+
   color: #ffffff;
 }
 
-.aboutNav__right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: clamp(12px, 3vw, 34px);
-  margin-left: auto;
-}
-
-.aboutNav__button {
-  background: transparent;
+.nav-button {
   border: 0;
+  background: transparent;
+  color: #ffffff;
+
+  font: inherit;
+  cursor: pointer;
+
   padding: 0;
   margin: 0;
 
-  color: #ffffff;
-  cursor: pointer;
-
-  font: inherit;
-  text-transform: uppercase;
   white-space: nowrap;
-
-  outline: none;
-  box-shadow: none;
-  appearance: none;
-  -webkit-appearance: none;
 }
 
-.aboutNav__button:hover {
+.nav-button:hover {
   color: #bebfc1;
+}
+
+.nav-title-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-right {
+  display: flex;
+  gap: clamp(12px, 3vw, 34px);
+}
+
+/* nav typewriter */
+
+/* nav typewriter */
+
+.nav-typing .type-nav {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+
+  width: 0ch;
+
+  animation-fill-mode: forwards;
+  animation-timing-function: steps(var(--chars), end);
+}
+
+.type-title {
+  --chars: 15;
+  animation-name: typeNav;
+  animation-duration: 1s;
+  animation-delay: 0s;
+}
+
+.type-about {
+  --chars: 5;
+  animation-name: typeNav;
+  animation-duration: 0.45s;
+  animation-delay: 1.3s;
+}
+
+.type-path {
+  --chars: 4;
+  animation-name: typeNav;
+  animation-duration: 0.38s;
+  animation-delay: 1.8s;
+}
+
+.type-dear {
+  --chars: 9;
+  animation-name: typeNav;
+  animation-duration: 0.7s;
+  animation-delay: 2.25s;
+}
+
+@keyframes typeNav {
+  from {
+    width: 0ch;
+  }
+
+  to {
+    width: calc(var(--chars) * 1ch);
+  }
 }
 
 /* page */

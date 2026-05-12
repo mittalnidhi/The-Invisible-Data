@@ -48,7 +48,7 @@ export default function Path() {
     };
   }, []);
 
-  const cardsVisible = Math.max(0, Math.min(1, (scrollP - 0.45) / 0.3));
+      const cardsVisible = 1;
 
   const cards = [
     {
@@ -73,22 +73,31 @@ export default function Path() {
 
   return (
     <main className="path">
-      <nav className="aboutNav">
-        <button className="aboutNav__button" onClick={() => navigate("/")}>
-          THE INVISIBLE DATA
+      <nav className="nav">
+        <button
+          className="nav-button nav-title-button"
+          onClick={() => navigate("/")}
+        >
+          INVISIBLE DATA
         </button>
 
-        <div className="aboutNav__right">
-          <button className="aboutNav__button" onClick={() => navigate("/about")}>
+        <div className="nav-right">
+          <button
+            className="nav-button"
+            onClick={() => navigate("/about")}
+          >
             ABOUT
           </button>
 
-          <button className="aboutNav__button" onClick={() => navigate("/path")}>
+          <button
+            className="nav-button"
+            onClick={() => navigate("/path")}
+          >
             PATH
           </button>
 
           <button
-            className="aboutNav__button"
+            className="nav-button"
             onClick={() => navigate("/dear-peri")}
           >
             DEAR PERI
@@ -166,7 +175,7 @@ export default function Path() {
                 className="pathCard"
                 onClick={() => navigate(card.route)}
                 style={{
-                  transform: `translate(${x}px, ${y}px) scale(${scale})`,
+                  transform: `translate(${offsets[index]}px, 0px) scale(1)`,
                 }}
               >
                 <span className="pathCard__inner">

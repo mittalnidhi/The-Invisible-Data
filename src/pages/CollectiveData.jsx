@@ -448,18 +448,34 @@ function TreatmentEffectivenessGrid() {
   { name: "DIET CHANGE", type: "nonmedical" },
 ];
 
-  const symptoms = [
-  "Hot Flash",
-  "Insomnia",
-  "Brain Fog",
-  "Weight Gain",
-  "Anxiety",
-  "Frozen Shoulder",
-  "Cramps",
-  "Body Aches",
-  "Breast Tenderness",
-  "Panic",
-];
+  const symptomGroups = {
+  common: [
+    "Hot Flashes",
+    "Insomnia",
+    "Brain Fog",
+    "Weight Gain",
+    "Anxiety",
+    "Mood Swings",
+  ],
+  pain: [
+    "Frozen Shoulder",
+    "Cramps",
+    "Body Aches",
+    "Back Pain",
+    "Breast Tenderness",
+  ],
+  other: [
+    "Panic",
+    "IBS",
+    "Skin",
+    "Fatigue",
+    "Stomach Aches",
+  ],
+};
+
+const [symptomFilter, setSymptomFilter] = useState("common");
+
+const symptoms = symptomGroups[symptomFilter];
 
   const visibleTreatments =
     filter === "all"
@@ -470,6 +486,44 @@ function TreatmentEffectivenessGrid() {
   "HRT-Insomnia": { level: "high" },
   "ACUPUNCTURE-Brain Fog": { level: "medium" },
   "MAGNESIUM-Insomnia": { level: "medium", sideEffect: "Depression" },
+  /* ANTI DEPRESSANTS */
+
+"ANTI-DEPRESSANT-Panic": {
+  level: "high",
+  amount: 1,
+},
+
+"ANTI-DEPRESSANT-Anxiety": {
+  level: "high",
+  amount: 0.8,
+},
+
+/* HRT */
+
+"HRT-Hot Flashes": {
+  level: "high",
+  amount: 1,
+},
+
+"HRT-Brain Fog": {
+  level: "medium",
+  amount: 0.5,
+},
+
+"HRT-Insomnia": {
+  level: "high",
+  amount: 1,
+},
+
+"HRT-Weight Gain": {
+  level: "low",
+  amount: 0.3,
+},
+
+"HRT-Breast Tenderness": {
+  level: "low",
+  amount: 0.2,
+},
 };
 
 const getCell = (treatment, symptom) => {
@@ -485,6 +539,7 @@ const getCell = (treatment, symptom) => {
         </div>
 
         <div className="treatmentFilters">
+          <p className="filterLabel">FILTER TREATMENTS</p>
           <button
             className={filter === "all" ? "active" : ""}
             onClick={() => setFilter("all")}
@@ -506,6 +561,31 @@ const getCell = (treatment, symptom) => {
             Non-Medical Treatments
           </button>
         </div>
+
+        <div className="symptomFilters">
+        <p>Filter symptoms</p>
+
+        <button
+          className={symptomFilter === "common" ? "active" : ""}
+          onClick={() => setSymptomFilter("common")}
+        >
+          Common
+        </button>
+
+        <button
+          className={symptomFilter === "pain" ? "active" : ""}
+          onClick={() => setSymptomFilter("pain")}
+        >
+          Pain / Body
+        </button>
+
+        <button
+          className={symptomFilter === "other" ? "active" : ""}
+          onClick={() => setSymptomFilter("other")}
+        >
+          Other
+        </button>
+      </div>
       </div>
 
       <div className="treatmentGridWrap">
@@ -527,6 +607,8 @@ const getCell = (treatment, symptom) => {
                       ? "treatmentCell--high"
                       : getCell(treatment.name, symptoms[i])?.level === "medium"
                       ? "treatmentCell--medium"
+                      : getCell(treatment.name, symptoms[i])?.level === "low"
+                      ? "treatmentCell--low"
                       : ""
                   }`}
                   key={`${treatment.name}-${i}`}

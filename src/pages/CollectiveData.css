@@ -465,6 +465,7 @@ body {
 .treatmentGridSection {
   width: min(1180px, 92vw);
   margin: 120px auto 0;
+  min-height: 1200px;
 }
 
 .treatmentGridHeader {
@@ -497,8 +498,8 @@ body {
   gap: 12px;
   min-width: 220px;
   position:relative;
-  top:190px;
-  right:20px;
+  top:202px;
+  right:50px;
 }
 
 .treatmentFilters button {
@@ -561,7 +562,7 @@ body {
   grid-row: 1;
 
   display: grid;
-  grid-template-columns: repeat(10, 72px);
+  grid-template-columns: repeat(6, 72px);
   grid-auto-rows: 62px;
 
   border-top: 1px solid rgba(5, 28, 65, 0.45);
@@ -583,7 +584,7 @@ body {
   grid-row: 2;
 
   display: grid;
-  grid-template-columns: repeat(10, 72px);
+  grid-template-columns: repeat(6, 72px);
 
   padding-top: 22px;
 }
@@ -671,10 +672,13 @@ body {
 }
 
 .treatmentGuide {
-  margin-top: 225px;
+  margin-top: 240px;
   border: 1px solid rgba(241, 243, 245, 0.35);
   padding: 23px;
   border-radius: 18px;
+  right:80px;
+  position: absolute;
+  right:200px;
 }
 
 .treatmentGuide h3 {
@@ -739,7 +743,7 @@ body {
 }
 .treatmentMatrix {
   display: grid !important;
-  grid-template-columns: repeat(10, 72px) !important;
+  grid-template-columns: repeat(6, 72px) !important;
   grid-auto-rows: 62px !important;
   gap: 0 !important;
   row-gap: 0 !important;
@@ -757,18 +761,34 @@ body {
   border-right: 2px solid rgba(5, 28, 65, 0.35) !important;
   border-bottom: 2px solid rgba(5, 28, 65, 0.35) !important;
 }
-.treatmentCell--high::before {
+.treatmentCell--high::before,
+.treatmentCell--medium::before,
+.treatmentCell--low::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #ff2b2b 0 90%, transparent 90%);
 }
 
+/* 100% */
+
+.treatmentCell--high::before {
+  background: #ff2b2b;
+}
+
+/* 50% */
+
 .treatmentCell--medium::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #ff2b2b 0 50%, transparent 50%);
+  background: #ff2b2b;
+
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+/* 20-30% */
+
+.treatmentCell--low::before {
+  background: #ffb26b;
+
+  clip-path: polygon(0 0, 38% 0, 0 38%);
 }
 
 .treatmentSideEffectDot {
@@ -782,4 +802,44 @@ body {
   background: #7c3cff;
   border-radius: 60%;
   z-index: 5;
+}
+.symptomFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position:absolute;
+  top: 1620px;
+  left: 750px;
+}
+
+.symptomFilters p {
+  margin: 0 0 6px;
+  color: rgba(241, 243, 245, 0.65);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.symptomFilters button {
+  border: 1px solid rgba(241, 243, 245, 0.45);
+  background: transparent;
+  color: #f1f3f5;
+  padding: 14px 18px;
+  border-radius: 999px;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.symptomFilters button.active,
+.symptomFilters button:hover {
+  background: #f1f3f5;
+  color: #06111f;
+}
+.treatmentGridArea {
+  overflow: visible;
+}
+
+.treatmentGridWrap {
+  overflow: visible;
 }

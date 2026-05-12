@@ -49,29 +49,33 @@ canvas {
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.35;
   }
 }
 
-/*  caption*/
+/* caption */
 
 .caption {
   position: fixed;
   left: 50%;
-  bottom: 27vh; 
+  top: 74%;
+  transform: translate(-50%, -50%);
+
   z-index: 20;
 
-  width: min(88vw, 1100px);
+  width: min(90vw, 1200px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
   gap: 9px;
 
-  transform: translateX(-50%);
-
   color: #b1b2b2;
+
   font-family: "Cascadia Code", "Courier New", monospace;
 
   font-size: clamp(20px, 2.8vw, 44px);
@@ -79,6 +83,7 @@ canvas {
 
   letter-spacing: 0.14em;
   line-height: 1.2;
+
   text-align: center;
 
   pointer-events: none;
@@ -115,6 +120,12 @@ canvas {
   color: #bebfc1;
 }
 
+.nav-title-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-right {
   display: flex;
   gap: clamp(12px, 3vw, 34px);
@@ -147,8 +158,57 @@ canvas {
   line-height: 1.1;
   letter-spacing: -0.02em;
 
-  transform: translateX(-50%);
+  transform: translate(-50%, 0);
   transition: transform 0.35s ease-out, color 0.35s ease-out;
+}
+
+/* nav typewriter */
+
+.nav-typing .type-nav {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0ch;
+  animation-fill-mode: forwards;
+  animation-timing-function: steps(var(--chars), end);
+}
+
+.type-title {
+  --chars: 15;
+  animation-name: typeNav;
+  animation-duration: 1s;
+  animation-delay: 0s;
+}
+
+.type-about {
+  --chars: 6;
+  animation-name: typeNav;
+  animation-duration: 0.45s;
+  animation-delay: 1.3s;
+}
+
+.type-path {
+  --chars: 5;
+  animation-name: typeNav;
+  animation-duration: 0.38s;
+  animation-delay: 1.8s;
+}
+
+.type-dear {
+  --chars: 10;
+  animation-name: typeNav;
+  animation-duration: 0.7s;
+  animation-delay: 2.25s;
+}
+
+@keyframes typeNav {
+  from {
+    width: 0ch;
+  }
+
+  to {
+    width: calc(var(--chars) * 1ch);
+  }
 }
 
 /* Responsive */
@@ -186,52 +246,5 @@ canvas {
 @media (max-height: 620px) {
   .nav {
     top: 12px;
-  }
-}
-/* nav typewriter */
-
-.nav-typing .type-nav {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0ch;
-  animation-fill-mode: forwards;
-  animation-timing-function: steps(var(--chars), end);
-}
-
-.type-title {
-  --chars: 18;
-  animation-name: typeNav;
-  animation-duration: 1.25s;
-  animation-delay: 0s;
-}
-
-.type-about {
-  --chars: 5;
-  animation-name: typeNav;
-  animation-duration: 0.45s;
-  animation-delay: 1.3s;
-}
-
-.type-path {
-  --chars: 4;
-  animation-name: typeNav;
-  animation-duration: 0.38s;
-  animation-delay: 1.8s;
-}
-
-.type-dear {
-  --chars: 9;
-  animation-name: typeNav;
-  animation-duration: 0.7s;
-  animation-delay: 2.25s;
-}
-
-@keyframes typeNav {
-  from {
-    width: 0ch;
-  }
-  to {
-    width: calc(var(--chars) * 1ch);
   }
 }

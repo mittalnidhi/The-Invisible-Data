@@ -169,8 +169,12 @@ export default function LandingJourney() {
       let fontSize = 18;
       ctx.font = `${fontSize}px "Cascadia Code", "Courier New", monospace`;
 
+      const longestText = lines.reduce((a, b) =>
+        a.length > b.length ? a : b
+      );
+
       while (
-        ctx.measureText(lines[0]).width < canvas.width - sidePadding * 2 &&
+        ctx.measureText(longestText).width < canvas.width - sidePadding * 2 &&
         fontSize < 32
       ) {
         fontSize += 0.5;
@@ -178,7 +182,7 @@ export default function LandingJourney() {
       }
 
       while (
-        ctx.measureText(lines[0]).width > canvas.width - sidePadding * 2 &&
+        ctx.measureText(longestText).width > canvas.width - sidePadding * 2 &&
         fontSize > 5
       ) {
         fontSize -= 0.5;
@@ -187,11 +191,12 @@ export default function LandingJourney() {
 
       const lineHeight = fontSize * 1.08;
       const totalHeight = lines.length * lineHeight;
+      const titleWidth = ctx.measureText(longestText).width;
 
       return {
         fontSize,
         lineHeight,
-        startX: sidePadding,
+        startX: canvas.width / 2 - titleWidth / 2,
         startY: canvas.height / 2 - totalHeight / 2 + topOffset,
         totalHeight,
       };
@@ -224,8 +229,8 @@ export default function LandingJourney() {
 
       const captionFontSize = 28;
       const captionCharW = captionFontSize * 0.68;
-      const captionY1 = canvas.height - 135;
-      const captionY2 = canvas.height - 95;
+      const captionY1 = canvas.height * 0.74;
+      const captionY2 = canvas.height * 0.74 + 40;
 
       const currentCaptionLine1 = captionLine1Ref.current;
       const currentCaptionLine2 = captionLine2Ref.current;
@@ -283,6 +288,9 @@ export default function LandingJourney() {
         setTitleDone(true);
       }
 
+      ctx.save();
+      ctx.translate(0.5, 0.5);
+
       ctx.font = `${fontSize}px "Cascadia Code", "Courier New", monospace`;
       ctx.textAlign = "left";
       ctx.textBaseline = "top";
@@ -315,6 +323,8 @@ export default function LandingJourney() {
           ctx.globalAlpha = 0.95;
         }
       });
+
+      ctx.restore();
 
       if (typedColumns > longestLine * 0.8 && time % 80 > 62) {
         for (let i = 0; i < 5; i++) {
@@ -511,8 +521,6 @@ export default function LandingJourney() {
     shatterStartRef.current = performance.now();
   };
 
-  const textValue = Math.round(190 + introProgress * 65);
-
   return (
     <main
       className={`landing ${mode}`}
@@ -523,8 +531,11 @@ export default function LandingJourney() {
 
       {showNav && mode !== "title" && (
         <nav className="nav nav-typing">
-          <button className="nav-button nav-title-button" onClick={restartLanding}>
-            <span className="type-nav type-title">THE INVISIBLE DATA</span>
+          <button
+            className="nav-button nav-title-button"
+            onClick={restartLanding}
+          >
+            <span className="type-nav type-title">INVISIBLE DATA</span>
           </button>
 
           <div className="nav-right">
@@ -593,21 +604,23 @@ export default function LandingJourney() {
       )}
 
       {mode === "intro" && (
-  <section className="intro-scroll-lock">
-    <p
-      className="intro-scroll-text"
-      style={{
-        opacity: 0.3 + introProgress * 0.7,
-        color: `rgb(${190 + introProgress * 65}, ${
-          190 + introProgress * 65
-        }, ${190 + introProgress * 65})`,
-        transform: `translate(-50%, ${72 - introProgress * 108}vh)`,
-      }}
-    >
-      {INTRO_TEXT}
-    </p>
-  </section>
-)}
+        <section className="intro-scroll-lock">
+          <p
+            className="intro-scroll-text"
+            style={{
+              opacity: 0.3 + introProgress * 0.7,
+              color: `rgb(${190 + introProgress * 65}, ${
+                190 + introProgress * 65
+              }, ${190 + introProgress * 65})`,
+              transform: `translate(-50%, ${
+                72 - introProgress * 108
+              }vh)`,
+            }}
+          >
+            {INTRO_TEXT}
+          </p>
+        </section>
+      )}
     </main>
   );
 }

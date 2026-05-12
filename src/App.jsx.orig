@@ -1,0 +1,77 @@
+<<<<<<< HEAD
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import LandingJourney from "./pages/LandingJourney";
+import About from "./pages/About";
+import Path from "./pages/Path";
+import DearPeri from "./pages/DearPeri";
+
+import CollectiveData from "./pages/CollectiveData";
+import Insitu from "./pages/Insitu";
+import WorkshopPhotos from "./pages/WorkshopPhotos";
+import PersonalData from "./pages/PersonalData";
+=======
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import LandingJourney from "./pages/LandingJourney";
+import Home from "./pages/Home";
+import Experience from "./components/Experience";
+import Cluster from "./components/Cluster";
+import Colony from "./components/Colony";
+import storyData from "./data/experiences_dummy.json";
+>>>>>>> c55e8dbbb1d6d85f7de8923fd9106af1520d3362
+
+export default function App() {
+  const [data, setData] = useState(() => {
+    const saved = sessionStorage.getItem("app_story_data");
+    return saved ? JSON.parse(saved) : storyData;
+  });
+  useEffect(() => {
+    sessionStorage.setItem("app_story_data", JSON.stringify(data));
+    console.log(data);
+  }, [data]);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* MAIN PAGES */}
+
+        <Route path="/" element={<LandingJourney />} />
+<<<<<<< HEAD
+        <Route path="/about" element={<About />} />
+        <Route path="/path" element={<Path />} />
+        <Route path="/dear-peri" element={<DearPeri />} />
+
+        {/* DEAR PERI SUBPAGES */}
+
+        <Route
+          path="/collective-data"
+          element={<CollectiveData />}
+        />
+
+        <Route
+          path="/insitu"
+          element={<Insitu />}
+        />
+
+        <Route
+          path="/workshop-photos"
+          element={<WorkshopPhotos />}
+        />
+
+        <Route
+          path="/personal-data"
+          element={<PersonalData />}
+        />
+=======
+        <Route path="/home" element={<Home />} />
+        <Route path="/cluster" element={<Cluster />} />
+        <Route path="/colony" element={<Colony />} />
+        <Route path="/experiences" element={<Experience storyData={data} setStoryData={setData}/>} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+>>>>>>> c55e8dbbb1d6d85f7de8923fd9106af1520d3362
+      </Routes>
+    </BrowserRouter>
+  );
+}

@@ -496,6 +496,9 @@ body {
   flex-direction: column;
   gap: 12px;
   min-width: 220px;
+  position:relative;
+  top:190px;
+  right:20px;
 }
 
 .treatmentFilters button {
@@ -527,6 +530,8 @@ body {
   grid-template-columns: 190px auto;
   grid-template-rows: auto 110px;
   align-items: start;
+  margin-left: -40px;
+  margin-top: -20px;
 }
 
 .treatmentYAxis {
@@ -541,11 +546,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
   padding-right: 22px;
-
   color: #f1f3f5;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.15;
   text-align: right;
 
@@ -587,14 +590,17 @@ body {
 
 .treatmentGrid__xLabel {
   color: #f1f3f5;
-  font-size: 10px;
-  line-height: 1.1;
-  text-align: left;
 
-  transform: rotate(-38deg);
+  font-size: 14px !important;
+  font-weight: 300;
+  line-height: 1;
+  transform: rotate(-34deg);
   transform-origin: top left;
-
-  width: 90px;
+  width: 140px;
+  white-space: nowrap;
+  display: flex;
+  align-items: flex-start;
+  margin-left: -68px;
 }
 
 /* empty top-left space */
@@ -612,7 +618,8 @@ body {
   padding-right: 16px;
 
   color: #f1f3f5;
-  font-size: 11px;
+  font-size: 14px !important;
+  font-weight: 300;
   line-height: 1.15;
   text-align: right;
 
@@ -664,8 +671,9 @@ body {
 }
 
 .treatmentGuide {
+  margin-top: 225px;
   border: 1px solid rgba(241, 243, 245, 0.35);
-  padding: 24px;
+  padding: 23px;
   border-radius: 18px;
 }
 
@@ -739,8 +747,8 @@ body {
 }
 
 .treatmentCell {
-  width: 72px !important;
-  height: 62px !important;
+  width: 70px !important;
+  height: 60px !important;
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
@@ -748,4 +756,30 @@ body {
   background: #f3f0e8 !important;
   border-right: 2px solid rgba(5, 28, 65, 0.35) !important;
   border-bottom: 2px solid rgba(5, 28, 65, 0.35) !important;
+}
+.treatmentCell--high::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ff2b2b 0 90%, transparent 90%);
+}
+
+.treatmentCell--medium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ff2b2b 0 50%, transparent 50%);
+}
+
+.treatmentSideEffectDot {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+
+  width: 22px;
+  height: 22px;
+
+  background: #7c3cff;
+  border-radius: 60%;
+  z-index: 5;
 }

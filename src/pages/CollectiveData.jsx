@@ -466,6 +466,16 @@ function TreatmentEffectivenessGrid() {
       ? treatments
       : treatments.filter((t) => t.type === filter);
 
+  const cellData = {
+  "HRT-Insomnia": { level: "high" },
+  "ACUPUNCTURE-Brain Fog": { level: "medium" },
+  "MAGNESIUM-Insomnia": { level: "medium", sideEffect: "Depression" },
+};
+
+const getCell = (treatment, symptom) => {
+  return cellData[`${treatment}-${symptom}`];
+};
+
   return (
     <section className="treatmentGridSection">
       <div className="treatmentGridHeader">
@@ -511,8 +521,22 @@ function TreatmentEffectivenessGrid() {
           <div className="treatmentMatrix">
             {visibleTreatments.map((treatment) =>
               symptoms.map((_, i) => (
-                <div className="treatmentCell" key={`${treatment.name}-${i}`}>
-                  {/* leave empty, fill later */}
+                <div
+                  className={`treatmentCell ${
+                    getCell(treatment.name, symptoms[i])?.level === "high"
+                      ? "treatmentCell--high"
+                      : getCell(treatment.name, symptoms[i])?.level === "medium"
+                      ? "treatmentCell--medium"
+                      : ""
+                  }`}
+                  key={`${treatment.name}-${i}`}
+                >
+                  {getCell(treatment.name, symptoms[i])?.sideEffect && (
+                    <span
+                      className="treatmentSideEffectDot"
+                      title={getCell(treatment.name, symptoms[i]).sideEffect}
+                    />
+                  )}
                 </div>
               ))
             )}

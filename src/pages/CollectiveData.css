@@ -522,11 +522,79 @@ body {
   align-items: start;
 }
 
-.treatmentGrid {
+.treatmentGridArea {
   display: grid;
-  grid-template-columns: 170px repeat(10, 64px);
-  grid-template-rows: repeat(17, 54px) 120px;
-  align-items: stretch;
+  grid-template-columns: 190px auto;
+  grid-template-rows: auto 110px;
+  align-items: start;
+}
+
+.treatmentYAxis {
+  grid-column: 1;
+  grid-row: 1;
+
+  display: grid;
+  grid-auto-rows: 62px;
+}
+
+.treatmentGrid__yLabel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding-right: 22px;
+
+  color: #f1f3f5;
+  font-size: 11px;
+  line-height: 1.15;
+  text-align: right;
+
+  transform: rotate(-28deg);
+  transform-origin: right center;
+}
+
+.treatmentMatrix {
+  grid-column: 2;
+  grid-row: 1;
+
+  display: grid;
+  grid-template-columns: repeat(10, 72px);
+  grid-auto-rows: 62px;
+
+  border-top: 1px solid rgba(5, 28, 65, 0.45);
+  border-left: 1px solid rgba(5, 28, 65, 0.45);
+}
+
+.treatmentCell {
+  position: relative;
+
+  width: 72px;
+  height: 62px;
+  border-right: 1px solid rgba(5, 28, 65, 0.35);
+  border-bottom: 1px solid rgba(5, 28, 65, 0.35);
+  background: #f3f0e8 !important;
+}
+
+.treatmentXAxis {
+  grid-column: 2;
+  grid-row: 2;
+
+  display: grid;
+  grid-template-columns: repeat(10, 72px);
+
+  padding-top: 22px;
+}
+
+.treatmentGrid__xLabel {
+  color: #f1f3f5;
+  font-size: 10px;
+  line-height: 1.1;
+  text-align: left;
+
+  transform: rotate(-38deg);
+  transform-origin: top left;
+
+  width: 90px;
 }
 
 /* empty top-left space */
@@ -577,13 +645,13 @@ body {
 /* grid cells */
 .treatmentCell {
   position: relative;
-  width: 64px;
-  height: 54px;
+  width: 60px;
+  height: 50px;
 
   border-right: 1px solid rgba(241, 243, 245, 0.45);
   border-bottom: 1px solid rgba(241, 243, 245, 0.45);
 
-  background: rgba(255, 255, 255, 0.015);
+  background:rgba(255, 255, 255, 0.06);
 }
 
 /* add top and left border only for actual grid */
@@ -660,4 +728,24 @@ body {
     overflow-x: auto;
     min-width: 860px;
   }
+}
+.treatmentMatrix {
+  display: grid !important;
+  grid-template-columns: repeat(10, 72px) !important;
+  grid-auto-rows: 62px !important;
+  gap: 0 !important;
+  row-gap: 0 !important;
+  column-gap: 0 !important;
+}
+
+.treatmentCell {
+  width: 72px !important;
+  height: 62px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+
+  background: #f3f0e8 !important;
+  border-right: 2px solid rgba(5, 28, 65, 0.35) !important;
+  border-bottom: 2px solid rgba(5, 28, 65, 0.35) !important;
 }

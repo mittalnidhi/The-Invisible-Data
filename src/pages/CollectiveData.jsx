@@ -499,25 +499,32 @@ function TreatmentEffectivenessGrid() {
       </div>
 
       <div className="treatmentGridWrap">
-        <div className="treatmentGrid">
-
-          {symptoms.map((symptom, i) => (
-            <div className="treatmentGrid__xLabel" key={`symptom-${i}`}>
-              {symptom}
+        <div className="treatmentGridArea">
+        <div className="treatmentYAxis">
+          {visibleTreatments.map((treatment) => (
+            <div className="treatmentGrid__yLabel" key={treatment.name}>
+              {treatment.name}
             </div>
           ))}
+        </div>
 
-          {visibleTreatments.map((treatment) => (
-            <React.Fragment key={treatment.name}>
-              <div className="treatmentGrid__yLabel">{treatment.name}</div>
-
-              {symptoms.map((_, i) => (
+          <div className="treatmentMatrix">
+            {visibleTreatments.map((treatment) =>
+              symptoms.map((_, i) => (
                 <div className="treatmentCell" key={`${treatment.name}-${i}`}>
                   {/* leave empty, fill later */}
                 </div>
-              ))}
-            </React.Fragment>
-          ))}
+              ))
+            )}
+          </div>
+
+          <div className="treatmentXAxis">
+            {symptoms.map((symptom, i) => (
+              <div className="treatmentGrid__xLabel" key={`symptom-${i}`}>
+                {symptom}
+              </div>
+            ))}
+          </div>
         </div>
 
         <aside className="treatmentGuide">

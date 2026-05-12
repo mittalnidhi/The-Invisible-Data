@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./DearPeri.css";
 
@@ -41,19 +41,58 @@ const sections = [
 ];
 
 export default function DearPeri() {
+  const [activePhoto, setActivePhoto] = useState(0);
+
+  const photos = Array.from(
+    { length: 8 },
+    (_, i) => `/arc-assets/workshop-${i + 1}.jpg`
+  );
+
+  const prevPhoto = () => {
+    setActivePhoto((prev) =>
+      prev === 0 ? photos.length - 1 : prev - 1
+    );
+  };
+
+  const nextPhoto = () => {
+    setActivePhoto((prev) =>
+      prev === photos.length - 1 ? 0 : prev + 1
+    );
+  };
+
   return (
     <main className="dearPeri">
-      {/* NAV */}
+      {/* NAVBAR */}
 
-      <nav className="dearPeriNav">
-        <Link to="/" className="dearPeriNav__brand">
-          THE INVISIBLE DATA
-        </Link>
+      <nav className="nav">
+        <button
+          className="nav-button nav-title-button"
+          onClick={() => (window.location.href = "/")}
+        >
+          INVISIBLE DATA
+        </button>
 
-        <div className="dearPeriNav__links">
-          <Link to="/about">ABOUT</Link>
-          <Link to="/path">PATH</Link>
-          <Link to="/dear-peri">DEAR PERI</Link>
+        <div className="nav-right">
+          <button
+            className="nav-button"
+            onClick={() => (window.location.href = "/about")}
+          >
+            ABOUT
+          </button>
+
+          <button
+            className="nav-button"
+            onClick={() => (window.location.href = "/path")}
+          >
+            PATH
+          </button>
+
+          <button
+            className="nav-button"
+            onClick={() => (window.location.href = "/dear-peri")}
+          >
+            DEAR PERI
+          </button>
         </div>
       </nav>
 
@@ -67,9 +106,34 @@ export default function DearPeri() {
         </h1>
 
         <p>
-          Collective stories, sense-making, workshop memories, and personal
-          data reflections.
+          Collective stories, sense-making, workshop memories, and
+          personal data reflections.
         </p>
+
+        {/* LANDSCAPE CAROUSEL */}
+
+        <div className="dearPeriCarousel">
+          <button
+            className="carouselArrow"
+            onClick={prevPhoto}
+          >
+            ←
+          </button>
+
+          <div className="carouselLandscape">
+            <img
+              src={photos[activePhoto]}
+              alt={`Workshop ${activePhoto + 1}`}
+            />
+          </div>
+
+          <button
+            className="carouselArrow"
+            onClick={nextPhoto}
+          >
+            →
+          </button>
+        </div>
 
         <div className="scrollCue">
           <span>SCROLL</span>

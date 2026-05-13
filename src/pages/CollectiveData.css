@@ -238,17 +238,16 @@ body {
 .collectiveGraphBlock {
   width: min(1180px, 92vw);
   min-height: 560px;
-
   display: grid;
   grid-template-columns: 480px 1fr;
   align-items: center;
   gap: 56px;
-
-  margin: 40px auto 0;
+  margin: -110px auto 0;
+  padding-left:30px;
 }
 
 .d3SymptomGraph {
-  width: 460px;
+  width: 390px;
   height: auto;
   overflow: visible;
 }

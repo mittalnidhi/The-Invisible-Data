@@ -7,10 +7,9 @@ const COLORS = {
   Physical: "#2f80ff",
   Menstrual: "#a45cff",
   "Urological & Sexual": "#ff5bbd",
-  Cognitive: "#9aa0a6",
+  Cognitive: "#947415",
   "Dermatological & Sensory": "#62d7ff",
   Vasomotor: "#ff4040",
-  Gastrointestinal: "#ffb08a",
   "Sleep & Fatigue": "#7fd36b",
 };
 
@@ -147,8 +146,8 @@ const symptomPool = [
   ["Joint pain", "Physical"],
   ["Body aches", "Physical"],
   ["Headache", "Physical"],
-  ["Bloating", "Gastrointestinal"],
-  ["Digestive issues", "Gastrointestinal"],
+  ["Bloating", "Physical"],
+  ["Digestive issues", "Physical"],
   ["Itchy skin", "Dermatological & Sensory"],
   ["Tinnitus", "Dermatological & Sensory"],
   ["Dizziness", "Dermatological & Sensory"],
@@ -193,7 +192,7 @@ function RingGuide() {
 
 function CollectiveSymptomGraph() {
   const svgRef = useRef(null);
-  const [activeWoman, setActiveWoman] = useState(null);
+  const [activeWoman, setActiveWoman] = useState(womenData[0]);
 
   useEffect(() => {
     const width = 620;
@@ -249,7 +248,7 @@ function CollectiveSymptomGraph() {
         d3.select(this).select(".d3Wedge").classed("active", true);
       })
       .on("mouseleave", function () {
-        setActiveWoman(null);
+        setActiveWoman(womenData[0]);
         d3.select(this).select(".d3Wedge").classed("active", false);
       });
 
@@ -491,6 +490,7 @@ const symptoms = symptomGroups[symptomFilter];
   "GLP-1-Weight Gain": { level: "high", sideEffect: "Fatigue" },
 
   "CBT-Anxiety": { level: "medium" },
+  "CBT-Hot Flashes": { level: "medium" },
 
   "STEROID JOINT INJECTION-Frozen Shoulder": { level: "high" },
 

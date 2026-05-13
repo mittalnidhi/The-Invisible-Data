@@ -5,52 +5,52 @@ import "./Insitu.css";
 const carouselItems = [
   {
     title: "01",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    text: "Ever since I slipped into perimenopause, my sexual life got disrupted",
     audio: "/sounds/insitu-01.mp3",
   },
   {
     title: "02",
-    text: "Suspendisse varius enim in eros elementum tristique.",
+    text: "I loved drinking alocohol and coffee, but had to give up on both as it triggered anxiety & hot flashes respectively. To the point where my husband said he cannot deal with my anxiety issues anymore.. so I had to quit!",
     audio: "/sounds/insitu-02.mp3",
   },
   {
     title: "03",
-    text: "Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.",
+    text: "Doom scrolling has triggered my depression and anxiety. It almost feels like that instagram knows what I am dealing with and it only shows me sob stuff now.",
     audio: "/sounds/insitu-03.mp3",
   },
   {
     title: "04",
-    text: "Ut commodo diam libero vitae erat.",
+    text: "My social circle has been of great support. I have learned so much about this stage from my friends and the communities they have suggested me to join.",
     audio: "/sounds/insitu-04.mp3",
   },
   {
     title: "05",
-    text: "Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet.",
+    text: "I have been in this stage for only a year now and it was too much to deal with. I am really scared about all the many perimenopausal years left to come.",
     audio: "/sounds/insitu-05.mp3",
   },
   {
     title: "06",
-    text: "Nunc ut sem vitae risus tristique posuere.",
+    text: "My husband and I shared a really good sexual bond. Now there is a strange silence between us that neither of us want to address.",
     audio: "/sounds/insitu-06.mp3",
   },
   {
     title: "07",
-    text: "Praesent commodo cursus magna vel scelerisque nisl consectetur.",
+    text: "Why are there no work leaves and policies for perimenopause? The symptoms are not easy to deal with and having medical policies and leaves will be really helpful.",
     audio: "/sounds/insitu-07.mp3",
   },
   {
     title: "08",
-    text: "Donec ullamcorper nulla non metus auctor fringilla.",
+    text: "I was dismissed by my doctor for 2 years when I was dealing with a dozen symptom. I finally changed my doctor now and paying out of my own pocket to get HRT because I cannot deal with it anymore.",
     audio: "/sounds/insitu-08.mp3",
   },
   {
     title: "09",
-    text: "Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
+    text: "I had to fight with my doctor, change multiple doctors to finally get the treatment I needed.",
     audio: "/sounds/insitu-09.mp3",
   },
   {
     title: "10",
-    text: "Maecenas faucibus mollis interdum.",
+    text: "No one told me it was coming. I was not prepared for it. I was left trying to understand what was happening to my body. One day, you feel like you’re in your prime- and the next, you’re suddenly navigating symptoms you can’t explain.",
     audio: "/sounds/insitu-10.mp3",
   },
 ];
@@ -102,10 +102,10 @@ export default function Insitu() {
       <section className="insitu__intro">
         <p>IN-SITU SENSEMAKING</p>
 
-        <h1>Making meaning together through visual reflection.</h1>
+        <h1>Making meaning together</h1>
 
         <h2>
-          The workshop enabled participants to collectively interpret their
+          The workshop enabled in-situ sensemaking, allowing participants to collectively interpret their
           perimenopausal experiences, transforming symptoms, healthcare journeys,
           emotional shifts, and daily disruptions into visible patterns and
           shared narratives.
@@ -144,14 +144,6 @@ export default function Insitu() {
             onClick={() => setActiveIndex(index)}
           />
         ))}
-      </section>
-
-      <section className="insitu__statement">
-        <p>
-          The discussions enabled in-situ sensemaking, allowing themes,
-          experiences, and patterns to emerge organically through collective
-          reflection.
-        </p>
       </section>
     </main>
   );

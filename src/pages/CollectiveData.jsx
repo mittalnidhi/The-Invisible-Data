@@ -431,18 +431,21 @@ function TreatmentEffectivenessGrid() {
   { name: "HRT", type: "medical" },
   { name: "LEVOTHYROXINE", type: "medical" },
   { name: "ANTI-DEPRESSANT", type: "medical" },
+  { name: "ZOLOFT", type: "medical" },
   { name: "GLP-1", type: "medical" },
   { name: "NSAID", type: "medical" },
   { name: "STEROID JOINT INJECTION", type: "medical" },
   { name: "IUD", type: "medical" },
   { name: "CORTISOL SHOT", type: "medical" },
   { name: "ACCUTANE", type: "medical" },
+  { name: "GABAPENTIN", type: "medical" },
+  { name: "IBUPROFEN", type: "medical" },
 
-  { name: "ACUPUNCTURE", type: "nonmedical" },
+  { name: "ACCUPUNCTURE", type: "nonmedical" },
   { name: "MAGNESIUM", type: "nonmedical" },
+  { name: "ALPHA BRAIN SUPPLEMENT", type: "nonmedical" },
   { name: "CBT", type: "nonmedical" },
-  { name: "YOGA", type: "nonmedical" },
-  { name: "WALKING", type: "nonmedical" },
+  { name: "EXERCISE", type: "nonmedical" },
   { name: "SLEEP HYGIENE", type: "nonmedical" },
   { name: "MEDITATION", type: "nonmedical" },
   { name: "DIET CHANGE", type: "nonmedical" },
@@ -456,6 +459,7 @@ function TreatmentEffectivenessGrid() {
     "Weight Gain",
     "Anxiety",
     "Mood Swings",
+    "Depression",
   ],
   pain: [
     "Frozen Shoulder",
@@ -470,6 +474,7 @@ function TreatmentEffectivenessGrid() {
     "Skin",
     "Fatigue",
     "Stomach Aches",
+    "Thyroid",
   ],
 };
 
@@ -482,48 +487,81 @@ const symptoms = symptomGroups[symptomFilter];
       ? treatments
       : treatments.filter((t) => t.type === filter);
 
-  const cellData = {
-  "HRT-Insomnia": { level: "high" },
-  "ACUPUNCTURE-Brain Fog": { level: "medium" },
-  "MAGNESIUM-Insomnia": { level: "medium", sideEffect: "Depression" },
-  /* ANTI DEPRESSANTS */
+ const cellData = {
+  "GLP-1-Weight Gain": { level: "high", sideEffect: "Fatigue" },
 
-"ANTI-DEPRESSANT-Panic": {
-  level: "high",
-  amount: 1,
-},
+  "CBT-Anxiety": { level: "medium" },
 
-"ANTI-DEPRESSANT-Anxiety": {
-  level: "high",
-  amount: 0.8,
-},
+  "STEROID JOINT INJECTION-Frozen Shoulder": { level: "high" },
 
-/* HRT */
+  "ALPHA BRAIN SUPPLEMENT-Brain Fog": { level: "medium" },
 
-"HRT-Hot Flashes": {
-  level: "high",
-  amount: 1,
-},
+  "MAGNESIUM-Anxiety": { level: "low" },
+  "MAGNESIUM-Insomnia": { level: "medium" },
 
-"HRT-Brain Fog": {
-  level: "medium",
-  amount: 0.5,
-},
+  "ZOLOFT-Anxiety": { level: "medium" },
 
-"HRT-Insomnia": {
-  level: "high",
-  amount: 1,
-},
+  "HRT-Brain Fog": { level: "low" },
+  "HRT-Mood Swings": { level: "high" },
+  "HRT-Hot Flashes": { level: "high" },
+  "HRT-Frozen Shoulder": { level: "low" },
+  "HRT-Breast Tenderness": { level: "low" },
+  "HRT-Body Aches": { level: "medium" },
+  "HRT-Thyroid": { level: "low" },
 
-"HRT-Weight Gain": {
-  level: "low",
-  amount: 0.3,
-},
+  "IBUPROFEN-Body Aches": { level: "high" },
 
-"HRT-Breast Tenderness": {
-  level: "low",
-  amount: 0.2,
-},
+  "GABAPENTIN-Back Pain": { level: "low" },
+
+  "ACUPUNCTURE-IBS": { level: "high" },
+
+  "ANTI-DEPRESSANT-Anxiety": { sideEffect: "Anxiety" },
+
+  "NSAID-Skin": { level: "low", sideEffect: "Stomach Aches" },
+  "NSAID-Back Pain": { level: "low", sideEffect: "Stomach Aches" },
+
+  "ACCUTANE-Skin": { level: "low" },
+
+  "IUD-Cramps": { level: "high" },
+
+  "LEVOTHYROXINE-Fatigue": { level: "low" },
+  "LEVOTHYROXINE-Thyroid": { level: "medium" },
+
+  "CORTISOL SHOT-Frozen Shoulder": { level: "high" },
+
+  "SLEEP HYGIENE-Hot Flashes": { level: "medium" },
+  "SLEEP HYGIENE-Insomnia": { level: "low" },
+
+  "EXERCISE-Weight Gain": { level: "medium" },
+  "EXERCISE-Frozen Shoulder": { level: "low" },
+
+  "EXERCISE-Anxiety": { level: "high" },
+  "EXERCISE-Insomnia": { level: "low" },
+  "MEDITATION-Anxiety": { level: "high" },
+  "MEDITATION-Brain Fog": { level: "medium" },
+  "MEDITATION-Panic": { level: "medium" },
+  "MEDITATION-Insomnia": { level: "low" },
+  "MEDITATION-Mood Swings": { level: "low" },
+  "MEDITATION-Depression": { level: "medium" },
+
+  "DIET CHANGE-Weight Gain": { level: "medium" },
+  "DIET CHANGE-Hot Flashes": { level: "high" },
+  "DIET CHANGE-IBS": { level: "high" },
+  "DIET CHANGE-Stomach Aches": { level: "medium" },
+
+  "ACCUPUNCTURE-Frozen Shoulder": { level: "medium" },
+  "ACCUPUNCTURE-Back Pain": { level: "medium" },
+  "ACCUPUNCTURE-Body Aches": { level: "medium" },
+  "ACCUPUNCTURE-Cramps": { level: "low" },
+  "ACCUPUNCTURE-Anxiety": { level: "low" },
+  "ACCUPUNCTURE-IBS": { level: "low" },
+
+  "MAGNESIUM-Fatigue": { level: "low" },
+  "CBT-Anxiety": { level: "low" },
+  "CBT-Depression": { level: "low" },
+  "CBT-Brain Fog": { level: "low" },
+  "CBT-Insomnia": { level: "low" },
+
 };
 
 const getCell = (treatment, symptom) => {
@@ -657,7 +695,7 @@ const getCell = (treatment, symptom) => {
 
           <div className="guideItem">
             <span className="effectBox effectBox--medium" />
-            <p>Moderate effective<br />~ 50% filled</p>
+            <p>Moderate effective<br />~ 50%-70% filled</p>
           </div>
 
           <div className="guideItem">

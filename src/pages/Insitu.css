@@ -251,3 +251,126 @@ body {
     line-height: 1.55;
   }
 }
+
+.insituCarousel {
+  width: min(980px, 92vw);
+  margin: 140px auto 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+.insituCircle {
+  width: 460px;
+  height: 460px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(170, 220, 255, 0.38);
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(180, 230, 255, 0.32),
+      rgba(120, 190, 255, 0.12) 45%,
+      rgba(80, 140, 210, 0.08) 70%,
+      rgba(255, 255, 255, 0.03)
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insituCircle__inner {
+  width: 68%;
+  text-align: center;
+}
+
+.insituCircle__inner h3 {
+  margin: 0 0 24px;
+
+  color: rgba(241, 243, 245, 0.42);
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.insituCircle__inner p {
+  margin: 0;
+
+  color: rgba(241, 243, 245, 0.82);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  line-height: 1.75;
+}
+
+.insituArrow {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(241, 243, 245, 0.45);
+
+  background: transparent;
+  color: #f1f3f5;
+
+  font-size: 30px;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.insituArrow:hover {
+  background: #f1f3f5;
+  color: #06111f;
+}
+
+.insituSoundButton {
+  margin-top: 34px;
+
+  border: 1px solid rgba(241, 243, 245, 0.45);
+  background: transparent;
+  color: #f1f3f5;
+
+  padding: 12px 20px;
+  border-radius: 999px;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+
+  cursor: pointer;
+}
+
+.insituSoundButton:hover {
+  background: #f1f3f5;
+  color: #06111f;
+}
+
+.insituCarouselDots {
+  margin: 42px auto 0;
+
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.insituCarouselDots button {
+  width: 8px;
+  height: 8px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(241, 243, 245, 0.28);
+  cursor: pointer;
+}
+
+.insituCarouselDots button.active {
+  background: #f1f3f5;
+}

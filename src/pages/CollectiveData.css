@@ -107,7 +107,7 @@ body {
   margin: 10px auto 0;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-size: clamp(20px, 2.6vw, 34px);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.15;
   letter-spacing: 0.05em;
 }
@@ -482,15 +482,26 @@ body {
   color: rgba(241, 243, 245, 0.65);
   font-size: 11px;
   letter-spacing: 0.22em;
+  position: absolute;
+  left: 84%;
+  transform: translateX(-50%);
+  text-align: center;
+  top:1620px;
 }
 
 .treatmentGridHeader h2 {
-  margin: 0;
-  max-width: 680px;
-  color: #f1f3f5;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: clamp(20px, 2.2vw, 30px);
-  line-height: 1.25;
+  width: min(620px, 86vw);
+  margin: 30px auto 0;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: clamp(20px, 2.6vw, 34px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.05em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  top:1360px;
 }
 
 .treatmentFilters {
@@ -499,7 +510,7 @@ body {
   gap: 12px;
   min-width: 220px;
   position:relative;
-  top:202px;
+  top:230px;
   right:50px;
 }
 
@@ -525,7 +536,6 @@ body {
   grid-template-columns: 1fr 260px;
   gap: 44px;
   align-items: start;
-
   overflow: visible;
 }
 
@@ -534,17 +544,14 @@ body {
   grid-template-columns: 190px auto;
   grid-template-rows: auto 160px;
   align-items: start;
-
   overflow: visible;
-
   margin-left: -40px;
-  margin-top: -120px;
+  margin-top: 7px;
 }
 
 .treatmentYAxis {
   grid-column: 1;
   grid-row: 1;
-
   display: grid;
   grid-auto-rows: 62px;
 }
@@ -558,7 +565,6 @@ body {
   font-size: 14px;
   line-height: 1.15;
   text-align: right;
-
   transform: rotate(-28deg);
   transform-origin: right center;
 }
@@ -566,11 +572,8 @@ body {
 .treatmentMatrix {
   grid-column: 2;
   grid-row: 1;
-
   display: grid;
-  
   grid-auto-rows: 62px;
-
   border-top: 1px solid rgba(5, 28, 65, 0.45);
   border-left: 1px solid rgba(5, 28, 65, 0.45);
 }
@@ -589,7 +592,6 @@ body {
   grid-column: 2;
   grid-row: 2;
   display: grid;
-  
   padding-top: 22px;
 }
 
@@ -659,10 +661,8 @@ body {
   position: relative;
   width: 60px;
   height: 50px;
-
   border-right: 1px solid rgba(241, 243, 245, 0.45);
   border-bottom: 1px solid rgba(241, 243, 245, 0.45);
-
   background:rgba(255, 255, 255, 0.06);
 }
 
@@ -676,17 +676,17 @@ body {
 }
 
 .treatmentGuide {
-  margin-top: 240px;
+  margin-top: 130px;
   border: 1px solid rgba(241, 243, 245, 0.35);
-  padding: 23px;
+  padding: 20px;
   border-radius: 18px;
-  right:80px;
   position: absolute;
-  right:200px;
+  right:140px;
+  top:1750px;
 }
 
 .treatmentGuide h3 {
-  margin: 0 0 22px;
+  margin: 0 0 18px;
   color: #f1f3f5;
   font-size: 14px;
 }
@@ -694,14 +694,14 @@ body {
 .guideItem {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 16px;
+  margin-bottom: 12px;
 }
 
 .guideItem p {
   margin: 0;
   color: rgba(241, 243, 245, 0.82);
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.35;
 }
 
@@ -713,7 +713,7 @@ body {
 }
 
 .effectBox--less {
-  background: linear-gradient(135deg, #ff2b2b 0 28%, transparent 28%);
+  background: linear-gradient(135deg, #e1991b 0 28%, transparent 28%);
 }
 
 .effectBox--medium {
@@ -748,16 +748,11 @@ body {
 .treatmentMatrix {
   grid-column: 2;
   grid-row: 1;
-
   display: grid;
-  
   grid-auto-rows: 62px;
-
   width: max-content;
   height: auto;
-
   overflow: visible;
-
   border-top: 1px solid rgba(5, 28, 65, 0.45);
   border-left: 1px solid rgba(5, 28, 65, 0.45);
 }
@@ -768,7 +763,6 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
-
   background: #f3f0e8 !important;
   border-right: 2px solid rgba(5, 28, 65, 0.35) !important;
   border-bottom: 2px solid rgba(5, 28, 65, 0.35) !important;
@@ -807,10 +801,8 @@ body {
   position: absolute;
   right: 8px;
   bottom: 8px;
-
   width: 22px;
   height: 22px;
-
   background: #7c3cff;
   border-radius: 60%;
   z-index: 5;
@@ -820,7 +812,7 @@ body {
   flex-direction: column;
   gap: 12px;
   position:absolute;
-  top: 1620px;
+  top: 1650px;
   left: 750px;
 }
 
@@ -830,6 +822,8 @@ body {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  top:-50px;
+  left:50%;
 }
 
 .symptomFilters button {

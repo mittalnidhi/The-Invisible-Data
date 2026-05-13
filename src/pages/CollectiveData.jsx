@@ -660,10 +660,13 @@ const getCell = (treatment, symptom) => {
                     }`}
                   >
                     {cell?.sideEffect && (
-                      <span
-                        className="treatmentSideEffectDot"
-                        title={cell.sideEffect}
-                      />
+                      <div className="treatmentDotWrap">
+                        <span className="treatmentSideEffectDot" />
+
+                        <div className="treatmentTooltip">
+                          {cell.sideEffect}
+                        </div>
+                      </div>
                     )}
                   </div>
                 );

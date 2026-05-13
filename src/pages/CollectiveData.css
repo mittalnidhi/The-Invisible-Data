@@ -853,3 +853,40 @@ body {
 .treatmentXAxis {
   grid-template-columns: repeat(5, 72px);
 }
+
+/*add hover to the dots*/
+
+.treatmentDotWrap {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+}
+
+.treatmentSideEffectDot {
+  width: 22px;
+  height: 22px;
+  background: #7c3cff;
+  border-radius: 50%;
+  display: block;
+  cursor: help;
+}
+
+.treatmentTooltip {
+  position: absolute;
+  bottom: 34px;
+  right: 0;
+  background: #06111f;
+  color: #f1f3f5;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  border: 1px solid rgba(241,243,245,0.3);
+}
+
+.treatmentDotWrap:hover .treatmentTooltip {
+  opacity: 1;
+}

@@ -708,6 +708,8 @@ const getCell = (treatment, symptom) => {
       </div>
     </section>
   );
+  
+
 }
 
 
@@ -742,9 +744,19 @@ export default function CollectiveData() {
       <CollectiveSymptomGraph />
       <TreatmentEffectivenessGrid />
 
-      <section className="collectiveData__placeholder">
-        <p>More collective data visualizations will continue here.</p>
-      </section>
-    </main>
-  );
+      <section className="collectiveFutureHeader">
+  <p>TRIGGERS & FOOD BEHAVIOR</p>
+
+  <h2>Trigger Patterns & Food Behavior</h2>
+
+  <div className="collectiveFutureHeader__text">
+    Visualizing recurring triggers, eating behaviors,
+    and symptom intensities across everyday experiences,
+    including stress, alcohol, caffeine, sugar,
+    sleep disruption, caregiving, and environmental conditions.
+  </div>
+</section>
+
+</main>
+);
 }

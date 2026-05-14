@@ -944,7 +944,7 @@ body {
 /* header */
 .collectiveFutureHeader {
   width: min(1000px, 88vw);
-  margin: -40px auto 220px; /*controls the position of the text*/
+  margin: -140px auto 220px; /*controls the position of the text*/
   text-align: center;
 }
 
@@ -960,11 +960,12 @@ body {
 .collectiveFutureHeader h2 {
   margin: 0 0 34px;
   color: #f1f3f5;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(42px, 5vw, 82px);
-  font-weight: 600;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: clamp(20px, 2.6vw, 34px);
+  
+  font-weight: 400;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: 0.008em;
 }
 
 .collectiveFutureHeader__text {

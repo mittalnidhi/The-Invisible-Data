@@ -22,7 +22,6 @@ export default function App() {
   });
   useEffect(() => {
     sessionStorage.setItem("app_story_data", JSON.stringify(data));
-    console.log(data);
   }, [data]);
 
   return (

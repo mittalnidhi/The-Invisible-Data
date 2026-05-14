@@ -228,7 +228,7 @@ function drawChart(tooltipElement, circleGrp, lineGrp, props, size){
         .on('click', function(e, d){
             props.setCurrentSymptom((prev) => d.id !== prev ? d.id : '')
         })
-        .on('mouseover', (e, d) => showTooltip(e, `<span style="font-size: 12pt;">${d.id}</span>`, tooltipElement, 'center'))
+        .on('mouseover', (e, d) => showTooltip(e, getTooltipHtml(d), tooltipElement, 'center'))
         .on('mousemove', (e) => moveTooltip(e, tooltipElement, 'center'))
         .on('mouseout', () => hideTooltip(tooltipElement))
     
@@ -314,4 +314,16 @@ function calcQuadraticPath(startX, startY, endX, endY) {
     const qX = midX + 0.2 * dist * perpNormX;
     const qY = midY + 0.2 * dist * perpNormY;
     return `M ${startX} ${startY} Q ${qX} ${qY} ${endX} ${endY}`
+}
+
+function getTooltipHtml(d){
+    if(d.hovertext !== ""){
+        return (
+                `<h5 class='text-lg font-semibold'>${d.id}</h5>
+                <br />
+                <p>${d.hovertext}</p>`
+        )
+    } else {
+        return `<h5 class='text-lg font-semibold'>${d.id}</h5>`
+    }
 }

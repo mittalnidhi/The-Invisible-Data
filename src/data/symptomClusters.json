@@ -1,410 +1,1991 @@
 {
-    "nodes":[
-        {"id":"Hot Flashes","type":"symptom","group":"Vasomotor"},
-        {"id":"Night Sweat","type":"symptom","group":"Vasomotor"},
-        {"id":"Heart Palpitations","type":"symptom","group":"Vasomotor"},
-        {"id":"Chills","type":"symptom","group":"Vasomotor"},
-        {"id":"Temperature Sensitivity","type":"symptom","group":"Vasomotor"},
-
-        {"id":"Dizzy / Vertigo","type":"symptom","group":"Cognitive"},
-        {"id":"Brain Fog","type":"symptom","group":"Cognitive"},
-        {"id":"Memory Lapse","type":"symptom","group":"Cognitive"},
-        {"id":"Decreased Attention","type":"symptom","group":"Cognitive"},
-        {"id":"Migraine","type":"symptom","group":"Cognitive"},
-
-        {"id":"Mood Swing","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Irritability","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Anxiety","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Depression","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Stress","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"ADHD","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Panic","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Anger","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Emotional Instability","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Sudden Sadness","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Social Withdrawal","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Loss of Motivation","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Low Self Esteem","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Mental Fatigue","type":"symptom","group":"Psychological & Emotional"},
-        {"id":"Tearfulness","type":"symptom","group":"Psychological & Emotional"},
-
-        {"id":"Insomnia","type":"symptom","group":"Sleep"},
-        {"id":"Fatigue","type":"symptom","group":"Sleep"},
-        {"id":"Vivid Dreams","type":"symptom","group":"Sleep"},
-
-        {"id":"Low/High Libido","type":"symptom","group":"Urological & Sexual"},
-        {"id":"Frequent Urination","type":"symptom","group":"Urological & Sexual"},
-        {"id":"Vaginal Dryness & Irritation","type":"symptom","group":"Urological & Sexual"},
-        {"id":"Painful Intercourse","type":"symptom","group":"Urological & Sexual"},
-        {"id":"Urinary Tract Infection","type":"symptom","group":"Urological & Sexual"},
-
-        {"id":"Hair Thinning or Loss","type":"symptom","group":"Dermatological & Sensory"},
-        {"id":"Skin Issues","type":"symptom","group":"Dermatological & Sensory"},
-        {"id":"Allergy","type":"symptom","group":"Dermatological & Sensory"},
-        {"id":"Dry Skin","type":"symptom","group":"Dermatological & Sensory"},
-        {"id":"Brittle Nail","type":"symptom","group":"Dermatological & Sensory"},
-        {"id":"Dry & Itchy Ear","type":"symptom","group":"Dermatological & Sensory"},
-
-        {"id":"Bone Health","type":"symptom","group":"Physical"},
-        {"id":"Thyroid Dysfunction","type":"symptom","group":"Physical"},
-        {"id":"Weight Gain","type":"symptom","group":"Physical"},
-        {"id":"Bloating","type":"symptom","group":"Physical"},
-        {"id":"Vision Changes","type":"symptom","group":"Physical"},
-        {"id":"Body Odour","type":"symptom","group":"Physical"},
-        {"id":"Breast Tenderness / Pain","type":"symptom","group":"Physical"},
-        {"id":"Body Aches","type":"symptom","group":"Physical"},
-        {"id":"Digestive Problems","type":"symptom","group":"Physical"},
-        {"id":"Blood Pressure Fluctuation","type":"symptom","group":"Physical"},
-        {"id":"Back Pain","type":"symptom","group":"Physical"},
-        {"id":"Frozen Shoulder","type":"symptom","group":"Physical"},
-        {"id":"Pelvic Discomfort","type":"symptom","group":"Physical"},
-        {"id":"Tinnitus","type":"symptom","group":"Physical"},
-        {"id":"Heat Burn / Acid Reflux","type":"symptom","group":"Physical"},
-        {"id":"Itchy Skin/Scalp","type":"symptom","group":"Physical"},
-        {"id":"Electric Shock Experience / Tremors","type":"symptom","group":"Physical"},
-        {"id":"Tremors","type":"symptom","group":"Physical"},
-        {"id":"Tingling","type":"symptom","group":"Physical"},
-        {"id":"Irritable Bowel Syndrome (IBS)","type":"symptom","group":"Physical"},
-        {"id":"Diabetes","type":"symptom","group":"Physical"},
-        {"id":"Insulin Resistance","type":"symptom","group":"Physical"},
-        {"id":"Crawling on Skin","type":"symptom","group":"Physical"},
-        {"id":"Swelling","type":"symptom","group":"Physical"},
-        {"id":"Dry Mouth","type":"symptom","group":"Physical"},
-        {"id":"Food Intolerance","type":"symptom","group":"Physical"},
-        {"id":"Obsessive Compulsive Disorder (OCD)","type":"symptom","group":"Physical"},
-        {"id":"Balancing Issues","type":"symptom","group":"Physical"},
-        {"id":"Dental Problems","type":"symptom","group":"Physical"},
-        {"id":"Disorientation","type":"symptom","group":"Physical"},
-
-        {"id":"Fluctuation in Cycles","type":"symptom","group":"Menstrual"},
-        {"id":"PMS Worsening","type":"symptom","group":"Menstrual"},
-        {"id":"Cramps","type":"symptom","group":"Menstrual"}
+    "nodes": [
+        {
+            "id": "Hot Flashes",
+            "type": "symptom",
+            "group": "Vasomotor",
+            "hovertext": "Sudden waves of heat, flushing, or sweating may occur during the day or night. Hot flashes affect up to 70% of women, vary by race/ethnicity ~ Rates are high among African-American & Native American women ; Chinese & Japanese women have lower rates & a shorter overall duratiion of hot flashes. Elevated FSH and fluctuating estrogen are predictive of hot flashes."
+        },
+        {
+            "id": "Night Sweat",
+            "type": "symptom",
+            "group": "Vasomotor",
+            "hovertext": "Sudden waves of heat, flushing, or sweating may occur during the day or night. Hot flashes affect up to 70% of women, vary by race/ethnicity ~ Rates are high among African-American & Native American women ; Chinese & Japanese women have lower rates & a shorter overall duratiion of hot flashes. Elevated FSH and fluctuating estrogen are predictive of hot flashes."
+        },
+        {
+            "id": "Heart Palpitations",
+            "type": "symptom",
+            "group": "Vasomotor",
+            "hovertext": "Fluctuation in Estrogen levels could lead to heart palpitations or irregular heart beat."
+        },
+        {
+            "id": "Chills",
+            "type": "symptom",
+            "group": "Vasomotor",
+            "hovertext": ""
+        },
+        {
+            "id": "Temperature Sensitivity",
+            "type": "symptom",
+            "group": "Vasomotor",
+            "hovertext": ""
+        },
+        {
+            "id": "Dizzy / Vertigo",
+            "type": "symptom",
+            "group": "Cognitive",
+            "hovertext": "Dizziness or vertigo may occur, causing a spinning sensation or feeling unsteady. Hormonal fluctuations can affect balance, blood flow, and the inner ear."
+        },
+        {
+            "id": "Brain Fog",
+            "type": "symptom",
+            "group": "Cognitive",
+            "hovertext": "Brain fog may cause forgetfulness, slower thinking, or difficulty concentrating. Reduced Estrogen levels and Hormonal fluctuations can affect memory, attention, and mental clarity."
+        },
+        {
+            "id": "Memory Lapse",
+            "type": "symptom",
+            "group": "Cognitive",
+            "hovertext": "Decline in Progesterone could lead to Memory Lapse."
+        },
+        {
+            "id": "Decreased Attention",
+            "type": "symptom",
+            "group": "Cognitive",
+            "hovertext": "Decreased attention often due to fluctuating testosterone & estrogen"
+        },
+        {
+            "id": "Migraine",
+            "type": "symptom",
+            "group": "Cognitive",
+            "hovertext": "Migraine/ Headache often caused due to low or absent Progesterone. It is one of the early indicators of Perimenopause."
+        },
+        {
+            "id": "Mood Swing",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": "Fluctuation in testosterone and estrogen can lead to Mood Swings"
+        },
+        {
+            "id": "Irritability",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": ""
+        },
+        {
+            "id": "Anxiety",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": "Fluctuation in estrogen levels can lead to Anxiety"
+        },
+        {
+            "id": "Depression",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": "Depressive symptoms varied by ethnicity in SWAN study, with sharp increases over time among Japanese and Hispanic women, and associations with higher testosterone levels"
+        },
+        {
+            "id": "Stress",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": "Stress may feel stronger, harder to recover from, and can amplify other symptoms."
+        },
+        {
+            "id": "ADHD",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": "Changes in estrogen during perimenopause can disrupt dopamine regulation, which may worsen ADHD symptoms such as inattention, overwhelm, and emotional reactivity."
+        },
+        {
+            "id": "Panic",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": "Panic attacks may become more frequent or intense due to hormonal changes."
+        },
+        {
+            "id": "Anger",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": "Small frustrations can trigger sudden irritability or outbursts due to hormonal fluctuations."
+        },
+        {
+            "id": "Emotional Instability",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": ""
+        },
+        {
+            "id": "Sudden Sadness",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": ""
+        },
+        {
+            "id": "Social Withdrawal",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": ""
+        },
+        {
+            "id": "Loss of Motivation",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": ""
+        },
+        {
+            "id": "Low Self Esteem",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": ""
+        },
+        {
+            "id": "Mental Fatigue",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": ""
+        },
+        {
+            "id": "Tearfulness",
+            "type": "symptom",
+            "group": "Psychological & Emotional",
+            "hovertext": ""
+        },
+        {
+            "id": "Insomnia",
+            "type": "symptom",
+            "group": "Sleep",
+            "hovertext": "Sleep disruption affects ~38% of women and often co-occurs with hot flashes. Rates vary by race/ethnicity ~ lowest (28%) observed in Japanese and highest (40%) in Caucasian women. Symptoms are also associated with estrogen volatility and low progesterone."
+        },
+        {
+            "id": "Fatigue",
+            "type": "symptom",
+            "group": "Sleep",
+            "hovertext": "Fatigue may feel persistent or overwhelming, even with adequate rest. Hormonal changes can disrupt sleep, energy regulation, and recovery."
+        },
+        {
+            "id": "Vivid Dreams",
+            "type": "symptom",
+            "group": "Sleep",
+            "hovertext": "Dreams may become more vivid, intense, or memorable. Hormonal changes can affect sleep cycles and REM sleep, making dreams feel more lifelike."
+        },
+        {
+            "id": "Low/High Libido",
+            "type": "symptom",
+            "group": "Urological & Sexual",
+            "hovertext": "Libido may increase or decrease during perimenopause. Hormonal fluctuations can affect desire, arousal, energy levels, and comfort. Fluctuations in testosterone and progesterone can lead to decreased Libido"
+        },
+        {
+            "id": "Frequent Urination",
+            "type": "symptom",
+            "group": "Urological & Sexual",
+            "hovertext": "Declining estrogen can weaken pelvic tissues and increase bladder sensitivity, leading to frequent urination."
+        },
+        {
+            "id": "Vaginal Dryness & Irritation",
+            "type": "symptom",
+            "group": "Urological & Sexual",
+            "hovertext": "Vaginal symptoms are common during perimenopause and are associated with declining estrogen levels. 60% of Central American women reported vaginal dryness compared with 21% of non-Hispanic Caucasian women"
+        },
+        {
+            "id": "Painful Intercourse",
+            "type": "symptom",
+            "group": "Urological & Sexual",
+            "hovertext": "Decreased Estrogen levels often lead to pain or discomfort during intercourse"
+        },
+        {
+            "id": "Urinary Tract Infection",
+            "type": "symptom",
+            "group": "Urological & Sexual",
+            "hovertext": "Urinary tract infections may occur more often during perimenopause. Hormonal changes can affect the urinary tract lining and natural protective bacteria."
+        },
+        {
+            "id": "Hair Thinning or Loss",
+            "type": "symptom",
+            "group": "Dermatological & Sensory",
+            "hovertext": "Hair may become thinner or shed more than usual. Hormonal changes can affect hair growth cycles, leading to noticeable thinning over time."
+        },
+        {
+            "id": "Skin Issues",
+            "type": "symptom",
+            "group": "Dermatological & Sensory",
+            "hovertext": "Acne may appear or worsen during perimenopause. Hormonal shifts can increase oil production and inflammation, leading to breakouts even if acne wasn\u2019t an issue before."
+        },
+        {
+            "id": "Allergy",
+            "type": "symptom",
+            "group": "Dermatological & Sensory",
+            "hovertext": "Allergies may appear or worsen during perimenopause. Hormonal changes can affect immune responses, making the body more sensitive to triggers."
+        },
+        {
+            "id": "Dry Skin",
+            "type": "symptom",
+            "group": "Dermatological & Sensory",
+            "hovertext": "Skin may become drier, itchier, or more sensitive. Hormonal changes can affect collagen, oil production, and skin barrier function."
+        },
+        {
+            "id": "Brittle Nail",
+            "type": "symptom",
+            "group": "Dermatological & Sensory",
+            "hovertext": "Nails may become brittle, thin, or prone to breaking as hormonal changes affect keratin production and moisture."
+        },
+        {
+            "id": "Dry & Itchy Ear",
+            "type": "symptom",
+            "group": "Dermatological & Sensory",
+            "hovertext": "Ears may feel dry or itchy as hormonal changes affect skin moisture and sensitivity."
+        },
+        {
+            "id": "Bone Health",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": "Bone density may begin to decline as estrogen and testosterone levels fluctuate, increasing the risk of bone loss over time."
+        },
+        {
+            "id": "Thyroid Dysfunction",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Weight Gain",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": "Weight gain may occur more easily, especially around the abdomen, even without changes in diet or activity. Hormonal shifts can affect metabolism, fat storage, and insulin sensitivity. Unexplained weight gain is one of the early indicators of Perimenopause."
+        },
+        {
+            "id": "Bloating",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Vision Changes",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Body Odour",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": "Body odor may change or become stronger. Hormonal shifts can increase sweating and alter skin bacteria, leading to noticeable changes in scent."
+        },
+        {
+            "id": "Breast Tenderness / Pain",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": "Breast Tenderness are often caused by fluctuations in Progesterone levels. It is one of the early indicators of this stage."
+        },
+        {
+            "id": "Body Aches",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": "Body aches like Muscle & joint pain"
+        },
+        {
+            "id": "Digestive Problems",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Blood Pressure Fluctuation",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Back Pain",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Frozen Shoulder",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": "Shoulder stiffness and pain may increase due to hormonal changes."
+        },
+        {
+            "id": "Pelvic Discomfort",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Tinnitus",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": "Tinnitus or Ringing Ear are one of the least discussed symptoms. It may appear or worsen during perimenopause. Hormonal changes can affect the inner ear and nervous system, leading to ringing or buzzing sounds."
+        },
+        {
+            "id": "Heat Burn / Acid Reflux",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Itchy Skin/Scalp",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Electric Shock Experience / Tremors",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": "Sudden electric shock-like sensations or internal tremors may occur. These can feel brief but intense and are linked to nervous system sensitivity during hormonal fluctuations."
+        },
+        {
+            "id": "Tremors",
+            "type": "symptom",
+            "group": "Physical"
+        },
+        {
+            "id": "Tingling",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Irritable Bowel Syndrome (IBS)",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Diabetes",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Insulin Resistance",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": "Insulin resistance may increase during perimenopause. Hormonal changes can affect how the body processes sugar, making blood glucose harder to regulate."
+        },
+        {
+            "id": "Crawling on Skin",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Swelling",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Dry Mouth",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": "Dry mouth may occur as hormonal changes affect saliva production, leading to discomfort or a persistent dry sensation."
+        },
+        {
+            "id": "Food Intolerance",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Obsessive Compulsive Disorder (OCD)",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Balancing Issues",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Dental Problems",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Disorientation",
+            "type": "symptom",
+            "group": "Physical",
+            "hovertext": ""
+        },
+        {
+            "id": "Fluctuation in Cycles",
+            "type": "symptom",
+            "group": "Menstrual",
+            "hovertext": "Menstrual cycles become irregular-shorter, longer, or skipped, as hormone levels fluctuate during this phase."
+        },
+        {
+            "id": "PMS Worsening",
+            "type": "symptom",
+            "group": "Menstrual",
+            "hovertext": "PMS Worsening during Menstrual Cycle"
+        },
+        {
+            "id": "Cramps",
+            "type": "symptom",
+            "group": "Menstrual",
+            "hovertext": "Cramps during Menstrual Cycle"
+        }
     ],
-
-    "links":[
-        {"source":"Hot Flashes","target":"Temperature Sensitivity","weight":0.9,"type":"symptom"},
-        {"source":"Hot Flashes","target":"Night Sweat","weight":0.9,"type":"symptom"},
-        {"source":"Hot Flashes","target":"Heart Palpitations","weight":0.7,"type":"symptom"},
-        {"source":"Hot Flashes","target":"Brain Fog","weight":0.7,"type":"symptom"},
-        {"source":"Hot Flashes","target":"Anxiety","weight":0.7,"type":"symptom"},
-        {"source":"Hot Flashes","target":"Body Odour","weight":0.8,"type":"symptom"},
-        {"source":"Hot Flashes","target":"Panic","weight":0.6,"type":"symptom"},
-
-        {"source":"Night Sweat","target":"Temperature Sensitivity","weight":0.9,"type":"symptom"},
-        {"source":"Night Sweat","target":"Insomnia","weight":0.9,"type":"symptom"},
-        {"source":"Night Sweat","target":"Hot Flashes","weight":0.9,"type":"symptom"},
-        {"source":"Night Sweat","target":"Stress","weight":0.9,"type":"symptom"},
-        {"source":"Night Sweat","target":"Heart Palpitations","weight":0.8,"type":"symptom"},
-        {"source":"Night Sweat","target":"Anxiety","weight":0.8,"type":"symptom"},
-        {"source":"Night Sweat","target":"Dizzy / Vertigo","weight":0.6,"type":"symptom"},
-        {"source":"Night Sweat","target":"Frequent Urination","weight":0.6,"type":"symptom"},
-        {"source":"Night Sweat","target":"Body Odour","weight":0.8,"type":"symptom"},
-
-        {"source":"Heart Palpitations","target":"Stress","weight":0.9,"type":"symptom"},
-        {"source":"Heart Palpitations","target":"Emotional Instability","weight":0.8,"type":"symptom"},
-        {"source":"Heart Palpitations","target":"Brain Fog","weight":0.8,"type":"symptom"},
-        {"source":"Heart Palpitations","target":"Night Sweat","weight":0.8,"type":"symptom"},
-        {"source":"Heart Palpitations","target":"Hot Flashes","weight":0.7,"type":"symptom"},
-        {"source":"Heart Palpitations","target":"Blood Pressure Fluctuation","weight":0.7,"type":"symptom"},
-        {"source":"Heart Palpitations","target":"Dizzy / Vertigo","weight":0.7,"type":"symptom"},
-
-        {"source":"Temperature Sensitivity","target":"Hot Flashes","weight":0.9,"type":"symptom"},
-        {"source":"Temperature Sensitivity","target":"Night Sweat","weight":0.9,"type":"symptom"},
-        {"source":"Temperature Sensitivity","target":"Body Odour","weight":0.8,"type":"symptom"},
-        {"source":"Temperature Sensitivity","target":"Insomnia","weight":0.8,"type":"symptom"},
-        {"source":"Temperature Sensitivity","target":"Body Odour","weight":0.8,"type":"symptom"},
-        {"source":"Temperature Sensitivity","target":"Anxiety","weight":0.7,"type":"symptom"},
-        {"source":"Temperature Sensitivity","target":"Chills","weight":0.7,"type":"symptom"},
-
-        {"source":"Chills","target":"Temperature Sensitivity","weight":0.7,"type":"symptom"},
-
-
-        {"source":"Brain Fog","target":"Decreased Attention","weight":0.9,"type":"symptom"},
-        {"source":"Brain Fog","target":"Memory Lapse","weight":0.9,"type":"symptom"},
-        {"source":"Brain Fog","target":"Emotional Instability","weight":0.9,"type":"symptom"},
-        {"source":"Brain Fog","target":"Sudden Sadness","weight":0.7,"type":"symptom"},
-        {"source":"Brain Fog","target":"Heart Palpitations","weight":0.8,"type":"symptom"},
-        {"source":"Brain Fog","target":"Hot Flashes","weight":0.7,"type":"symptom"},
-        {"source":"Brain Fog","target":"Emotional Instability","weight":0.7,"type":"symptom"},
-        {"source":"Brain Fog","target":"Emotional Instability","weight":0.7,"type":"symptom"},
-        {"source":"Brain Fog","target":"Stress","weight":0.7,"type":"symptom"},
-        {"source":"Brain Fog","target":"Dizzy / Vertigo","weight":0.7,"type":"symptom"},
-
-        {"source":"Dizzy / Vertigo","target":"Balancing Issues","weight":0.9,"type":"symptom"},
-        {"source":"Dizzy / Vertigo","target":"Blood Pressure Fluctuation","weight":0.8,"type":"symptom"},
-        {"source":"Dizzy / Vertigo","target":"Brain Fog","weight":0.7,"type":"symptom"},
-        {"source":"Dizzy / Vertigo","target":"Heart Palpitations","weight":0.7,"type":"symptom"},
-        {"source":"Dizzy / Vertigo","target":"Night Sweat","weight":0.6,"type":"symptom"},
-
-        {"source":"Migraine","target":"Insomnia","weight":0.9,"type":"symptom"},
-        {"source":"Migraine","target":"Anger","weight":0.8,"type":"symptom"},
-        {"source":"Migraine","target":"Mood Swing","weight":0.6,"type":"symptom"},
-        {"source":"Migraine","target":"Irritability","weight":0.6,"type":"symptom"},
-
-        {"source":"Memory Lapse","target":"Brain Fog","weight":0.9,"type":"symptom"},
-        {"source":"Memory Lapse","target":"Decreased Attention","weight":0.9,"type":"symptom"},
-
-        {"source":"Decreased Attention","target":"Memory Lapse","weight":0.9,"type":"symptom"},
-        {"source":"Decreased Attention","target":"Brain Fog","weight":0.9,"type":"symptom"},
-
-        {"source":"Insomnia","target":"Night Sweat","weight":0.9,"type":"symptom"},
-        {"source":"Insomnia","target":"Migraine","weight":0.9,"type":"symptom"},
-        {"source":"Insomnia","target":"Depression","weight":0.9,"type":"symptom"},
-        {"source":"Insomnia","target":"Temperature Sensitivity","weight":0.8,"type":"symptom"},
-        {"source":"Insomnia","target":"Fatigue","weight":0.8,"type":"symptom"},
-        {"source":"Insomnia","target":"Stress","weight":0.9,"type":"symptom"},
-        {"source":"Insomnia","target":"Anxiety","weight":0.6,"type":"symptom"},
-        {"source":"Insomnia","target":"ADHD","weight":0.8,"type":"symptom"},
-        {"source":"Insomnia","target":"Loss of Motivation","weight":0.7,"type":"symptom"},
-        {"source":"Insomnia","target":"Frequent Urination","weight":0.8,"type":"symptom"},
-
-        {"source":"Fatigue","target":"ADHD","weight":0.8,"type":"symptom"},
-        {"source":"Fatigue","target":"Weight Gain","weight":0.8,"type":"symptom"},
-        {"source":"Fatigue","target":"Insomnia","weight":0.8,"type":"symptom"},
-        {"source":"Fatigue","target":"Depression","weight":0.6,"type":"symptom"},
-
-        {"source":"Vivid Dreams","target":"Frequent Urination","weight":0.8,"type":"symptom"},
-        {"source":"Vivid Dreams","target":"Anxiety","weight":0.6,"type":"symptom"},
-
-        {"source":"Low/High Libido","target":"Weight Gain","weight":0.7,"type":"symptom"},
-        {"source":"Low/High Libido","target":"Painful Intercourse","weight":0.9,"type":"symptom"},
-        {"source":"Low/High Libido","target":"Vaginal Dryness & Irritation","weight":0.9,"type":"symptom"},
-
-        {"source":"Vaginal Dryness & Irritation","target":"Painful Intercourse","weight":0.9,"type":"symptom"},
-        {"source":"Vaginal Dryness & Irritation","target":"Low/High Libido","weight":0.9,"type":"symptom"},
-        {"source":"Vaginal Dryness & Irritation","target":"Painful Intercourse","weight":0.9,"type":"symptom"},
-        {"source":"Vaginal Dryness & Irritation","target":"Frequent Urination","weight":0.6,"type":"symptom"},
-        {"source":"Vaginal Dryness & Irritation","target":"Pelvic Discomfort","weight":0.6,"type":"symptom"},
-
-        {"source":"Frequent Urination","target":"Stress","weight":0.9,"type":"symptom"},
-        {"source":"Frequent Urination","target":"Anxiety","weight":0.8,"type":"symptom"},
-        {"source":"Frequent Urination","target":"Pelvic Discomfort","weight":0.6,"type":"symptom"},
-        {"source":"Frequent Urination","target":"Vaginal Dryness & Irritation","weight":0.6,"type":"symptom"},
-        {"source":"Frequent Urination","target":"Insomnia","weight":0.8,"type":"symptom"},
-        {"source":"Frequent Urination","target":"Painful Intercourse","weight":0.7,"type":"symptom"},
-        {"source":"Frequent Urination","target":"Diabetes","weight":0.8,"type":"symptom"},
-
-        {"source":"Painful Intercourse","target":"Low/High Libido","weight":0.9,"type":"symptom"},
-        {"source":"Painful Intercourse","target":"Vaginal Dryness & Irritation","weight":0.9,"type":"symptom"},
-        {"source":"Painful Intercourse","target":"Frequent Urination","weight":0.7,"type":"symptom"},
-        {"source":"Painful Intercourse","target":"Pelvic Discomfort","weight":0.8,"type":"symptom"},
-        {"source":"Painful Intercourse","target":"Urinary Tract Infection","weight":0.7,"type":"symptom"},
-
-        {"source":"Urinary Tract Infection","target":"Painful Intercourse","weight":0.7,"type":"symptom"},
-
-        {"source":"Mood Swing","target":"Irritability","weight":0.9,"type":"symptom"},
-        {"source":"Mood Swing","target":"Anxiety","weight":0.8,"type":"symptom"},
-        {"source":"Mood Swing","target":"Anger","weight":0.7,"type":"symptom"},
-        {"source":"Mood Swing","target":"Irritability","weight":0.7,"type":"symptom"},
-        {"source":"Mood Swing","target":"Migraine","weight":0.6,"type":"symptom"},
-
-        {"source":"Anxiety","target":"Depression","weight":0.9,"type":"symptom"},
-        {"source":"Anxiety","target":"Frequent Urination","weight":0.9,"type":"symptom"},
-        {"source":"Anxiety","target":"Mood Swing","weight":0.8,"type":"symptom"},
-        {"source":"Anxiety","target":"Temperature Sensitivity","weight":0.7,"type":"symptom"},
-        {"source":"Anxiety","target":"Night Sweat","weight":0.8,"type":"symptom"},
-        {"source":"Anxiety","target":"Hot Flashes","weight":0.7,"type":"symptom"},
-        {"source":"Anxiety","target":"PMS Worsening","weight":0.6,"type":"symptom"},
-        {"source":"Anxiety","target":"Depression","weight":0.6,"type":"symptom"},
-        {"source":"Anxiety","target":"Vivid Dreams","weight":0.6,"type":"symptom"},
-        {"source":"Anxiety","target":"Insomnia","weight":0.6,"type":"symptom"},
-        {"source":"Anxiety","target":"Fluctuation in Cycles","weight":0.6,"type":"symptom"},
-        {"source":"Anxiety","target":"Stress","weight":0.6,"type":"symptom"},
-        {"source":"Anxiety","target":"Stress","weight":0.7,"type":"symptom"},
-
-        {"source":"Depression","target":"Anxiety","weight":0.9,"type":"symptom"},
-        {"source":"Depression","target":"ADHD","weight":0.9,"type":"symptom"},
-        {"source":"Depression","target":"Insomnia","weight":0.8,"type":"symptom"},
-        {"source":"Depression","target":"Loss of Motivation","weight":0.8,"type":"symptom"},
-        {"source":"Depression","target":"Fluctuation in Cycles","weight":0.8,"type":"symptom"},
-        {"source":"Depression","target":"Stress","weight":0.8,"type":"symptom"},
-        {"source":"Depression","target":"Social Withdrawal","weight":0.8,"type":"symptom"},
-        {"source":"Depression","target":"Fatigue","weight":0.6,"type":"symptom"},
-
-        {"source":"Stress","target":"Fluctuation in Cycles","weight":0.9,"type":"symptom"},
-        {"source":"Stress","target":"Night Sweat","weight":0.9,"type":"symptom"},
-        {"source":"Stress","target":"Heart Palpitations","weight":0.9,"type":"symptom"},
-        {"source":"Stress","target":"Frequent Urination","weight":0.9,"type":"symptom"},
-        {"source":"Stress","target":"Weight Gain","weight":0.9,"type":"symptom"},
-        {"source":"Stress","target":"Insomnia","weight":0.9,"type":"symptom"},
-        {"source":"Stress","target":"Loss of Motivation","weight":0.8,"type":"symptom"},
-        {"source":"Stress","target":"Emotional Instability","weight":0.8,"type":"symptom"},
-        {"source":"Stress","target":"Depression","weight":0.8,"type":"symptom"},
-        {"source":"Stress","target":"Brain Fog","weight":0.8,"type":"symptom"},
-        {"source":"Stress","target":"Blood Pressure Fluctuation","weight":0.6,"type":"symptom"},
-        {"source":"Stress","target":"Anxiety","weight":0.6,"type":"symptom"},
-        {"source":"Stress","target":"Migraine","weight":0.6,"type":"symptom"},
-
-        {"source":"ADHD","target":"Depression","weight":0.9,"type":"symptom"},
-        {"source":"ADHD","target":"Insomnia","weight":0.8,"type":"symptom"},
-        {"source":"ADHD","target":"Loss of Motivation","weight":0.7,"type":"symptom"},
-
-        {"source":"Panic","target":"Tremors","weight":0.9,"type":"symptom"},
-        {"source":"Panic","target":"Social Withdrawal","weight":0.8,"type":"symptom"},
-        {"source":"Panic","target":"Hot Flashes","weight":0.6,"type":"symptom"},
-        {"source":"Panic","target":"Panic","weight":0.7,"type":"symptom"},
-
-        {"source":"Anger","target":"Migraine","weight":0.8,"type":"symptom"},
-        {"source":"Anger","target":"Mood Swing","weight":0.7,"type":"symptom"},
-        {"source":"Anger","target":"Weight Gain","weight":0.6,"type":"symptom"},
-
-        {"source":"Irritability","target":"Tearfulness","weight":0.9,"type":"symptom"},
-        {"source":"Irritability","target":"PMS Worsening","weight":0.8,"type":"symptom"},
-        {"source":"Irritability","target":"Low/High Libido","weight":0.8,"type":"symptom"},
-        {"source":"Irritability","target":"Mood Swing","weight":0.7,"type":"symptom"},
-
-        {"source":"Emotional Instability","target":"Brain Fog","weight":0.9,"type":"symptom"},
-        {"source":"Emotional Instability","target":"Heart Palpitations","weight":0.8,"type":"symptom"},
-        {"source":"Emotional Instability","target":"Fluctuation in Cycles","weight":0.8,"type":"symptom"},
-
-        {"source":"Sudden Sadness","target":"Tearfulness","weight":0.9,"type":"symptom"},
-        {"source":"Sudden Sadness","target":"Fluctuation in Cycles","weight":0.8,"type":"symptom"},
-        {"source":"Sudden Sadness","target":"Brain Fog","weight":0.7,"type":"symptom"},
-
-        {"source":"Social Withdrawal","target":"Obsessive Compulsive Disorder (OCD)","weight":0.9,"type":"symptom"},
-        {"source":"Social Withdrawal","target":"Depression","weight":0.8,"type":"symptom"},
-        {"source":"Social Withdrawal","target":"Loss of Motivation","weight":0.7,"type":"symptom"},
-
-        {"source":"Loss of Motivation","target":"Depression","weight":0.8,"type":"symptom"},
-        {"source":"Loss of Motivation","target":"Stress","weight":0.8,"type":"symptom"},
-        {"source":"Loss of Motivation","target":"Social Withdrawal","weight":0.7,"type":"symptom"},
-        {"source":"Loss of Motivation","target":"Insomnia","weight":0.7,"type":"symptom"},
-        {"source":"Loss of Motivation","target":"ADHD","weight":0.7,"type":"symptom"},
-
-        {"source":"Mental Fatigue","target":"Disorientation","weight":0.9,"type":"symptom"},
-        {"source":"Mental Fatigue","target":"Low Self Esteem","weight":0.7,"type":"symptom"},
-
-        {"source":"Low Self Esteem","target":"Hair Thinning or Loss","weight":0.9,"type":"symptom"},
-        {"source":"Low Self Esteem","target":"Skin Issues","weight":0.9,"type":"symptom"},
-        {"source":"Low Self Esteem","target":"Weight Gain","weight":0.9,"type":"symptom"},
-
-        {"source":"Hair Thinning or Loss","target":"Dry Skin","weight":0.9,"type":"symptom"},
-        {"source":"Hair Thinning or Loss","target":"Brittle Nail","weight":0.8,"type":"symptom"},
-        {"source":"Hair Thinning or Loss","target":"Skin Issues","weight":0.8,"type":"symptom"},
-        {"source":"Hair Thinning or Loss","target":"Weight Gain","weight":0.7,"type":"symptom"},
-        {"source":"Hair Thinning or Loss","target":"Low Self Esteem","weight":0.9,"type":"symptom"},
-
-        {"source":"Skin Issues","target":"Low Self Esteem","weight":0.9,"type":"symptom"},
-        {"source":"Skin Issues","target":"Brittle Nail","weight":0.8,"type":"symptom"},
-
-        {"source":"Allergy","target":"Skin Issues","weight":0.9,"type":"symptom"},
-        {"source":"Allergy","target":"Food Intolerance","weight":0.8,"type":"symptom"},
-        {"source":"Allergy","target":"Brittle Nail","weight":0.8,"type":"symptom"},
-        {"source":"Allergy","target":"Dry & Itchy Ear","weight":0.8,"type":"symptom"},
-
-        {"source":"Dry & Itchy Ear","target":"Allergy","weight":0.8,"type":"symptom"},
-
-        {"source":"Dry Skin","target":"Brittle Nail","weight":0.9,"type":"symptom"},
-        {"source":"Dry Skin","target":"Hair Thinning or Loss","weight":0.9,"type":"symptom"},
-        {"source":"Dry Skin","target":"Dry Mouth","weight":0.7,"type":"symptom"},
-
-        {"source":"Brittle Nail","target":"Hair Thinning or Loss","weight":0.8,"type":"symptom"},
-        {"source":"Brittle Nail","target":"Dry Skin","weight":0.9,"type":"symptom"},
-
-        {"source":"Weight Gain","target":"Insulin Resistance","weight":0.9,"type":"symptom"},
-        {"source":"Weight Gain","target":"Stress","weight":0.8,"type":"symptom"},
-        {"source":"Weight Gain","target":"Fatigue","weight":0.8,"type":"symptom"},
-        {"source":"Weight Gain","target":"Diabetes","weight":0.8,"type":"symptom"},
-        {"source":"Weight Gain","target":"Blood Pressure Fluctuation","weight":0.7,"type":"symptom"},
-        {"source":"Weight Gain","target":"Low Self Esteem","weight":0.8,"type":"symptom"},
-        {"source":"Weight Gain","target":"Hair Thinning or Loss","weight":0.7,"type":"symptom"},
-
-        {"source":"Insulin Resistance","target":"Diabetes","weight":0.9,"type":"symptom"},
-        {"source":"Insulin Resistance","target":"Weight Gain","weight":0.9,"type":"symptom"},
-        {"source":"Insulin Resistance","target":"Vision Changes","weight":0.7,"type":"symptom"},
-
-        {"source":"Blood Pressure Fluctuation","target":"Weight Gain","weight":0.7,"type":"symptom"},
-        {"source":"Blood Pressure Fluctuation","target":"Panic","weight":0.7,"type":"symptom"},
-        {"source":"Blood Pressure Fluctuation","target":"Anxiety","weight":0.8,"type":"symptom"},
-
-        {"source":"Swelling","target":"Body Aches","weight":0.6,"type":"symptom"},
-
-
-        {"source":"Digestive Problems","target":"Bloating","weight":0.9,"type":"symptom"},
-        {"source":"Digestive Problems","target":"Irritable Bowel Syndrome (IBS)","weight":0.8,"type":"symptom"},
-        {"source":"Digestive Problems","target":"Food Intolerance","weight":0.8,"type":"symptom"},
-        {"source":"Digestive Problems","target":"Diabetes","weight":0.6,"type":"symptom"},
-
-        {"source":"Bloating","target":"Food Intolerance","weight":0.8,"type":"symptom"},
-        {"source":"Bloating","target":"Heat Burn / Acid Reflux","weight":0.7,"type":"symptom"},
-        {"source":"Bloating","target":"Pelvic Discomfort","weight":0.7,"type":"symptom"},
-        {"source":"Bloating","target":"Digestive Problems","weight":0.8,"type":"symptom"},
-
-        {"source":"Heat Burn / Acid Reflux","target":"Irritable Bowel Syndrome (IBS)","weight":0.6,"type":"symptom"},
-        {"source":"Dry Mouth","target":"Digestive Problems","weight":0.6,"type":"symptom"},
-        {"source":"Dry Mouth","target":"Dry Skin","weight":0.7,"type":"symptom"},
-
-        {"source":"Bone Health","target":"Body Aches","weight":0.8,"type":"symptom"},
-        {"source":"Bone Health","target":"Back Pain","weight":0.7,"type":"symptom"},
-        {"source":"Bone Health","target":"Diabetes","weight":0.6,"type":"symptom"},
-
-        {"source":"Body Aches","target":"Back Pain","weight":0.9,"type":"symptom"},
-        {"source":"Body Aches","target":"Swelling","weight":0.6,"type":"symptom"},
-
-        {"source":"Back Pain","target":"Frozen Shoulder","weight":0.8,"type":"symptom"},
-        {"source":"Frozen Shoulder","target":"Body Aches","weight":0.8,"type":"symptom"},
-
-        {"source":"Pelvic Discomfort","target":"Body Aches","weight":0.6,"type":"symptom"},
-        {"source":"Pelvic Discomfort","target":"Food Intolerance","weight":0.8,"type":"symptom"},
-        {"source":"Pelvic Discomfort","target":"PMS Worsening","weight":0.9,"type":"symptom"},
-        {"source":"Pelvic Discomfort","target":"Bloating","weight":0.7,"type":"symptom"},
-
-        {"source":"Tingling","target":"Tremors","weight":0.9,"type":"symptom"},
-        {"source":"Tingling","target":"Crawling on Skin","weight":0.8,"type":"symptom"},
-
-        {"source":"Tremors","target":"Disorientation","weight":0.7,"type":"symptom"},
-        {"source":"Tremors","target":"Tingling","weight":0.9,"type":"symptom"},
-        {"source":"Balancing Issues","target":"Disorientation","weight":0.8,"type":"symptom"},
-
-        {"source":"Tinnitus","target":"Disorientation","weight":0.6,"type":"symptom"},
-
-        {"source":"Itchy Skin/Scalp","target":"Crawling on Skin","weight":0.8,"type":"symptom"},
-        {"source":"Itchy Skin/Scalp","target":"Body Odour","weight":0.6,"type":"symptom"},
-
-        {"source":"Body Odour","target":"Hot Flashes","weight":0.8,"type":"symptom"},
-        {"source":"Body Odour","target":"Night Sweat","weight":0.8,"type":"symptom"},
-        {"source":"Body Odour","target":"Temperature Sensitivity","weight":0.8,"type":"symptom"},
-
-        {"source":"Breast Tenderness / Pain","target":"Pelvic Discomfort","weight":0.7,"type":"symptom"},
-        {"source":"Breast Tenderness / Pain","target":"Swelling","weight":0.7,"type":"symptom"},
-        {"source":"Breast Tenderness / Pain","target":"Body Aches","weight":0.6,"type":"symptom"},
-        {"source":"Breast Tenderness / Pain","target":"Fluctuation in Cycles","weight":0.7,"type":"symptom"},
-
-        {"source":"Obsessive Compulsive Disorder (OCD)","target":"Disorientation","weight":0.7,"type":"symptom"},
-
-        {"source":"Dental Problems","target":"Dry Mouth","weight":0.9,"type":"symptom"},
-        {"source":"Dental Problems","target":"Bone Health","weight":0.6,"type":"symptom"},
-        {"source":"Dry Mouth","target":"Food Intolerance","weight":0.6,"type":"symptom"},
-
-        {"source":"Irritable Bowel Syndrome (IBS)","target":"Food Intolerance","weight":0.9,"type":"symptom"},
-        {"source":"Irritable Bowel Syndrome (IBS)","target":"Pelvic Discomfort","weight":0.9,"type":"symptom"},
-        {"source":"Irritable Bowel Syndrome (IBS)","target":"Bloating","weight":0.9,"type":"symptom"},
-        {"source":"Irritable Bowel Syndrome (IBS)","target":"Digestive Problems","weight":0.9,"type":"symptom"},
-        {"source":"Irritable Bowel Syndrome (IBS)","target":"Weight Gain","weight":0.8,"type":"symptom"},
-
-        {"source":"Diabetes","target":"Insulin Resistance","weight":0.9,"type":"symptom"},
-        {"source":"Diabetes","target":"Weight Gain","weight":0.9,"type":"symptom"},
-        {"source":"Diabetes","target":"Insulin Resistance","weight":0.9,"type":"symptom"},
-        {"source":"Diabetes","target":"Vision Changes","weight":0.7,"type":"symptom"},
-        {"source":"Diabetes","target":"Bone Health","weight":0.6,"type":"symptom"},
-        {"source":"Diabetes","target":"Digestive Problems","weight":0.6,"type":"symptom"},
-        {"source":"Diabetes","target":"Frequent Urination","weight":0.8,"type":"symptom"},
-        {"source":"Diabetes","target":"Food Intolerance","weight":0.7,"type":"symptom"},
-
-        {"source":"Crawling on Skin","target":"Tingling","weight":0.8,"type":"symptom"},
-
-        {"source":"Food Intolerance","target":"Diabetes","weight":0.7,"type":"symptom"},
-        {"source":"Food Intolerance","target":"Irritable Bowel Syndrome (IBS)","weight":0.9,"type":"symptom"},
-        {"source":"Food Intolerance","target":"Dry Mouth","weight":0.6,"type":"symptom"},
-        {"source":"Food Intolerance","target":"Pelvic Discomfort","weight":0.8,"type":"symptom"},
-        {"source":"Food Intolerance","target":"Bloating","weight":0.8,"type":"symptom"},
-
-        {"source":"Food Intolerance","target":"Digestive Problems","weight":0.8,"type":"symptom"},
-
-        {"source":"Disorientation","target":"Tinnitus","weight":0.6,"type":"symptom"},
-        {"source":"Disorientation","target":"Mental Fatigue","weight":0.9,"type":"symptom"},
-
-        {"source":"Vision Changes","target":"Diabetes","weight":0.7,"type":"symptom"},
-        {"source":"Vision Changes","target":"Insulin Resistance","weight":0.7,"type":"symptom"}
+    "links": [
+        {
+            "source": "Hot Flashes",
+            "target": "Temperature Sensitivity",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Hot Flashes",
+            "target": "Night Sweat",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Hot Flashes",
+            "target": "Heart Palpitations",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Hot Flashes",
+            "target": "Brain Fog",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Hot Flashes",
+            "target": "Anxiety",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Hot Flashes",
+            "target": "Body Odour",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Hot Flashes",
+            "target": "Panic",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Night Sweat",
+            "target": "Temperature Sensitivity",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Night Sweat",
+            "target": "Insomnia",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Night Sweat",
+            "target": "Hot Flashes",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Night Sweat",
+            "target": "Stress",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Night Sweat",
+            "target": "Heart Palpitations",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Night Sweat",
+            "target": "Anxiety",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Night Sweat",
+            "target": "Dizzy / Vertigo",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Night Sweat",
+            "target": "Frequent Urination",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Night Sweat",
+            "target": "Body Odour",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Heart Palpitations",
+            "target": "Stress",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Heart Palpitations",
+            "target": "Emotional Instability",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Heart Palpitations",
+            "target": "Brain Fog",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Heart Palpitations",
+            "target": "Night Sweat",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Heart Palpitations",
+            "target": "Hot Flashes",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Heart Palpitations",
+            "target": "Blood Pressure Fluctuation",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Heart Palpitations",
+            "target": "Dizzy / Vertigo",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Temperature Sensitivity",
+            "target": "Hot Flashes",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Temperature Sensitivity",
+            "target": "Night Sweat",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Temperature Sensitivity",
+            "target": "Body Odour",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Temperature Sensitivity",
+            "target": "Insomnia",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Temperature Sensitivity",
+            "target": "Body Odour",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Temperature Sensitivity",
+            "target": "Anxiety",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Temperature Sensitivity",
+            "target": "Chills",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Chills",
+            "target": "Temperature Sensitivity",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Brain Fog",
+            "target": "Decreased Attention",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Brain Fog",
+            "target": "Memory Lapse",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Brain Fog",
+            "target": "Emotional Instability",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Brain Fog",
+            "target": "Sudden Sadness",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Brain Fog",
+            "target": "Heart Palpitations",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Brain Fog",
+            "target": "Hot Flashes",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Brain Fog",
+            "target": "Emotional Instability",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Brain Fog",
+            "target": "Emotional Instability",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Brain Fog",
+            "target": "Stress",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Brain Fog",
+            "target": "Dizzy / Vertigo",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Dizzy / Vertigo",
+            "target": "Balancing Issues",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Dizzy / Vertigo",
+            "target": "Blood Pressure Fluctuation",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Dizzy / Vertigo",
+            "target": "Brain Fog",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Dizzy / Vertigo",
+            "target": "Heart Palpitations",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Dizzy / Vertigo",
+            "target": "Night Sweat",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Migraine",
+            "target": "Insomnia",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Migraine",
+            "target": "Anger",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Migraine",
+            "target": "Mood Swing",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Migraine",
+            "target": "Irritability",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Memory Lapse",
+            "target": "Brain Fog",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Memory Lapse",
+            "target": "Decreased Attention",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Decreased Attention",
+            "target": "Memory Lapse",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Decreased Attention",
+            "target": "Brain Fog",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Insomnia",
+            "target": "Night Sweat",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Insomnia",
+            "target": "Migraine",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Insomnia",
+            "target": "Depression",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Insomnia",
+            "target": "Temperature Sensitivity",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Insomnia",
+            "target": "Fatigue",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Insomnia",
+            "target": "Stress",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Insomnia",
+            "target": "Anxiety",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Insomnia",
+            "target": "ADHD",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Insomnia",
+            "target": "Loss of Motivation",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Insomnia",
+            "target": "Frequent Urination",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Fatigue",
+            "target": "ADHD",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Fatigue",
+            "target": "Weight Gain",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Fatigue",
+            "target": "Insomnia",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Fatigue",
+            "target": "Depression",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Vivid Dreams",
+            "target": "Frequent Urination",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Vivid Dreams",
+            "target": "Anxiety",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Low/High Libido",
+            "target": "Weight Gain",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Low/High Libido",
+            "target": "Painful Intercourse",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Low/High Libido",
+            "target": "Vaginal Dryness & Irritation",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Vaginal Dryness & Irritation",
+            "target": "Painful Intercourse",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Vaginal Dryness & Irritation",
+            "target": "Low/High Libido",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Vaginal Dryness & Irritation",
+            "target": "Painful Intercourse",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Vaginal Dryness & Irritation",
+            "target": "Frequent Urination",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Vaginal Dryness & Irritation",
+            "target": "Pelvic Discomfort",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Frequent Urination",
+            "target": "Stress",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Frequent Urination",
+            "target": "Anxiety",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Frequent Urination",
+            "target": "Pelvic Discomfort",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Frequent Urination",
+            "target": "Vaginal Dryness & Irritation",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Frequent Urination",
+            "target": "Insomnia",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Frequent Urination",
+            "target": "Painful Intercourse",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Frequent Urination",
+            "target": "Diabetes",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Painful Intercourse",
+            "target": "Low/High Libido",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Painful Intercourse",
+            "target": "Vaginal Dryness & Irritation",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Painful Intercourse",
+            "target": "Frequent Urination",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Painful Intercourse",
+            "target": "Pelvic Discomfort",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Painful Intercourse",
+            "target": "Urinary Tract Infection",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Urinary Tract Infection",
+            "target": "Painful Intercourse",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Mood Swing",
+            "target": "Irritability",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Mood Swing",
+            "target": "Anxiety",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Mood Swing",
+            "target": "Anger",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Mood Swing",
+            "target": "Irritability",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Mood Swing",
+            "target": "Migraine",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Depression",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Frequent Urination",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Mood Swing",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Temperature Sensitivity",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Night Sweat",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Hot Flashes",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "PMS Worsening",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Depression",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Vivid Dreams",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Insomnia",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Fluctuation in Cycles",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Stress",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Anxiety",
+            "target": "Stress",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Depression",
+            "target": "Anxiety",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Depression",
+            "target": "ADHD",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Depression",
+            "target": "Insomnia",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Depression",
+            "target": "Loss of Motivation",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Depression",
+            "target": "Fluctuation in Cycles",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Depression",
+            "target": "Stress",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Depression",
+            "target": "Social Withdrawal",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Depression",
+            "target": "Fatigue",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Fluctuation in Cycles",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Night Sweat",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Heart Palpitations",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Frequent Urination",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Weight Gain",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Insomnia",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Loss of Motivation",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Emotional Instability",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Depression",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Brain Fog",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Blood Pressure Fluctuation",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Anxiety",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Stress",
+            "target": "Migraine",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "ADHD",
+            "target": "Depression",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "ADHD",
+            "target": "Insomnia",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "ADHD",
+            "target": "Loss of Motivation",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Panic",
+            "target": "Tremors",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Panic",
+            "target": "Social Withdrawal",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Panic",
+            "target": "Hot Flashes",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Panic",
+            "target": "Panic",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Anger",
+            "target": "Migraine",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Anger",
+            "target": "Mood Swing",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Anger",
+            "target": "Weight Gain",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Irritability",
+            "target": "Tearfulness",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Irritability",
+            "target": "PMS Worsening",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Irritability",
+            "target": "Low/High Libido",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Irritability",
+            "target": "Mood Swing",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Emotional Instability",
+            "target": "Brain Fog",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Emotional Instability",
+            "target": "Heart Palpitations",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Emotional Instability",
+            "target": "Fluctuation in Cycles",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Sudden Sadness",
+            "target": "Tearfulness",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Sudden Sadness",
+            "target": "Fluctuation in Cycles",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Sudden Sadness",
+            "target": "Brain Fog",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Social Withdrawal",
+            "target": "Obsessive Compulsive Disorder (OCD)",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Social Withdrawal",
+            "target": "Depression",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Social Withdrawal",
+            "target": "Loss of Motivation",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Loss of Motivation",
+            "target": "Depression",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Loss of Motivation",
+            "target": "Stress",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Loss of Motivation",
+            "target": "Social Withdrawal",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Loss of Motivation",
+            "target": "Insomnia",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Loss of Motivation",
+            "target": "ADHD",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Mental Fatigue",
+            "target": "Disorientation",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Mental Fatigue",
+            "target": "Low Self Esteem",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Low Self Esteem",
+            "target": "Hair Thinning or Loss",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Low Self Esteem",
+            "target": "Skin Issues",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Low Self Esteem",
+            "target": "Weight Gain",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Hair Thinning or Loss",
+            "target": "Dry Skin",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Hair Thinning or Loss",
+            "target": "Brittle Nail",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Hair Thinning or Loss",
+            "target": "Skin Issues",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Hair Thinning or Loss",
+            "target": "Weight Gain",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Hair Thinning or Loss",
+            "target": "Low Self Esteem",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Skin Issues",
+            "target": "Low Self Esteem",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Skin Issues",
+            "target": "Brittle Nail",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Allergy",
+            "target": "Skin Issues",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Allergy",
+            "target": "Food Intolerance",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Allergy",
+            "target": "Brittle Nail",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Allergy",
+            "target": "Dry & Itchy Ear",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Dry & Itchy Ear",
+            "target": "Allergy",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Dry Skin",
+            "target": "Brittle Nail",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Dry Skin",
+            "target": "Hair Thinning or Loss",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Dry Skin",
+            "target": "Dry Mouth",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Brittle Nail",
+            "target": "Hair Thinning or Loss",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Brittle Nail",
+            "target": "Dry Skin",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Weight Gain",
+            "target": "Insulin Resistance",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Weight Gain",
+            "target": "Stress",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Weight Gain",
+            "target": "Fatigue",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Weight Gain",
+            "target": "Diabetes",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Weight Gain",
+            "target": "Blood Pressure Fluctuation",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Weight Gain",
+            "target": "Low Self Esteem",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Weight Gain",
+            "target": "Hair Thinning or Loss",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Insulin Resistance",
+            "target": "Diabetes",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Insulin Resistance",
+            "target": "Weight Gain",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Insulin Resistance",
+            "target": "Vision Changes",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Blood Pressure Fluctuation",
+            "target": "Weight Gain",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Blood Pressure Fluctuation",
+            "target": "Panic",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Blood Pressure Fluctuation",
+            "target": "Anxiety",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Swelling",
+            "target": "Body Aches",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Digestive Problems",
+            "target": "Bloating",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Digestive Problems",
+            "target": "Irritable Bowel Syndrome (IBS)",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Digestive Problems",
+            "target": "Food Intolerance",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Digestive Problems",
+            "target": "Diabetes",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Bloating",
+            "target": "Food Intolerance",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Bloating",
+            "target": "Heat Burn / Acid Reflux",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Bloating",
+            "target": "Pelvic Discomfort",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Bloating",
+            "target": "Digestive Problems",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Heat Burn / Acid Reflux",
+            "target": "Irritable Bowel Syndrome (IBS)",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Dry Mouth",
+            "target": "Digestive Problems",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Dry Mouth",
+            "target": "Dry Skin",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Bone Health",
+            "target": "Body Aches",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Bone Health",
+            "target": "Back Pain",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Bone Health",
+            "target": "Diabetes",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Body Aches",
+            "target": "Back Pain",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Body Aches",
+            "target": "Swelling",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Back Pain",
+            "target": "Frozen Shoulder",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Frozen Shoulder",
+            "target": "Body Aches",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Pelvic Discomfort",
+            "target": "Body Aches",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Pelvic Discomfort",
+            "target": "Food Intolerance",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Pelvic Discomfort",
+            "target": "PMS Worsening",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Pelvic Discomfort",
+            "target": "Bloating",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Tingling",
+            "target": "Tremors",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Tingling",
+            "target": "Crawling on Skin",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Tremors",
+            "target": "Disorientation",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Tremors",
+            "target": "Tingling",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Balancing Issues",
+            "target": "Disorientation",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Tinnitus",
+            "target": "Disorientation",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Itchy Skin/Scalp",
+            "target": "Crawling on Skin",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Itchy Skin/Scalp",
+            "target": "Body Odour",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Body Odour",
+            "target": "Hot Flashes",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Body Odour",
+            "target": "Night Sweat",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Body Odour",
+            "target": "Temperature Sensitivity",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Breast Tenderness / Pain",
+            "target": "Pelvic Discomfort",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Breast Tenderness / Pain",
+            "target": "Swelling",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Breast Tenderness / Pain",
+            "target": "Body Aches",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Breast Tenderness / Pain",
+            "target": "Fluctuation in Cycles",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Obsessive Compulsive Disorder (OCD)",
+            "target": "Disorientation",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Dental Problems",
+            "target": "Dry Mouth",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Dental Problems",
+            "target": "Bone Health",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Dry Mouth",
+            "target": "Food Intolerance",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Irritable Bowel Syndrome (IBS)",
+            "target": "Food Intolerance",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Irritable Bowel Syndrome (IBS)",
+            "target": "Pelvic Discomfort",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Irritable Bowel Syndrome (IBS)",
+            "target": "Bloating",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Irritable Bowel Syndrome (IBS)",
+            "target": "Digestive Problems",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Irritable Bowel Syndrome (IBS)",
+            "target": "Weight Gain",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Diabetes",
+            "target": "Insulin Resistance",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Diabetes",
+            "target": "Weight Gain",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Diabetes",
+            "target": "Insulin Resistance",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Diabetes",
+            "target": "Vision Changes",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Diabetes",
+            "target": "Bone Health",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Diabetes",
+            "target": "Digestive Problems",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Diabetes",
+            "target": "Frequent Urination",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Diabetes",
+            "target": "Food Intolerance",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Crawling on Skin",
+            "target": "Tingling",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Food Intolerance",
+            "target": "Diabetes",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Food Intolerance",
+            "target": "Irritable Bowel Syndrome (IBS)",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Food Intolerance",
+            "target": "Dry Mouth",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Food Intolerance",
+            "target": "Pelvic Discomfort",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Food Intolerance",
+            "target": "Bloating",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Food Intolerance",
+            "target": "Digestive Problems",
+            "weight": 0.8,
+            "type": "symptom"
+        },
+        {
+            "source": "Disorientation",
+            "target": "Tinnitus",
+            "weight": 0.6,
+            "type": "symptom"
+        },
+        {
+            "source": "Disorientation",
+            "target": "Mental Fatigue",
+            "weight": 0.9,
+            "type": "symptom"
+        },
+        {
+            "source": "Vision Changes",
+            "target": "Diabetes",
+            "weight": 0.7,
+            "type": "symptom"
+        },
+        {
+            "source": "Vision Changes",
+            "target": "Insulin Resistance",
+            "weight": 0.7,
+            "type": "symptom"
+        }
     ]
 }

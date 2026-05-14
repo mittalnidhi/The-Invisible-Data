@@ -32,7 +32,7 @@ body {
   align-items: center;
 
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(12px, 1.35vw, 18px);
+  font-size: clamp(12px, 1.35vw, 28px);
   letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
 
   color: #051c41;
@@ -139,7 +139,7 @@ body {
 .path__cards {
   position: absolute;
   left: 50%;
-  top: 73%;
+  top: 70%;
   z-index: 5;
   display: flex;
   align-items: center;
@@ -151,7 +151,7 @@ body {
 .pathCard {
   position: absolute;
   width: 250px;
-  height: 280px;
+  height: 300px;
   perspective: 900px;
   border: none;
   background: transparent;

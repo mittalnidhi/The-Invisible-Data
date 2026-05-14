@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./DearPeri.css";
 import workshop1 from "../assets/workshop-1.jpg";
 
@@ -47,6 +47,7 @@ const photoModules = import.meta.glob(
 const photos = Object.values(photoModules);
 
 export default function DearPeri() {
+  const navigate = useNavigate();
   const [activePhoto, setActivePhoto] = useState(0);
 
   const prevPhoto = () => {
@@ -68,7 +69,7 @@ export default function DearPeri() {
       <nav className="nav">
         <button
           className="nav-button nav-title-button"
-          onClick={() => (window.location.href = "/")}
+          onClick={() => navigate("/")}
         >
           INVISIBLE DATA
         </button>
@@ -76,22 +77,19 @@ export default function DearPeri() {
         <div className="nav-right">
           <button
             className="nav-button"
-            onClick={() => (window.location.href = "/about")}
+            onClick={() => navigate("/about")}
           >
             ABOUT
           </button>
 
           <button
             className="nav-button"
-            onClick={() => (window.location.href = "/path")}
+            onClick={() => navigate("/path")}
           >
             PATH
           </button>
 
-          <button
-            className="nav-button"
-            onClick={() => (window.location.href = "/dear-peri")}
-          >
+          <button className="nav-button nav-button--active">
             DEAR PERI
           </button>
         </div>

@@ -12,57 +12,13 @@ body {
   color: #051c41;
 }
 
-/* NAV */
 
-/* NAVBAR */
-
-.dearPeri .nav {
-  position: fixed;
-  top: clamp(16px, 3vh, 28px);
-  left: clamp(16px, 1.7vw, 32px);
-  right: clamp(16px, 1.7vw, 32px);
-  z-index: 9999;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: 14px;
-  letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
-  font-weight: 400;
-
-  color: #051c41;
-}
-
-.dearPeri .nav-button {
-  border: 0;
-  background: transparent;
-  color: #051c41;
-
-  font: 14px;
-  cursor: pointer;
-
-  padding: 0;
-  margin: 0;
-
-  white-space: nowrap;
-}
 
 .dearPeri .nav-button:hover {
   color: #6b7280;
 }
 
-.dearPeri .nav-title-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.dearPeri .nav-right {
-  display: flex;
-  gap: clamp(12px, 3vw, 34px);
-}
 
 /* HERO */
 
@@ -1204,4 +1160,60 @@ body {
   top: 62%;
   left: 45%;
   animation-delay: 4.5s;
+}
+
+.nav-button--active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/*changed navbar to match path page*/
+.dearPeri .nav {
+  position: fixed;
+  top: clamp(16px, 3vh, 28px);
+  left: clamp(16px, 1.7vw, 32px);
+  right: clamp(16px, 1.7vw, 32px);
+  z-index: 9999;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(12px, 1.35vw, 13px);
+  letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
+
+  color: #051c41;
+}
+
+.dearPeri .nav-button {
+  border: 0;
+  background: transparent;
+  color: #051c41;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.dearPeri .nav-button:hover {
+  color: #6b7280;
+}
+
+.dearPeri .nav-button--active {
+  color: #051c41;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.dearPeri .nav-title-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dearPeri .nav-right {
+  display: flex;
+  gap: clamp(12px, 3vw, 34px);
 }

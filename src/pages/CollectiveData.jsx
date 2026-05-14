@@ -712,64 +712,105 @@ const getCell = (treatment, symptom) => {
 /*food trigger graph*/
 
 function TriggerFoodEcologyGraph() {
-  const triggerItems = [
+  const [activeFood, setActiveFood] = useState(null);
+
+  const avoidFoods = [
     { name: "Alcohol", note: true, symptoms: ["Hot flashes", "Depression", "Migraine", "Night sweats", "Brain fog", "Insomnia"] },
     { name: "Caffeine", note: true, symptoms: ["Hot flashes", "Insomnia", "Anxiety", "Depression"] },
     { name: "Cheese", note: false, symptoms: ["Food intolerance"] },
-    { name: "Salami / Nitrates", note: true, symptoms: ["Food intolerance"] },
+    { name: "Salami /\nNitrates", note: true, symptoms: ["Food intolerance"] },
     { name: "Sugar", note: false, symptoms: ["Insulin resistance", "Weight gain", "Vaginal dryness"] },
-    { name: "Fried food", note: false, symptoms: ["IBS", "Bloating", "Heart palpitations"] },
-    { name: "White bread / Flour", note: false, symptoms: ["Weight gain", "Indigestion", "Vaginal dryness", "Insomnia"] },
+    { name: "Fried\nfood", note: false, symptoms: ["IBS", "Bloating", "Heart palpitations"] },
+    { name: "White bread\n/ Flour", note: false, symptoms: ["Weight gain", "Indigestion", "Vaginal dryness", "Insomnia"] },
     { name: "Dairy", note: false, symptoms: ["Indigestion", "Skin issues", "IBS", "Bloating", "Weight gain"] },
   ];
 
-  const supportiveItems = [
+  const supportFoods = [
     { name: "Eggs", symptoms: ["Muscle retention"] },
     { name: "Spinach", symptoms: ["Digestion", "Bone health"] },
-    { name: "Fennel seeds", symptoms: ["Period regulation"] },
+    { name: "Fennel\nseeds", symptoms: ["Period regulation"] },
     { name: "Herbs", symptoms: ["Hair growth"] },
     { name: "Meat", symptoms: ["Helps maintain weight", "Bone health"] },
-    { name: "Whole grains", symptoms: ["Helps with IBS"] },
+    { name: "Whole\ngrains", symptoms: ["Helps with IBS"] },
     { name: "Protein", symptoms: ["Weight management"] },
   ];
 
-  const outcomes = [
-    "Hot flashes",
-    "Night sweats",
-    "Brain fog",
+  const symptoms = [
+    "Hot\nflashes",
+    "Night\nsweats",
+    "Brain\nfog",
     "Insomnia",
     "Anxiety",
     "Depression",
     "Migraine",
-    "Food intolerance",
-    "Insulin resistance",
-    "Weight gain",
+    "Food\nintolerance",
+    "Insulin\nresistance",
+    "Weight\ngain",
     "IBS",
     "Bloating",
-    "Heart palpitations",
+    "Heart\npalpitations",
     "Indigestion",
-    "Vaginal dryness",
-    "Skin issues",
-    "Muscle retention",
+    "Vaginal\ndryness",
+    "Skin\nissues",
+    "Muscle\nretention",
     "Digestion",
-    "Bone health",
-    "Period regulation",
-    "Hair growth",
-    "Helps maintain weight",
-    "Weight management",
-    "Helps with IBS",
   ];
 
-  const getY = (name) => {
-    const index = outcomes.indexOf(name);
-    return 70 + index * 24;
+  const symptomMap = {
+    "Hot flashes": "Hot\nflashes",
+    "Night sweats": "Night\nsweats",
+    "Brain fog": "Brain\nfog",
+    "Food intolerance": "Food\nintolerance",
+    "Insulin resistance": "Insulin\nresistance",
+    "Weight gain": "Weight\ngain",
+    "Heart palpitations": "Heart\npalpitations",
+    "Vaginal dryness": "Vaginal\ndryness",
+    "Skin issues": "Skin\nissues",
+    "Muscle retention": "Muscle\nretention",
+    Digestion: "Digestion",
+    "Bone health": "Digestion",
+    "Period regulation": "Digestion",
+    "Hair growth": "Digestion",
+    "Helps maintain weight": "Muscle\nretention",
+    "Weight management": "Muscle\nretention",
+    "Helps with IBS": "IBS",
   };
 
-  const leftY = (index) => 70 + index * 42;
-  const supportY = (index) => 470 + index * 42;
+  const foodX = (i, total) => 120 + i * (780 / (total - 1));
+  const symptomX = (i) => 130 + i * 49;
 
-  const curve = (x1, y1, x2, y2) =>
-    `M ${x1} ${y1} C 480 ${y1}, 500 ${y2}, ${x2} ${y2}`;
+  const avoidY = 110;
+  const symptomY = 285;
+  const supportY = 500;
+
+  const curveDown = (x1, y1, x2, y2) =>
+    `M ${x1} ${y1} C ${x1} ${y1 + 95}, ${x2} ${y2 - 95}, ${x2} ${y2}`;
+
+  const curveUp = (x1, y1, x2, y2) =>
+    `M ${x1} ${y1} C ${x1} ${y1 - 95}, ${x2} ${y2 + 95}, ${x2} ${y2}`;
+
+  const getSymptomIndex = (symptom) => {
+    const mapped = symptomMap[symptom] || symptom;
+    return symptoms.indexOf(mapped);
+  };
+
+  const isActiveAvoid = (food, symptom) =>
+    activeFood?.name === food.name && food.symptoms.includes(symptom);
+
+  const isActiveSupport = (food, symptom) =>
+    activeFood?.name === food.name && food.symptoms.includes(symptom);
+
+  const isSymptomActive = (label) => {
+    if (!activeFood) return false;
+    return activeFood.symptoms.some((s) => (symptomMap[s] || s) === label);
+  };
+
+  const renderMultiLine = (text, x, y, className, anchor = "middle") =>
+    text.split("\n").map((line, index) => (
+      <tspan key={index} x={x} dy={index === 0 ? 0 : 14}>
+        {line}
+      </tspan>
+    ));
 
   return (
     <section className="triggerEcology">
@@ -783,113 +824,170 @@ function TriggerFoodEcologyGraph() {
       </div>
 
       <div className="triggerEcology__chart">
-        <div className="triggerEcology__legend">
-          <h3>Legend</h3>
-
-          <div><span className="legendLine legendLine--strong" />Strong trigger</div>
-          <div><span className="legendLine legendLine--support" />Supports / beneficial</div>
-          <div><span className="legendDot legendDot--left" />Used to enjoy, but left due to symptoms</div>
-        </div>
-
-        <svg viewBox="0 0 1100 720" className="triggerEcology__svg">
-          <text x="130" y="36" className="triggerLabel triggerLabel--red">
+        <svg viewBox="0 0 1200 640" className="triggerEcology__svg">
+          <text x="40" y="38" className="triggerLabel triggerLabel--red">
             TRIGGERS & FOODS TO AVOID
           </text>
 
-          <text x="130" y="438" className="triggerLabel triggerLabel--green">
-            SUPPORTING FOODS
+          <text x="40" y="300" className="triggerLabel triggerLabel--red">
+            SYMPTOMS &
+          </text>
+          <text x="40" y="320" className="triggerLabel triggerLabel--red">
+            OUTCOMES
           </text>
 
-          <text x="840" y="36" className="triggerLabel triggerLabel--red">
-            SYMPTOMS
+          <text x="40" y="455" className="triggerLabel triggerLabel--green">
+            SUPPORTING
           </text>
-          {triggerItems.map((item, i) =>
-            item.symptoms.map((symptom) => (
-              <path
-                key={`${item.name}-${symptom}`}
-                d={curve(150, leftY(i), 580, getY(symptom))} /* connector length */
-                className="triggerPath triggerPath--avoid"
-              />
-            ))
+          <text x="40" y="475" className="triggerLabel triggerLabel--green">
+            FOODS
+          </text>
+
+          <line x1="30" y1="350" x2="980" y2="350" className="sectionDivider" />
+
+          {avoidFoods.map((food, i) =>
+            food.symptoms.map((symptom) => {
+              const symptomIndex = getSymptomIndex(symptom);
+              const active = isActiveAvoid(food, symptom);
+
+              return (
+                <path
+                  key={`${food.name}-${symptom}`}
+                  d={curveDown(
+                    foodX(i, avoidFoods.length),
+                    avoidY + 12,
+                    symptomX(symptomIndex),
+                    symptomY - 10
+                  )}
+                  className={`triggerPath triggerPath--avoid ${
+                    active ? "triggerPath--active" : ""
+                  }`}
+                />
+              );
+            })
           )}
 
-          {supportiveItems.map((item, i) =>
-            item.symptoms.map((symptom) => (
-              <path
-                key={`${item.name}-${symptom}`}
-                d={curve(150, supportY(i), 580, getY(symptom))} /* connector length */
-                className="triggerPath triggerPath--support"
-              />
-            ))
+          {supportFoods.map((food, i) =>
+            food.symptoms.map((symptom) => {
+              const symptomIndex = getSymptomIndex(symptom);
+              const active = isActiveSupport(food, symptom);
+
+              return (
+                <path
+                  key={`${food.name}-${symptom}`}
+                  d={curveUp(
+                    foodX(i, supportFoods.length),
+                    supportY - 12,
+                    symptomX(symptomIndex),
+                    symptomY + 12
+                  )}
+                  className={`triggerPath triggerPath--support ${
+                    active ? "triggerPath--active" : ""
+                  }`}
+                />
+              );
+            })
           )}
 
-          {triggerItems.map((item, i) => (
-  <g key={item.name}>
-    <text
-      x="130" /*food text on x axis */
-      y={leftY(i) + 5}
-      textAnchor="end"
-      className="triggerItemText"
-    >
-      {item.name}
-    </text>
+          {avoidFoods.map((food, i) => {
+            const x = foodX(i, avoidFoods.length);
+            const active = activeFood?.name === food.name;
 
-    <circle
-      cx="150"
-      cy={leftY(i)}
-      r="6"
-      className={item.note ? "triggerLeftDot" : "triggerAvoidDot"}
-    />
-  </g>
-))}
+            return (
+              <g
+                key={food.name}
+                className="foodNodeGroup"
+                onClick={() =>
+                  setActiveFood(active ? null : food)
+                }
+              >
+                <text x={x} y={avoidY - 36} className="foodLabel">
+                  {renderMultiLine(food.name, x, avoidY - 36, "foodLabel")}
+                </text>
 
-    {supportiveItems.map((item, i) => (
-      <g key={item.name}>
-        <text
-          x="130"
-          y={supportY(i) + 5}
-          textAnchor = "end"
-          className="triggerItemText"
-        >
-          {item.name}
-        </text>
+                <circle
+                  cx={x}
+                  cy={avoidY}
+                  r={active ? 9 : 7}
+                  className={
+                    active
+                      ? "foodDot--active"
+                      : food.note
+                      ? "triggerLeftDot"
+                      : "triggerAvoidDot"
+                  }
+                />
+              </g>
+            );
+          })}
 
-        <circle
-          cx="150"
-          cy={supportY(i)}
-          r="6"
-          className="triggerSupportDot"
-        />
-      </g>
-    ))}
-
-          {outcomes.map((symptom) => {
-            const isSupport = [
-              "Muscle retention",
+          {symptoms.map((symptom, i) => {
+            const x = symptomX(i);
+            const active = isSymptomActive(symptom);
+            const supportive = [
+              "Muscle\nretention",
               "Digestion",
-              "Bone health",
-              "Period regulation",
-              "Hair growth",
-              "Helps maintain weight",
-              "Weight management",
-              "Helps with IBS",
             ].includes(symptom);
 
             return (
               <g key={symptom}>
                 <circle
-                  cx="580"
-                  cy={getY(symptom)}
-                  r="5"
-                  className={isSupport ? "outcomeDot outcomeDot--support" : "outcomeDot"}
+                  cx={x}
+                  cy={symptomY}
+                  r={active ? 8 : 6}
+                  className={
+                    active
+                      ? "outcomeDot--active"
+                      : supportive
+                      ? "outcomeDot outcomeDot--support"
+                      : "outcomeDot"
+                  }
                 />
-                <text x="600" y={getY(symptom) + 5} className="outcomeText">
-                  {symptom}
+
+                <text x={x} y={symptomY + 24} className="symptomLabel">
+                  {renderMultiLine(symptom, x, symptomY + 24, "symptomLabel")}
+                </text>
+              </g>
+            );
+          })}
+
+          {supportFoods.map((food, i) => {
+            const x = foodX(i, supportFoods.length);
+            const active = activeFood?.name === food.name;
+
+            return (
+              <g
+                key={food.name}
+                className="foodNodeGroup"
+                onClick={() =>
+                  setActiveFood(active ? null : food)
+                }
+              >
+                <circle
+                  cx={x}
+                  cy={supportY}
+                  r={active ? 9 : 7}
+                  className={active ? "foodDot--active" : "triggerSupportDot"}
+                />
+
+                <text x={x} y={supportY + 28} className="foodLabel">
+                  {renderMultiLine(food.name, x, supportY + 28, "foodLabel")}
                 </text>
               </g>
             );
           })}
         </svg>
+
+        <div className="triggerEcology__legend triggerEcology__legend--right">
+          <h3>LEGEND</h3>
+
+          <div><span className="legendLine legendLine--strong" />Strong trigger</div>
+          <div><span className="legendLine legendLine--support" />Supports / beneficial</div>
+          <div><span className="legendDot legendDot--left" />Used to enjoy, but left due to symptoms</div>
+          <div><span className="legendDot legendDot--avoid" />Currently avoid</div>
+          <div><span className="legendDot legendDot--support" />Included / Supporting</div>
+          <div><span className="legendDot legendDot--active" />Selected connection</div>
+        </div>
       </div>
     </section>
   );

@@ -999,19 +999,20 @@ body {
 /*trigger graph*/
 
 /* TRIGGER + FOOD ECOLOGY GRAPH */
+/* TRIGGER + FOOD HORIZONTAL GRAPH */
 .triggerEcology {
-  width: min(1180px, 92vw);
-  margin: 180px auto 160px;
+  width: min(1240px, 96vw);
+  margin: 100px auto 160px;
 }
 
 .triggerEcology__header {
   text-align: center;
-  margin-bottom: 54px;
+  margin-bottom: 34px;
 }
 
 .triggerEcology__header p {
-  margin: 0 0 16px;
-  color: rgba(241, 243, 245, 0.7);
+  margin: 0 0 12px;
+  color: #ff4040;
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: 12px;
   font-weight: 700;
@@ -1019,7 +1020,7 @@ body {
 }
 
 .triggerEcology__header h2 {
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   color: #f1f3f5;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(34px, 4vw, 58px);
@@ -1034,44 +1035,168 @@ body {
 
 .triggerEcology__chart {
   position: relative;
-  padding: 24px;
   background: transparent;
 }
 
 .triggerEcology__svg {
-  width: 100%;
+  width: 82%;
   height: auto;
   overflow: visible;
 }
 
-.triggerEcology__legend {
+.triggerLabel {
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.triggerLabel--red {
+  fill: #ff4040;
+}
+
+.triggerLabel--green {
+  fill: #7fd36b;
+}
+
+.sectionDivider {
+  stroke: rgba(241, 243, 245, 0.18);
+  stroke-width: 1;
+}
+
+.triggerPath {
+  fill: none;
+  stroke-width: 1.1;
+  opacity: 0.45;
+  transition: all 0.2s ease;
+}
+
+.triggerPath--avoid {
+  stroke: #ff4040;
+}
+
+.triggerPath--support {
+  stroke: #7fd36b;
+}
+
+.triggerPath--active {
+  stroke: #ffd84d;
+  stroke-width: 3;
+  opacity: 1;
+  filter: drop-shadow(0 0 6px #ffd84d);
+}
+
+.foodNodeGroup {
+  cursor: pointer;
+}
+
+.foodLabel,
+.symptomLabel {
+  fill: #f1f3f5;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.symptomLabel {
+  font-size: 9px;
+}
+
+.triggerAvoidDot {
+  fill: #ff4040;
+}
+
+.triggerLeftDot {
+  fill: #a45cff;
+}
+
+.triggerSupportDot {
+  fill: #7fd36b;
+}
+
+.foodDot--active,
+.outcomeDot--active {
+  fill: #ffd84d;
+  filter: drop-shadow(0 0 7px #ffd84d);
+}
+
+.outcomeDot {
+  fill: #ff4040;
+}
+
+.outcomeDot--support {
+  fill: #7fd36b;
+}
+
+.triggerEcology__legend--right {
   position: absolute;
-  right: 24px;
-  top: 80px;
-  width: 180px;
-  padding: 16px;
-  border: 1px solid rgba(241, 243, 245, 0.18);
-  border-radius: 12px;
-  background: rgba(3, 11, 20, 0.75);
-  z-index: 2;
+  right: 0;
+  top: 110px;
+
+  width: 170px;
+  padding: 20px;
+  border: 1px solid rgba(241, 243, 245, 0.22);
+  border-radius: 14px;
+  background: rgba(3, 11, 20, 0.72);
 }
 
 .triggerEcology__legend h3 {
-  margin: 0 0 14px;
+  margin: 0 0 18px;
   color: #f1f3f5;
-  font-size: 12px;
   font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 12px;
   letter-spacing: 0.1em;
 }
 
 .triggerEcology__legend div {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-  color: rgba(241, 243, 245, 0.75);
-  font-size: 11px;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: rgba(241, 243, 245, 0.78);
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 10px;
   line-height: 1.4;
+}
+
+.legendLine {
+  width: 28px;
+  height: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.legendLine--strong {
+  background: #ff4040;
+}
+
+.legendLine--support {
+  background: #7fd36b;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendDot--left {
+  background: #a45cff;
+}
+
+.legendDot--avoid {
+  background: #ff4040;
+}
+
+.legendDot--support {
+  background: #7fd36b;
+}
+
+.legendDot--active {
+  background: #ffd84d;
+  box-shadow: 0 0 8px #ffd84d;
 }
 
 .legendLine {
@@ -1190,8 +1315,6 @@ body {
   }
 
   .triggerEcology__svg {
-    width: 92%;
-    height: auto;
-    overflow: visible;
+    min-width: 900px;
   }
 }

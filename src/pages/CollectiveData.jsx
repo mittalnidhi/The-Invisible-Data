@@ -577,26 +577,20 @@ const getCell = (treatment, symptom) => {
         </div>
 
         <div className="treatmentFilters">
-          <p className="filterLabel">FILTER TREATMENTS</p>
-          <button
-            className={filter === "all" ? "active" : ""}
-            onClick={() => setFilter("all")}
-          >
-            All Treatments
-          </button>
+          <p className="filterLabel">FILTER TREATMENT</p>
 
           <button
             className={filter === "medical" ? "active" : ""}
             onClick={() => setFilter("medical")}
           >
-            Medical Treatments
+            Medical
           </button>
 
           <button
             className={filter === "nonmedical" ? "active" : ""}
             onClick={() => setFilter("nonmedical")}
           >
-            Non-Medical Treatments
+            Non-Medical
           </button>
         </div>
 
@@ -639,7 +633,7 @@ const getCell = (treatment, symptom) => {
           <div
             className="treatmentMatrix"
             style={{
-              gridTemplateColumns: `repeat(${symptoms.length}, 72px)`,
+              gridTemplateColumns: `repeat(${symptoms.length}, 40px)`,
             }}
           >
             {visibleTreatments.map((treatment) =>
@@ -677,7 +671,7 @@ const getCell = (treatment, symptom) => {
           <div
             className="treatmentXAxis"
             style={{
-              gridTemplateColumns: `repeat(${symptoms.length}, 72px)`,
+              gridTemplateColumns: `repeat(${symptoms.length}, 40px)`,
             }}
           >
             {symptoms.map((symptom, i) => (

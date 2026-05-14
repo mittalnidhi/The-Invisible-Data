@@ -9,7 +9,7 @@ body {
 }
 
 .path {
-  min-height: 220vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #e5e5e5 0%, #c7d8ef 100%);
   color: #051c41;
   font-family: "Cascadia Code", "Courier New", monospace;
@@ -119,10 +119,9 @@ body {
 
 .path__titleMain {
   display: inline-block;
-  font-size: clamp(1.8rem, 4.0vw, 5rem);
+  font-size: clamp(1.8rem, 3.5vw, 5rem);
   text-transform: none;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  
 }
 
 .path__titleSub {
@@ -140,7 +139,7 @@ body {
 .path__cards {
   position: absolute;
   left: 50%;
-  top: 65%;
+  top: 73%;
   z-index: 5;
   display: flex;
   align-items: center;
@@ -152,7 +151,7 @@ body {
 .pathCard {
   position: absolute;
   width: 250px;
-  height: 320px;
+  height: 280px;
   perspective: 900px;
   border: none;
   background: transparent;
@@ -241,19 +240,15 @@ body {
 .pathCard__title {
   position: absolute;
   z-index: 2;
-
   left: 50%;
-  top: 90%;
+  top: 85%;
   transform: translate(-50%, -50%);
-
   width: 85%;
-
   color: rgb(212, 208, 208);
   font-size: 20px;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: none;
-
   text-align: center;
 }
 
@@ -293,7 +288,7 @@ body {
   }
 
   .path__titleMain {
-    font-size: clamp(2rem, 10vw, 4rem);
+    font-size: clamp(2rem, 9vw, 4rem);
     line-height: 1.08;
     
   }
@@ -304,7 +299,7 @@ body {
   }
 
   .path__cards {
-    top: 74%;
+    top: 84%;
   }
 
   .pathCard {

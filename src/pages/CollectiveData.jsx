@@ -708,10 +708,190 @@ const getCell = (treatment, symptom) => {
       </div>
     </section>
   );
-  
-
 }
+/*food trigger graph*/
 
+function TriggerFoodEcologyGraph() {
+  const triggerItems = [
+    { name: "Alcohol", note: true, symptoms: ["Hot flashes", "Depression", "Migraine", "Night sweats", "Brain fog", "Insomnia"] },
+    { name: "Caffeine", note: true, symptoms: ["Hot flashes", "Insomnia", "Anxiety", "Depression"] },
+    { name: "Cheese", note: false, symptoms: ["Food intolerance"] },
+    { name: "Salami / Nitrates", note: true, symptoms: ["Food intolerance"] },
+    { name: "Sugar", note: false, symptoms: ["Insulin resistance", "Weight gain", "Vaginal dryness"] },
+    { name: "Fried food", note: false, symptoms: ["IBS", "Bloating", "Heart palpitations"] },
+    { name: "White bread / Flour", note: false, symptoms: ["Weight gain", "Indigestion", "Vaginal dryness", "Insomnia"] },
+    { name: "Dairy", note: false, symptoms: ["Indigestion", "Skin issues", "IBS", "Bloating", "Weight gain"] },
+  ];
+
+  const supportiveItems = [
+    { name: "Eggs", symptoms: ["Muscle retention"] },
+    { name: "Spinach", symptoms: ["Digestion", "Bone health"] },
+    { name: "Fennel seeds", symptoms: ["Period regulation"] },
+    { name: "Herbs", symptoms: ["Hair growth"] },
+    { name: "Meat", symptoms: ["Helps maintain weight", "Bone health"] },
+    { name: "Whole grains", symptoms: ["Helps with IBS"] },
+    { name: "Protein", symptoms: ["Weight management"] },
+  ];
+
+  const outcomes = [
+    "Hot flashes",
+    "Night sweats",
+    "Brain fog",
+    "Insomnia",
+    "Anxiety",
+    "Depression",
+    "Migraine",
+    "Food intolerance",
+    "Insulin resistance",
+    "Weight gain",
+    "IBS",
+    "Bloating",
+    "Heart palpitations",
+    "Indigestion",
+    "Vaginal dryness",
+    "Skin issues",
+    "Muscle retention",
+    "Digestion",
+    "Bone health",
+    "Period regulation",
+    "Hair growth",
+    "Helps maintain weight",
+    "Weight management",
+    "Helps with IBS",
+  ];
+
+  const getY = (name) => {
+    const index = outcomes.indexOf(name);
+    return 70 + index * 24;
+  };
+
+  const leftY = (index) => 70 + index * 42;
+  const supportY = (index) => 470 + index * 42;
+
+  const curve = (x1, y1, x2, y2) =>
+    `M ${x1} ${y1} C 420 ${y1}, 560 ${y2}, ${x2} ${y2}`;
+
+  return (
+    <section className="triggerEcology">
+      <div className="triggerEcology__header">
+        <p>TRIGGERS & FOOD BEHAVIOR</p>
+        <h2>Food Pattern</h2>
+        <span>
+          A unified network of avoided foods, supportive foods, and symptom
+          outcomes in perimenopause.
+        </span>
+      </div>
+
+      <div className="triggerEcology__chart">
+        <div className="triggerEcology__legend">
+          <h3>Legend</h3>
+
+          <div><span className="legendLine legendLine--strong" />Strong trigger</div>
+          <div><span className="legendLine legendLine--support" />Supports / beneficial</div>
+          <div><span className="legendDot legendDot--left" />Used to enjoy, but left due to symptoms</div>
+        </div>
+
+        <svg viewBox="0 0 1100 720" className="triggerEcology__svg">
+          <text x="130" y="36" className="triggerLabel triggerLabel--red">
+            TRIGGERS & FOODS TO AVOID
+          </text>
+
+          <text x="130" y="438" className="triggerLabel triggerLabel--green">
+            SUPPORTING FOODS
+          </text>
+
+          <text x="840" y="36" className="triggerLabel triggerLabel--red">
+            SYMPTOMS
+          </text>
+          {triggerItems.map((item, i) =>
+            item.symptoms.map((symptom) => (
+              <path
+                key={`${item.name}-${symptom}`}
+                d={curve(290, leftY(i), 790, getY(symptom))}
+                className="triggerPath triggerPath--avoid"
+              />
+            ))
+          )}
+
+          {supportiveItems.map((item, i) =>
+            item.symptoms.map((symptom) => (
+              <path
+                key={`${item.name}-${symptom}`}
+                d={curve(290, supportY(i), 790, getY(symptom))}
+                className="triggerPath triggerPath--support"
+              />
+            ))
+          )}
+
+          {triggerItems.map((item, i) => (
+  <g key={item.name}>
+    <text
+      x="120"
+      y={leftY(i) + 5}
+      className="triggerItemText"
+    >
+      {item.name}
+    </text>
+
+    <circle
+      cx="280"
+      cy={leftY(i)}
+      r="6"
+      className={item.note ? "triggerLeftDot" : "triggerAvoidDot"}
+    />
+  </g>
+))}
+
+    {supportiveItems.map((item, i) => (
+      <g key={item.name}>
+        <text
+          x="120"
+          y={supportY(i) + 5}
+          className="triggerItemText"
+        >
+          {item.name}
+        </text>
+
+        <circle
+          cx="280"
+          cy={supportY(i)}
+          r="6"
+          className="triggerSupportDot"
+        />
+      </g>
+    ))}
+
+          {outcomes.map((symptom) => {
+            const isSupport = [
+              "Muscle retention",
+              "Digestion",
+              "Bone health",
+              "Period regulation",
+              "Hair growth",
+              "Helps maintain weight",
+              "Weight management",
+              "Helps with IBS",
+            ].includes(symptom);
+
+            return (
+              <g key={symptom}>
+                <circle
+                  cx="790"
+                  cy={getY(symptom)}
+                  r="5"
+                  className={isSupport ? "outcomeDot outcomeDot--support" : "outcomeDot"}
+                />
+                <text x="815" y={getY(symptom) + 5} className="outcomeText">
+                  {symptom}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
+      </div>
+    </section>
+  );
+}
 
 export default function CollectiveData() {
   return (
@@ -743,12 +923,7 @@ export default function CollectiveData() {
 
       <CollectiveSymptomGraph />
       <TreatmentEffectivenessGrid />
-
-      <section className="collectiveFutureHeader">
-  <p>TRIGGERS & FOOD BEHAVIOR</p>
-
-  <h2>Trigger Patterns & Food Behavior</h2>
-</section>
+      <TriggerFoodEcologyGraph />
 
 </main>
 );

@@ -769,7 +769,7 @@ function TriggerFoodEcologyGraph() {
   const supportY = (index) => 470 + index * 42;
 
   const curve = (x1, y1, x2, y2) =>
-    `M ${x1} ${y1} C 420 ${y1}, 560 ${y2}, ${x2} ${y2}`;
+    `M ${x1} ${y1} C 480 ${y1}, 500 ${y2}, ${x2} ${y2}`;
 
   return (
     <section className="triggerEcology">
@@ -807,7 +807,7 @@ function TriggerFoodEcologyGraph() {
             item.symptoms.map((symptom) => (
               <path
                 key={`${item.name}-${symptom}`}
-                d={curve(290, leftY(i), 790, getY(symptom))}
+                d={curve(150, leftY(i), 580, getY(symptom))} /* connector length */
                 className="triggerPath triggerPath--avoid"
               />
             ))
@@ -817,7 +817,7 @@ function TriggerFoodEcologyGraph() {
             item.symptoms.map((symptom) => (
               <path
                 key={`${item.name}-${symptom}`}
-                d={curve(290, supportY(i), 790, getY(symptom))}
+                d={curve(150, supportY(i), 580, getY(symptom))} /* connector length */
                 className="triggerPath triggerPath--support"
               />
             ))
@@ -826,15 +826,16 @@ function TriggerFoodEcologyGraph() {
           {triggerItems.map((item, i) => (
   <g key={item.name}>
     <text
-      x="120"
+      x="130" /*food text on x axis */
       y={leftY(i) + 5}
+      textAnchor="end"
       className="triggerItemText"
     >
       {item.name}
     </text>
 
     <circle
-      cx="280"
+      cx="150"
       cy={leftY(i)}
       r="6"
       className={item.note ? "triggerLeftDot" : "triggerAvoidDot"}
@@ -845,15 +846,16 @@ function TriggerFoodEcologyGraph() {
     {supportiveItems.map((item, i) => (
       <g key={item.name}>
         <text
-          x="120"
+          x="130"
           y={supportY(i) + 5}
+          textAnchor = "end"
           className="triggerItemText"
         >
           {item.name}
         </text>
 
         <circle
-          cx="280"
+          cx="150"
           cy={supportY(i)}
           r="6"
           className="triggerSupportDot"
@@ -876,12 +878,12 @@ function TriggerFoodEcologyGraph() {
             return (
               <g key={symptom}>
                 <circle
-                  cx="790"
+                  cx="580"
                   cy={getY(symptom)}
                   r="5"
                   className={isSupport ? "outcomeDot outcomeDot--support" : "outcomeDot"}
                 />
-                <text x="815" y={getY(symptom) + 5} className="outcomeText">
+                <text x="600" y={getY(symptom) + 5} className="outcomeText">
                   {symptom}
                 </text>
               </g>

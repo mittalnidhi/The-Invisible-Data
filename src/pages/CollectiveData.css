@@ -1046,8 +1046,8 @@ body {
 
 .triggerEcology__legend {
   position: absolute;
-  left: 24px;
-  top: 24px;
+  right: 24px;
+  top: 80px;
   width: 180px;
   padding: 16px;
   border: 1px solid rgba(241, 243, 245, 0.18);
@@ -1190,6 +1190,8 @@ body {
   }
 
   .triggerEcology__svg {
-    min-width: 900px;
+    width: 92%;
+    height: auto;
+    overflow: visible;
   }
 }

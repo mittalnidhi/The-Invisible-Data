@@ -46,7 +46,7 @@ export default function Path() {
             ABOUT
           </button>
 
-          <button className="nav-button" onClick={() => navigate("/path")}>
+          <button className="nav-button nav-button--active">
             PATH
           </button>
 

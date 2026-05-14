@@ -316,3 +316,11 @@ body {
     padding: 18px;
   }
 }
+
+/*indicate path is activated by underline*/
+
+.path .nav-button--active {
+  color: #051c41;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}

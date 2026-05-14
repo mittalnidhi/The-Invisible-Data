@@ -1009,23 +1009,20 @@ body {
 }
 
 .triggerEcology__header p {
-  margin: 0 0 -190px;
   color: #ff4040;
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.32em;
-  margin-top:250px;
-  
 }
 
 .triggerEcology__header h2 {
-  margin: 0 0 -150px;
   color: #f1f3f5;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(34px, 2vw, 58px);
   line-height: 1;
   letter-spacing: 0.08em;
+
 }
 
 
@@ -1043,7 +1040,7 @@ body {
 
 .triggerLabel {
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: 13px;
+  font-size: 19px;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
@@ -1090,14 +1087,14 @@ body {
 .foodLabel,
 .symptomLabel {
   fill: #f1f3f5;
-  font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: 10px;
-  font-weight: 700;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+  font-weight: 500;
   text-anchor: middle;
 }
 
 .symptomLabel {
-  font-size: 9px;
+  font-size: 16px;
 }
 
 .triggerAvoidDot {
@@ -1105,7 +1102,7 @@ body {
 }
 
 .triggerLeftDot {
-  fill: #a45cff;
+  fill: #0f08df;
 }
 
 .triggerSupportDot {
@@ -1129,8 +1126,8 @@ body {
 .triggerEcology__legend--right {
   position: absolute;
   right: 0;
-  top: 110px;
-
+  top: 50px;
+  right:50px;
   width: 170px;
   padding: 20px;
   border: 1px solid rgba(241, 243, 245, 0.22);
@@ -1142,7 +1139,7 @@ body {
   margin: 0 0 18px;
   color: #f1f3f5;
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.1em;
 }
 
@@ -1153,7 +1150,7 @@ body {
   margin-bottom: 16px;
   color: rgba(241, 243, 245, 0.78);
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.4;
 }
 
@@ -1180,7 +1177,7 @@ body {
 }
 
 .legendDot--left {
-  background: #a45cff;
+  background: #2c05ec;
 }
 
 .legendDot--avoid {
@@ -1218,13 +1215,13 @@ body {
 }
 
 .legendDot--left {
-  background: #a45cff;
+  background: #1f03f1;
 }
 
 .triggerLabel {
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.12em;
 }
 
@@ -1259,17 +1256,12 @@ body {
 .triggerCenterText {
   fill: rgba(241, 243, 245, 0.65);
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: 13px;
+  font-size: 14px;
   text-anchor: middle;
 }
 
 .triggerAvoidDot {
   fill: #ff4040;
-  opacity: 0.95;
-}
-
-.triggerLeftDot {
-  fill: #a45cff;
   opacity: 0.95;
 }
 
@@ -1279,7 +1271,7 @@ body {
 }
 
 .triggerLeftDot {
-  fill: #a45cff;
+  fill: #1803f6;
   opacity: 0.95;
 }
 

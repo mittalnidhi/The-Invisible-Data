@@ -141,7 +141,7 @@ function ColonyNavBar(){
         <div className='relative grid grid-cols-3 grid-rows-1 items-center w-full h-25'>
             <div ref={tooltipRef} className='tooltip'></div>
             <div className='justify-self-start flex flex-row gap-5 items-center justify-start z-50'>
-                <a href={'/'} ref={leftArrowRef}><span className='relative inline-block'><img src='leftArrow.svg' className='inline h-6 ml-16 mr-3'/></span>Path</a>
+                <a href={'/path'} ref={leftArrowRef}><span className='relative inline-block'><img src='leftArrow.svg' className='inline h-6 ml-16 mr-3'/></span>Path</a>
                 <span className='navbar-divider-left'></span>
                 <a href={'/'}><img src='home.svg' style={{height: '20px'}} /></a>
                 <img src='/info.svg' style={{height: '20px'}} onMouseOver={(e) => showTooltip(e, paragraph, tooltipRef.current)} onMouseOut={(e) => hideTooltip(tooltipRef.current)}/>

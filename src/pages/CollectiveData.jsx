@@ -724,7 +724,7 @@ export default function CollectiveData() {
         <div className="nav__links">
           <Link to="/about">ABOUT</Link>
           <Link to="/path">PATH</Link>
-          <Link to="/dearperi">DEAR PERI</Link>
+          <Link to="/dear-peri">DEAR PERI</Link>
         </div>
       </nav>
 

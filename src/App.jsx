@@ -5,6 +5,7 @@ import LandingJourney from "./pages/LandingJourney";
 import About from "./pages/About";
 import Path from "./pages/Path";
 import DearPeri from "./pages/DearPeri";
+import PageView from "./pages/PageView";
 
 import CollectiveData from "./pages/CollectiveData";
 import Insitu from "./pages/Insitu";
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/path" element={<Path />} />
         <Route path="/dear-peri" element={<DearPeri />} />
+        <Route path="/pageview" element={<PageView />} />
 
         {/* DEAR PERI SUBPAGES */}
 

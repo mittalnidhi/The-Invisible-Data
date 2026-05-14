@@ -420,10 +420,7 @@ export default function About() {
       </button>
 
       <div className="nav-right">
-        <button
-          className="nav-button"
-          onClick={() => navigate("/about")}
-        >
+        <button className="nav-button nav-button--active">
           ABOUT
         </button>
 
@@ -442,7 +439,12 @@ export default function About() {
         </button>
       </div>
     </nav>
-
+      <button
+        className="about__viewToggle"
+        onClick={() => navigate("/pageview")}
+      >
+        Page view
+      </button>
       <section ref={stageRef} className="about__stage">
         <div className="about__leftDots" aria-hidden="true">
           <span ref={dotOneRef} className="about__dot about__dot--active" />

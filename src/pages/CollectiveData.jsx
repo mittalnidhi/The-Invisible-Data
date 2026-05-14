@@ -573,7 +573,7 @@ const getCell = (treatment, symptom) => {
       <div className="treatmentGridHeader">
         <div>
           <p>TREATMENT MAP</p>
-          <h2>Medical & non-medical treatments: effectiveness and side effects.</h2>
+          <h2>Medical & Non-Medical Treatments: effectiveness and side effects.</h2>
         </div>
 
         <div className="treatmentFilters">
@@ -718,24 +718,29 @@ function TriggerFoodEcologyGraph() {
     { name: "Alcohol", note: true, symptoms: ["Hot flashes", "Depression", "Migraine", "Night sweats", "Brain fog", "Insomnia"] },
     { name: "Caffeine", note: true, symptoms: ["Hot flashes", "Insomnia", "Anxiety", "Depression"] },
     { name: "Cheese", note: false, symptoms: ["Food intolerance"] },
-    { name: "Salami /\nNitrates", note: true, symptoms: ["Food intolerance"] },
-    { name: "Sugar", note: false, symptoms: ["Insulin resistance", "Weight gain", "Vaginal dryness"] },
+    { name: "Nitrates", note: true, symptoms: ["Food intolerance"] },
+    { name: "Sugar", note: true, symptoms: ["Insulin resistance", "Weight gain", "Vaginal dryness","Inflamation"] },
     { name: "Fried\nfood", note: false, symptoms: ["IBS", "Bloating", "Heart palpitations"] },
-    { name: "White bread\n/ Flour", note: false, symptoms: ["Weight gain", "Indigestion", "Vaginal dryness", "Insomnia"] },
-    { name: "Dairy", note: false, symptoms: ["Indigestion", "Skin issues", "IBS", "Bloating", "Weight gain"] },
+    { name: "White bread\n/ Flour", note: false, symptoms: ["Weight gain", "Indigestion", "Vaginal dryness", "Insomnia","Inflamation"] },
+    { name: "Dairy", note: false, symptoms: ["Indigestion", "Skin issues", "IBS", "Bloating", "Weight gain","Inflamation"] },
+    { name: "Brocolli", note: false, symptoms: ["Indigestion"] },
+    { name: "Gluten", note: false, symptoms: ["Indigestion", "IBS", "Weight gain"] },
+    { name: "High carb", note: false, symptoms: ["Indigestion", "IBS", "Weight gain"] },
   ];
 
   const supportFoods = [
-    { name: "Eggs", symptoms: ["Muscle retention"] },
-    { name: "Spinach", symptoms: ["Digestion", "Bone health"] },
+    { name: "Eggs", symptoms: ["Bone health"] },
+    { name: "Spinach", symptoms: ["Indigestion", "Bone health"] },
     { name: "Fennel\nseeds", symptoms: ["Period regulation"] },
     { name: "Herbs", symptoms: ["Hair growth"] },
-    { name: "Meat", symptoms: ["Helps maintain weight", "Bone health"] },
-    { name: "Whole\ngrains", symptoms: ["Helps with IBS"] },
-    { name: "Protein", symptoms: ["Weight management"] },
+    { name: "Meat", symptoms: ["Weight gain", "Bone health"] },
+    { name: "Whole\ngrains", symptoms: ["IBS","Inflamation","Indigestion"] },
+    { name: "Protein", symptoms: ["Weight gain"] },
+    { name: "Fibre", symptoms: ["Weight gain", "Bloating","Mood swing"] },
   ];
 
   const symptoms = [
+    "Inflamation",
     "Hot\nflashes",
     "Night\nsweats",
     "Brain\nfog",
@@ -752,8 +757,8 @@ function TriggerFoodEcologyGraph() {
     "Indigestion",
     "Vaginal\ndryness",
     "Skin\nissues",
-    "Muscle\nretention",
-    "Digestion",
+    "Bone\nhealth",
+    "Mood\nswings",
   ];
 
   const symptomMap = {
@@ -815,21 +820,18 @@ function TriggerFoodEcologyGraph() {
   return (
     <section className="triggerEcology">
       <div className="triggerEcology__header">
-        <p>TRIGGERS & FOOD BEHAVIOR</p>
-        <h2>Food Pattern</h2>
-        <span>
-          A unified network of avoided foods, supportive foods, and symptom
-          outcomes in perimenopause.
-        </span>
+        <p>FOOD PATTERNS</p>
+        <h2>Triggers & Food behavior</h2>
+        
       </div>
 
       <div className="triggerEcology__chart">
-        <svg viewBox="0 0 1200 640" className="triggerEcology__svg">
-          <text x="40" y="38" className="triggerLabel triggerLabel--red">
+        <svg viewBox="0 0 1100 640" className="triggerEcology__svg">
+          <text x="40" y="20" className="triggerLabel triggerLabel--red">
             TRIGGERS & FOODS TO AVOID
           </text>
 
-          <text x="40" y="300" className="triggerLabel triggerLabel--red">
+          <text x="40" y="350" className="triggerLabel triggerLabel--red">
             SYMPTOMS &
           </text>
           <text x="40" y="320" className="triggerLabel triggerLabel--red">
@@ -1016,7 +1018,7 @@ export default function CollectiveData() {
 
       <section className="collectiveData__intro">
         <p>COLLECTIVE DATA</p>
-        <h1>Perimenopause symptom map across individual journeys.</h1>
+        <h1>Perimenopause Symptom Map across individual journeys.</h1>
       </section>
 
       <RingGuide />

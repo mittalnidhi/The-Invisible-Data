@@ -478,13 +478,11 @@ function TreatmentEffectivenessGrid() {
 };
 
 const [symptomFilter, setSymptomFilter] = useState("common");
-
-const symptoms = symptomGroups[symptomFilter];
+  const symptoms = symptomGroups[symptomFilter];
 
   const visibleTreatments =
-    filter === "all"
-      ? treatments
-      : treatments.filter((t) => t.type === filter);
+    filter === "all" ? treatments : treatments.filter((t) => t.type === filter);
+
 
  const cellData = {
   "GLP-1-Weight Gain": { level: "high", sideEffect: "Fatigue" },
@@ -564,9 +562,9 @@ const symptoms = symptomGroups[symptomFilter];
 
 };
 
-const getCell = (treatment, symptom) => {
-  return cellData[`${treatment}-${symptom}`];
-};
+ const getCell = (treatment, symptom) => {
+    return cellData[`${treatment}-${symptom}`];
+  };
 
   return (
     <section className="treatmentGridSection">
@@ -575,65 +573,22 @@ const getCell = (treatment, symptom) => {
           <p>TREATMENT MAP</p>
           <h2>Medical & Non-Medical Treatments: effectiveness and side effects.</h2>
         </div>
-
-        <div className="treatmentFilters">
-          <p className="filterLabel">FILTER TREATMENT</p>
-
-          <button
-            className={filter === "medical" ? "active" : ""}
-            onClick={() => setFilter("medical")}
-          >
-            Medical
-          </button>
-
-          <button
-            className={filter === "nonmedical" ? "active" : ""}
-            onClick={() => setFilter("nonmedical")}
-          >
-            Non-Medical
-          </button>
-        </div>
-
-        <div className="symptomFilters">
-        <p>Filter symptoms</p>
-
-        <button
-          className={symptomFilter === "common" ? "active" : ""}
-          onClick={() => setSymptomFilter("common")}
-        >
-          Common
-        </button>
-
-        <button
-          className={symptomFilter === "pain" ? "active" : ""}
-          onClick={() => setSymptomFilter("pain")}
-        >
-          Pain / Body
-        </button>
-
-        <button
-          className={symptomFilter === "other" ? "active" : ""}
-          onClick={() => setSymptomFilter("other")}
-        >
-          Other
-        </button>
-      </div>
       </div>
 
       <div className="treatmentGridWrap">
         <div className="treatmentGridArea">
-        <div className="treatmentYAxis">
-          {visibleTreatments.map((treatment) => (
-            <div className="treatmentGrid__yLabel" key={treatment.name}>
-              {treatment.name}
-            </div>
-          ))}
-        </div>
+          <div className="treatmentYAxis">
+            {visibleTreatments.map((treatment) => (
+              <div className="treatmentGrid__yLabel" key={treatment.name}>
+                {treatment.name}
+              </div>
+            ))}
+          </div>
 
           <div
             className="treatmentMatrix"
             style={{
-              gridTemplateColumns: `repeat(${symptoms.length}, 40px)`,
+                gridTemplateColumns: `repeat(${symptoms.length}, 48px)`,
             }}
           >
             {visibleTreatments.map((treatment) =>
@@ -656,10 +611,7 @@ const getCell = (treatment, symptom) => {
                     {cell?.sideEffect && (
                       <div className="treatmentDotWrap">
                         <span className="treatmentSideEffectDot" />
-
-                        <div className="treatmentTooltip">
-                          {cell.sideEffect}
-                        </div>
+                        <div className="treatmentTooltip">{cell.sideEffect}</div>
                       </div>
                     )}
                   </div>
@@ -671,7 +623,7 @@ const getCell = (treatment, symptom) => {
           <div
             className="treatmentXAxis"
             style={{
-              gridTemplateColumns: `repeat(${symptoms.length}, 40px)`,
+                gridTemplateColumns: `repeat(${symptoms.length}, 48px)`,
             }}
           >
             {symptoms.map((symptom, i) => (
@@ -682,29 +634,85 @@ const getCell = (treatment, symptom) => {
           </div>
         </div>
 
-        <aside className="treatmentGuide">
-          <h3>Effectiveness Guide</h3>
+        <div className="treatmentSidePanel">
+          <div className="treatmentFilters">
+            <p className="filterLabel">FILTER TREATMENT</p>
 
-          <div className="guideItem">
-            <span className="effectBox effectBox--less" />
-            <p>Less effective<br />{"< 50% filled"}</p>
+            <button
+              className={filter === "medical" ? "active" : ""}
+              onClick={() => setFilter("medical")}
+            >
+              Medical
+            </button>
+
+            <button
+              className={filter === "nonmedical" ? "active" : ""}
+              onClick={() => setFilter("nonmedical")}
+            >
+              Non-Medical
+            </button>
           </div>
 
-          <div className="guideItem">
-            <span className="effectBox effectBox--medium" />
-            <p>Moderate effective<br />~ 50%-70% filled</p>
+          <div className="symptomFilters">
+            <p>Filter symptoms</p>
+
+            <button
+              className={symptomFilter === "common" ? "active" : ""}
+              onClick={() => setSymptomFilter("common")}
+            >
+              Common
+            </button>
+
+            <button
+              className={symptomFilter === "pain" ? "active" : ""}
+              onClick={() => setSymptomFilter("pain")}
+            >
+              Pain / Body
+            </button>
+
+            <button
+              className={symptomFilter === "other" ? "active" : ""}
+              onClick={() => setSymptomFilter("other")}
+            >
+              Other
+            </button>
           </div>
 
-          <div className="guideItem">
-            <span className="effectBox effectBox--full" />
-            <p>Very effective<br />fully filled</p>
-          </div>
+          <aside className="treatmentGuide">
+            <h3>Effectiveness Guide</h3>
 
-          <div className="guideItem guideItem--sideEffect">
-            <span className="sideEffectDot" />
-            <p>Led to another symptom / side effect</p>
-          </div>
-        </aside>
+            <div className="guideItem">
+              <span className="effectBox effectBox--less" />
+              <p>
+                Less effective
+                <br />
+                {"< 50% filled"}
+              </p>
+            </div>
+
+            <div className="guideItem">
+              <span className="effectBox effectBox--medium" />
+              <p>
+                Moderate effective
+                <br />~ 50%-70% filled
+              </p>
+            </div>
+
+            <div className="guideItem">
+              <span className="effectBox effectBox--full" />
+              <p>
+                Very effective
+                <br />
+                fully filled
+              </p>
+            </div>
+
+            <div className="guideItem guideItem--sideEffect">
+              <span className="sideEffectDot" />
+              <p>Led to another symptom / side effect</p>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
   );
@@ -1022,9 +1030,10 @@ export default function CollectiveData() {
       </section>
 
       <RingGuide />
-
       <CollectiveSymptomGraph />
+      <div className="graphDivider" />
       <TreatmentEffectivenessGrid />
+      <div className="graphDivider" />
       <TriggerFoodEcologyGraph />
 
 </main>

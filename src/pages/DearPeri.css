@@ -176,21 +176,16 @@ body {
 
 .timelineCircle {
   position: relative;
-
   width: clamp(200px, 24vw, 340px);
   height: clamp(200px, 24vw, 340px);
-
   border: 2px solid #051c41;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.18);
-
-  justify-self: center;
-  
-
+  justify-self: left;
+  margin-left:75px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #051c41;
   text-decoration: none;
 
@@ -211,33 +206,45 @@ body {
   width: max-content;
 
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(12px, 0.85vw, 15px);
+  font-size: clamp(14px, 0.85vw, 15px);
   font-weight: 700;
 }
 
 /*  TEXT  */
 
 .timelineText {
-  padding-left: 0px;
+  padding-left: 20px;
+  max-width: 680px;
+  
 }
 
 .timelineText h2 {
   margin: 0;
-
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(38px, 4.5vw, 70px);
-  line-height: 1.02;
-  letter-spacing: -0.065em;
+  font-size: clamp(38px, 4.0vw, 70px);
+  line-height: 1.0;
+  letter-spacing: -0.004em;
   font-weight: 900;
+  width: min(660px, 100%);
+  word-break: normal;
 }
 
 .timelineText p {
   max-width: 430px;
   margin-top: 26px;
-
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(13px, 0.9vw, 16px);
+  font-size: clamp(13px, 12vw, 16px);
   line-height: 1.65;
+}
+
+.timelineText--narrow {
+  max-width: 620px;
+}
+
+.timelineText--narrow h2 {
+  width: min(620px, 100%);
+  font-size: clamp(50px, 4.4vw, 82px);
+  line-height: 0.98;
 }
 
 /*  ART BASE */
@@ -1071,14 +1078,25 @@ body {
 }
 
 /* MAKE IT RESPONSIVE*/
+
+/*for 1920*1080*/
+@media (min-width: 1000px) and (max-width: 1999px) {
+  .dearPeri .nav {
+    font-size: 14px;
+  }
+
+  .dearPeri .nav-right {
+    gap: 22px;
+  }
+}
 /* FOR LARGE SCREEN / iMAC 2560 x 1440 */
 
-@media (min-width: 1900px) {
+@media (min-width: 2300px) {
   .dearPeri .nav {
     top: 34px;
-    left: 78px;
-    right: 78px;
-    font-size: 18px;
+    left: 65px;
+    right: 65px;
+    font-size: 20px;
   }
 
   .dearPeriHero {
@@ -1107,36 +1125,63 @@ body {
   }
 
   .timelineRow {
-    min-height: 760px;
+    min-height: 860px;
+    display: grid;
+    grid-template-columns: 620px 220px minmax(900px, 1fr);
+    align-items: center;
   }
 
   .timelineCircle {
-    width: 360px;
-    height: 360px;
+    width: 520px;
+    height: 520px;
+    
   }
 
+   .timelineDivider {
+    width: 2px;
+    height: 460px;
+    justify-self: center;
+    align-self: center;
+    background: #051c41;
+    opacity: 0.7;
+  }
+
+
   .timelineCircle > span {
-    bottom: -44px;
-    font-size: 17px;
+    bottom: -52px;
+    font-size: 22px;
   }
 
   .timelineText {
-    padding-left: 70px;
+    padding-left: 60px;
+    max-width: 1080px;
   }
 
   .timelineText h2 {
-    font-size: 86px;
+    font-size: 100px;
+    line-height: 0.95;
+    width: min(760px, 100%);
+    word-break: normal;
   }
 
   .timelineText p {
-    max-width: 560px;
-    font-size: 18px;
+    max-width: 720px;
+    font-size: 22px;
     line-height: 1.75;
+    margin-top: 38px;
   }
 
+   .timelineText--narrow {
+    max-width: 880px;
+  }
+
+  .timelineText--narrow h2 {
+    width: min(780px, 100%);
+    font-size: clamp(78px, 4.4vw, 108px);
+  }
 
   .dearPeriCarousel {
-    width: min(1250px, 82vw);
+    width: min(1450px, 92vw);
     gap: 32px;
   }
 
@@ -1145,7 +1190,7 @@ body {
   }
 
   .carouselArrow {
-    font-size: 56px;
+    font-size: 58px;
   }
 
   .dataGrid i {

@@ -101,7 +101,7 @@ export default function DearPeri() {
         <h1>
           Dear Peri is a space
           <br />
-          for lived data.
+          for lived data
         </h1>
 
         <p>
@@ -147,13 +147,7 @@ export default function DearPeri() {
             className="timelineRow"
             key={item.title}
           >
-            {/* top connector */}
-
-            <div className="segmentTop">
-              
-              <div className="segmentLine" />
-              <div className="segmentDot" />
-            </div>
+            
 
             {/* clickable carousel */}
 
@@ -167,6 +161,8 @@ export default function DearPeri() {
                 {item.title}
               </span>
             </Link>
+             <div className="timelineDivider" />
+
 
             {/* text */}
 
@@ -175,15 +171,7 @@ export default function DearPeri() {
               <p>{item.subtext}</p>
             </div>
 
-            {/* bottom connector */}
-
-            {index !== sections.length - 1 && (
-              <div className="segmentBottom">
-                <div className="segmentDot" />
-                <div className="segmentLine" />
-                
-              </div>
-            )}
+            
           </article>
         ))}
       </section>

@@ -21,13 +21,11 @@ body {
   left: clamp(16px, 2.5vw, 48px);
   right: clamp(16px, 2.5vw, 48px);
   z-index: 9999;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(12px, 0.9vw, 20px);
+  font-size: clamp(14px, 12vw, 24px);
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -67,7 +65,7 @@ body {
 
 .dearPeriHero {
   min-height: 100vh;
-  padding: 120px 6vw 40px;
+  padding: 190px 4vw 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,14 +80,15 @@ body {
   line-height: 0.95;
   letter-spacing: -0.01em;
   font-weight: 600;
+
 }
 
 .dearPeriHero p {
   max-width: 650px;
-  margin: 34px auto 0;
+  margin: 36px auto 0;
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(16px, 12vw, 20px);
-  line-height: 1.7;
+  font-size: clamp(22px, 1.5vw, 30px);
+  line-height: 1.3;
 }
 
 .scrollCue {
@@ -110,7 +109,7 @@ body {
   background: #051c41;
 }
 
-/* ================= TIMELINE ================= */
+/*  TIMELINE  */
 
 .dearPeriTimeline {
   width: min(980px, 92vw);
@@ -121,51 +120,26 @@ body {
 .timelineRow {
   position: relative;
   min-height: 620px;
-
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 340px 120px 1fr;
   align-items: center;
 }
-
-.segmentTop,
-.segmentBottom {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  z-index: 5;
-}
-
-.segmentTop {
-  top: 0;
-}
-
-.segmentBottom {
-  bottom: 0;
-}
-
-.segmentLine {
+.timelineDivider {
+  position: relative;
   width: 1.5px;
-  height: 90px;
+  height: 320px;
   background: #051c41;
+  justify-self: center;
+  opacity: 0.7;
 }
 
-.segmentDot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #051c41;
-}
 
-/* ================= CAROUSEL ================= */
+
+/*  CAROUSEL */
 
 .dearPeriCarousel {
   margin-top: 54px;
-  width: min(980px, 88vw);
+  width: min(1300px, 94vw);
 
   display: flex;
   align-items: center;
@@ -179,15 +153,14 @@ body {
   color: #051c41;
 
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(30px, 2.5vw, 44px);
-  line-height: 1;
-
+  font-size: clamp(30px, 3.5vw, 44px);
+  line-height: 2;
   cursor: pointer;
   flex-shrink: 0;
 }
 
 .carouselLandscape {
-  width: min(760px, 74vw);
+  width: min(1380px, 78vw);
   aspect-ratio: 16 / 9;
 
   overflow: hidden;
@@ -202,19 +175,20 @@ body {
   display: block;
 }
 
-/* ================= CIRCLE ================= */
+/*  CIRCLE  */
 
 .timelineCircle {
   position: relative;
 
-  width: clamp(190px, 22vw, 280px);
-  height: clamp(190px, 22vw, 280px);
+  width: clamp(200px, 24vw, 340px);
+  height: clamp(200px, 24vw, 340px);
 
   border: 2px solid #051c41;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.18);
 
-  justify-self: center;
+  justify-self: start;
+  margin-left:10px;
 
   display: flex;
   align-items: center;
@@ -244,10 +218,10 @@ body {
   font-weight: 700;
 }
 
-/* ================= TEXT ================= */
+/*  TEXT  */
 
 .timelineText {
-  padding-left: 40px;
+  padding-left: 0px;
 }
 
 .timelineText h2 {
@@ -1099,11 +1073,8 @@ body {
   }
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-/* ---------- LARGE SCREEN / iMAC 2560 x 1440 ---------- */
+/* MAKE IT RESPONSIVE*/
+/* FOR LARGE SCREEN / iMAC 2560 x 1440 */
 
 @media (min-width: 1900px) {
   .dearPeri .nav {
@@ -1114,7 +1085,7 @@ body {
   }
 
   .dearPeriHero {
-    padding: 150px 7vw 60px;
+    padding: 180px 6vw 40px;
   }
 
   .dearPeriHero h1 {
@@ -1123,9 +1094,9 @@ body {
 
   .dearPeriHero p {
     max-width: 860px;
-    font-size: 18px;
+    font-size: 26px;
     line-height: 1.75;
-    margin-top: 44px;
+    margin-top: 42px;
   }
 
   .scrollCue {
@@ -1166,14 +1137,6 @@ body {
     line-height: 1.75;
   }
 
-  .segmentLine {
-    height: 120px;
-  }
-
-  .segmentDot {
-    width: 18px;
-    height: 18px;
-  }
 
   .dearPeriCarousel {
     width: min(1250px, 82vw);
@@ -1181,11 +1144,11 @@ body {
   }
 
   .carouselLandscape {
-    width: min(960px, 72vw);
+    width: min(1380px, 78vw);
   }
 
   .carouselArrow {
-    font-size: 52px;
+    font-size: 56px;
   }
 
   .dataGrid i {
@@ -1210,7 +1173,7 @@ body {
   }
 }
 
-/* ---------- TABLET ---------- */
+/*  TABLET */
 
 @media (max-width: 850px) {
   .dearPeri .nav {
@@ -1241,7 +1204,7 @@ body {
   }
 }
 
-/* ---------- MOBILE ---------- */
+/* MOBILE */
 
 @media (max-width: 560px) {
   .dearPeri .nav {
@@ -1257,7 +1220,7 @@ body {
   }
 
   .dearPeriHero {
-    padding: 110px 7vw 40px;
+    padding: 180px 6vw 40px;
   }
 
   .dearPeriHero h1 {

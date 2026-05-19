@@ -7,6 +7,7 @@ export default function PageView() {
 
   return (
     <main className="pageView">
+      <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
       <nav className="nav">
         <button
           className="nav-button nav-title-button"

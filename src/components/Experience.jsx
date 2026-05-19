@@ -609,6 +609,7 @@ export default function Experience(props) {
 
     return (
         <div className="relative experience">
+			<div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
             <canvas ref={canvasRef} className="experience__canvas" />
             <div
                 className="experience__scrollSpace"
@@ -650,21 +651,21 @@ function ExperiencesNavBar(){
     const paragraph = "(blank)"
     
     return (
-        <div className='relative grid grid-cols-3 grid-rows-1 items-center w-full h-25 text-white'>
+        <div className='relative flex flex-row justify-between w-full h-50'>
             <div ref={tooltipRef} className='tooltip'></div>
-            <div className='justify-self-start flex flex-row gap-5 items-center justify-start z-50'>
-                <a href={'/path'} ref={leftArrowRef}><span className='relative inline-block'><img src='leftArrow.svg' className='inline h-6 ml-16 mr-3'/></span>Path</a>
-                <span className='navbar-divider-left'></span>
-                <a href={'/'}><img src='home.svg' style={{height: '20px'}} /></a>
-                <img src='info.svg' style={{height: '20px'}} onMouseOver={(e) => showTooltip(e, paragraph, tooltipRef.current)} onMouseOut={(e) => hideTooltip(tooltipRef.current)}/>
-            </div> 
-            <div>
-                <h1 className='colony-title text-center mt-8'>Experiences</h1>
+            <div className='justify-self-start flex flex-row gap-5 z-50'>
+                <h1 className='colony-title text-center ml-12 mt-10'>The Invisible Data</h1>
+            </div>
+            <div className='flex flex-row justify-center gap-5'>
+                <a href={'/colony'}><div className='nav-bar-path-choice'>Symptom Atlas</div></a>
+                <a href={'/cluster'}><div className='nav-bar-path-choice'>Symptom Cluster</div></a>
+                <div className='nav-bar-path-choice current-page'>Lived Experiences</div>
             </div>          
-            <div className='justify-self-end flex flex-row justify-end-safe gap-12 z-50'>
-                <a href={'/colony'}>Colony of Symptoms</a>
-                <a href={'/cluster'} className='mr-16'>Symptom Clusters</a>
+            <div className='justify-self-end flex flex-row justify-end-safe gap-12 mr-12 mt-10 z-50 text-white'>
+                <a href={'/about'}>About</a>
+                <a href={'/path'}>Path</a>
+                <a href={'/dear-peri'}>Dear Peri</a>
             </div>               
-        </div>       
+        </div>         
     )
 }

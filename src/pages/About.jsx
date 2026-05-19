@@ -411,6 +411,7 @@ export default function About() {
       className="about"
       onMouseMove={(e) => setMouse({ x: e.clientX, y: e.clientY })}
     >
+      <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
       <nav className="nav">
       <button
         className="nav-button nav-title-button"

@@ -64,6 +64,7 @@ export default function DearPeri() {
 
   return (
     <main className="dearPeri">
+      <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
       {/* navbar */}
 
       <nav className="nav">

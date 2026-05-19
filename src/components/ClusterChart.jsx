@@ -6,9 +6,9 @@ import colorMap from '../data/colorMap.json';
 import { showTooltip, moveTooltip, hideTooltip } from '../utils';
 
 const drawParams = {
-    sizeClear: 5,
-    sizeSelected: 15,
-    sizeNeighbor: 8,
+    sizeClear: d => 5 * getRadius(d.value),
+    sizeSelected: d => 15 * getRadius(d.value),
+    sizeNeighbor: d => 8 * getRadius(d.value),
     fillEnabled: d => colorMap[d.group],
     fillDisabled: '#EEE',
     strokeClear: d => d.weight,
@@ -18,14 +18,14 @@ const drawParams = {
 
 // Force parameters for easy adjustments
 const forces = {
-    chargeClear: -100,          // Negative for repulsion
+    chargeClear: -50,          // Negative for repulsion
     chargeSelected: -600,
     chargeNeighbor: -900,
     chargeNotSelected: -50,
-    collideClear: 10,
-    collideSelected: 20,
-    collideNeighbor: 12,
-    collideNotSelected: 8,
+    collideClear: d => 10 * getRadius(d.value),
+    collideSelected: d => 20 * getRadius(d.value),
+    collideNeighbor: d => 12 * getRadius(d.value),
+    collideNotSelected: d => 8 * getRadius(d.value),
     linkClear: d => 0.5 * Math.pow(d.weight, 4),
     linkSelected: d => 0.65 * Math.pow(d.weight, 2),
     linkNotSelected: d => 0.1 * d.weight,
@@ -62,14 +62,14 @@ export default function ClusterChart(props){
     useEffect(() => {
         if(size.width === 0 || size.height === 0) return;
         // Update size-dependent draw parameters
-        drawParams.sizeClear = size.width / 80;
-        drawParams.sizeSelected = size.width / 27;
-        drawParams.sizeNeighbor = size.width / 50;
+        drawParams.sizeClear = d => size.width * getRadius(d.value) / 80;
+        drawParams.sizeSelected = d => size.width * getRadius(d.value) / 27;
+        drawParams.sizeNeighbor = d => size.width * getRadius(d.value) / 50;
         // Update size-dependent forces
-        forces.collideClear = size.width / 60;
-        forces.collideSelected = size.width / 20;
-        forces.collideNeighbor = size.width / 33;
-        forces.collideNotSelected = size.width / 60;
+        forces.collideClear = d => size.width * getRadius(d.value) / 60;
+        forces.collideSelected = d => size.width * getRadius(d.value) / 20;
+        forces.collideNeighbor = d => size.width * getRadius(d.value) / 33;
+        forces.collideNotSelected = d => size.width * getRadius(d.value) / 60;
         simulation.force('xGroup').x(d => clusterXY(d.group, 'x', size));
         simulation.force('yGroup').y(d => clusterXY(d.group, 'y', size));
         simulation.force('xCentripetal').x(size.width / 2);
@@ -116,9 +116,9 @@ export default function ClusterChart(props){
             .data(nodes)
             .transition().duration(200)
             .attr('r', function(d){
-                if(d.id === props.currentSymptom) return drawParams.sizeSelected;
-                if(props.currentNeighbors.includes(d.id)) return drawParams.sizeNeighbor;
-                return drawParams.sizeClear;
+                if(d.id === props.currentSymptom) return drawParams.sizeSelected(d);
+                if(props.currentNeighbors.includes(d.id)) return drawParams.sizeNeighbor(d);
+                return drawParams.sizeClear(d);
             })
             .attr('fill', function(d){
                 if(props.currentSymptom === '') return drawParams.fillEnabled(d);
@@ -145,10 +145,10 @@ export default function ClusterChart(props){
         });
         // Adjust collision forces according to selection
         simulation.force('collide').radius(function(d){
-            if(props.currentSymptom === '') return forces.collideClear;
-            if(props.currentSymptom === d.id) return forces.collideSelected;
-            if(props.currentNeighbors.includes(d.id)) return forces.collideNeighbor;
-            return forces.collideNotSelected;
+            if(props.currentSymptom === '') return forces.collideClear(d);
+            if(props.currentSymptom === d.id) return forces.collideSelected(d);
+            if(props.currentNeighbors.includes(d.id)) return forces.collideNeighbor(d);
+            return forces.collideNotSelected(d);
         })
         // Adjust collision forces according to selection
         simulation.force('link').strength(function(d){
@@ -221,7 +221,7 @@ function drawChart(tooltipElement, circleGrp, lineGrp, props, size){
         .selectAll('circle')
         .data(nodes, d => d.id)
         .join('circle')
-        .attr('r', drawParams.sizeClear)
+        .attr('r', d => drawParams.sizeClear(d))
         .attr('fill', d => colorMap[d.group])
         .style('filter', 'drop-shadow(0px 1px 2px black)')
         .style('cursor', 'pointer')
@@ -326,4 +326,11 @@ function getTooltipHtml(d){
     } else {
         return `<h5 class='text-lg font-semibold'>${d.id}</h5>`
     }
+}
+
+function getRadius(value){
+    if(value <= 100) return 0.7;          
+    if(value <= 500) return 1;
+    if(value <= 5000) return 1.3;
+    return 1.6;
 }

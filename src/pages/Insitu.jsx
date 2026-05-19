@@ -81,6 +81,7 @@ export default function Insitu() {
 
   return (
     <main className="insitu">
+      <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
       <nav className="nav">
         <Link to="/" className="nav__brand">
           INVISIBLE DATA

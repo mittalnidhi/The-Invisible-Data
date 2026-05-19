@@ -12,7 +12,13 @@
 .colony-title {
     color: white;
     font-family: 'Fragment Mono', Courier, monospace;
-    font-size: 18pt;
+    font-size: 20pt;
+}
+
+@media screen and (max-width: 1500px) {
+    .colony-title {
+        font-size: 15pt;
+    }
 }
 
 .navbar-divider-left {

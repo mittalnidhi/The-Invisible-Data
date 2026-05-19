@@ -200,6 +200,7 @@ export default function LandingJourney() {
 
   return (
     <div ref={wrapRef} className={`landing ${mode}`}>
+      <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
       <canvas ref={canvasRef} />
 
       <nav className="nav">

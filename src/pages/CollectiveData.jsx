@@ -1006,6 +1006,7 @@ function TriggerFoodEcologyGraph() {
 export default function CollectiveData() {
   return (
     <main className="collectiveData">
+      <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
       <nav className="nav">
         <Link to="/" className="nav__brand">
           INVISIBLE DATA

@@ -7,31 +7,28 @@ import workshop1 from "../assets/workshop-1.jpg";
 const sections = [
   {
     title: "Collective Data",
-    statement: "Collective stories make invisible patterns visible.",
+    statement: "Collective stories make invisible patterns visible",
     subtext:
-      "Explore shared perimenopause experiences gathered from participatory workshop (click).",
+      "Explore shared perimenopause experiences gathered from participatory workshop (click to learn more)",
     route: "/collective-data",
     type: "data",
   },
-
   {
     title: "In situ Sense Making",
-    statement: "Bodies make meaning through everyday life.",
+    statement: "Bodies make meaning through everyday life",
     subtext:
-      "Understand how symptoms are interpreted through relationships, identity, work, autonomy, body image, dismissal, sexual life, and medical costs (click).",
+      "Understand how symptoms are interpreted through relationships, identity, work, autonomy, body image, dismissal, sexual life, and medical costs (click to learn more)",
     route: "/insitu",
     type: "sense",
   },
-
   {
     title: "Collect Your Own Data",
-    statement: "Personal data can become body literacy.",
+    statement: "Personal data can become body literacy",
     subtext:
-      "Begin mapping your own symptoms, triggers, patterns, and care journey (click).",
+      "Begin mapping your own symptoms, triggers, patterns, and care journey (click to learn more)",
     route: "/personal-data",
     type: "collect",
   },
-
 ];
 
 /* auto load all workshop images */
@@ -136,6 +133,8 @@ export default function DearPeri() {
           </button>
         </div>
 
+      
+
         
       </section>
 
@@ -170,6 +169,9 @@ export default function DearPeri() {
               <h2>{item.statement}</h2>
               <p>{item.subtext}</p>
             </div>
+
+            <div className="timelineText timelineText--narrow"></div>
+            
 
             
           </article>

@@ -4,13 +4,19 @@ body {
   padding: 0;
   background: #d8dee7;
   overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100%;
 }
-
+#root {
+  min-height: 100%;
+}
 .dearPeri {
   min-height: 100vh;
+  height:auto;
   background: #d8dee7;
-  color: #051c41;
+  color: #032e75;
   font-family:Georgia, 'Times New Roman', Times, serif;
+  overflow:visible;
 }
 
 /* NAVBAR*/
@@ -114,12 +120,11 @@ body {
 .dearPeriTimeline {
   width: min(980px, 92vw);
   margin: 0 auto;
-  padding-bottom: 160px;
 }
 
 .timelineRow {
   position: relative;
-  min-height: 620px;
+  min-height: 520px;
   display: grid;
   grid-template-columns: 420px 120px minmax(600px, 1fr);
   align-items: center;
@@ -182,7 +187,7 @@ body {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.18);
   justify-self: left;
-  margin-left:75px;
+  margin-left:40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1092,6 +1097,19 @@ body {
 /* FOR LARGE SCREEN / iMAC 2560 x 1440 */
 
 @media (min-width: 2300px) {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .dearPeri{
+    min-height: auto;
+    overflow: visible;
+  }
+  
   .dearPeri .nav {
     top: 34px;
     left: 65px;
@@ -1101,6 +1119,7 @@ body {
 
   .dearPeriHero {
     padding: 180px 6vw 40px;
+    min-height: 115vh;
   }
 
   .dearPeriHero h1 {
@@ -1120,18 +1139,18 @@ body {
   }
 
   .dearPeriTimeline {
-    width: min(1320px, 82vw);
-    padding-bottom: 220px;
+    width: min(2200px, 92vw);
+    padding-bottom: 750px;
   }
 
   .timelineRow {
-    min-height: 860px;
-    display: grid;
-    grid-template-columns: 620px 220px minmax(900px, 1fr);
-    align-items: center;
+    grid-template-columns: 1fr 2px 1fr;
+    column-gap: 110px;
+    min-height: 980px;;
   }
 
   .timelineCircle {
+    justify-self: end;
     width: 520px;
     height: 520px;
     
@@ -1140,10 +1159,8 @@ body {
    .timelineDivider {
     width: 2px;
     height: 460px;
+    background: #4b0303;
     justify-self: center;
-    align-self: center;
-    background: #051c41;
-    opacity: 0.7;
   }
 
 
@@ -1153,15 +1170,14 @@ body {
   }
 
   .timelineText {
-    padding-left: 60px;
+    justify-self: start;
+    padding-left: 0;
     max-width: 1080px;
   }
 
   .timelineText h2 {
-    font-size: 100px;
-    line-height: 0.95;
-    width: min(760px, 100%);
-    word-break: normal;
+    width: min(680px, 100%);
+    font-size: clamp(78px, 3.5vw, 108px);
   }
 
   .timelineText p {

@@ -50,8 +50,11 @@ export default function Cluster(props){
                         </div>
                         <div className='absolute gray-panel w-full h-full top-0 left-0 z-10' />
                     </div>
-                    <div className='flex-1 m-5 mt-10'>
+                    <div className='flex-1 mx-5 mt-10'>
                         <button className='clear-filter' onClick={clearFilters}>Reset Filters</button>
+                    </div>
+                    <div className='flex-1 text-[16pt]'>
+                        {'>>'} Hover over the dots to learn more
                     </div>
                 </div>
             </div>

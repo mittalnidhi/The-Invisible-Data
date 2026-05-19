@@ -33,6 +33,7 @@ export default function Path() {
 
   return (
     <main className="path">
+      <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
       <nav className="nav">
         <button
           className="nav-button nav-title-button"

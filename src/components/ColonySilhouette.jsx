@@ -65,7 +65,7 @@ export default function ColonySilhouette(props){
     }, [size, props.currentCategory, props.currentView, props.currentStage, props.currentHormone]);
 
     return (
-        <div className='silhouette relative h-full aspect-[1241/1754] mx-auto'>
+        <div className='silhouette relative w-full aspect-[1241/1754] mx-auto'>
             <div ref={tooltipRef} id='colony-tooltip' className='fixed w-100 text-sm p-2 rounded-md'></div>
             <svg ref={svgRef} width='100%' height='100%'></svg>
             <svg ref={legendRef} className='absolute bottom-[-30px]' width='100%' height='10vh'></svg>

@@ -527,6 +527,7 @@ export default function LandingJourney() {
       onClick={handleClick}
       onMouseMove={(e) => setMouse({ x: e.clientX, y: e.clientY })}
     >
+    <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
       <canvas ref={canvasRef} />
 
       {showNav && mode !== "title" && (

@@ -7,6 +7,7 @@ export default function Home() {
 
   return (
     <section className="home-page">
+      <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
       <div className="home-content">
         <p className="home-eyebrow">The Invisible Data</p>
         <h1 className="home-title">

@@ -4,432 +4,498 @@
             "id": "Hot Flashes",
             "type": "symptom",
             "group": "Vasomotor",
-            "hovertext": "Sudden waves of heat, flushing, or sweating may occur during the day or night. Hot flashes affect up to 70% of women, vary by race/ethnicity ~ Rates are high among African-American & Native American women ; Chinese & Japanese women have lower rates & a shorter overall duratiion of hot flashes. Elevated FSH and fluctuating estrogen are predictive of hot flashes."
+            "hovertext": "Sudden waves of heat, flushing, or sweating may occur during the day or night. Hot flashes affect up to 70% of women, vary by race/ethnicity ~ Rates are high among African-American & Native American women ; Chinese & Japanese women have lower rates & a shorter overall duratiion of hot flashes. Elevated FSH and fluctuating estrogen are predictive of hot flashes.",
+            "value": 2812
         },
         {
             "id": "Night Sweat",
             "type": "symptom",
             "group": "Vasomotor",
-            "hovertext": "Sudden waves of heat, flushing, or sweating may occur during the day or night. Hot flashes affect up to 70% of women, vary by race/ethnicity ~ Rates are high among African-American & Native American women ; Chinese & Japanese women have lower rates & a shorter overall duratiion of hot flashes. Elevated FSH and fluctuating estrogen are predictive of hot flashes."
+            "hovertext": "Sudden waves of heat, flushing, or sweating may occur during the day or night. Hot flashes affect up to 70% of women, vary by race/ethnicity ~ Rates are high among African-American & Native American women ; Chinese & Japanese women have lower rates & a shorter overall duratiion of hot flashes. Elevated FSH and fluctuating estrogen are predictive of hot flashes.",
+            "value": 958
         },
         {
             "id": "Heart Palpitations",
             "type": "symptom",
             "group": "Vasomotor",
-            "hovertext": "Fluctuation in Estrogen levels could lead to heart palpitations or irregular heart beat."
+            "hovertext": "Fluctuation in Estrogen levels could lead to heart palpitations or irregular heart beat.",
+            "value": 931
         },
         {
             "id": "Chills",
             "type": "symptom",
             "group": "Vasomotor",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 400
         },
         {
             "id": "Temperature Sensitivity",
             "type": "symptom",
             "group": "Vasomotor",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 118
         },
         {
             "id": "Dizzy / Vertigo",
             "type": "symptom",
             "group": "Cognitive",
-            "hovertext": "Dizziness or vertigo may occur, causing a spinning sensation or feeling unsteady. Hormonal fluctuations can affect balance, blood flow, and the inner ear."
+            "hovertext": "Dizziness or vertigo may occur, causing a spinning sensation or feeling unsteady. Hormonal fluctuations can affect balance, blood flow, and the inner ear.",
+            "value": 568
         },
         {
             "id": "Brain Fog",
             "type": "symptom",
             "group": "Cognitive",
-            "hovertext": "Brain fog may cause forgetfulness, slower thinking, or difficulty concentrating. Reduced Estrogen levels and Hormonal fluctuations can affect memory, attention, and mental clarity."
+            "hovertext": "Brain fog may cause forgetfulness, slower thinking, or difficulty concentrating. Reduced Estrogen levels and Hormonal fluctuations can affect memory, attention, and mental clarity.",
+            "value": 3862
         },
         {
             "id": "Memory Lapse",
             "type": "symptom",
             "group": "Cognitive",
-            "hovertext": "Decline in Progesterone could lead to Memory Lapse."
+            "hovertext": "Decline in Progesterone could lead to Memory Lapse.",
+            "value": 1024
         },
         {
             "id": "Decreased Attention",
             "type": "symptom",
             "group": "Cognitive",
-            "hovertext": "Decreased attention often due to fluctuating testosterone & estrogen"
+            "hovertext": "Decreased attention often due to fluctuating testosterone & estrogen",
+            "value": 12
         },
         {
             "id": "Migraine",
             "type": "symptom",
             "group": "Cognitive",
-            "hovertext": "Migraine/ Headache often caused due to low or absent Progesterone. It is one of the early indicators of Perimenopause."
+            "hovertext": "Migraine/ Headache often caused due to low or absent Progesterone. It is one of the early indicators of Perimenopause.",
+            "value": 1812
         },
         {
             "id": "Mood Swing",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": "Fluctuation in testosterone and estrogen can lead to Mood Swings"
+            "hovertext": "Fluctuation in testosterone and estrogen can lead to Mood Swings",
+            "value": 1425
         },
         {
             "id": "Irritability",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 229
         },
         {
             "id": "Anxiety",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": "Fluctuation in estrogen levels can lead to Anxiety"
+            "hovertext": "Fluctuation in estrogen levels can lead to Anxiety",
+            "value": 3206
         },
         {
             "id": "Depression",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": "Depressive symptoms varied by ethnicity in SWAN study, with sharp increases over time among Japanese and Hispanic women, and associations with higher testosterone levels"
+            "hovertext": "Depressive symptoms varied by ethnicity in SWAN study, with sharp increases over time among Japanese and Hispanic women, and associations with higher testosterone levels",
+            "value": 832
         },
         {
             "id": "Stress",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": "Stress may feel stronger, harder to recover from, and can amplify other symptoms."
+            "hovertext": "Stress may feel stronger, harder to recover from, and can amplify other symptoms.",
+            "value": 5000
         },
         {
             "id": "ADHD",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": "Changes in estrogen during perimenopause can disrupt dopamine regulation, which may worsen ADHD symptoms such as inattention, overwhelm, and emotional reactivity."
+            "hovertext": "Changes in estrogen during perimenopause can disrupt dopamine regulation, which may worsen ADHD symptoms such as inattention, overwhelm, and emotional reactivity.",
+            "value": 1170
         },
         {
             "id": "Panic",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": "Panic attacks may become more frequent or intense due to hormonal changes."
+            "hovertext": "Panic attacks may become more frequent or intense due to hormonal changes.",
+            "value": 993
         },
         {
             "id": "Anger",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": "Small frustrations can trigger sudden irritability or outbursts due to hormonal fluctuations."
+            "hovertext": "Small frustrations can trigger sudden irritability or outbursts due to hormonal fluctuations.",
+            "value": 987
         },
         {
             "id": "Emotional Instability",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 213
         },
         {
             "id": "Sudden Sadness",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 48
         },
         {
             "id": "Social Withdrawal",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 27
         },
         {
             "id": "Loss of Motivation",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 18
         },
         {
             "id": "Low Self Esteem",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 3
         },
         {
             "id": "Mental Fatigue",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 3
         },
         {
             "id": "Tearfulness",
             "type": "symptom",
             "group": "Psychological & Emotional",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 340
         },
         {
             "id": "Insomnia",
             "type": "symptom",
             "group": "Sleep",
-            "hovertext": "Sleep disruption affects ~38% of women and often co-occurs with hot flashes. Rates vary by race/ethnicity ~ lowest (28%) observed in Japanese and highest (40%) in Caucasian women. Symptoms are also associated with estrogen volatility and low progesterone."
+            "hovertext": "Sleep disruption affects ~38% of women and often co-occurs with hot flashes. Rates vary by race/ethnicity ~ lowest (28%) observed in Japanese and highest (40%) in Caucasian women. Symptoms are also associated with estrogen volatility and low progesterone.",
+            "value": 4083
         },
         {
             "id": "Fatigue",
             "type": "symptom",
             "group": "Sleep",
-            "hovertext": "Fatigue may feel persistent or overwhelming, even with adequate rest. Hormonal changes can disrupt sleep, energy regulation, and recovery."
+            "hovertext": "Fatigue may feel persistent or overwhelming, even with adequate rest. Hormonal changes can disrupt sleep, energy regulation, and recovery.",
+            "value": 1230
         },
         {
             "id": "Vivid Dreams",
             "type": "symptom",
             "group": "Sleep",
-            "hovertext": "Dreams may become more vivid, intense, or memorable. Hormonal changes can affect sleep cycles and REM sleep, making dreams feel more lifelike."
+            "hovertext": "Dreams may become more vivid, intense, or memorable. Hormonal changes can affect sleep cycles and REM sleep, making dreams feel more lifelike.",
+            "value": 42
         },
         {
             "id": "Low/High Libido",
             "type": "symptom",
             "group": "Urological & Sexual",
-            "hovertext": "Libido may increase or decrease during perimenopause. Hormonal fluctuations can affect desire, arousal, energy levels, and comfort. Fluctuations in testosterone and progesterone can lead to decreased Libido"
+            "hovertext": "Libido may increase or decrease during perimenopause. Hormonal fluctuations can affect desire, arousal, energy levels, and comfort. Fluctuations in testosterone and progesterone can lead to decreased Libido",
+            "value": 1762
         },
         {
             "id": "Frequent Urination",
             "type": "symptom",
             "group": "Urological & Sexual",
-            "hovertext": "Declining estrogen can weaken pelvic tissues and increase bladder sensitivity, leading to frequent urination."
+            "hovertext": "Declining estrogen can weaken pelvic tissues and increase bladder sensitivity, leading to frequent urination.",
+            "value": 414
         },
         {
             "id": "Vaginal Dryness & Irritation",
             "type": "symptom",
             "group": "Urological & Sexual",
-            "hovertext": "Vaginal symptoms are common during perimenopause and are associated with declining estrogen levels. 60% of Central American women reported vaginal dryness compared with 21% of non-Hispanic Caucasian women"
+            "hovertext": "Vaginal symptoms are common during perimenopause and are associated with declining estrogen levels. 60% of Central American women reported vaginal dryness compared with 21% of non-Hispanic Caucasian women",
+            "value": 92
         },
         {
             "id": "Painful Intercourse",
             "type": "symptom",
             "group": "Urological & Sexual",
-            "hovertext": "Decreased Estrogen levels often lead to pain or discomfort during intercourse"
+            "hovertext": "Decreased Estrogen levels often lead to pain or discomfort during intercourse",
+            "value": 80
         },
         {
             "id": "Urinary Tract Infection",
             "type": "symptom",
             "group": "Urological & Sexual",
-            "hovertext": "Urinary tract infections may occur more often during perimenopause. Hormonal changes can affect the urinary tract lining and natural protective bacteria."
+            "hovertext": "Urinary tract infections may occur more often during perimenopause. Hormonal changes can affect the urinary tract lining and natural protective bacteria.",
+            "value": 198
         },
         {
             "id": "Hair Thinning or Loss",
             "type": "symptom",
             "group": "Dermatological & Sensory",
-            "hovertext": "Hair may become thinner or shed more than usual. Hormonal changes can affect hair growth cycles, leading to noticeable thinning over time."
+            "hovertext": "Hair may become thinner or shed more than usual. Hormonal changes can affect hair growth cycles, leading to noticeable thinning over time.",
+            "value": 1163
         },
         {
             "id": "Skin Issues",
             "type": "symptom",
             "group": "Dermatological & Sensory",
-            "hovertext": "Acne may appear or worsen during perimenopause. Hormonal shifts can increase oil production and inflammation, leading to breakouts even if acne wasn\u2019t an issue before."
+            "hovertext": "Acne may appear or worsen during perimenopause. Hormonal shifts can increase oil production and inflammation, leading to breakouts even if acne wasn\u2019t an issue before.",
+            "value": 880
         },
         {
             "id": "Allergy",
             "type": "symptom",
             "group": "Dermatological & Sensory",
-            "hovertext": "Allergies may appear or worsen during perimenopause. Hormonal changes can affect immune responses, making the body more sensitive to triggers."
+            "hovertext": "Allergies may appear or worsen during perimenopause. Hormonal changes can affect immune responses, making the body more sensitive to triggers.",
+            "value": 260
         },
         {
             "id": "Dry Skin",
             "type": "symptom",
             "group": "Dermatological & Sensory",
-            "hovertext": "Skin may become drier, itchier, or more sensitive. Hormonal changes can affect collagen, oil production, and skin barrier function."
+            "hovertext": "Skin may become drier, itchier, or more sensitive. Hormonal changes can affect collagen, oil production, and skin barrier function.",
+            "value": 73
         },
         {
             "id": "Brittle Nail",
             "type": "symptom",
             "group": "Dermatological & Sensory",
-            "hovertext": "Nails may become brittle, thin, or prone to breaking as hormonal changes affect keratin production and moisture."
+            "hovertext": "Nails may become brittle, thin, or prone to breaking as hormonal changes affect keratin production and moisture.",
+            "value": 71
         },
         {
             "id": "Dry & Itchy Ear",
             "type": "symptom",
             "group": "Dermatological & Sensory",
-            "hovertext": "Ears may feel dry or itchy as hormonal changes affect skin moisture and sensitivity."
+            "hovertext": "Ears may feel dry or itchy as hormonal changes affect skin moisture and sensitivity.",
+            "value": 157
         },
         {
             "id": "Bone Health",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": "Bone density may begin to decline as estrogen and testosterone levels fluctuate, increasing the risk of bone loss over time."
+            "hovertext": "Bone density may begin to decline as estrogen and testosterone levels fluctuate, increasing the risk of bone loss over time.",
+            "value": 741
         },
         {
             "id": "Thyroid Dysfunction",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 609
         },
         {
             "id": "Weight Gain",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": "Weight gain may occur more easily, especially around the abdomen, even without changes in diet or activity. Hormonal shifts can affect metabolism, fat storage, and insulin sensitivity. Unexplained weight gain is one of the early indicators of Perimenopause."
+            "hovertext": "Weight gain may occur more easily, especially around the abdomen, even without changes in diet or activity. Hormonal shifts can affect metabolism, fat storage, and insulin sensitivity. Unexplained weight gain is one of the early indicators of Perimenopause.",
+            "value": 1748
         },
         {
             "id": "Bloating",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 290
         },
         {
             "id": "Vision Changes",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 801
         },
         {
             "id": "Body Odour",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": "Body odor may change or become stronger. Hormonal shifts can increase sweating and alter skin bacteria, leading to noticeable changes in scent."
+            "hovertext": "Body odor may change or become stronger. Hormonal shifts can increase sweating and alter skin bacteria, leading to noticeable changes in scent.",
+            "value": 779
         },
         {
             "id": "Breast Tenderness / Pain",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": "Breast Tenderness are often caused by fluctuations in Progesterone levels. It is one of the early indicators of this stage."
+            "hovertext": "Breast Tenderness are often caused by fluctuations in Progesterone levels. It is one of the early indicators of this stage.",
+            "value": 591
         },
         {
             "id": "Body Aches",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": "Body aches like Muscle & joint pain"
+            "hovertext": "Body aches like Muscle & joint pain",
+            "value": 477
         },
         {
             "id": "Digestive Problems",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 454
         },
         {
             "id": "Blood Pressure Fluctuation",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 263
         },
         {
             "id": "Back Pain",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 188
         },
         {
             "id": "Frozen Shoulder",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": "Shoulder stiffness and pain may increase due to hormonal changes."
+            "hovertext": "Shoulder stiffness and pain may increase due to hormonal changes.",
+            "value": 199
         },
         {
             "id": "Pelvic Discomfort",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 138
         },
         {
             "id": "Tinnitus",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": "Tinnitus or Ringing Ear are one of the least discussed symptoms. It may appear or worsen during perimenopause. Hormonal changes can affect the inner ear and nervous system, leading to ringing or buzzing sounds."
+            "hovertext": "Tinnitus or Ringing Ear are one of the least discussed symptoms. It may appear or worsen during perimenopause. Hormonal changes can affect the inner ear and nervous system, leading to ringing or buzzing sounds.",
+            "value": 124
         },
         {
             "id": "Heat Burn / Acid Reflux",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 91
         },
         {
             "id": "Itchy Skin/Scalp",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 84
         },
         {
             "id": "Electric Shock Experience / Tremors",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": "Sudden electric shock-like sensations or internal tremors may occur. These can feel brief but intense and are linked to nervous system sensitivity during hormonal fluctuations."
-        },
-        {
-            "id": "Tremors",
-            "type": "symptom",
-            "group": "Physical"
+            "hovertext": "Sudden electric shock-like sensations or internal tremors may occur. These can feel brief but intense and are linked to nervous system sensitivity during hormonal fluctuations.",
+            "value": 76
         },
         {
             "id": "Tingling",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 75
         },
         {
             "id": "Irritable Bowel Syndrome (IBS)",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 65
         },
         {
             "id": "Diabetes",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 63
         },
         {
             "id": "Insulin Resistance",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": "Insulin resistance may increase during perimenopause. Hormonal changes can affect how the body processes sugar, making blood glucose harder to regulate."
+            "hovertext": "Insulin resistance may increase during perimenopause. Hormonal changes can affect how the body processes sugar, making blood glucose harder to regulate.",
+            "value": 52
         },
         {
             "id": "Crawling on Skin",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 49
         },
         {
             "id": "Swelling",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 44
         },
         {
             "id": "Dry Mouth",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": "Dry mouth may occur as hormonal changes affect saliva production, leading to discomfort or a persistent dry sensation."
+            "hovertext": "Dry mouth may occur as hormonal changes affect saliva production, leading to discomfort or a persistent dry sensation.",
+            "value": 25
         },
         {
             "id": "Food Intolerance",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 20
         },
         {
             "id": "Obsessive Compulsive Disorder (OCD)",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 136
         },
         {
             "id": "Balancing Issues",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 223
         },
         {
             "id": "Dental Problems",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 121
         },
         {
             "id": "Disorientation",
             "type": "symptom",
             "group": "Physical",
-            "hovertext": ""
+            "hovertext": "",
+            "value": 8
         },
         {
             "id": "Fluctuation in Cycles",
             "type": "symptom",
             "group": "Menstrual",
-            "hovertext": "Menstrual cycles become irregular-shorter, longer, or skipped, as hormone levels fluctuate during this phase."
+            "hovertext": "Menstrual cycles become irregular-shorter, longer, or skipped, as hormone levels fluctuate during this phase.",
+            "value": 11508
         },
         {
             "id": "PMS Worsening",
             "type": "symptom",
             "group": "Menstrual",
-            "hovertext": "PMS Worsening during Menstrual Cycle"
+            "hovertext": "PMS Worsening during Menstrual Cycle",
+            "value": 288
         },
         {
             "id": "Cramps",
             "type": "symptom",
             "group": "Menstrual",
-            "hovertext": "Cramps during Menstrual Cycle"
+            "hovertext": "Cramps during Menstrual Cycle",
+            "value": 200
         }
     ],
     "links": [
@@ -1233,7 +1299,7 @@
         },
         {
             "source": "Panic",
-            "target": "Tremors",
+            "target": "Electric Shock Experience / Tremors",
             "weight": 0.9,
             "type": "symptom"
         },
@@ -1731,7 +1797,7 @@
         },
         {
             "source": "Tingling",
-            "target": "Tremors",
+            "target": "Electric Shock Experience / Tremors",
             "weight": 0.9,
             "type": "symptom"
         },
@@ -1742,13 +1808,13 @@
             "type": "symptom"
         },
         {
-            "source": "Tremors",
+            "source": "Electric Shock Experience / Tremors",
             "target": "Disorientation",
             "weight": 0.7,
             "type": "symptom"
         },
         {
-            "source": "Tremors",
+            "source": "Electric Shock Experience / Tremors",
             "target": "Tingling",
             "weight": 0.9,
             "type": "symptom"

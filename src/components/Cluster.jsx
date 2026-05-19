@@ -24,20 +24,24 @@ export default function Cluster(props){
     }
 
     return (
-        <div className='relative colony-main flex flex-col h-full w-full z-30'>
+        <div className='relative colony-main flex flex-col h-[100vh] w-full z-30'>
+            <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
             <ClusterNavBar />
-            <div className='flex flex-row gap-20 justify-between w-[90vw] h-[90vh] min-h-190 mt-8 mx-auto text-white overflow-hidden'>
+            <div className='flex flex-row gap-18 justify-between w-[90vw] h-[90vh] min-h-190 mt-4 mx-auto text-white'>
                 <div className='relative flex-1 flex flex-col h-fit min-w-[300px]'>
-                    <div className='relative flex flex-col h-full max-h-[80vh] gap-4 z-20 box-sizing py-15'>
+                    <div className='relative flex flex-col h-full max-h-[75vh] gap-4 z-20 box-sizing py-15'>
                         <h5 className='filter-header ml-3 mb-7'>Select a Symptom</h5>
                         <ClusterSymptoms {...chartProps}/>                    
                     </div>
                     <div className='absolute gray-panel w-full h-full top-0 left-0 z-10' />           
                 </div>
-                <div className='flex-2 h-full'>
-                    <div className='w-[37vw] aspect-3/2 mx-auto bg-white rounded-2xl'>
+                <div className='flex-2 h-7/10 mt-12'>
+                    <div className='bg-white rounded-4xl h-full'>
                         <ClusterChart {...chartProps}/>
-                    </div>                   
+                    </div>
+                    <div className='mt-6 cluster-caption'>
+                        Perimenopause symptoms often occur in clusters rather than in isolation. This visualization reveals common patterns in how they are experienced together. 
+                    </div>             
                 </div>
                 <div className='flex-1 flex flex-col h-full min-w-[300px]'>
                     <div className='relative h-4/5'>
@@ -46,8 +50,11 @@ export default function Cluster(props){
                         </div>
                         <div className='absolute gray-panel w-full h-full top-0 left-0 z-10' />
                     </div>
-                    <div className='flex-1 m-5 mt-10'>
+                    <div className='flex-1 mx-5 mt-10'>
                         <button className='clear-filter' onClick={clearFilters}>Reset Filters</button>
+                    </div>
+                    <div className='flex-1 text-[16pt]'>
+                        {'>>'} Hover over the dots to learn more
                     </div>
                 </div>
             </div>
@@ -81,21 +88,21 @@ function ClusterNavBar(){
         <p>This view presents all identified clusters at once, offering a high-level map of symptom relationships. Users can click on any symptom (circle) to explore additional details, understand related symptoms within that cluster, and learn more about how these patterns appear in the data.</p>"
     
     return (
-        <div className='relative grid grid-cols-3 grid-rows-1 items-center w-full h-25'>
+        <div className='relative flex flex-row justify-between w-full h-50'>
             <div ref={tooltipRef} className='tooltip'></div>
-            <div className='justify-self-start flex flex-row gap-5 items-center justify-start z-50'>
-                <a href={'/path'} ref={leftArrowRef}><span className='relative inline-block'><img src='leftArrow.svg' className='inline h-6 ml-16 mr-3'/></span>Path</a>
-                <span className='navbar-divider-left'></span>
-                <a href={'/'}><img src='home.svg' style={{height: '20px'}} /></a>
-                <img src='info.svg' style={{height: '20px'}} onMouseOver={(e) => showTooltip(e, paragraph, tooltipRef.current)} onMouseOut={(e) => hideTooltip(tooltipRef.current)}/>
-            </div> 
-            <div>
-                <h1 className='colony-title text-center mt-8'>Symptom Cluster</h1>
+            <div className='justify-self-start flex flex-row gap-5 z-50'>
+                <a href={'/'}><h1 className='colony-title text-center ml-12 mt-10'>The Invisible Data</h1></a>
+            </div>
+            <div className='flex flex-row justify-center gap-5'>
+                <a href={'/colony'}><div className='nav-bar-path-choice'>Symptom Atlas</div></a>
+                <div className='nav-bar-path-choice current-page'>Symptom Cluster</div>
+                <a href={'/experiences'}><div className='nav-bar-path-choice'>Lived Experiences</div></a>
             </div>          
-            <div className='justify-self-end flex flex-row justify-end-safe gap-12 z-50'>
-                <a href={'/colony'}>Colony of Symptoms</a>
-                <a href={'/experiences'} className='mr-16'>Experiences</a>
+            <div className='justify-self-end flex flex-row justify-end-safe gap-12 mr-12 mt-10 z-50'>
+                <a href={'/about'}>About</a>
+                <a href={'/path'}>Path</a>
+                <a href={'/dear-peri'}>Dear Peri</a>
             </div>               
-        </div>       
+        </div>    
     )
 }

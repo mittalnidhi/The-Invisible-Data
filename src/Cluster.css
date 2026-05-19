@@ -54,3 +54,20 @@
 .symptom-accordion.active:hover {
     background-color: #CCC8;
 }
+
+.cluster-caption {
+    font-size: 20pt;
+    font-family: 'Fragment Mono', Courier, monospace;
+}
+
+@media screen and (max-width: 2000px) {
+    .cluster-caption {
+        font-size: 16pt;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .cluster-caption {
+        font-size: 13pt;
+    }
+}

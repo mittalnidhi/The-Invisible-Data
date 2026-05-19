@@ -60,8 +60,14 @@
     font-family: 'Fragment Mono', Courier, monospace;
 }
 
-@media screen and (max-width: 1700px) {
+@media screen and (max-width: 2000px) {
     .cluster-caption {
-        font-size: 15pt;
+        font-size: 16pt;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .cluster-caption {
+        font-size: 13pt;
     }
 }

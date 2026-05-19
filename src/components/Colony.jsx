@@ -142,7 +142,7 @@ function ColonyNavBar(){
         <div className='relative flex flex-row justify-between w-full h-50'>
             <div ref={tooltipRef} className='tooltip'></div>
             <div className='justify-self-start flex flex-row gap-5 z-50'>
-                <h1 className='colony-title text-center ml-12 mt-10'>The Invisible Data</h1>
+                <a href={'/'}><h1 className='colony-title text-center ml-12 mt-10'>The Invisible Data</h1></a>
             </div>
             <div className='flex flex-row justify-center gap-5'>
                 <div className='nav-bar-path-choice current-page'>Symptom Atlas</div>

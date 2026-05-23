@@ -61,11 +61,11 @@ export default function ColonySilhouette(props){
         if(data.length === 0) return;
         if(size.width === 0 || size.height === 0) return;
         plotPoints(svgRef.current, tooltipRef.current, data, filters, size);
-        drawLegend(legendRef.current, size);
+        // drawLegend(legendRef.current, size);
     }, [size, props.currentCategory, props.currentView, props.currentStage, props.currentHormone]);
 
     return (
-        <div className='silhouette relative w-full aspect-[1241/1754] mx-auto'>
+        <div className='silhouette absolute h-19/20 aspect-[1241/1754] -top-full -bottom-full -left-full -right-full m-auto'>
             <div ref={tooltipRef} id='colony-tooltip' className='fixed w-100 text-sm p-2 rounded-md'></div>
             <svg ref={svgRef} width='100%' height='100%'></svg>
             <svg ref={legendRef} className='absolute bottom-[-30px]' width='100%' height='10vh'></svg>
@@ -75,8 +75,8 @@ export default function ColonySilhouette(props){
 
 function plotPoints(svgElement, tooltipElement, data, filters, size){
     const sizeRatio = size.width / 700;
-    const svg = d3.select(svgElement)
-    svg.selectAll('circle')
+    const svg = d3.select(svgElement);
+    svg.selectChildren('circle')
         // d => d.name is the identifier for enter/update/exit
         .data(data.filter(d => filterSymptoms(d, filters)).toSorted((a, b) => b.value - a.value), d => d.name)
         .join(
@@ -117,7 +117,7 @@ function plotPoints(svgElement, tooltipElement, data, filters, size){
                             .transition()
                             .duration(150)
                             .attr('stroke', '#555')
-                            .attr('stroke-width', 1)
+                            .attr('stroke-width', 0)
                     })
                 
                 circles.transition()
@@ -140,6 +140,35 @@ function plotPoints(svgElement, tooltipElement, data, filters, size){
                     .remove()
             }
         );
+
+    svg.selectAll('g').remove();
+    const legend = svg.append('g')
+    legend.selectAll('*').remove();
+
+    const circles = legend.append('g')
+        .attr('fill', 'none')
+        .attr('stroke', 'white')
+        .attr('stroke-width', 1)
+    circles.append('circle')
+        .attr('cx', sizeRatio * 11 + 0.2 * size.width)
+        .attr('cy', sizeRatio * 11 + 0.8 * size.height)
+        .attr('r', sizeRatio * 11)
+    circles.append('circle')
+        .attr('cx', sizeRatio * 11 + 0.2 * size.width)
+        .attr('cy', sizeRatio * 17 + 0.8 * size.height + 20)
+        .attr('r', sizeRatio * 5)
+    
+    const text = legend.append('g')
+        .attr('fill', 'white')
+        .attr('font-size', size.height > 720 ? 15 : 11)
+    text.append('text')
+        .text('More frequent')
+        .attr('x', sizeRatio * 11 + 20 + 0.2 * size.width)
+        .attr('y', 0.8 * size.height + (size.height > 720 ? 15 : 11))    
+    text.append('text')
+        .text('Less frequent')
+        .attr('x', sizeRatio * 11 + 20 + 0.2 * size.width)
+        .attr('y', 0.8 * size.height + (size.height > 720 ? 42 : 34))
 }
 
 function filterSymptoms(d, filters){

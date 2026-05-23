@@ -35,6 +35,8 @@
 }
 
 #accordion-container {
+    font-family: 'Inter', sans-serif;
+    font-size: 16pt;
     scrollbar-color: hsl(205, 50%, 25%) #fff0;
 }
 
@@ -60,14 +62,36 @@
     font-family: 'Fragment Mono', Courier, monospace;
 }
 
+.hover-instruction {
+    font-size: 16pt;
+}
+
 @media screen and (max-width: 2000px) {
     .cluster-caption {
         font-size: 16pt;
     }
+
+    #accordion-container, .hover-instruction {
+        font-size: 14pt;
+    }
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1700px) {
     .cluster-caption {
         font-size: 13pt;
+    }
+
+    #accordion-container, .hover-instruction {
+        font-size: 12pt;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .cluster-caption {
+        font-size: 11pt;
+    }
+
+    #accordion-container, .hover-instruction {
+        font-size: 9pt;
     }
 }

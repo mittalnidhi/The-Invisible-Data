@@ -41,9 +41,9 @@ const forces = {
 const nodes = clusterData.nodes.map(d => ({...d}));
 const links = clusterData.links.map(d => ({...d}));
 const simulation = d3.forceSimulation(nodes)
-    .force('link', d3.forceLink(links).id(d => d.id).strength(forces.linkClear))
+    .force('link', d3.forceLink(links).id(d => d.id).strength(0.5))
     .force('charge', d3.forceManyBody().strength(forces.chargeClear).distanceMax(500))
-    .force('collide', d3.forceCollide().radius(forces.collideClear))
+    .force('collide', d3.forceCollide().radius(25))
     .force('xGroup', d3.forceX(0).strength(forces.xyGrpDeselected))
     .force('yGroup', d3.forceY(0).strength(forces.xyGrpDeselected))
     .force('xCentripetal', d3.forceX(0).strength(forces.xyCtrDeselected))
@@ -70,13 +70,28 @@ export default function ClusterChart(props){
         forces.collideSelected = d => size.width * getRadius(d.value) / 20;
         forces.collideNeighbor = d => size.width * getRadius(d.value) / 33;
         forces.collideNotSelected = d => size.width * getRadius(d.value) / 60;
+        // Adjust collision forces according to selection
+        simulation.force('link').strength(function(d){
+            if(props.currentSymptom === '') return forces.linkClear(d);
+            if(props.currentSymptom === d.source.id) return forces.linkSelected(d);
+            return forces.linkNotSelected(d);
+        })
+        // Adjust collision forces according to selection
+        simulation.force('collide').radius(function(d){
+            if(props.currentSymptom === '') return forces.collideClear(d);
+            if(props.currentSymptom === d.id) return forces.collideSelected(d);
+            if(props.currentNeighbors.includes(d.id)) return forces.collideNeighbor(d);
+            return forces.collideNotSelected(d);
+        })
+        // Adjust destinations of positional forces
         simulation.force('xGroup').x(d => clusterXY(d.group, 'x', size));
         simulation.force('yGroup').y(d => clusterXY(d.group, 'y', size));
         simulation.force('xCentripetal').x(size.width / 2);
         simulation.force('yCentripetal').y(size.height / 2);
+
         drawChart(tooltipRef.current, circleGrpRef.current, lineGrpRef.current, props, size);
         simulation.alphaTarget(0.3).restart();
-        setTimeout(() => simulation.alphaTarget(0), 2000);
+        setTimeout(() => simulation.alphaTarget(0), 1000);
     }, [size]);
 
     // When a new symptom is selected, update neighbors list accordingly
@@ -180,8 +195,8 @@ export default function ClusterChart(props){
         });
 
         // Reheat the animation in case the selection is changed from another component
-        simulation.alphaTarget(0.1).restart();
-        setTimeout(() => simulation.alphaTarget(0), 2000);
+        simulation.alphaTarget(0.3).restart();
+        setTimeout(() => simulation.alphaTarget(0), 1000);
     }, [props.currentNeighbors]);
 
     return (
@@ -278,7 +293,7 @@ function clusterXY(category, axis, size){
 
 // Reheat the simulation when drag starts, and lock the dragged node's position.
 function dragStarted(event) {
-    if (!event.active) simulation.alphaTarget(0.1).restart();
+    if (!event.active) simulation.alphaTarget(0.5).restart();
     event.subject.fx = event.subject.x;
     event.subject.fy = event.subject.y;
 }

@@ -653,18 +653,18 @@ function ExperiencesNavBar(){
     return (
         <div className='relative flex flex-row justify-between w-full h-50'>
             <div ref={tooltipRef} className='tooltip'></div>
-            <div className='justify-self-start flex flex-row gap-5 z-50'>
+            <div className='flex-1 justify-self-start flex flex-row gap-5 z-50'>
                 <a href={'/'}><h1 className='colony-title text-center ml-12 mt-10'>The Invisible Data</h1></a>
             </div>
-            <div className='flex flex-row justify-center gap-5'>
+            <div className='flex-2 flex flex-row justify-center gap-5 mt-18'>
                 <a href={'/colony'}><div className='nav-bar-path-choice'>Symptom Atlas</div></a>
                 <a href={'/cluster'}><div className='nav-bar-path-choice'>Symptom Cluster</div></a>
                 <div className='nav-bar-path-choice current-page'>Lived Experiences</div>
             </div>          
-            <div className='justify-self-end flex flex-row justify-end-safe gap-12 mr-12 mt-10 z-50 text-white'>
-                <a href={'/about'}>About</a>
-                <a href={'/path'}>Path</a>
-                <a href={'/dear-peri'}>Dear Peri</a>
+            <div className='flex-1 justify-self-end flex flex-row justify-end-safe gap-4 lg:gap-8 2xl:gap-12 mt-8 z-50 nav-links'>
+                <a href={'/about'}>ABOUT</a>
+                <a href={'/path'}>PATH</a>
+                <a href={'/dear-peri'} className='mr-12'>DEAR PERI</a>
             </div>               
         </div>         
     )

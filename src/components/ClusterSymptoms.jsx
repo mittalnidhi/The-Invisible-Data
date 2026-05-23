@@ -32,8 +32,8 @@ export default function ClusterSymptoms(props){
         <div ref={scrollRef} onWheel={handleWheel} id='accordion-container' className='w-full h-full overflow-y-auto z-70' tabIndex={0}>
             {peridata.symptoms.children.map((category, i1) => {
                 return (
-                    <Accordion key={i1} sx={{color: 'white', backgroundColor: '#0000', borderTop: '1px solid gray', borderBottom: '1px solid gray'}}>
-                        <AccordionSummary expandIcon={<ExpandMoreIcon sx={{color: 'white'}}/>}>
+                    <Accordion key={i1} sx={{color: 'white', backgroundColor: '#0000', borderTop: '1px solid gray', borderBottom: '1px solid gray'}} className="py-0 2xl:py-1">
+                        <AccordionSummary expandIcon={<ExpandMoreIcon sx={{color: 'white'}}/>} sx={{minHeight: '10px'}}>
                             <span style={{color: colorMap[category.name], marginRight: 12}}>⬤</span>{category.name}
                         </AccordionSummary>
                         {category.children.map((symptom, i2) => {

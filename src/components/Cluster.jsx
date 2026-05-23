@@ -27,10 +27,10 @@ export default function Cluster(props){
         <div className='relative colony-main flex flex-col h-[100vh] w-full z-30'>
             <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
             <ClusterNavBar />
-            <div className='flex flex-row gap-18 justify-between w-[90vw] h-[90vh] min-h-190 mt-4 mx-auto text-white'>
-                <div className='relative flex-1 flex flex-col h-fit min-w-[300px]'>
-                    <div className='relative flex flex-col h-full max-h-[75vh] gap-4 z-20 box-sizing py-15'>
-                        <h5 className='filter-header ml-3 mb-7'>Select a Symptom</h5>
+            <div className='flex flex-row gap-6 lg:gap-10 2xl:gap-18 justify-between w-[90vw] h-[90vh] min-h-150 mt-6 2xl:mt-12 mx-auto text-white'>
+                <div className='relative flex-1 flex flex-col h-4/5 min-w-[300px]'>
+                    <div className='relative flex flex-col h-full max-h-[75vh] gap-4 z-20 box-sizing py-12'>
+                        <h5 className='filter-header ml-3 mb-4 2xl:mb-7'>Select a Symptom</h5>
                         <ClusterSymptoms {...chartProps}/>                    
                     </div>
                     <div className='absolute gray-panel w-full h-full top-0 left-0 z-10' />           
@@ -50,10 +50,10 @@ export default function Cluster(props){
                         </div>
                         <div className='absolute gray-panel w-full h-full top-0 left-0 z-10' />
                     </div>
-                    <div className='flex-1 mx-5 mt-10'>
+                    <div className='flex-1 mx-5 mt-4 2xl:mt-10'>
                         <button className='clear-filter' onClick={clearFilters}>Reset Filters</button>
                     </div>
-                    <div className='flex-1 text-[16pt]'>
+                    <div className='flex-1 hover-instruction'>
                         {'>>'} Hover over the dots to learn more
                     </div>
                 </div>
@@ -90,18 +90,18 @@ function ClusterNavBar(){
     return (
         <div className='relative flex flex-row justify-between w-full h-50'>
             <div ref={tooltipRef} className='tooltip'></div>
-            <div className='justify-self-start flex flex-row gap-5 z-50'>
+            <div className='flex-1 justify-self-start flex flex-row gap-5 z-50'>
                 <a href={'/'}><h1 className='colony-title text-center ml-12 mt-10'>The Invisible Data</h1></a>
             </div>
-            <div className='flex flex-row justify-center gap-5'>
+            <div className='flex-2 flex flex-row justify-center gap-5 mt-18'>
                 <a href={'/colony'}><div className='nav-bar-path-choice'>Symptom Atlas</div></a>
                 <div className='nav-bar-path-choice current-page'>Symptom Cluster</div>
                 <a href={'/experiences'}><div className='nav-bar-path-choice'>Lived Experiences</div></a>
             </div>          
-            <div className='justify-self-end flex flex-row justify-end-safe gap-12 mr-12 mt-10 z-50'>
-                <a href={'/about'}>About</a>
-                <a href={'/path'}>Path</a>
-                <a href={'/dear-peri'}>Dear Peri</a>
+            <div className='flex-1 justify-self-end flex flex-row justify-end-safe gap-4 lg:gap-8 2xl:gap-12 mt-8 z-50 nav-links'>
+                <a href={'/about'}>ABOUT</a>
+                <a href={'/path'}>PATH</a>
+                <a href={'/dear-peri'} className='mr-12'>DEAR PERI</a>
             </div>               
         </div>    
     )

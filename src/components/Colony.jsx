@@ -65,8 +65,8 @@ export default function Colony(props){
         <div className='relative colony-main flex flex-col h-[100vh] w-full z-30'>
             <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
             <ColonyNavBar />
-            <div className='flex flex-row justify-between w-[90vw] h-full min-h-190 mt-12 mx-auto text-white'>
-                <div className='relative flex flex-col h-fit w-3/10 min-w-[300px]'>
+            <div className='relative flex flex-row justify-between w-[90vw] h-full min-h-150 mt-6 2xl:mt-12 mx-auto text-white'>
+                <div className='relative flex flex-col h-9/10 w-3/10 min-w-[300px]'>
                     <div className='gray-panel-content flex flex-col h-full gap-4 z-20'>
                         <div className='flex flex-row gap-4 items-baseline'>
                             <h5 className='filter-header-main'>Select a Symptom</h5>
@@ -84,31 +84,31 @@ export default function Colony(props){
                     </div>
                     <div className='absolute gray-panel w-full h-full top-0 left-0 z-10' />           
                 </div>
-                <div className='w-1/3 aspect-[1241/1754]'>
+                <div className='relative w-3/10 h-full'>
                     <ColonySilhouette {...silhouetteProps}/>
                 </div>
                 <div className='relative flex flex-col h-9/10 w-3/10 min-w-[300px]'>
-                    <div className='relative h-fit'>
+                    <div className='relative h-full'>
                         <div className='gray-panel-content relative flex flex-col h-full gap-6 z-20'>
                             <div className='flex flex-row gap-4 items-baseline'>
                                 <h5 className='filter-header-main'>Hormones</h5>
                                 <Ornament />
                             </div>
-                            <div className='relative w-full h-50 mx-auto'>
+                            <div className='relative w-full h-1/3 mx-auto'>
                                 <HormoneGraph {...hormoneProps}/>
                             </div>                           
                             <ColonySelectorDivided {...hormoneProps}/>
-                            <div className='flex flex-row mt-12 gap-4 items-baseline'>
+                            <div className='flex flex-row mt-6 gap-4 items-baseline'>
                                 <h5 className='filter-header-main'>Age</h5>
                                 <Ornament />
                             </div>  
-                            <div className='relative w-full h-50 mx-auto'>
+                            <div className='relative w-full h-1/3 mx-auto'>
                                 <AgeGraph />
                             </div>   
                         </div>
                         <div className='absolute gray-panel w-full h-full top-0 left-0 z-10' />
                     </div>
-                    <div className='flex-1 m-5 mt-10'>
+                    <div className='flex-1 m-5 mt-4 2xl:mt-10'>
                         <button className='clear-filter' onClick={clearFilters}>Clear Filters</button>
                     </div>
                 </div>
@@ -139,20 +139,20 @@ function ColonyNavBar(){
     const paragraph = 'This visualization maps the range of symptoms experienced during this stage. The panel on the right lists symptoms identified through analysis of 38,900 comments from online community discussions on Reddit, ordered by frequency. On the left, the panel shows how low/high hormones results to symptoms and age range observed in the dataset.'
 
     return (
-        <div className='relative flex flex-row justify-between w-full h-50'>
+        <div className='relative flex flex-row justify-between w-full h-30'>
             <div ref={tooltipRef} className='tooltip'></div>
-            <div className='justify-self-start flex flex-row gap-5 z-50'>
+            <div className='flex-1 justify-self-start flex flex-row gap-5 z-50'>
                 <a href={'/'}><h1 className='colony-title text-center ml-12 mt-10'>The Invisible Data</h1></a>
             </div>
-            <div className='flex flex-row justify-center gap-5'>
+            <div className='flex-2 flex flex-row justify-center gap-5 mt-18'>
                 <div className='nav-bar-path-choice current-page'>Symptom Atlas</div>
                 <a href={'/cluster'}><div className='nav-bar-path-choice'>Symptom Cluster</div></a>
                 <a href={'/experiences'}><div className='nav-bar-path-choice'>Lived Experiences</div></a>
             </div>          
-            <div className='justify-self-end flex flex-row justify-end-safe gap-12 mr-12 mt-10 z-50'>
-                <a href={'/about'}>About</a>
-                <a href={'/path'}>Path</a>
-                <a href={'/dear-peri'}>Dear Peri</a>
+            <div className='flex-1 justify-self-end flex flex-row justify-end-safe gap-4 lg:gap-8 2xl:gap-12 mt-8 z-50 nav-links'>
+                <a href={'/about'}>ABOUT</a>
+                <a href={'/path'}>PATH</a>
+                <a href={'/dear-peri'} className='mr-12'>DEAR PERI</a>
             </div>               
         </div>       
     )

@@ -95,18 +95,16 @@
 .nav-bar-path-choice {
   color: white;
   font-family: 'Fragment Mono', Courier, monospace;
-  font-size: 20pt;
+  font-size: 16pt;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
-  width: 320px;
-  height: 80px;
-  padding: 10px 5px;
+  width: 280px;
+  height: 50px;
   border: 2px solid white;
   border-radius: 999px;
-  transition: background-color 0.2s width 0.2s height 0.2s font-size 0.2s;
+  transition: background-color 0.2s;
 }
 
 .nav-bar-path-choice:hover {
@@ -124,31 +122,13 @@
   background-color: white;
 }
 
-@media screen and (max-width: 2000px) {
-    .nav-bar-path-choice {
-        width: 240px;
-        height: 50px;
-        font-size: 16pt;
-        padding: 7px 3px;
-    }
-}
-
-@media screen and (max-width: 1500px) {
-    .nav-bar-path-choice {
-        width: 200px;
-        height: 40px;
-        font-size: 12pt;
-        padding: 5px 2px;
-    }
-}
-
 #timeout-warning {
   position: fixed;
   background-color: #fffc;
   color: black;
   padding: 30px;
   border-radius: 20px;
-  font-family: 'Inter', 'Courier';
+  font-family: 'Inter', sans-serif;
   font-size: 16pt;
   z-index: 200;
   text-align: center;
@@ -162,4 +142,50 @@
 
 #timeout-warning.visible {
   opacity: 1;
+}
+
+.nav-links {
+  color: white;
+  font-size: 14pt;
+  font-family: 'Fragment Mono', Courier, monospace;
+}
+
+.nav-links > a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 2000px) {
+    .nav-bar-path-choice {
+        width: 240px;
+        height: 50px;
+        font-size: 14pt;
+    }
+
+    .nav-links{
+      font-size: 12pt;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .nav-bar-path-choice {
+        width: 200px;
+        height: 40px;
+        font-size: 12pt;
+    }
+
+    .nav-links{
+      font-size: 11pt;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .nav-bar-path-choice {
+        width: 160px;
+        height: 30px;
+        font-size: 10pt;
+    }
+
+    .nav-links{
+      font-size: 9pt;
+    }
 }

@@ -35,7 +35,7 @@ export default function ClusterSilhouette(props){
     useEffect(() => {
         if(data.length === 0) return;
         if(size.width === 0 || size.height === 0) return;
-        plotPoints(svgRef.current, circlesRef.current, linesRef.current, tooltipRef.current, data, size, props);
+        plotPoints(svgRef.current, circlesRef, linesRef.current, tooltipRef.current, data, size, props);
     }, [size, props.currentNeighbors]);
 
     return (
@@ -49,7 +49,7 @@ export default function ClusterSilhouette(props){
     )
 }
 
-function plotPoints(svgElement, circlesGrp, linesGrp, tooltipElement, data, size, props){
+function plotPoints(svgElement, circlesRef, linesGrp, tooltipElement, data, size, props){
     // Pre filter data to allow drawing of links
     const neighbors = [];
     let selected = null;
@@ -76,7 +76,7 @@ function plotPoints(svgElement, circlesGrp, linesGrp, tooltipElement, data, size
             .classed('marching-3', true)
     }
 
-    d3.select(circlesGrp).selectAll('circle')
+    d3.select(circlesRef.current).selectAll('circle')
         // d => d.name is the identifier for enter/update/exit
         .data(neighbors.length > 0 ? [...neighbors, selected] : data, d => `${d.name} ${d.x} ${d.y}`)
         .join(
@@ -124,8 +124,8 @@ function plotPoints(svgElement, circlesGrp, linesGrp, tooltipElement, data, size
                 circles.transition()
                     .duration(200)
                     .attr('r', function(d){
-                        if(props.currentSymptom === d.name) return 8;
-                        return 6;
+                        if(props.currentSymptom === d.name) return size.width / 90;
+                        return size.width / 120;
                     })
             },
             function(update){
@@ -134,6 +134,10 @@ function plotPoints(svgElement, circlesGrp, linesGrp, tooltipElement, data, size
                     .duration(200)
                     .attr('cx', d => d.x * size.width)
                     .attr('cy', d => d.y * size.height)
+                    .attr('r', function(d){
+                        if(props.currentSymptom === d.name) return size.width / 90;
+                        return size.width / 120;
+                    })
             },
             function(exit){
                 exit

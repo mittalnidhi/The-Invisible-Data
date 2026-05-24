@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+
 html,
 body {
   margin: 0;
@@ -10,21 +11,20 @@ body {
 
 .path {
   min-height: 100vh;
+  height: 140vh;
   background: linear-gradient(135deg, #e5e5e5 0%, #c7d8ef 100%);
   color: #051c41;
   font-family: "Cascadia Code", "Courier New", monospace;
-  
+  overflow: hidden;
 }
 
-/* nav */
+/* NAVBAR — PATH PAGE ONLY */
 
-/* navbar */
-
-..path .nav {
+.path .nav {
   position: fixed;
-  top: clamp(16px, 3vh, 28px);
-  left: clamp(16px, 1.7vw, 32px);
-  right: clamp(16px, 1.7vw, 32px);
+  top: clamp(18px, 2vw, 36px);
+  left: clamp(22px, 2.5vw, 60px);
+  right: clamp(22px, 2.5vw, 60px);
   z-index: 9999;
 
   display: flex;
@@ -32,143 +32,150 @@ body {
   align-items: center;
 
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(12px, 1.35vw, 18px);
-  letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
+}
 
-  color: #051c41;
+.path .nav-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.6vw, 64px);
 }
 
 .path .nav-button {
   border: 0;
   background: transparent;
   color: #051c41;
-
-  font: inherit;
   cursor: pointer;
+
+  font-family: inherit;
+  font-size: clamp(13px, 1.05vw, 24px);
+  font-weight: 700;
+  letter-spacing: clamp(0.1em, 0.22vw, 0.2em);
+  white-space: nowrap;
 
   padding: 0;
   margin: 0;
-
-  white-space: nowrap;
 }
 
 .path .nav-button:hover {
   color: #6b7280;
 }
 
-.nav-title-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.path .nav-title-button {
+  font-size: clamp(14px, 1.15vw, 26px);
 }
 
-.nav-right {
-  display: flex;
-  gap: clamp(12px, 3vw, 34px);
+.path .nav-button--active {
+  color: #051c41;
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
-/* fixed stages */
+/* STAGE */
 
 .path__stage {
-  position: fixed;
-  inset: 0;
   height: 100vh;
-  width: 100vw;
+  min-height: 120vh;
+
+  padding-top: clamp(80px, 8vh, 120px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
   overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* subtle ascii background */
-
-.path__glitchField {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.path__glitchField span {
-  position: absolute;
-  color: #051c41;
-  transition:
-    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.28s ease;
-  user-select: none;
-}
-
-/* center text */
+/* TITLE */
 
 .path__title {
-  position: absolute;
-  left: 50%;
-  top: 15%;
-  width: min(1000px, 84vw);
-  max-width: 84vw;
-  transform: translateX(-50%);
+  position: relative;
   z-index: 3;
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #051c41;
+
+  width: min(1300px, 90vw);
+  margin: clamp(18px, 2vh, 36px) 0 clamp(20px, 3vh, 45px);
+
   text-align: center;
-  line-height: 1.02;
-  letter-spacing: -0.045em;
-  font-weight: 900;
-  white-space: normal;
-  overflow-wrap: break-word;
-  will-change: opacity;
+  color: #002a73;
+  line-height: 0.95;
 }
 
 .path__titleMain {
-  display: inline-block;
-  font-size: clamp(1.8rem, 3.5vw, 5rem);
-  text-transform: none;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  display: block;
+
+  font-family:
+    "Trebuchet MS",
+    "Lucida Sans Unicode",
+    "Lucida Grande",
+    "Lucida Sans",
+    Arial,
+    sans-serif;
+
+  font-size: clamp(58px, 6vw, 130px);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 0.95;
 }
 
 .path__titleSub {
-  display: inline-block;
-  margin-top: 18px;
-  font-size: clamp(2rem, 2.0vw, 2rem);
-  letter-spacing: 0.08em;
+  display: block;
+
+  margin-top: clamp(10px, 1.2vw, 22px);
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(18px, 1.5vw, 34px);
   font-weight: 600;
-  text-transform: none;
- 
+  letter-spacing: 0.12em;
+  line-height: 1.25;
 }
 
-/* cards */
+/* CARDS */
 
 .path__cards {
-  position: absolute;
-  left: 50%;
-  top: 70%;
+  position: relative;
   z-index: 5;
+
+  width: min(94vw, 1500px);
+  height: clamp(330px, 34vh, 560px);
+  min-height: 330px;
+
+  margin: 0 auto;
+
   display: flex;
-  align-items: center;
   justify-content: center;
-  transform: translate(-50%, -50%);
+  align-items: center;
+
+  overflow: visible;
   pointer-events: auto;
 }
 
 .pathCard {
   position: absolute;
-  width: 250px;
-  height: 300px;
+
+  width: clamp(220px, 21vw, 410px);
+  height: clamp(330px, 34vh, 560px);
+
+  transform: translateX(calc(var(--offset) * clamp(240px, 24vw, 500px)));
+
   perspective: 900px;
   border: none;
   background: transparent;
   cursor: pointer;
   padding: 0;
+
   font-family: "Cascadia Code", "Courier New", monospace;
-  
 }
 
 .pathCard__inner {
   position: relative;
   display: block;
+
   width: 100%;
   height: 100%;
+
   transform-style: preserve-3d;
   transition: transform 0.35s ease;
-  will-change: transform;
 }
 
 .pathCard:hover .pathCard__inner {
@@ -178,6 +185,7 @@ body {
 .pathCard__face {
   position: absolute;
   inset: 0;
+
   overflow: hidden;
   backface-visibility: hidden;
 
@@ -189,14 +197,11 @@ body {
   color: #e6d3c4;
 
   font-weight: 900;
-  font-size: 22px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 
   box-shadow: 0 20px 50px rgba(5, 28, 65, 0.18);
 }
-
-/* front image side */
 
 .pathCard__front {
   justify-content: flex-end;
@@ -210,6 +215,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 1;
+
   background: linear-gradient(
     to top,
     rgba(5, 28, 65, 0.92),
@@ -227,15 +233,9 @@ body {
   height: 100%;
   object-fit: cover;
 
-  opacity: 0.80;
+  opacity: 0.8;
   filter: grayscale(20%) contrast(1.05);
-   transform: none;
-  transition: none;
 }
-/*cards are heavy to load so commenting this*/
-/*.pathCard:hover .pathCard__image {
-  transform: scale(1.08);
-}*/
 
 .pathCard__title {
   position: absolute;
@@ -243,84 +243,209 @@ body {
   left: 50%;
   top: 85%;
   transform: translate(-50%, -50%);
+
   width: 85%;
+
   color: rgb(212, 208, 208);
-  font-size: 20px;
+  font-size: clamp(16px, 1.2vw, 24px);
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: none;
   text-align: center;
 }
 
-/* back side */
-
 .pathCard__back {
   transform: rotateY(180deg);
-  padding: 28px;
+
+  padding: clamp(18px, 2vw, 32px);
   box-sizing: border-box;
 
-  font-size: 15px;
+  font-size: clamp(12px, 1vw, 18px);
   line-height: 1.35;
   text-transform: none;
   text-align: center;
 }
 
-/* responsive */
+/* SMALL / LAPTOP SCREENS */
 
-@media (max-width: 768px) {
-  .aboutNav {
-    top: 18px;
-    left: 16px;
-    right: 16px;
-    font-size: clamp(10px, 2.7vw, 13px);
-    letter-spacing: 0.06em;
-    gap: 12px;
+@media (max-width: 1200px) {
+  .path .nav {
+    left: 18px;
+    right: 18px;
   }
 
-  .aboutNav__right {
-    gap: clamp(8px, 2.4vw, 14px);
+  .path .nav-right {
+    gap: clamp(12px, 2vw, 24px);
+  }
+
+  .path .nav-button {
+    font-size: clamp(11px, 1.4vw, 15px);
+    letter-spacing: 0.08em;
+  }
+
+  .path__stage {
+    padding-top: 95px;
   }
 
   .path__title {
-    top: 30%;
-    width: 86vw;
-    max-width: 86vw;
+    margin-top: 12px;
+    margin-bottom: 18px;
   }
 
   .path__titleMain {
-    font-size: clamp(2rem, 9vw, 4rem);
-    line-height: 1.08;
-    
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 1;
   }
 
   .path__titleSub {
-    font-size: clamp(0.95rem, 4vw, 1.4rem);
-    margin-top: 14px;
+    font-size: clamp(16px, 2vw, 26px);
   }
 
   .path__cards {
-    top: 84%;
+    height: 430px;
+    min-height: 430px;
   }
 
   .pathCard {
-    width: 190px;
-    height: 165px;
-  }
+    width: clamp(190px, 26vw, 300px);
+    height: clamp(300px, 40vw, 450px);
 
-  .pathCard__title {
-    font-size: 18px;
-  }
-
-  .pathCard__back {
-    font-size: 12px;
-    padding: 18px;
+    transform: translateX(calc(var(--offset) * clamp(190px, 28vw, 330px)));
   }
 }
 
-/*indicate path is activated by underline*/
+/* VERY SMALL SCREENS */
 
-.path .nav-button--active {
-  color: #051c41;
-  text-decoration: underline;
-  text-underline-offset: 6px;
+@media (max-width: 700px) {
+  .path .nav {
+    top: 16px;
+    left: 14px;
+    right: 14px;
+  }
+
+  .path .nav-right {
+    gap: 10px;
+  }
+
+  .path .nav-button {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .path__stage {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 90px;
+    overflow-y: auto;
+  }
+
+  .path__title {
+    width: 90vw;
+    margin-bottom: 28px;
+  }
+
+  .path__titleMain {
+    font-size: clamp(38px, 11vw, 62px);
+  }
+
+  .path__titleSub {
+    font-size: 15px;
+    letter-spacing: 0.06em;
+  }
+
+  .path__cards {
+    height: auto;
+    min-height: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    overflow: visible;
+  }
+
+  .pathCard {
+    position: relative;
+    transform: none !important;
+
+    width: min(82vw, 320px);
+    height: 420px;
+  }
+}
+
+/* LARGE IMAC / 4K SCREENS */
+
+@media (min-width: 1900px) {
+  .path .nav {
+    top: 36px;
+    left: 60px;
+    right: 60px;
+  }
+
+  .path .nav-button {
+    font-size: 24px;
+  }
+
+  .path .nav-title-button {
+    font-size: 27px;
+  }
+
+  .path .nav-right {
+    gap: 64px;
+  }
+
+  .path__stage {
+    padding-top: 145px;
+  }
+
+  .path__title {
+    margin-bottom: 65px;
+  }
+
+  .path__titleMain {
+    font-size: 170px;
+  }
+
+  .path__titleSub {
+    font-size: 48px;
+  }
+
+  .path__cards {
+    width: 1700px;
+    height: 700px;
+  }
+
+  .pathCard {
+    width: 460px;
+    height: 700px;
+
+    transform: translateX(calc(var(--offset) * 560px));
+  }
+
+  .pathCard__title {
+    font-size: 28px;
+  }
+
+  .pathCard__back {
+    font-size: 22px;
+  }
+}
+.path__cards {
+  position: relative;
+  z-index: 5;
+
+  width: min(94vw, 1500px);
+
+  height: clamp(420px, 48vh, 700px);
+  min-height: 420px;
+
+  margin: 0 auto;
+  margin-top: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  overflow: visible;
+  pointer-events: auto;
 }

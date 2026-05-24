@@ -73,7 +73,7 @@ export default function Path() {
           }}
         >
           {cards.map((card, index) => {
-            const offsets = [-300, 0, 300];
+            const offsets = [-1, 0, 1];
 
             return (
               <button
@@ -81,7 +81,7 @@ export default function Path() {
                 className="pathCard"
                 onClick={() => navigate(card.route)}
                 style={{
-                  transform: `translate(${offsets[index]}px, 0px) scale(1)`,
+                  "--offset": offsets[index],
                 }}
               >
                 <span className="pathCard__inner">

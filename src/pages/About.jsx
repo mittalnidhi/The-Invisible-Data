@@ -204,8 +204,8 @@ export default function About() {
         }
 
         gsap.set(boxOneRef.current, {
-          width: lerp(90, Math.min(window.innerWidth * 0.30, 460), firstP),
-          height: lerp(70, Math.min(window.innerHeight * 0.36, 300), firstP),
+          width: lerp(90, Math.min(window.innerWidth * 0.32, 620), firstP),
+          height: lerp(70, Math.min(window.innerHeight * 0.34, 420), firstP),
         });
 
         const textSwitchPoint = ((25 - 1) / (30 - 1)) * firstBoxEnd;
@@ -244,8 +244,8 @@ export default function About() {
         }
 
         gsap.set(boxTwoRef.current, {
-          width: lerp(110, Math.min(window.innerWidth * 0.40, 580), secondP),
-          height: lerp(85, Math.min(window.innerHeight * 0.50, 420), secondP),
+          width: lerp(115, Math.min(window.innerWidth * 0.43, 780), secondP),
+          height: lerp(90, Math.min(window.innerHeight * 0.50, 590), secondP),
           x: 0,
           y: 0,
           right: 0,
@@ -284,8 +284,8 @@ export default function About() {
         }
 
         gsap.set(boxThreeRef.current, {
-          width: lerp(140, Math.min(window.innerWidth * 0.50, 720), thirdP),
-          height: lerp(110, Math.min(window.innerHeight * 0.70, 700), thirdP),
+          width: lerp(150, Math.min(window.innerWidth * 0.54, 990), thirdP),
+          height: lerp(140, Math.min(window.innerHeight * 0.70, 860), thirdP),
           x: 0,
           y: 0,
           right: 0,

@@ -368,14 +368,15 @@ export default function LandingJourney() {
 
       ctx.globalAlpha = 1;
 
-      if (elapsed > 2.2) {
-        modeRef.current = "navIntro";
-        setMode("navIntro");
-        setShowNav(true);
-        navStartRef.current = performance.now();
-        setCaptionLine1("");
-        setCaptionLine2("");
-      }
+      if (elapsed > 1.1) {
+      modeRef.current = "animation";
+      setMode("animation");
+      setShowNav(true);
+      animationStartRef.current = performance.now();
+
+      setCaptionLine1("");
+      setCaptionLine2("");
+    }
     };
 
     const drawNavIntro = () => {
@@ -445,7 +446,7 @@ export default function LandingJourney() {
         next: lastFrame.art,
       });
 
-      ctx.fillStyle = "#323741";
+      ctx.fillStyle = "#1a202b";
       ctx.globalAlpha = Math.min(1, elapsed / 2.8);
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.globalAlpha = 1;
@@ -531,46 +532,25 @@ export default function LandingJourney() {
       <canvas ref={canvasRef} />
 
       {showNav && mode !== "title" && (
-        <nav className="nav nav-typing">
-          <button
-            className="nav-button nav-title-button"
-            onClick={restartLanding}
-          >
-            <span className="type-nav type-title">INVISIBLE DATA</span>
-          </button>
+        <nav className="nav">
+  <button className="nav-button nav-title-button" onClick={restartLanding}>
+    INVISIBLE DATA
+  </button>
 
-          <div className="nav-right">
-            <button
-              className="nav-button nav-about-button"
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate("/about");
-              }}
-            >
-              <span className="type-nav type-about">ABOUT</span>
-            </button>
+  <div className="nav-right">
+    <button className="nav-button" onClick={(e) => { e.stopPropagation(); navigate("/about"); }}>
+      ABOUT
+    </button>
 
-            <button
-              className="nav-button nav-path-button"
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate("/path");
-              }}
-            >
-              <span className="type-nav type-path">PATH</span>
-            </button>
+    <button className="nav-button" onClick={(e) => { e.stopPropagation(); navigate("/path"); }}>
+      PATH
+    </button>
 
-            <button
-              className="nav-button nav-dear-button"
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate("/dear-peri");
-              }}
-            >
-              <span className="type-nav type-dear">DEAR PERI</span>
-            </button>
-          </div>
-        </nav>
+    <button className="nav-button" onClick={(e) => { e.stopPropagation(); navigate("/dear-peri"); }}>
+      DEAR PERI
+    </button>
+  </div>
+</nav>
       )}
 
       {mode === "title" && (

@@ -66,7 +66,7 @@ export default function Colony(props){
             <div id="timeout-warning">Are you still there? Hover over the screen to continue, or return home in 10 seconds.</div>
             <ColonyNavBar />
             <div className='relative flex flex-row justify-between w-[90vw] h-full min-h-150 mt-6 2xl:mt-12 mx-auto text-white'>
-                <div className='relative flex flex-col h-9/10 w-3/10 min-w-[300px]'>
+                <div className='relative flex flex-col h-[100%] w-[34%] min-w-[300px]'>
                     <div className='gray-panel-content flex flex-col h-full gap-4 z-20'>
                         <div className='flex flex-row gap-4 items-baseline'>
                             <h5 className='filter-header-main'>Select a Symptom</h5>
@@ -87,7 +87,7 @@ export default function Colony(props){
                 <div className='relative w-3/10 h-full'>
                     <ColonySilhouette {...silhouetteProps}/>
                 </div>
-                <div className='relative flex flex-col h-9/10 w-3/10 min-w-[300px]'>
+                <div className='relative flex flex-col h-[100%] w-[34%] min-w-[300px]'>
                     <div className='relative h-full'>
                         <div className='gray-panel-content relative flex flex-col h-full gap-6 z-20'>
                             <div className='flex flex-row gap-4 items-baseline'>

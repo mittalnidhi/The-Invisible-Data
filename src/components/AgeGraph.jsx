@@ -3,11 +3,12 @@ import * as d3 from "d3";
 import { useResizeObserver, useDebounceCallback } from 'usehooks-ts';
 
 const ageData = [
+    { age: "0-25", value: 0 },
     { age: "26–29", value: 100 },
     { age: "30–34", value: 400 },
     { age: "35–40", value: 1000 },
     { age: "41–45", value: 2000 },
-    { age: "46–50", value: 200 },
+    { age: "46–50", value: 400 },
 ];
 
 function AgeGraph() {

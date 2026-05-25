@@ -381,4 +381,18 @@
     justify-content: center;
   }
 }
+.colony-nav-links a {
+  color: white;
+  text-decoration: none;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(12px, 1.2vw, 20px);
+
+  font-weight: 400;
+  letter-spacing: 0.08em;
+
+  padding-bottom: 5px;
+
+  border-bottom: 1px solid transparent;
+}
 

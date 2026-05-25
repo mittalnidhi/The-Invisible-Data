@@ -63,7 +63,7 @@ export default function Colony(props){
 
     return (
         <div className='relative colony-main flex flex-col h-[100vh] w-full z-30'>
-            <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
+            <div id="timeout-warning">Are you still there? Hover over the screen to continue, or return home in 10 seconds.</div>
             <ColonyNavBar />
             <div className='relative flex flex-row justify-between w-[90vw] h-full min-h-150 mt-6 2xl:mt-12 mx-auto text-white'>
                 <div className='relative flex flex-col h-9/10 w-3/10 min-w-[300px]'>
@@ -118,42 +118,56 @@ export default function Colony(props){
     )
 }
 
-function ColonyNavBar(){
-    const leftArrowRef = useRef(null);
-    const tooltipRef = useRef(null);
+function ColonyNavBar() {
+  return (
+    <div className="colony-navbar">
+      <a href="/" className="colony-brand">
+        INVISIBLE DATA
+      </a>
 
-    useEffect(() => {
-        d3.select(leftArrowRef.current).select('span')
-            .style('transition', 'transform 150ms ease')
-        d3.select(leftArrowRef.current)
-            .on('mouseover', e => {
-                d3.select(leftArrowRef.current).select('span')
-                    .style('transform', 'translate(-5px, 0)')
-            })
-            .on('mouseout', e => {
-                d3.select(leftArrowRef.current).select('span')
-                    .style('transform', null)
-            })
-    }, [])
+      <div className="colony-subnav">
+        <NavLink
+          to="/colony"
+          className={({ isActive }) =>
+            isActive ? "colony-subnav-link active" : "colony-subnav-link"
+          }
+        >
+          Symptom Atlas
+        </NavLink>
 
-    const paragraph = 'This visualization maps the range of symptoms experienced during this stage. The panel on the right lists symptoms identified through analysis of 38,900 comments from online community discussions on Reddit, ordered by frequency. On the left, the panel shows how low/high hormones results to symptoms and age range observed in the dataset.'
+        <NavLink
+          to="/cluster"
+          className={({ isActive }) =>
+            isActive ? "colony-subnav-link active" : "colony-subnav-link"
+          }
+        >
+          Symptom Cluster
+        </NavLink>
 
-    return (
-        <div className='relative flex flex-row justify-between w-full h-30'>
-            <div ref={tooltipRef} className='tooltip'></div>
-            <div className='flex-1 justify-self-start flex flex-row gap-5 z-50'>
-                <a href={'/'}><h1 className='colony-title text-center ml-12 mt-10'>The Invisible Data</h1></a>
-            </div>
-            <div className='flex-2 flex flex-row justify-center gap-5 mt-18'>
-                <div className='nav-bar-path-choice current-page'>Symptom Atlas</div>
-                <a href={'/cluster'}><div className='nav-bar-path-choice'>Symptom Cluster</div></a>
-                <a href={'/experiences'}><div className='nav-bar-path-choice'>Lived Experiences</div></a>
-            </div>          
-            <div className='flex-1 justify-self-end flex flex-row justify-end-safe gap-4 lg:gap-8 2xl:gap-12 mt-8 z-50 nav-links'>
-                <a href={'/about'}>ABOUT</a>
-                <a href={'/path'}>PATH</a>
-                <a href={'/dear-peri'} className='mr-12'>DEAR PERI</a>
-            </div>               
-        </div>       
-    )
+        <NavLink
+          to="/experiences"
+          className={({ isActive }) =>
+            isActive ? "colony-subnav-link active" : "colony-subnav-link"
+          }
+        >
+          Lived Experiences
+        </NavLink>
+      </div>
+
+      <div className="colony-nav-links">
+        <NavLink to="/about">ABOUT</NavLink>
+
+        <NavLink
+          to="/path"
+          className={({ isActive }) =>
+            isActive ? "colony-path-link active" : "colony-path-link"
+          }
+        >
+          PATH
+        </NavLink>
+
+        <NavLink to="/dear-peri">DEAR PERI</NavLink>
+      </div>
+    </div>
+  );
 }

@@ -37,7 +37,7 @@ body {
 .path .nav-right {
   display: flex;
   align-items: center;
-  gap: clamp(18px, 2.6vw, 64px);
+  gap: clamp(16px, 2.2vw, 60px);
 }
 
 .path .nav-button {
@@ -383,7 +383,7 @@ body {
   }
 
   .path .nav-button {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .path .nav-title-button {
@@ -391,7 +391,7 @@ body {
   }
 
   .path .nav-right {
-    gap: 64px;
+    gap: 30px;
   }
 
   .path__stage {

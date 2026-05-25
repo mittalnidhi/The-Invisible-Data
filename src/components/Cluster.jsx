@@ -67,7 +67,7 @@ function ClusterNavBar() {
   return (
     <div className="colony-navbar">
       <a href="/" className="colony-brand">
-        Invisible Data
+        INVISIBLE DATA
       </a>
 
       <div className="colony-subnav">
@@ -80,7 +80,7 @@ function ClusterNavBar() {
         </NavLink>
 
         <NavLink to="/experiences" className="colony-subnav-link">
-          Lived Experiences
+          Slice of Life
         </NavLink>
       </div>
 

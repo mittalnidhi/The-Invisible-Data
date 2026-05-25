@@ -3,6 +3,7 @@ import "./Experience.css";
 import * as d3 from "d3";
 import { showTooltip, moveTooltip, hideTooltip } from '../utils';
 import ExperienceViewer from "./ExperienceViewer";
+import { NavLink } from "react-router-dom";
 
 const PHASE_DEPTH = 1100;
 const FOCAL_LENGTH = 760;
@@ -630,42 +631,39 @@ export default function Experience(props) {
     );
 }
 
-function ExperiencesNavBar(){
-    const leftArrowRef = useRef(null);
-    const tooltipRef = useRef(null);
+function ExperiencesNavBar() {
+  return (
+    <div className="colony-navbar">
+      <a href="/" className="colony-brand">
+       INVISIBLE DATA
+      </a>
 
-    useEffect(() => {
-        d3.select(leftArrowRef.current).select('span')
-            .style('transition', 'transform 150ms ease')
-        d3.select(leftArrowRef.current)
-            .on('mouseover', e => {
-                d3.select(leftArrowRef.current).select('span')
-                    .style('transform', 'translate(-5px, 0)')
-            })
-            .on('mouseout', e => {
-                d3.select(leftArrowRef.current).select('span')
-                    .style('transform', null)
-            })
-    }, [])
+      <div className="colony-subnav">
+        <NavLink to="/colony" className="colony-subnav-link">
+          Symptom Atlas
+        </NavLink>
 
-    const paragraph = "(blank)"
-    
-    return (
-        <div className='relative flex flex-row justify-between w-full h-50'>
-            <div ref={tooltipRef} className='tooltip'></div>
-            <div className='flex-1 justify-self-start flex flex-row gap-5 z-50'>
-                <a href={'/'}><h1 className='colony-title text-center ml-12 mt-10'>The Invisible Data</h1></a>
-            </div>
-            <div className='flex-2 flex flex-row justify-center gap-5 mt-18'>
-                <a href={'/colony'}><div className='nav-bar-path-choice'>Symptom Atlas</div></a>
-                <a href={'/cluster'}><div className='nav-bar-path-choice'>Symptom Cluster</div></a>
-                <div className='nav-bar-path-choice current-page'>Lived Experiences</div>
-            </div>          
-            <div className='flex-1 justify-self-end flex flex-row justify-end-safe gap-4 lg:gap-8 2xl:gap-12 mt-8 z-50 nav-links'>
-                <a href={'/about'}>ABOUT</a>
-                <a href={'/path'}>PATH</a>
-                <a href={'/dear-peri'} className='mr-12'>DEAR PERI</a>
-            </div>               
-        </div>         
-    )
+        <NavLink to="/cluster" className="colony-subnav-link">
+          Symptom Cluster
+        </NavLink>
+
+        <NavLink
+          to="/experiences"
+          className="colony-subnav-link active"
+        >
+          Slice of Life
+        </NavLink>
+      </div>
+
+      <div className="colony-nav-links">
+        <NavLink to="/about">ABOUT</NavLink>
+
+        <NavLink to="/path" className="colony-path-link">
+          PATH
+        </NavLink>
+
+        <NavLink to="/dear-peri">DEAR PERI</NavLink>
+      </div>
+    </div>
+  );
 }

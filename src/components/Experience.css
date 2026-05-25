@@ -101,3 +101,233 @@
 #story-submit:hover {
 	background-color: rgb(30, 176, 255);
 }
+
+/*navbar+subnav-Nidhi*/
+
+/* =========================
+   NAVBAR + SUBNAV
+========================= */
+
+.colony-navbar {
+  width: 100%;
+  min-height: 112px;
+  padding: 28px 48px 0;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+
+  position: relative;
+  z-index: 100;
+}
+
+.colony-brand {
+  justify-self: start;
+
+  color: white;
+  text-decoration: none;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+
+  font-size: clamp(13px, 1vw, 22px);
+
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.colony-nav-links {
+  justify-self: end;
+
+  display: flex;
+  align-items: center;
+
+  gap: clamp(16px, 1.6vw, 32px);
+}
+
+.colony-nav-links a {
+  color: white;
+  text-decoration: none;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+
+  font-size: clamp(11px, 0.8vw, 14px);
+
+  font-weight: 400;
+  letter-spacing: 0.08em;
+
+  padding-bottom: 5px;
+
+  border-bottom: 1px solid transparent;
+}
+
+.colony-nav-links a:hover {
+  border-bottom-color: white;
+}
+
+/* underline PATH */
+
+.colony-path-link {
+  border-bottom: 1px solid white !important;
+}
+
+/* =========================
+   SUBNAV BUTTONS
+========================= */
+
+.colony-subnav {
+  justify-self: center;
+
+  margin-top: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(10px, 1vw, 18px);
+
+  flex-wrap: wrap;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+}
+
+.colony-subnav-link {
+  color: #dbe6ea;
+  text-decoration: none;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+
+  font-size: clamp(12px, 0.8vw, 15px);
+
+  font-weight: 400;
+  letter-spacing: 0.04em;
+
+  padding: 9px 17px;
+
+  border-radius: 999px;
+
+  background: rgba(180, 200, 210, 0.14);
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.colony-subnav-link:hover {
+  background: rgba(190, 226, 235, 0.25);
+
+  color: white;
+
+  transform: translateY(-1px);
+}
+
+.colony-subnav-link.active {
+  background: #a4c4cc;
+
+  color: #243746;
+
+  border-color: #a4c4cc;
+}
+
+/* =========================
+   SMALL LAPTOP
+========================= */
+
+@media screen and (max-width: 1450px) {
+  .colony-navbar {
+    min-height: 104px;
+
+    padding: 24px 34px 0;
+
+    grid-template-columns: 0.9fr auto 0.9fr;
+  }
+
+  .colony-subnav {
+    margin-top: 30px;
+
+    gap: 18px;
+  }
+
+  .colony-subnav-link {
+    font-size: 13px;
+
+    padding: 8px 14px;
+  }
+
+  .colony-nav-links {
+    gap: 16px;
+  }
+
+  .colony-nav-links a,
+  .colony-brand {
+    font-size: 16px;
+  }
+}
+
+/* =========================
+   LARGE IMAC
+========================= */
+
+@media screen and (min-width: 1900px) {
+  .colony-navbar {
+    min-height: 130px;
+
+    padding: 38px 72px 0;
+  }
+
+  .colony-brand {
+    font-size: 24px;
+  }
+
+  .colony-nav-links a {
+    font-size: 18px;
+  }
+
+  .colony-subnav {
+    margin-top: 42px;
+
+    gap: 20px;
+  }
+
+  .colony-subnav-link {
+    font-size: 18px;
+
+    padding: 11px 22px;
+  }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (max-width: 900px) {
+  .colony-navbar {
+    grid-template-columns: 1fr;
+
+    row-gap: 18px;
+
+    min-height: auto;
+
+    padding: 24px 24px 0;
+
+    text-align: center;
+  }
+
+  .colony-brand,
+  .colony-subnav,
+  .colony-nav-links {
+    justify-self: center;
+  }
+
+  .colony-subnav {
+    margin-top: 0;
+  }
+
+  .colony-nav-links {
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+}

@@ -12,7 +12,7 @@ export default function Path() {
 
   const cards = [
     {
-      title: "Colony of Symptoms",
+      title: "Symptom Atlas",
       back: "Represents a wide range of symptoms observed in this phase",
       route: "/colony",
       image: finalSil,
@@ -24,7 +24,7 @@ export default function Path() {
       image: symp_cluster,
     },
     {
-      title: "Slices of Life",
+      title: "Slice of Life",
       back: "Read lived experience stories.",
       route: "/experiences",
       image: experiences,
@@ -81,8 +81,8 @@ export default function Path() {
                 className="pathCard"
                 onClick={() => navigate(card.route)}
                 style={{
-                  "--offset": offsets[index],
-                }}
+            "--offset": offsets[index],
+          }}
               >
                 <span className="pathCard__inner">
                   <span className="pathCard__face pathCard__front">

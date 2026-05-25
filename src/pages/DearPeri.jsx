@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./DearPeri.css";
 import workshop1 from "../assets/workshop-1.jpg";
+import insituWomen from "../assets/insitu-women.png";
+import personalDataImg from "../assets/personal-data.png";
 
 
 const sections = [
@@ -256,7 +258,7 @@ function SenseMakingArt() {
   return (
     <div className="circleArt circleArt--senseImage">
       <img
-        src="/arc-assets/insitu-women.png"
+        src={insituWomen}
         alt="Women sitting around a table"
         className="senseWomenImage"
       />
@@ -336,6 +338,11 @@ function CollectOwnDataArt() {
         <span />
         <span />
       </div>
+      <img
+  src={personalDataImg}
+  alt="Personal data"
+  className="personalDataImage"
+/>
 
       <div className="paper paper--two">
         <span />

@@ -8,13 +8,15 @@
         "turbulence": 0.4,
         "nodes": [
             { "label": "Unpredictable Symptoms", "rank": 1, "stories": [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras bibendum porta nunc, et consequat risus feugiat eu. Curabitur in turpis vitae quam malesuada cursus eu quis dolor. Sed sit amet lobortis lorem, id elementum nunc. Nam a mauris placerat, efficitur velit nec, feugiat nibh. Proin malesuada turpis ac quam interdum.",
+                "One day I was completely fine and the next I felt like my body had turned against me. Some weeks it is insomnia and panic attacks, other weeks it is joint pain and exhaustion. I never know what version of myself I am waking up to.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo interdum velit malesuada ornare. Fusce pretium purus ut dapibus fringilla. Morbi in ultrices nunc. Vestibulum molestie ante non mauris semper, at imperdiet mauris blandit. Vestibulum nisi tortor, tristique id dolor at, eleifend pharetra felis. Quisque quis viverra turpis. Suspendisse laoreet.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis augue tristique, accumsan velit at, pharetra nibh. Ut gravida molestie tellus, at commodo lacus aliquet euismod. Nam ultrices accumsan mauris sed sagittis. Nullam sodales odio et efficitur vestibulum. Donec enim ipsum, laoreet eu tristique a, vestibulum ut justo. Maecenas vitae.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu lorem non elit porta luctus. Aliquam nisi magna, tincidunt nec neque sed, blandit dapibus est. Fusce euismod at urna ut pretium. Proin eget lorem vel diam tempus rutrum a nec justo. Curabitur a dolor dolor. Duis vestibulum purus dolor, quis.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque justo nulla, volutpat id leo et, tempus hendrerit lacus. Aenean nec sollicitudin turpis. Proin diam quam, rhoncus vel hendrerit sed, blandit ac nisi. Cras risus metus, porta vel dictum eget, ullamcorper et nisi. Donec tempus tincidunt mattis. Vivamus commodo aliquet risus."
             ] },
-            { "label": "Lack of clarity", "rank": 2, "stories": [] },
+            { "label": "Lack of clarity", "rank": 2, "stories": [
+                "One day I was completely fine and the next I felt like my body had turned against me. Some weeks it is insomnia and panic attacks, other weeks it is joint pain and exhaustion. I never know what version of myself I am waking up to."
+            ] },
             { "label": "Emotional Unstability", "rank": 3, "stories": [] },
             { "label": "Self- Doubt", "rank": 4, "stories": [] },
             { "label": "Need for Direction", "rank": 5, "stories": [] }

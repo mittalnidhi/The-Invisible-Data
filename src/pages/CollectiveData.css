@@ -73,7 +73,7 @@ body {
   border: 1px solid rgba(241, 243, 245, 0.5);
   border-radius: 999px;
 
-  font-size: clamp(11px, 0.8vw, 15px);
+  font-size: clamp(14px, 1vw, 15px);
   font-weight: 800;
   letter-spacing: 0.02em;
 
@@ -1005,5 +1005,37 @@ body {
 
   .triggerEcology__svg {
     min-width: 760px;
+  }
+}
+
+/* BIG iMAC NAV + SUBNAV */
+
+@media (min-width: 2300px) {
+
+  .collectiveData .nav {
+   top: 38px;
+    left: 72px;
+    right: 72px;
+    font-size: 22px;
+  }
+
+  .nav__links {
+    gap: 48px;
+  }
+
+  .collectiveData__subnav {
+    width: min(1200px, 82vw);
+    margin: 0 auto;
+    padding-top: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+
+  .collectiveData__subnav a {
+    font-size: 20px;
+    padding: 12px 26px;
   }
 }

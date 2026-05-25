@@ -38,7 +38,7 @@ body {
   align-items: center;
 
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -82,7 +82,7 @@ body {
   border: 1px solid rgba(241, 243, 245, 0.5);
   border-radius: 999px;
 
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.02em;
 
@@ -463,5 +463,228 @@ body {
 
   .activityModal__box {
     padding: 44px 28px;
+  }
+}
+.downloadActivities {
+  width: min(900px, 88vw);
+  margin: 80px auto 160px;
+  text-align: center;
+}
+
+.downloadActivities__label {
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: #051c41;
+  margin-bottom: 24px;
+}
+
+.downloadActivities h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 5vw, 86px);
+  line-height: 0.95;
+  color: #051c41;
+  margin: 0 auto 28px;
+}
+
+.downloadActivities p {
+  max-width: 680px;
+  margin: 0 auto 42px;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(14px, 1.2vw, 20px);
+  line-height: 1.65;
+  color: #051c41;
+}
+
+.downloadActivities__button {
+  display: inline-block;
+  border: 2px solid #051c41;
+  padding: 18px 28px;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: 15px;
+  color: #051c41;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.downloadActivities__button:hover {
+  background: #051c41;
+  color: #d8dee7;
+}
+.downloadActivities {
+  width: min(920px, 88vw);
+  margin: 120px auto 180px;
+  text-align: center;
+}
+
+.downloadActivities__label {
+  margin: 0 0 22px;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(12px, 0.9vw, 14px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: #051c41;
+
+  opacity: 0.75;
+}
+
+.downloadActivities h2 {
+  margin: 0 auto 28px;
+
+  max-width: 900px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(54px, 6vw, 112px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+
+  color: #051c41;
+}
+
+.downloadActivities p {
+  max-width: 720px;
+
+  margin: 0 auto 52px;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(14px, 1.2vw, 21px);
+  line-height: 1.7;
+
+  color: #fcfdff;
+}
+
+.downloadActivities__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px 34px;
+
+  border: 1.5px solid #d2d4d6;
+
+  background: transparent;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(13px, 1vw, 16px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: #f5f5f5;
+  text-decoration: none;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.downloadActivities__button:hover {
+  background: #ffffff;
+  color: #d8dee7;
+
+  transform: translateY(-3px);
+}
+
+/* LARGE iMAC */
+
+@media (min-width: 2300px) {
+  .downloadActivities {
+    width: min(1200px, 82vw);
+    margin: 160px auto 260px;
+    color:#f1f3f5;
+  }
+
+  .downloadActivities h2 {
+    font-size: clamp(90px, 5vw, 148px);
+    color:#f1f3f5;
+  }
+
+  .downloadActivities p {
+    max-width: 860px;
+    font-size: 24px;
+    color:#f1f3f5;
+  }
+
+  .downloadActivities__button {
+    padding: 22px 42px;
+    font-size: 18px;
+    color:#f1f3f5;
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 850px) {
+  .downloadActivities {
+    margin: 100px auto 140px;
+  }
+
+  .downloadActivities h2 {
+    font-size: clamp(48px, 10vw, 74px);
+  }
+
+  .downloadActivities p {
+    font-size: 15px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 560px) {
+  .downloadActivities {
+    margin: 80px auto 120px;
+  }
+
+  .downloadActivities h2 {
+    font-size: clamp(40px, 13vw, 58px);
+    line-height: 0.98;
+  }
+
+  .downloadActivities p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .downloadActivities__button {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 12px;
+  }
+}
+/*  iMAC ONLY */
+
+@media (min-width: 2300px) {
+
+  .personalData .nav {
+    padding: 25px 45px;
+  }
+
+  .personalData .nav__brand,
+  .personalData .nav__links a {
+    font-size: 22px;
+  }
+
+  .personalData .nav__links {
+    gap: 48px;
+  }
+
+  .personalData__subnav {
+    width: min(1200px, 82vw);
+    margin: 0 auto;
+    padding-top: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+
+  .personalData__subnav a {
+    font-size: 20px;
+    padding: 11px 24px;
+    white-space: nowrap;
   }
 }

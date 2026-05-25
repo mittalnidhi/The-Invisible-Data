@@ -80,7 +80,7 @@ body {
   border: 1px solid rgba(241, 243, 245, 0.5);
   border-radius: 999px;
 
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.02em;
 
@@ -373,4 +373,35 @@ body {
 
 .insituCarouselDots button.active {
   background: #f1f3f5;
+}
+
+/* BIG iMAC NAV + SUBNAV */
+
+@media (min-width: 2300px) {
+  .insitu .nav {
+    top: 38px;
+    left: 72px;
+    right: 72px;
+    font-size: 22px;
+  }
+
+  .insitu .nav__links {
+    gap: 48px;
+  }
+
+  .insitu__subnav {
+    width: min(1200px, 82vw);
+    margin: 0 auto;
+    padding-top: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+
+  .insitu__subnav a {
+    font-size: 20px;
+    padding: 12px 26px;
+  }
 }

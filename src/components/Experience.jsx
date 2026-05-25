@@ -491,43 +491,86 @@ export default function Experience(props) {
                     ctx.fill();
 
                     // Text
-                    if (proximityFade > 0.25) {
-						const labelX = p.x + 10;
-    					const labelY = p.y - 4;
+                    const isActivePhase = world.id === activeWorld.id;
 
-                        ctx.fillStyle = node.label === hoveredLabel ? `rgba(255,255,255,${0.84 * proximityFade})` : `rgba(${world.tint},${0.84 * proximityFade})`;
-                        ctx.font = `600 ${Math.max(10, 25 - i)}px Inter, Arial, sans-serif`;
-                        ctx.textAlign = "left";
-                        ctx.textBaseline = "bottom";
-                        ctx.fillText(node.label, p.x + 10, p.y - 4);
-						const metrics = ctx.measureText(node.label);
+                    if (isActivePhase && proximityFade > 0.45) {
+                    const NAV_SAFE_TOP = 165;
+                    const SIDE_SAFE = 70;
+                    const BOTTOM_SAFE = 120;
 
-                        ctx.fillStyle = node.label === hoveredLabel ? `rgba(255,255,255,${0.62 * proximityFade})` : `rgba(${world.tint},${0.62 * proximityFade})`;
-                        ctx.font = "500 15px Inter, Arial, sans-serif";
-                        ctx.fillText(`#${node.rank}`, p.x + 10, p.y + 10);
-						
-						const textWidth = metrics.width;
-						const textHeight = Math.max(10, 17 - i);
+                    const metrics = ctx.measureText(node.label);
 
-						clickZones.push({
-							x: labelX,
-							y: labelY - textHeight,
-							w: textWidth,
-							h: textHeight * 1.8,
-							node: node
-						});
+                    let rawLabelX = p.x + 10;
+
+                    /* stagger labels so nearby text does not overlap */
+                    if (i % 2 === 0) rawLabelX -= 70;
+                    if (i % 3 === 0) rawLabelX += 90;
+
+                    const labelX = clamp(
+                    rawLabelX,
+                    SIDE_SAFE,
+                    viewport.width - metrics.width - SIDE_SAFE
+                    );
+
+                    const MAIN_TEXT_TOP = viewport.height * 0.58;
+                    const MAIN_TEXT_BOTTOM = viewport.height * 0.86;
+
+                    let rawLabelY = p.y - 4;
+
+                    if (rawLabelY > MAIN_TEXT_TOP && rawLabelY < MAIN_TEXT_BOTTOM) {
+                    rawLabelY =
+                        p.y < viewport.height * 0.72
+                        ? MAIN_TEXT_TOP - 35
+                        : MAIN_TEXT_BOTTOM + 35;
+                    }
+
+                    /* stagger vertical position too */
+                    const labelY = clamp(
+                    rawLabelY + (i % 2 === 0 ? -18 : 18),
+                    NAV_SAFE_TOP,
+                    viewport.height - BOTTOM_SAFE
+                    );
+
+                    ctx.fillStyle =
+                    node.label === hoveredLabel
+                        ? `rgba(255,255,255,${0.84 * proximityFade})`
+                        : `rgba(${world.tint},${0.84 * proximityFade})`;
+
+                    ctx.font = `600 ${Math.max(10, 25 - i)}px Inter, Arial, sans-serif`;
+                    ctx.textAlign = "left";
+                    ctx.textBaseline = "bottom";
+                    ctx.fillText(node.label, labelX, labelY);
+
+                    ctx.fillStyle =
+                    node.label === hoveredLabel
+                        ? `rgba(255,255,255,${0.62 * proximityFade})`
+                        : `rgba(${world.tint},${0.62 * proximityFade})`;
+
+                    ctx.font = "500 15px Inter, Arial, sans-serif";
+                    ctx.fillText(`#${node.rank}`, labelX, labelY + 18);
+
+                    const textWidth = metrics.width;
+                    const textHeight = Math.max(10, 17 - i);
+
+                    clickZones.push({
+                    x: labelX,
+                    y: labelY - textHeight,
+                    w: textWidth,
+                    h: textHeight * 1.8,
+                    node: node,
+                    });
                     }
                 }
             }
 
             ctx.fillStyle = `rgba(${activeWorld.tint},0.3)`;
-            ctx.font = `700 ${Math.min(140, viewport.width * 0.12)}px Inter, Arial, sans-serif`;
+            ctx.font = `700 ${Math.min(115, viewport.width * 0.20)}px Inter, Arial, sans-serif`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fillText(
                 activeWorld.title,
                 viewport.width * 0.5,
-                viewport.height * 0.72,
+                viewport.height * 0.78,
             );
 
             const vignette = ctx.createRadialGradient(

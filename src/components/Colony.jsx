@@ -150,7 +150,7 @@ function ColonyNavBar() {
             isActive ? "colony-subnav-link active" : "colony-subnav-link"
           }
         >
-          Lived Experiences
+          Slice of Life
         </NavLink>
       </div>
 

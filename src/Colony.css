@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
 .colony-main {
     color: white;
     font-family: 'Inter', 'Courier';
     font-weight: 400;
-    line-height: 1.2;
+    line-height: 1.8;
     background-image: url("/image 131.png");
     background-size:cover;
     overflow: auto;
@@ -76,11 +77,11 @@
 }
 
 .chart-text {
-    font-size: 12pt;
+    font-size: 19pt;
 }
 
 .divided-option {
-    font-size: 12pt;
+    font-size: 18pt;
     border-bottom: 2px solid #E9ADDF00;
     cursor: pointer;
     transition: border-bottom-color 200ms;
@@ -158,7 +159,7 @@
     }
 
     .chart-text, .divided-option, .pill-option {
-        font-size: 10pt;
+        font-size: 16pt;
     }
 }
 
@@ -188,7 +189,7 @@
     }
 
     .filter-header-main {
-        font-size: 14pt;
+        font-size: 13pt;
     }
 
     .filter-header, .clear-filter {
@@ -196,7 +197,7 @@
     }
 
     .chart-text, .divided-option, .pill-option {
-        font-size: 8pt;
+        font-size: 9pt;
     }
 }
 
@@ -217,9 +218,8 @@
   justify-self: start;
   color: white;
   text-decoration: none;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
-  font-size: clamp(16px, 1vw, 22px);
+   font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(13px, 1vw, 22px);
   font-weight: 400;
   letter-spacing: 0.04em;
 }
@@ -234,11 +234,10 @@
 .colony-nav-links a {
   color: white;
   text-decoration: none;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
-  font-size: clamp(12px, 0.9vw, 15px);
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(11px, 0.8vw, 14px);
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   padding-bottom: 5px;
   border-bottom: 1px solid transparent;
 }
@@ -261,13 +260,13 @@
   justify-content: center;
   gap: clamp(10px, 1vw, 18px);
   flex-wrap: wrap;
+   font-family: "Cascadia Code", "Courier New", monospace;
 }
 
 .colony-subnav-link {
   color: #dbe6ea;
   text-decoration: none;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(12px, 0.8vw, 15px);
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -297,6 +296,7 @@
     min-height: 104px;
     padding: 24px 34px 0;
     grid-template-columns: 0.9fr auto 0.9fr;
+    font-family: "Cascadia Code", "Courier New", monospace;
   }
 
   .colony-subnav {
@@ -305,7 +305,7 @@
   }
 
   .colony-subnav-link {
-    font-size: 14px;
+    font-size: 13px;
     padding: 8px 14px;
   }
 

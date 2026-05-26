@@ -339,10 +339,10 @@ function CollectOwnDataArt() {
         <span />
       </div>
       <img
-  src={personalDataImg}
-  alt="Personal data"
-  className="personalDataImage"
-/>
+      src={personalDataImg}
+      alt="Personal data"
+      className="personalDataImage"
+    />
 
       <div className="paper paper--two">
         <span />

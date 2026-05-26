@@ -157,7 +157,7 @@ function RingGuide() {
   return (
     <>
       <section className="ringGuide">
-        <h2>how to read the rings*</h2>
+        <h2>* How to read the rings</h2>
 
         <div className="ringGuide__content">
           <div className="ringGuide__rings" aria-hidden="true">
@@ -173,7 +173,7 @@ function RingGuide() {
             <p>2 yrs = 2 rings</p>
             <p>10 yrs = 10 rings</p>
             <p>15 yrs = 15 rings</p>
-            <p>*hover over each pie for individual details</p>
+            <p>* hover over each pie for individual details</p>
           </div>
         </div>
       </section>
@@ -452,28 +452,28 @@ function TreatmentEffectivenessGrid() {
 
   const symptomGroups = {
   common: [
-    "Hot Flashes",
-    "Insomnia",
-    "Brain Fog",
-    "Weight Gain",
-    "Anxiety",
-    "Mood Swings",
-    "Depression",
+    "HOT FLASHES",
+    "INSOMNIA",
+    "BRAIN FOG",
+    "WEIGHT GAIN",
+    "ANXIETY",
+    "MOOD SWINGS",
+    "DEPRESSION",
   ],
   pain: [
-    "Frozen Shoulder",
-    "Cramps",
-    "Body Aches",
-    "Back Pain",
-    "Breast Tenderness",
+    "FROZEN SHOULDER",
+    "CRAMPS",
+    "BODY ACHES",
+    "BACK PAIN",
+    "BREAST TENDERNESS",
   ],
   other: [
-    "Panic",
+    "PANIC",
     "IBS",
-    "Skin",
-    "Fatigue",
-    "Stomach Aches",
-    "Thyroid",
+    "SKIN",
+    "FATIGUE",
+    "STOMACH ACHES",
+    "THYROID",
   ],
 };
 
@@ -588,7 +588,7 @@ const [symptomFilter, setSymptomFilter] = useState("common");
           <div
             className="treatmentMatrix"
             style={{
-                gridTemplateColumns: `repeat(${symptoms.length}, 48px)`,
+              gridTemplateColumns: `repeat(${symptoms.length}, 48px)`,
             }}
           >
             {visibleTreatments.map((treatment) =>
@@ -623,7 +623,7 @@ const [symptomFilter, setSymptomFilter] = useState("common");
           <div
             className="treatmentXAxis"
             style={{
-                gridTemplateColumns: `repeat(${symptoms.length}, 48px)`,
+              gridTemplateColumns: `repeat(${symptoms.length}, 48px)`,
             }}
           >
             {symptoms.map((symptom, i) => (

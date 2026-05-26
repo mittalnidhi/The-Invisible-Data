@@ -487,78 +487,78 @@ const [symptomFilter, setSymptomFilter] = useState("common");
  const cellData = {
   "GLP-1-Weight Gain": { level: "high", sideEffect: "Fatigue" },
 
-  "CBT-Anxiety": { level: "medium" },
-  "CBT-Hot Flashes": { level: "medium" },
+  "CBT-ANXIETY": { LEVEL: "MEDIUM" },
+  "CBT-HOT FLASHES": { level: "medium" },
 
-  "STEROID JOINT INJECTION-Frozen Shoulder": { level: "high" },
+  "STEROID JOINT INJECTION-FROZEN SHOULDER": { level: "high" },
 
-  "ALPHA BRAIN SUPPLEMENT-Brain Fog": { level: "medium" },
+  "ALPHA BRAIN SUPPLEMENT-BRAIN FOG": { level: "medium" },
 
-  "MAGNESIUM-Anxiety": { level: "low" },
-  "MAGNESIUM-Insomnia": { level: "medium" },
+  "MAGNESIUM-ANXIETY": { level: "low" },
+  "MAGNESIUM-INSOMNIA": { level: "medium" },
 
-  "ZOLOFT-Anxiety": { level: "medium" },
+  "ZOLOFT-ANXIETY": { level: "medium" },
 
-  "HRT-Brain Fog": { level: "low" },
-  "HRT-Mood Swings": { level: "high" },
-  "HRT-Hot Flashes": { level: "high" },
-  "HRT-Frozen Shoulder": { level: "low" },
-  "HRT-Breast Tenderness": { level: "low" },
-  "HRT-Body Aches": { level: "medium" },
-  "HRT-Thyroid": { level: "low" },
+  "HRT-BRAIN FOG": { level: "low" },
+  "HRT-MOOD SWINGS": { level: "high" },
+  "HRT-HOT FLASHES": { level: "high" },
+  "HRT-FROZEN SHOULDER": { level: "low" },
+  "HRT-BREAST TENDERNESS": { level: "low" },
+  "HRT-BODY ACHES": { level: "medium" },
+  "HRT-THYROID": { level: "low" },
 
-  "IBUPROFEN-Body Aches": { level: "high" },
+  "IBUPROFEN-BODY ACHES": { level: "high" },
 
-  "GABAPENTIN-Back Pain": { level: "low" },
+  "GABAPENTIN-BACK PAIN": { level: "low" },
 
   "ACUPUNCTURE-IBS": { level: "high" },
 
-  "ANTI-DEPRESSANT-Anxiety": { sideEffect: "Anxiety" },
+  "ANTI-DEPRESSANT-ANXIETY": { sideEffect: "Anxiety" },
 
-  "NSAID-Skin": { level: "low", sideEffect: "Stomach Aches" },
-  "NSAID-Back Pain": { level: "low", sideEffect: "Stomach Aches" },
+  "NSAID-SKIN": { level: "low", sideEffect: "Stomach Aches" },
+  "NSAID-BACK PAIN": { level: "low", sideEffect: "Stomach Aches" },
 
-  "ACCUTANE-Skin": { level: "low" },
+  "ACCUTANE-SKIN": { level: "low" },
 
-  "IUD-Cramps": { level: "high" },
+  "IUD-CRAMPS": { level: "high" },
 
-  "LEVOTHYROXINE-Fatigue": { level: "low" },
-  "LEVOTHYROXINE-Thyroid": { level: "medium" },
+  "LEVOTHYROXINE-FATIGUE": { level: "low" },
+  "LEVOTHYROXINE-THYROID": { level: "medium" },
 
-  "CORTISOL SHOT-Frozen Shoulder": { level: "high" },
+  "CORTISOL SHOT-FROZEN SHOULDER": { level: "high" },
 
-  "SLEEP HYGIENE-Hot Flashes": { level: "medium" },
-  "SLEEP HYGIENE-Insomnia": { level: "low" },
+  "SLEEP HYGIENE-HOT FLASHES": { level: "medium" },
+  "SLEEP HYGIENE-INSOMNIA": { level: "low" },
 
-  "EXERCISE-Weight Gain": { level: "medium" },
-  "EXERCISE-Frozen Shoulder": { level: "low" },
+  "EXERCISE-WEIGHT GAIN": { level: "medium" },
+  "EXERCISE-FROZEN SHOULDER": { level: "low" },
 
-  "EXERCISE-Anxiety": { level: "high" },
-  "EXERCISE-Insomnia": { level: "low" },
-  "MEDITATION-Anxiety": { level: "high" },
-  "MEDITATION-Brain Fog": { level: "medium" },
-  "MEDITATION-Panic": { level: "medium" },
-  "MEDITATION-Insomnia": { level: "low" },
-  "MEDITATION-Mood Swings": { level: "low" },
-  "MEDITATION-Depression": { level: "medium" },
+  "EXERCISE-ANXIETY": { level: "high" },
+  "EXERCISE-INSOMNIA": { level: "low" },
+  "MEDITATION-ANXIETY": { level: "high" },
+  "MEDITATION-BRAIN FOG": { level: "medium" },
+  "MEDITATION-PANIC": { level: "medium" },
+  "MEDITATION-INSOMNIA": { level: "low" },
+  "MEDITATION-MOOD SWINGS": { level: "low" },
+  "MEDITATION-DEPRESSION": { level: "medium" },
 
-  "DIET CHANGE-Weight Gain": { level: "medium" },
-  "DIET CHANGE-Hot Flashes": { level: "high" },
+  "DIET CHANGE-WEIGHT GAIN": { level: "medium" },
+  "DIET CHANGE-HOT FLASHES": { level: "high" },
   "DIET CHANGE-IBS": { level: "high" },
-  "DIET CHANGE-Stomach Aches": { level: "medium" },
+  "DIET CHANGE-STOMACH ACHES": { level: "medium" },
 
-  "ACCUPUNCTURE-Frozen Shoulder": { level: "medium" },
-  "ACCUPUNCTURE-Back Pain": { level: "medium" },
-  "ACCUPUNCTURE-Body Aches": { level: "medium" },
-  "ACCUPUNCTURE-Cramps": { level: "low" },
-  "ACCUPUNCTURE-Anxiety": { level: "low" },
+  "ACCUPUNCTURE-FROZEN SHOULDER": { level: "medium" },
+  "ACCUPUNCTURE-BACK PAIN": { level: "medium" },
+  "ACCUPUNCTURE-BODY ACHES": { level: "medium" },
+  "ACCUPUNCTURE-CRAMPS": { level: "low" },
+  "ACCUPUNCTURE-ANXIETY": { level: "low" },
   "ACCUPUNCTURE-IBS": { level: "low" },
 
-  "MAGNESIUM-Fatigue": { level: "low" },
-  "CBT-Anxiety": { level: "low" },
-  "CBT-Depression": { level: "low" },
-  "CBT-Brain Fog": { level: "low" },
-  "CBT-Insomnia": { level: "low" },
+  "MAGNESIUM-FATIGUE": { level: "low" },
+  "CBT-ANXIETY": { level: "low" },
+  "CBT-DEPRESSION": { level: "low" },
+  "CBT-BRAIN FOG": { level: "low" },
+  "CBT-INSOMNIA": { level: "low" },
 
 };
 
@@ -720,15 +720,16 @@ const [symptomFilter, setSymptomFilter] = useState("common");
 /*food trigger graph*/
 
 function TriggerFoodEcologyGraph() {
-  const [activeFood, setActiveFood] = useState(null);
+  const [activeAvoidFood, setActiveAvoidFood] = useState(null);
+  const [activeSupportFood, setActiveSupportFood] = useState(null);
 
   const avoidFoods = [
-    { name: "Alcohol", note: true, symptoms: ["Hot flashes", "Depression", "Migraine", "Night sweats", "Brain fog", "Insomnia"] },
+    { name: "Alcohol", note: true, symptoms: ["Hot flashes", "Depression", "Migraine", "Brain fog", "Insomnia"] },
     { name: "Caffeine", note: true, symptoms: ["Hot flashes", "Insomnia", "Anxiety", "Depression"] },
     { name: "Cheese", note: false, symptoms: ["Food intolerance"] },
     { name: "Nitrates", note: true, symptoms: ["Food intolerance"] },
     { name: "Sugar", note: true, symptoms: ["Insulin resistance", "Weight gain", "Vaginal dryness","Inflamation"] },
-    { name: "Fried\nfood", note: false, symptoms: ["IBS", "Bloating", "Heart palpitations"] },
+    { name: "Fried\nfood", note: false, symptoms: ["IBS", "Bloating", "Palpitations"] },
     { name: "White bread\n/ Flour", note: false, symptoms: ["Weight gain", "Indigestion", "Vaginal dryness", "Insomnia","Inflamation"] },
     { name: "Dairy", note: false, symptoms: ["Indigestion", "Skin issues", "IBS", "Bloating", "Weight gain","Inflamation"] },
     { name: "Brocolli", note: false, symptoms: ["Indigestion"] },
@@ -740,61 +741,65 @@ function TriggerFoodEcologyGraph() {
     { name: "Eggs", symptoms: ["Bone health"] },
     { name: "Spinach", symptoms: ["Indigestion", "Bone health"] },
     { name: "Fennel\nseeds", symptoms: ["Period regulation"] },
-    { name: "Herbs", symptoms: ["Hair growth"] },
+    { name: "Herbs", symptoms: ["Hair growth","Period regulation"] },
     { name: "Meat", symptoms: ["Weight gain", "Bone health"] },
-    { name: "Whole\ngrains", symptoms: ["IBS","Inflamation","Indigestion"] },
-    { name: "Protein", symptoms: ["Weight gain"] },
-    { name: "Fibre", symptoms: ["Weight gain", "Bloating","Mood swing"] },
+    { name: "Whole\ngrains", symptoms: ["IBS","Inflamation","Indigestion","Weight gain"] },
+    { name: "Protein", symptoms: ["Weight gain","Insulin resistance","Mood swing"] },
+    { name: "Fibre", symptoms: ["Weight gain", "Bloating","Mood swing", "Insulin resistance"] },
   ];
 
   const symptoms = [
     "Inflamation",
-    "Hot\nflashes",
-    "Night\nsweats",
-    "Brain\nfog",
+    "Hot flashes",
+    "Brain fog",
     "Insomnia",
     "Anxiety",
     "Depression",
     "Migraine",
-    "Food\nintolerance",
-    "Insulin\nresistance",
-    "Weight\ngain",
+    "Food intolerance",
+    "Weight gain",
     "IBS",
     "Bloating",
-    "Heart\npalpitations",
+    "Palpitations",
     "Indigestion",
-    "Vaginal\ndryness",
-    "Skin\nissues",
-    "Bone\nhealth",
-    "Mood\nswings",
+    "Vaginal dryness",
+    "Skin issues",
+    "Bone health",
+    "Period regulation",
+    "Mood swing",
+    "Digestion",
+    "Insulin resistance",
   ];
 
   const symptomMap = {
-    "Hot flashes": "Hot\nflashes",
-    "Night sweats": "Night\nsweats",
-    "Brain fog": "Brain\nfog",
-    "Food intolerance": "Food\nintolerance",
-    "Insulin resistance": "Insulin\nresistance",
-    "Weight gain": "Weight\ngain",
-    "Heart palpitations": "Heart\npalpitations",
-    "Vaginal dryness": "Vaginal\ndryness",
-    "Skin issues": "Skin\nissues",
-    "Muscle retention": "Muscle\nretention",
-    Digestion: "Digestion",
+    "Inflamation":"Inflamation",
+    "Hot flashes": "Hot flashes",
+    "Night sweats": "Night sweats",
+    "Brain fog": "Brain fog",
+    "Food intolerance": "Food intolerance",
+    "Weight gain": "Weight gain",
+    "Palpitations": "Palpitations",
+    "Vaginal dryness": "Vaginal dryness",
+    "Skin issues": "Skin issues",
+    "Muscle retention": "Muscle retention",
+     "Digestion": "Digestion",
     "Bone health": "Digestion",
     "Period regulation": "Digestion",
     "Hair growth": "Digestion",
-    "Helps maintain weight": "Muscle\nretention",
-    "Weight management": "Muscle\nretention",
+    "Helps maintain weight": "Muscle retention",
+    "Weight management": "Muscle retention",
     "Helps with IBS": "IBS",
+    "Insulin resistance": "Insulin resistance",
   };
 
   const foodX = (i, total) => 120 + i * (780 / (total - 1));
-  const symptomX = (i) => 130 + i * 49;
+  const symptomX = (i) => 130 + i * 48;
 
   const avoidY = 110;
   const symptomY = 285;
-  const supportY = 500;
+  const supportY = 550;
+  const symptomLabelY = symptomY + 30;
+  const symptomBottomY = symptomY + 85;
 
   const curveDown = (x1, y1, x2, y2) =>
     `M ${x1} ${y1} C ${x1} ${y1 + 95}, ${x2} ${y2 - 95}, ${x2} ${y2}`;
@@ -808,14 +813,21 @@ function TriggerFoodEcologyGraph() {
   };
 
   const isActiveAvoid = (food, symptom) =>
-    activeFood?.name === food.name && food.symptoms.includes(symptom);
+  activeAvoidFood?.name === food.name &&
+  food.symptoms.includes(symptom);
 
   const isActiveSupport = (food, symptom) =>
-    activeFood?.name === food.name && food.symptoms.includes(symptom);
+  activeSupportFood?.name === food.name &&
+  food.symptoms.includes(symptom);
 
-  const isSymptomActive = (label) => {
-    if (!activeFood) return false;
-    return activeFood.symptoms.some((s) => (symptomMap[s] || s) === label);
+  const isTopSymptomActive = (label) => {
+    if (!activeAvoidFood) return false;
+    return activeAvoidFood.symptoms.some((s) => (symptomMap[s] || s) === label);
+    };
+
+  const isBottomSymptomActive = (label) => {
+    if (!activeSupportFood) return false;
+    return activeSupportFood.symptoms.some((s) => (symptomMap[s] || s) === label);
   };
 
   const renderMultiLine = (text, x, y, className, anchor = "middle") =>
@@ -839,18 +851,18 @@ function TriggerFoodEcologyGraph() {
             TRIGGERS & FOODS TO AVOID
           </text>
 
-          <text x="40" y="350" className="triggerLabel triggerLabel--red">
+          <text x="20" y="280" className="triggerLabel triggerLabel--blue">
             SYMPTOMS &
           </text>
-          <text x="40" y="320" className="triggerLabel triggerLabel--red">
+          <text x="20" y="300" className="triggerLabel triggerLabel--blue">
             OUTCOMES
           </text>
 
-          <text x="40" y="455" className="triggerLabel triggerLabel--green">
+          <text x="40" y="600" className="triggerLabel triggerLabel--green">
             SUPPORTING
           </text>
-          <text x="40" y="475" className="triggerLabel triggerLabel--green">
-            FOODS
+          <text x="40" y="622" className="triggerLabel triggerLabel--green">
+            FOOD
           </text>
 
           <line x1="30" y1="350" x2="980" y2="350" className="sectionDivider" />
@@ -889,7 +901,7 @@ function TriggerFoodEcologyGraph() {
                     foodX(i, supportFoods.length),
                     supportY - 12,
                     symptomX(symptomIndex),
-                    symptomY + 12
+                    symptomBottomY
                   )}
                   className={`triggerPath triggerPath--support ${
                     active ? "triggerPath--active" : ""
@@ -901,15 +913,23 @@ function TriggerFoodEcologyGraph() {
 
           {avoidFoods.map((food, i) => {
             const x = foodX(i, avoidFoods.length);
-            const active = activeFood?.name === food.name;
+
+            const active =
+              activeAvoidFood?.name === food.name;
 
             return (
               <g
                 key={food.name}
                 className="foodNodeGroup"
-                onClick={() =>
-                  setActiveFood(active ? null : food)
-                }
+                onClick={() => {
+                  setActiveAvoidFood(
+                    activeAvoidFood?.name === food.name
+                      ? null
+                      : food
+                  );
+
+                  setActiveSupportFood(null);
+                }}
               >
                 <text x={x} y={avoidY - 36} className="foodLabel">
                   {renderMultiLine(food.name, x, avoidY - 36, "foodLabel")}
@@ -922,6 +942,8 @@ function TriggerFoodEcologyGraph() {
                   className={
                     active
                       ? "foodDot--active"
+                      : ["Alcohol", "Caffeine", "Nitrates", "Sugar"].includes(food.name)
+                      ? "triggerPinkDot"
                       : food.note
                       ? "triggerLeftDot"
                       : "triggerAvoidDot"
@@ -932,46 +954,89 @@ function TriggerFoodEcologyGraph() {
           })}
 
           {symptoms.map((symptom, i) => {
-            const x = symptomX(i);
-            const active = isSymptomActive(symptom);
-            const supportive = [
-              "Muscle\nretention",
-              "Digestion",
-            ].includes(symptom);
+          const x = symptomX(i);
+          const topActive = isTopSymptomActive(symptom);
+          const bottomActive = isBottomSymptomActive(symptom);
 
-            return (
-              <g key={symptom}>
-                <circle
-                  cx={x}
-                  cy={symptomY}
-                  r={active ? 8 : 6}
-                  className={
-                    active
-                      ? "outcomeDot--active"
-                      : supportive
-                      ? "outcomeDot outcomeDot--support"
-                      : "outcomeDot"
-                  }
-                />
+          const supportive = [
+            "Muscle\nretention",
+            "Digestion",
+          ].includes(symptom);
 
-                <text x={x} y={symptomY + 24} className="symptomLabel">
-                  {renderMultiLine(symptom, x, symptomY + 24, "symptomLabel")}
-                </text>
-              </g>
-            );
-          })}
+          return (
+            <g key={symptom}>
+
+              {/* TOP RED/BLUE DOT */}
+              <circle
+              cx={x}
+              cy={symptomY}
+              r={topActive ? 8 : 6}
+                className={
+                  topActive
+                    ? "outcomeDot--active"
+                    : supportive
+                    ? "outcomeDot outcomeDot--support"
+                    : "outcomeDot"
+                }
+              />
+
+              {/* NEW LOWER BLUE CONNECTOR DOT */}
+              <circle
+                cx={x}
+                cy={symptomBottomY}
+                r={bottomActive ? 8 : 6}
+                className={`symptomConnectorDot ${
+                  bottomActive ? "symptomConnectorDot--active" : ""
+                }`}
+              />
+
+              {/* LABEL */}
+              <text
+                x={x}
+                y={(symptomY + symptomBottomY) / 2}
+                transform={`rotate(-30 ${x} ${(symptomY + symptomBottomY) / 2})`}
+                className="symptomLabel"
+                textAnchor="middle"
+                dominantBaseline="middle"
+              >
+                {renderMultiLine(
+                  symptom,
+                  x,
+                  (symptomY + symptomBottomY) / 2,
+                  "symptomLabel"
+                )}
+              </text>
+              <line
+                x1={x}
+                y1={symptomY + 10}
+                x2={x}
+                y2={symptomBottomY - 10}
+                stroke="#f2f4f7"
+                strokeWidth="1"
+                strokeDasharray="4 5"
+                opacity="0.5"
+              />
+            </g>
+          );
+        })}
 
           {supportFoods.map((food, i) => {
             const x = foodX(i, supportFoods.length);
-            const active = activeFood?.name === food.name;
+            const active = activeSupportFood?.name === food.name;
 
             return (
               <g
                 key={food.name}
                 className="foodNodeGroup"
-                onClick={() =>
-                  setActiveFood(active ? null : food)
-                }
+                onClick={() => {
+                  setActiveSupportFood(
+                    activeSupportFood?.name === food.name
+                      ? null
+                      : food
+                  );
+
+                  setActiveAvoidFood(null);
+                }}
               >
                 <circle
                   cx={x}

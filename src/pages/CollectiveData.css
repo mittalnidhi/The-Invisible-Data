@@ -2,7 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #06111f;
+  background: #010630;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -466,9 +466,10 @@ body {
 .treatmentGridWrap {
   display: grid;
   grid-template-columns: auto 460px;
-  gap: clamp(50px, 6vw, 110px);
+  gap: clamp(30px, 4vw, 70px);
   align-items: start;
   overflow: visible;
+  
 }
 
 .treatmentGridArea {
@@ -478,6 +479,7 @@ body {
   align-items: start;
   margin-top: clamp(40px, 5vw, 90px);
   overflow: visible;
+  transform: translateX(-70px);
 }
 
 .treatmentYAxis {
@@ -492,7 +494,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 28px;
+  padding-right: 5px;
   color: #f1f3f5;
   text-align: right;
   white-space: nowrap;
@@ -597,7 +599,7 @@ body {
   text-align: left;
   color: #f1f3f5;
   white-space: nowrap;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1;
   text-align: left;
   transform: translateX(-52px) rotate(-32deg);
@@ -636,7 +638,7 @@ body {
   border: 1px solid rgba(241, 243, 245, 0.45);
   background: transparent;
   color: #f1f3f5;
-  padding: 14px 18px;
+  padding: 10px 18px;
   border-radius: 999px;
   cursor: pointer;
   margin-bottom: 1px;
@@ -710,11 +712,12 @@ body {
 }
 
 .triggerEcology__header p {
-  color: #ff4040;
+  color: #b4b4b4;
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(12px, 0.8vw, 16px);
   font-weight: 700;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.30em;
+  margin-bottom: 28px;
 }
 
 .triggerEcology__header h2 {
@@ -723,6 +726,8 @@ body {
   font-size: clamp(34px, 3vw, 64px);
   line-height: 1;
   letter-spacing: 0.08em;
+   margin-top: 0;
+   margin-bottom: 150px;
 }
 
 .triggerEcology__chart {
@@ -748,7 +753,9 @@ body {
 .triggerLabel--red {
   fill: #ff5a4d;
 }
-
+.triggerLabel--blue {
+  fill: #b1aaed;
+}
 .triggerLabel--green {
   fill: #7fd36b;
 }
@@ -775,9 +782,9 @@ body {
 
 .triggerPath--active {
   stroke: #ffd84d;
-  stroke-width: 3;
+  stroke-width: 2;
   opacity: 1;
-  filter: drop-shadow(0 0 6px #ffd84d);
+  filter: none;
 }
 
 .foodNodeGroup {
@@ -808,26 +815,59 @@ body {
 .foodDot--active,
 .outcomeDot--active {
   fill: #ffd84d;
-  filter: drop-shadow(0 0 7px #ffd84d);
+  filter: none;
 }
 
 .outcomeDot {
-  fill: #ff4040;
+  fill: #0800f3;
 }
 
 .outcomeDot--support {
   fill: #7fd36b;
 }
 
+/*bottom food dot*/
+
+.symptomConnectorDot {
+  fill: #0800f3;
+}
+.symptomConnectorDot {
+  fill: #2f80ff;
+  opacity: 0.9;
+}
+
+.symptomConnectorDot--active {
+  fill: #ffd84d;
+  opacity: 1;
+}
+
+.triggerEcology__chart {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding-bottom: 160px;
+}
+
 .triggerEcology__legend--right {
   position: absolute;
-  right: 50px;
-  top: 50px;
-  width: 170px;
-  padding: 20px;
-  border: 1px solid rgba(241, 243, 245, 0.22);
-  border-radius: 14px;
-  background: rgba(3, 11, 20, 0.72);
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+
+  width: min(900px, 86vw);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px 28px;
+}
+
+.triggerEcology__legend div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0;
+  white-space: nowrap;
 }
 
 .triggerEcology__legend h3 {
@@ -839,11 +879,12 @@ body {
 .triggerEcology__legend div {
   display: flex;
   align-items: center;
+
   gap: 10px;
-  margin-bottom: 16px;
-  color: rgba(241, 243, 245, 0.78);
-  font-size: clamp(12px, 0.8vw, 14px);
-  line-height: 1.4;
+
+  margin-bottom: 0;
+
+  white-space: nowrap;
 }
 
 .legendLine {
@@ -869,7 +910,10 @@ body {
 }
 
 .legendDot--left {
-  background: #1f03f1;
+  background: #cd03f1;
+}
+.triggerPinkDot {
+  fill: #c103f1;
 }
 
 .legendDot--avoid {
@@ -1090,14 +1134,14 @@ body {
   grid-area: guide;
   width: 560px;
   margin: 0;
-  padding: 26px 24px;
+  padding: 25px 24px;
   border: 1px solid rgba(241, 243, 245, 0.35);
   border-radius: 18px;
 }
 
 .treatmentFilters,
 .symptomFilters {
-  width: 260px;
+  width: 170px;
   margin: 0;
   transform: none;
 }
@@ -1105,8 +1149,8 @@ body {
 .treatmentFilters button,
 .symptomFilters button {
   width: 100%;
-  margin-bottom: 14px;
-  padding: 14px 18px;
+  margin-bottom: 16px;
+  padding: 12px 18px;
 }
 
 .filterLabel,
@@ -1146,12 +1190,13 @@ body {
   width: 48px;
   color: #f1f3f5;
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1;
   transform: translateX(-40px) rotate(-32deg);
   transform-origin: top right;
   justify-content: flex-end;
   align-items: flex-start;
   text-align: right;
-
 }
+/*trigger legend*/
+

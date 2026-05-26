@@ -124,11 +124,18 @@ body {
 
 .timelineRow {
   position: relative;
-  min-height: 520px;
+  min-height: 760px;
+
   display: grid;
-  grid-template-columns: 420px 120px minmax(600px, 1fr);
+
+  grid-template-columns:
+    minmax(340px, 520px)
+    110px
+    minmax(0, 1fr);
+
   align-items: center;
-  column-gap: 0;
+
+  column-gap: clamp(40px, 5vw, 110px);
 }
 .timelineDivider {
   width: 1.5px;
@@ -182,7 +189,7 @@ body {
 .timelineCircle {
   position: relative;
   width: clamp(200px, 24vw, 340px);
-  height: clamp(200px, 24vw, 340px);
+  height: clamp(300px, 28vw, 380px);
   border: 2px solid #051c41;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.18);
@@ -1491,4 +1498,43 @@ body {
     font-size: 22px;
     line-height: 1.7;
   }
+}
+
+.timelineCircle {
+  position: relative;
+
+  width: clamp(240px, 24vw, 380px);
+  aspect-ratio: 1 / 1;
+
+  border: 2px solid #051c41;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  justify-self: left;
+  margin-left: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #051c41;
+  text-decoration: none;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease;
+
+  flex-shrink: 0;
+}
+.timelineCircle {
+  overflow: visible;
+}
+.circleArt,
+.circleArt--collectNew,
+.circleArt--senseImage {
+  overflow: hidden;
+  border-radius: 50%;
 }

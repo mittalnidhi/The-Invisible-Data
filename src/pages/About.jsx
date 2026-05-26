@@ -457,9 +457,9 @@ export default function About() {
           <h1 ref={textOneRef} className="about__headline">
             Perimenopause is a
             <br />
-            Public Health Crisis.
+            public health crisis.
             <br />
-            The Data is clear.
+            The data is clear.
           </h1>
 
           <h1 ref={textTwoRef} className="about__headline about__headline--two">
@@ -467,7 +467,7 @@ export default function About() {
             <br />
             around 50 million women
             <br />
-            in the U.S are in Perimenopause.
+            in the U.S are in perimenopause.
           </h1>
 
           <h1 ref={textThreeRef} className="about__headline about__headline--two">

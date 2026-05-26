@@ -23,8 +23,8 @@ body {
 .path .nav {
   position: fixed;
   top: clamp(18px, 2vw, 36px);
-  left: clamp(22px, 2.5vw, 60px);
-  right: clamp(22px, 2.5vw, 60px);
+  left: clamp(24px, 2.8vw, 60px);
+  right: clamp(24px, 2.8vw, 60px);
   z-index: 9999;
 
   display: flex;
@@ -135,17 +135,13 @@ body {
 .path__cards {
   position: relative;
   z-index: 5;
-
   width: min(94vw, 1500px);
-  height: clamp(330px, 34vh, 560px);
+  height: clamp(360px, 38vh, 560px);
   min-height: 330px;
-
   margin: 0 auto;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   overflow: visible;
   pointer-events: auto;
 }
@@ -185,21 +181,16 @@ body {
 .pathCard__face {
   position: absolute;
   inset: 0;
-
   overflow: hidden;
   backface-visibility: hidden;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: rgba(5, 28, 65, 0.95);
   color: #e6d3c4;
-
   font-weight: 900;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-
   box-shadow: 0 20px 50px rgba(5, 28, 65, 0.18);
 }
 
@@ -302,7 +293,7 @@ body {
   }
 
   .path__cards {
-    height: 430px;
+    height: 460px;
     min-height: 430px;
   }
 
@@ -369,7 +360,7 @@ body {
     transform: none !important;
 
     width: min(82vw, 320px);
-    height: 420px;
+    height: 480px;
   }
 }
 
@@ -448,4 +439,28 @@ body {
 
   overflow: visible;
   pointer-events: auto;
+}
+.path__cards {
+  height: clamp(520px, 58vh, 820px) !important;
+  min-height: 520px !important;
+}
+
+.pathCard {
+  height: clamp(420px, 48vh, 720px) !important;
+}
+.pathCard__front {
+  opacity: 1;
+}
+
+.pathCard:hover .pathCard__front {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pathCard:hover .pathCard__back {
+  opacity: 1;
+}
+
+.pathCard__back {
+  opacity: 0;
 }

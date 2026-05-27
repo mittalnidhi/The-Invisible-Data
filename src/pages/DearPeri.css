@@ -188,8 +188,9 @@ body {
 
 .timelineCircle {
   position: relative;
-  width: clamp(200px, 24vw, 340px);
+  width: clamp(300px, 28vw, 380px);
   height: clamp(300px, 28vw, 380px);
+  aspect-ratio: 1;
   border: 2px solid #051c41;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.18);

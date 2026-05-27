@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import LandingJourney from "./pages/LandingJourney";
 import About from "./pages/About";
 import Path from "./pages/Path";
@@ -25,7 +25,8 @@ export default function App() {
   }, [data]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter primary={false}>
+    <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingJourney />} />
         <Route path="/cluster" element={<Cluster />} />
@@ -56,4 +57,14 @@ export default function App() {
       </Routes>
     </BrowserRouter>
   );
+}
+
+function ScrollToTop(){
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }

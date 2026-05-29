@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { TITLE_ASCII } from "../pages/titleAscii";
 import { ASCII_FRAMES } from "../pages/asciiFrames";
 import "./LandingJourney.css";
+import landingSound from "../assets/landing-sound.mp4";
 
 const IMAGE_DURATION = 2.2;
 const FULL_IMAGE_LOOP_TIME = ASCII_FRAMES.length * IMAGE_DURATION;
@@ -34,6 +35,7 @@ export default function LandingJourney() {
   const titleParticlesRef = useRef([]);
   const hasNavigatedRef = useRef(false);
   const touchStartYRef = useRef(null);
+  const audioRef = useRef(null);
 
   const captionLine1Ref = useRef("");
   const captionLine2Ref = useRef("");
@@ -50,6 +52,16 @@ export default function LandingJourney() {
     e.stopPropagation();
     window.location.href = "/";
   };
+  const startLandingSound = () => {
+  if (!audioRef.current) return;
+
+  audioRef.current.volume = 0.45;
+  audioRef.current.loop = true;
+
+  audioRef.current.play().catch(() => {
+    console.log("Playback blocked");
+  });
+};
 
   useEffect(() => {
     if (mode !== "intro") return;
@@ -514,6 +526,7 @@ export default function LandingJourney() {
   const handleClick = (e) => {
     if (e.target.closest(".nav")) return;
     if (modeRef.current !== "title") return;
+    startLandingSound();
 
     window.__startLandingShatter?.();
 
@@ -530,6 +543,11 @@ export default function LandingJourney() {
     >
     <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
       <canvas ref={canvasRef} />
+          <audio
+            ref={audioRef}
+            src={landingSound}
+            preload="auto"
+          />
 
       {showNav && mode !== "title" && (
         <nav className="nav">

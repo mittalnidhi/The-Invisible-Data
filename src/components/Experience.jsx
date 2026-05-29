@@ -4,6 +4,7 @@ import * as d3 from "d3";
 import { showTooltip, moveTooltip, hideTooltip } from '../utils';
 import ExperienceViewer from "./ExperienceViewer";
 import { NavLink } from "react-router-dom";
+import experienceMusic from "../assets/experience-music.mp3";
 
 const PHASE_DEPTH = 1100;
 const FOCAL_LENGTH = 760;
@@ -207,6 +208,18 @@ export default function Experience(props) {
 	}
 
     const canvasRef = useRef(null);
+    const audioRef = useRef(null);
+
+    const startExperienceMusic = () => {
+    if (!audioRef.current) return;
+
+    audioRef.current.volume = 0.35;
+    audioRef.current.loop = true;
+
+    audioRef.current.play().catch(() => {
+        console.log("Music playback blocked until user interaction");
+    });
+    };
     const [viewport, setViewport] = useState({
         width: window.innerWidth,
         height: window.innerHeight,
@@ -650,9 +663,33 @@ export default function Experience(props) {
 			canvas.removeEventListener('mousemove', handleMouseMove);
 		};
 	}, [])
+    useEffect(() => {
+        const startOnFirstInteraction = () => {
+            startExperienceMusic();
+
+            window.removeEventListener("click", startOnFirstInteraction);
+            window.removeEventListener("scroll", startOnFirstInteraction);
+            window.removeEventListener("mousemove", startOnFirstInteraction);
+        };
+
+        window.addEventListener("click", startOnFirstInteraction);
+        window.addEventListener("scroll", startOnFirstInteraction);
+        window.addEventListener("mousemove", startOnFirstInteraction);
+
+        return () => {
+            window.removeEventListener("click", startOnFirstInteraction);
+            window.removeEventListener("scroll", startOnFirstInteraction);
+            window.removeEventListener("mousemove", startOnFirstInteraction);
+        };
+        }, []);
 
     return (
         <div className="relative experience">
+        <audio
+        ref={audioRef}
+        src={experienceMusic}
+        preload="auto"
+        />
 			<div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
             <canvas ref={canvasRef} className="experience__canvas" />
             <div

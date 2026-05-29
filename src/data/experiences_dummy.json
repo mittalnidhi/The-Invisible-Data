@@ -49,7 +49,14 @@
         "spreadY": 210,
         "turbulence": 0.7,
         "nodes": [
-            { "label": "Gaslighting", "rank": 1, "stories": [] },
+            { "label": "Gaslighting", "rank": 1, "stories": [
+                "went to three different doctors over two years. I described migraines, joint pain, brain fog, weight changes, and sudden waves of anxiety. Each symptom was treated separately. I was referred to different specialists, prescribed different medications, and given different explanations.",
+                "I had to fight with my doctor and change multiple doctor to get the treatment I wanted.",
+                "Doctors kept saying I was too young to be in this phase. The amount of gaslighting and dismissal I have faced is crazy.",
+                "After a five-minute appointment, I was told it was probably stress. When I mentioned perimenopause, the doctor said I was too young and suggested I try exercising more. I left feeling embarrassed for bringing it up.",
+                "Over the next year, the symptoms got worse. I started forgetting words, waking up drenched in sweat, and avoiding social situations because of my anxiety. It wasn't until I found other women online describing the exact same experiences that I realized I wasn't imagining it. The validation I found from strangers on the internet was something I couldn't get from my healthcare provider.",
+                "Looking back, what hurt most was being made to feel unreliable as a narrator of my own body. The symptoms were difficult, but the dismissal made them much harder to carry."
+            ] },
             { "label": "Lack of treatment", "rank": 2, "stories": [] },
             { "label": "Dismissal", "rank": 3, "stories": [] },
             { "label": "Age bias", "rank": 4, "stories": [] },
@@ -69,7 +76,8 @@
             { "label": "Heat spikes", "rank": 3, "stories": [] },
             { "label": "Body pain", "rank": 4, "stories": [] },
             { "label": "Mood volatility", "rank": 5, "stories": [] },
-            { "label": "Fatigue", "rank": 6, "stories": [] }
+            { "label": "Fatigue", "rank": 6, "stories": [] },
+            { "label": "Low libido", "rank": 6, "stories": [] }
         ]
     },
     {

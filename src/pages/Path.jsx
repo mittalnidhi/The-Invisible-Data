@@ -60,7 +60,7 @@ export default function Path() {
       <section className="path__stage">
         <h1 className="path__title">
           <span className="path__titleMain">
-            We meet you where you are at your journey
+            We meet you where you are at in your perimenopausal journey
           </span>
           <br />
           <span className="path__titleSub">Choose your path</span>

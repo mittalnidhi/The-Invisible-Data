@@ -53,7 +53,12 @@ function AgeGraph() {
 			.attr("font-size", size.width > 400 ? "12pt" : "9pt")
 			.attr("fill", "white")
 			.attr("text-anchor", "middle")
-			.attr("transform", `translate(${(size.width - margin.right + margin.left) / 2}, ${size.height - 5})`)
+			.attr(
+                "transform",
+                `translate(${(size.width - margin.right + margin.left) / 2}, ${
+                    size.height - (window.innerWidth <= 767 ? 14 : 5)
+                })`
+                )
 		svg.append("text")
 			.text("Mentions")
 			.attr("font-size", size.width > 400 ? "12pt" : "9pt")

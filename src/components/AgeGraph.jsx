@@ -132,7 +132,7 @@ function AgeGraph() {
             margin.right +
             margin.left) /
           2
-        },${size.height - 16})`
+        },${size.height - 28})`
       );
 
     // ---------------- Y AXIS TITLE ----------------

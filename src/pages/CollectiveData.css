@@ -17,6 +17,7 @@ body {
   overflow-x: hidden;
 }
 
+
 /* NAV */
 
 .nav {
@@ -1200,3 +1201,6 @@ body {
 }
 /*trigger legend*/
 
+.collectiveData__intro {
+  margin-top: 180px;
+}

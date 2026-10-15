@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Navbar from "../pages/Navbar";
 import * as d3 from "d3";
 import "./CollectiveData.css";
 
@@ -1071,22 +1072,10 @@ function TriggerFoodEcologyGraph() {
 export default function CollectiveData() {
   return (
     <main className="collectiveData">
-      <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
-      <nav className="nav">
-        <Link to="/" className="nav__brand">
-          INVISIBLE DATA
-        </Link>
-
-        <div className="nav__links">
-          <Link to="/about">ABOUT</Link>
-          <Link to="/path">PATH</Link>
-          <Link to="/dear-peri">DEAR PERI</Link>
-        </div>
-      </nav>
+      <Navbar theme="dark" />
 
       <section className="collectiveData__subnav">
         <NavLink to="/collective-data">Collective Data</NavLink>
-        <NavLink to="/insitu">Sense Making</NavLink>
         <NavLink to="/personal-data">Engage with your own data</NavLink>
       </section>
 

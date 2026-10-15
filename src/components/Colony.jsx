@@ -3,6 +3,7 @@ import * as d3 from "d3";
 import { filter, isEmpty } from 'lodash';
 import { useResizeObserver, useDebounceCallback } from 'usehooks-ts';
 import peridata from '../data/peridata.json'
+
 import ColonySymptoms from './ColonySymptoms';
 import ColonySelectorDivided from './ColonySelectorDivided';
 import ColonySelectorPill from './ColonySelectorPill';
@@ -63,7 +64,7 @@ export default function Colony(props){
 
     return (
         <div className='relative colony-main flex flex-col h-[100vh] w-full z-30'>
-            <div id="timeout-warning">Are you still there? Hover over the screen to continue, or return home in 10 seconds.</div>
+            
             <ColonyNavBar />
             <div className='relative flex flex-row justify-between w-[94vw] h-full min-h-150 mt-6 2xl:mt-12 mx-auto text-white'>
                 <div className='relative flex flex-col h-[100%] w-[34%] min-w-[300px]'>
@@ -121,9 +122,13 @@ export default function Colony(props){
 function ColonyNavBar() {
   return (
     <div className="colony-navbar">
-      <a href="/" className="colony-brand">
+      <NavLink
+        to="/"
+        state={{ skipTitle: true, restartId: Date.now() }}
+        className="colony-brand"
+      >
         INVISIBLE DATA
-      </a>
+      </NavLink>
 
       <div className="colony-subnav">
         <NavLink

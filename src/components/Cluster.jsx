@@ -66,9 +66,13 @@ export default function Cluster(props){
 function ClusterNavBar() {
   return (
     <div className="colony-navbar">
-      <a href="/" className="colony-brand">
-        INVISIBLE DATA
-      </a>
+      <NavLink
+  to="/"
+  state={{ skipTitle: true, restartId: Date.now() }}
+  className="colony-brand"
+>
+  INVISIBLE DATA
+</NavLink>
 
       <div className="colony-subnav">
         <NavLink to="/colony" className="colony-subnav-link">

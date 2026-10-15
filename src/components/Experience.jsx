@@ -693,6 +693,12 @@ export default function Experience(props) {
 			<div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
             <canvas ref={canvasRef} className="experience__canvas" />
             <div
+  className={`experience-scroll-hint ${scrollY > 50 ? "experience-scroll-hint--hidden" : ""}`}
+>
+  <span>SCROLL TO EXPLORE</span>
+  <span className="experience-scroll-arrow">↓</span>
+</div>
+            <div
                 className="experience__scrollSpace"
                 style={{ height: `${viewport.height * props.storyData.length}px` }}
             >
@@ -714,9 +720,13 @@ export default function Experience(props) {
 function ExperiencesNavBar() {
   return (
     <div className="colony-navbar">
-      <a href="/" className="colony-brand">
-       INVISIBLE DATA
-      </a>
+      <NavLink
+  to="/"
+  state={{ skipTitle: true, restartId: Date.now() }}
+  className="colony-brand"
+>
+  INVISIBLE DATA
+</NavLink>
 
       <div className="colony-subnav">
         <NavLink to="/colony" className="colony-subnav-link">

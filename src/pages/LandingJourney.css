@@ -1,17 +1,20 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background: #33393f;
-  overflow: hidden;
-}
+
+/* =========================================
+   LANDING JOURNEY
+   ========================================= */
 
 .landing {
   position: fixed;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+
   overflow: hidden;
   cursor: none;
+
   background: #02192f;
+  box-sizing: border-box;
 }
 
 .landing.navIntro,
@@ -21,25 +24,34 @@ body {
   cursor: auto;
 }
 
-canvas {
+/* =========================================
+   CANVAS
+   ========================================= */
+
+.landing canvas {
   position: absolute;
   inset: 0;
+
   width: 100%;
   height: 100%;
   display: block;
 }
 
-/* cursor */
+/* =========================================
+   CURSOR
+   ========================================= */
 
 .cursor-tip,
 .scroll-tip {
   position: fixed;
   z-index: 1000;
+
   color: #ffffff;
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(13px, 1.2vw, 18px);
   letter-spacing: 0.08em;
   text-transform: lowercase;
+
   pointer-events: none;
   animation: cursorFlicker 1s steps(2) infinite;
 }
@@ -55,7 +67,9 @@ canvas {
   }
 }
 
-/* caption */
+/* =========================================
+   CAPTION
+   ========================================= */
 
 .caption {
   position: fixed;
@@ -75,256 +89,54 @@ canvas {
   gap: 5px;
 
   color: #9a9d9d;
-
   font-family: "Cascadia Code", "Courier New", monospace;
 
   font-size: clamp(20px, 2.8vw, 44px);
   font-weight: 900;
 
-  letter-spacing: 0.10em;
+  letter-spacing: 0.1em;
   line-height: 1.2;
-
   text-align: center;
 
   pointer-events: none;
 }
 
-/* nav bar */
-
-.nav {
-  position: fixed;
-  top: clamp(16px, 3vh, 28px);
-  left: clamp(16px, 1.7vw, 32px);
-  right: clamp(16px, 1.7vw, 32px);
-  z-index: 200;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(12px, 1.35vw, 18px);
-  letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
-  color: #ffffff;
-}
-
-.nav-button {
-  border: 0;
-  background: transparent;
-  color: #ffffff;
-  font: inherit;
-  cursor: pointer;
-}
-
-.nav-button:hover {
-  color: #bebfc1;
-}
-
-.nav-title-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-right {
-  display: flex;
-  gap: clamp(12px, 3vw, 34px);
-}
-
-/* intro text */
+/* =========================================
+   INTRO SECTION
+   ========================================= */
 
 .intro-scroll-lock {
   position: fixed;
   inset: 0;
   z-index: 50;
+
   background: #02192f;
   overflow: hidden;
   touch-action: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .intro-scroll-text {
-  position: absolute;
-  left: 50%;
-  bottom: 30px;
-  width: min(1200px, 88vw);
+  position: relative;
+
+  width: min(1000px, 85vw);
+
   color: #bebfc1;
-  font-family: "Cascadia Code", monospace;
-  font-size: clamp(20px, 3rem, 85px);
+  font-family: "Cascadia Code", "Courier New", monospace;
+
+  font-size: clamp(20px, 2vw, 32px);
   font-weight: 500;
   line-height: 1.4;
   letter-spacing: -0.02em;
-  transform: translate(-50%, 0);
-  transition: transform 0.35s ease-out, color 0.35s ease-out;
-}
 
-/* nav typewriter */
+  transform: none;
 
-.nav-typing .type-nav {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0ch;
-  animation-fill-mode: forwards;
-  animation-timing-function: steps(var(--chars), end);
-}
-
-.type-title {
-  --chars: 15;
-  animation-name: typeNav;
-  animation-duration: 1s;
-  animation-delay: 0s;
-}
-
-.type-about {
-  --chars: 6;
-  animation-name: typeNav;
-  animation-duration: 0.45s;
-  animation-delay: 1.3s;
-}
-
-.type-path {
-  --chars: 5;
-  animation-name: typeNav;
-  animation-duration: 0.38s;
-  animation-delay: 1.8s;
-}
-
-.type-dear {
-  --chars: 10;
-  animation-name: typeNav;
-  animation-duration: 0.7s;
-  animation-delay: 2.25s;
-}
-
-@keyframes typeNav {
-  from {
-    width: 0ch;
-  }
-
-  to {
-    width: calc(var(--chars) * 1ch);
-  }
-}
-
-/* Responsive */
-
-@media (max-width: 1024px) {
-  .caption {
-    font-size: clamp(18px, 3vw, 34px);
-  }
-
-  .intro-scroll-text {
-    font-size: clamp(34px, 5.6vw, 62px);
-  }
-}
-
-@media (max-width: 768px) {
-  .caption {
-    font-size: clamp(14px, 4vw, 24px);
-  }
-
-  .nav {
-    font-size: clamp(10px, 2.7vw, 13px);
-  }
-
-  .intro-scroll-text {
-    font-size: clamp(30px, 8vw, 46px);
-  }
-}
-
-@media (max-width: 480px) {
-  .caption {
-    font-size: 13px;
-  }
-}
-
-@media (max-height: 620px) {
-  .nav {
-    top: 12px;
-  }
-}
-
-.nav {
-  position: fixed;
-  top: clamp(14px, 2vw, 28px);
-  left: clamp(16px, 2.5vw, 42px);
-  right: clamp(16px, 2.5vw, 42px);
-  z-index: 50;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  font-family: "Cascadia Code", "Courier New", monospace;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: clamp(14px, 2.2vw, 42px);
-}
-
-.nav-button {
-  border: 0;
-  background: transparent;
-  color: #f4f0e8;
-  cursor: pointer;
-
-  font-family: inherit;
-  font-size: clamp(12px, 1.05vw, 22px);
-  font-weight: 700;
-  letter-spacing: clamp(0.08em, 0.25vw, 0.18em);
-  white-space: nowrap;
-}
-
-.nav-title-button {
-  font-size: clamp(13px, 1.2vw, 24px);
-}
-
-@media (max-width: 600px) {
-  .nav {
-    top: 14px;
-    left: 14px;
-    right: 14px;
-  }
-
-  .nav-right {
-    gap: 12px;
-  }
-
-  .nav-button {
-    font-size: 11px;
-    letter-spacing: 0.06em;
-  }
-
-  .nav-title-button {
-    font-size: 12px;
-  }
-}
-/* iPad */
-@media (min-width: 601px) and (max-width: 1024px) {
-  .intro-scroll-text {
-    width: 86vw;
-    font-size: clamp(20px, 2.8vw, 28px);
-    line-height: 1.4;
-  }
-
-  .intro-paragraph + .intro-paragraph {
-    margin-top: 36px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .intro-scroll-text {
-    width: 88vw;
-    font-size: clamp(16px, 4vw, 20px);
-    line-height: 1.45;
-  }
-
-  .intro-paragraph + .intro-paragraph {
-    margin-top: 28px;
-  }
+  transition:
+    transform 0.35s ease-out,
+    color 0.35s ease-out;
 }
 
 .intro-paragraph {
@@ -335,14 +147,121 @@ canvas {
   margin-top: 48px;
 }
 
-@media (max-width: 1024px) {
+/* =========================================
+   LAPTOP — 1025px to 1440px
+   ========================================= */
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .caption {
+    font-size: clamp(20px, 2vw, 30px);
+  }
+
+  .intro-scroll-text {
+    width: 85vw;
+    font-size: clamp(20px, 2vw, 30px);
+  }
+
+  .intro-paragraph + .intro-paragraph {
+    margin-top: 40px;
+  }
+}
+
+/* =========================================
+   TABLET — 601px to 1024px
+   ========================================= */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .caption {
+    width: 90vw;
+    font-size: clamp(18px, 3vw, 34px);
+  }
+
+  .intro-scroll-text {
+    width: 86vw;
+    font-size: clamp(20px, 2.8vw, 28px);
+    line-height: 1.4;
+  }
+
   .intro-paragraph + .intro-paragraph {
     margin-top: 32px;
   }
 }
 
+/* =========================================
+   MOBILE — UP TO 600px
+   ========================================= */
+
 @media (max-width: 600px) {
+  .landing {
+    height: 100dvh;
+  }
+
+  .caption {
+    width: 92vw;
+    top: 67%;
+
+    font-size: clamp(13px, 3.6vw, 20px);
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+  }
+
+  .intro-scroll-lock {
+    overflow-y: auto;
+    padding: 80px 0 30px;
+    box-sizing: border-box;
+  }
+
+  .intro-scroll-text {
+    width: 88vw;
+
+    font-size: clamp(16px, 4vw, 20px);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+
   .intro-paragraph + .intro-paragraph {
     margin-top: 24px;
+  }
+
+  .cursor-tip,
+  .scroll-tip {
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE — UP TO 360px
+   ========================================= */
+
+@media (max-width: 360px) {
+  .caption {
+    width: 94vw;
+    font-size: 12px;
+  }
+
+  .intro-scroll-text {
+    width: 90vw;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .intro-paragraph + .intro-paragraph {
+    margin-top: 18px;
+  }
+}
+
+/* =========================================
+   SHORT SCREENS
+   ========================================= */
+
+@media (max-height: 620px) {
+  .intro-scroll-lock {
+    overflow-y: auto;
+    padding: 70px 0 24px;
+    box-sizing: border-box;
+  }
+
+  .intro-scroll-text {
+    margin: auto;
   }
 }

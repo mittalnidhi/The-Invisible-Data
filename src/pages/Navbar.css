@@ -1,0 +1,105 @@
+
+/* SHARED NAVBAR — ALL PAGES */
+
+.site-nav {
+  position: fixed;
+  top: clamp(14px, 2vw, 34px);
+  left: clamp(18px, 2.5vw, 56px);
+  right: clamp(18px, 2.5vw, 56px);
+  z-index: 9999;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
+  box-sizing: border-box;
+}
+
+/* THEMES */
+
+.site-nav--dark {
+  color: #ffffff;
+}
+
+.site-nav--light {
+  color: #051c41;
+}
+
+/* NAVIGATION BUTTONS */
+
+.site-nav__button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+
+  color: inherit;
+  font-family: inherit;
+  font-size: clamp(12px, 1.05vw, 23px);
+  font-weight: 700;
+  letter-spacing: clamp(0.06em, 0.22vw, 0.18em);
+  line-height: 1.3;
+
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.site-nav__button:hover {
+  opacity: 0.7;
+}
+
+.site-nav__brand {
+  font-size: clamp(13px, 1.2vw, 26px);
+  flex-shrink: 0;
+}
+
+.site-nav__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(16px, 1.6vw, 34px);
+}
+
+.site-nav__active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+
+/* DESKTOP — Default */
+.site-nav__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(16px, 1.6vw, 34px);
+}
+
+/* LAPTOP — 901px to 1200px */
+@media (max-width: 1200px) {
+  .site-nav__right {
+    gap: clamp(16px, 1.6vw, 34px);
+  }
+}
+
+/* TABLET — 601px to 900px */
+@media (max-width: 900px) {
+  .site-nav__right {
+    gap: 12px;
+  }
+}
+
+/* MOBILE — Up to 600px */
+@media (max-width: 600px) {
+  .site-nav__right {
+    gap: 8px;
+  }
+}
+
+/* SMALL PHONES — Up to 360px */
+@media (max-width: 360px) {
+  .site-nav__right {
+    gap: 5px;
+  }
+}

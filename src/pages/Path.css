@@ -1,78 +1,34 @@
-@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+
+/* =========================================
+   PATH PAGE
+   ========================================= */
 
 html,
 body {
   margin: 0;
   padding: 0;
-  background: #d8dee7;
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .path {
   min-height: 100vh;
-  height: auto;
-  background: linear-gradient(135deg, #e5e5e5 0%, #c7d8ef 100%);
+  background: linear-gradient(
+    135deg,
+    #e5e5e5 0%,
+    #c7d8ef 100%
+  );
+
   color: #051c41;
   font-family: "Cascadia Code", "Courier New", monospace;
   overflow-x: hidden;
 }
 
-/* NAVBAR */
-
-.path .nav {
-  position: fixed;
-  top: clamp(18px, 2vw, 36px);
-  left: clamp(24px, 2.8vw, 60px);
-  right: clamp(24px, 2.8vw, 60px);
-  z-index: 9999;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.path .nav-right {
-  display: flex;
-  align-items: center;
-  gap: clamp(16px, 2.2vw, 60px);
-}
-
-.path .nav-button {
-  border: 0;
-  background: transparent;
-  color: #051c41;
-  cursor: pointer;
-
-  font-family: inherit;
-  font-size: clamp(13px, 1.05vw, 24px);
-  font-weight: 700;
-  letter-spacing: clamp(0.1em, 0.22vw, 0.2em);
-  white-space: nowrap;
-
-  padding: 0;
-  margin: 0;
-}
-
-.path .nav-button:hover {
-  color: #6b7280;
-}
-
-.path .nav-title-button {
-  font-size: clamp(14px, 1.15vw, 26px);
-}
-
-.path .nav-button--active {
-  text-decoration: underline;
-  text-underline-offset: 6px;
-}
-
-/* STAGE */
+/* 
+   STAGE
+   */
 
 .path__stage {
   min-height: 115vh;
-  height: auto;
-
   padding-top: clamp(80px, 8vh, 120px);
 
   display: flex;
@@ -84,14 +40,18 @@ body {
   box-sizing: border-box;
 }
 
-/* TITLE */
+/* TITLE*/
 
 .path__title {
   position: relative;
   z-index: 3;
 
   width: min(1300px, 90vw);
-  margin: clamp(16px, 2vh, 36px) 0 clamp(20px, 3vh, 45px);
+
+  margin:
+    clamp(16px, 2vh, 36px)
+    0
+    clamp(20px, 3vh, 45px);
 
   text-align: center;
   color: #002a73;
@@ -99,34 +59,20 @@ body {
 }
 
 .path__titleMain {
-  display: block;
-
-  font-family:
-    "Trebuchet MS",
-    "Lucida Sans Unicode",
-    "Lucida Grande",
-    "Lucida Sans",
-    Arial,
-    sans-serif;
-
-  font-size: clamp(48px, 6vw, 105px);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: clamp(45px, 3.0vw, 80px);
+  font-weight: 600;
 }
 
 .path__titleSub {
-  display: block;
-  margin-top: clamp(10px, 1.2vw, 22px);
-
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(18px, 2vw, 36px);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 1.25;
+  font-size: clamp(17px, 1.5vw, 26px);
+  font-weight: 500;
 }
 
-/* CARDS */
+/* =========================================
+   CARDS CONTAINER
+   ========================================= */
 
 .path__cards {
   position: relative;
@@ -146,23 +92,34 @@ body {
   pointer-events: auto;
 }
 
+/* =========================================
+   INDIVIDUAL CARD
+   ========================================= */
+
 .pathCard {
   position: absolute;
 
   width: clamp(300px, 23vw, 430px);
   height: clamp(420px, 34vw, 600px);
 
-  transform: translateX(calc(var(--offset) * clamp(250px, 27vw, 500px)));
+  transform: translateX(
+    calc(var(--offset) * clamp(250px, 27vw, 500px))
+  );
 
   perspective: 1000px;
+
   border: none;
   background: transparent;
   cursor: pointer;
   padding: 0;
-
   overflow: hidden;
+
   font-family: "Cascadia Code", "Courier New", monospace;
 }
+
+/* =========================================
+   CARD FLIP
+   ========================================= */
 
 .pathCard__inner {
   position: relative;
@@ -175,9 +132,14 @@ body {
   transition: transform 0.35s ease;
 }
 
-.pathCard:hover .pathCard__inner {
+.pathCard:hover .pathCard__inner,
+.pathCard:focus-visible .pathCard__inner {
   transform: rotateY(180deg);
 }
+
+/* =========================================
+   CARD FACES
+   ========================================= */
 
 .pathCard__face {
   position: absolute;
@@ -202,20 +164,26 @@ body {
   box-shadow: 0 12px 30px rgba(5, 28, 65, 0.15);
 }
 
+/* FRONT */
+
 .pathCard__front {
   z-index: 2;
+
   justify-content: flex-end;
   align-items: flex-start;
+
   padding: 18px;
   box-sizing: border-box;
 }
 
-.pathCard:hover .pathCard__front {
+.pathCard:hover .pathCard__front,
+.pathCard:focus-visible .pathCard__front {
   visibility: hidden;
 }
 
 .pathCard__front::after {
   content: "";
+
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -228,6 +196,8 @@ body {
   );
 }
 
+/* CARD IMAGE */
+
 .pathCard__image {
   position: absolute;
   inset: 0;
@@ -235,31 +205,41 @@ body {
 
   width: 100%;
   height: 100%;
-  object-fit: cover;
 
+  object-fit: cover;
   opacity: 0.8;
+
   filter: grayscale(20%) contrast(1.05);
 }
+
+/* CARD TITLE */
 
 .pathCard__title {
   position: absolute;
   z-index: 2;
+
   left: 50%;
   top: 85%;
+
   transform: translate(-50%, -50%);
 
   width: 85%;
 
   color: rgb(212, 208, 208);
+
   font-size: clamp(16px, 1.2vw, 24px);
   font-weight: 900;
   letter-spacing: 0.08em;
+
   text-transform: none;
   text-align: center;
 }
 
+/* BACK */
+
 .pathCard__back {
   z-index: 1;
+
   transform: rotateY(180deg);
 
   padding: clamp(18px, 2vw, 32px);
@@ -269,27 +249,16 @@ body {
 
   font-size: clamp(12px, 1vw, 18px);
   line-height: 1.35;
+
   text-transform: none;
   text-align: center;
 }
 
-/* LAPTOP */
+/* =========================================
+   LAPTOP — UP TO 1200PX
+   ========================================= */
 
 @media (max-width: 1200px) {
-  .path .nav {
-    left: 18px;
-    right: 18px;
-  }
-
-  .path .nav-right {
-    gap: clamp(12px, 2vw, 24px);
-  }
-
-  .path .nav-button {
-    font-size: clamp(11px, 1.4vw, 15px);
-    letter-spacing: 0.08em;
-  }
-
   .path__stage {
     min-height: 105vh;
     padding-top: 95px;
@@ -318,7 +287,9 @@ body {
     width: clamp(250px, 27vw, 330px);
     height: 480px;
 
-    transform: translateX(calc(var(--offset) * clamp(220px, 30vw, 350px)));
+    transform: translateX(
+      calc(var(--offset) * clamp(220px, 30vw, 350px))
+    );
   }
 
   .pathCard__title {
@@ -330,36 +301,73 @@ body {
   }
 }
 
-/* VERY SMALL SCREENS */
+/* =========================================
+   TABLET — UP TO 900PX
+   ========================================= */
 
-@media (max-width: 700px) {
-  .path .nav {
-    top: 16px;
-    left: 14px;
-    right: 14px;
-  }
-
-  .path .nav-right {
-    gap: 10px;
-  }
-
-  .path .nav-button {
-    font-size: 10px;
-    letter-spacing: 0.05em;
-  }
-
+@media (max-width: 900px) {
   .path__stage {
     min-height: 100vh;
-    padding-top: 90px;
+    padding-top: 105px;
   }
 
   .path__title {
     width: 90vw;
+    margin-bottom: 30px;
+  }
+
+  .path__titleMain {
+    font-size: clamp(40px, 6.5vw, 65px);
+  }
+
+  .path__titleSub {
+    font-size: clamp(16px, 2.5vw, 22px);
+  }
+
+  .path__cards {
+    width: 98vw;
+    height: 470px;
+    min-height: 470px;
+  }
+
+  .pathCard {
+    width: clamp(200px, 29vw, 270px);
+    height: 420px;
+
+    transform: translateX(
+      calc(var(--offset) * clamp(190px, 30vw, 270px))
+    );
+  }
+
+  .pathCard__title {
+    font-size: 14px;
+  }
+
+  .pathCard__back {
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   MOBILE — UP TO 700PX
+   ========================================= */
+
+@media (max-width: 700px) {
+  .path__stage {
+    min-height: 100vh;
+    padding-top: 90px;
+    padding-bottom: 50px;
+  }
+
+  .path__title {
+    width: 90vw;
+    margin-top: 20px;
     margin-bottom: 28px;
   }
 
   .path__titleMain {
-    font-size: clamp(38px, 11vw, 62px);
+    font-size: clamp(38px, 9vw, 62px);
+    line-height: 1.12;
   }
 
   .path__titleSub {
@@ -368,11 +376,13 @@ body {
   }
 
   .path__cards {
+    width: 100%;
     height: auto;
-    min-height: auto;
+    min-height: 0;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 24px;
 
     overflow: visible;
@@ -380,34 +390,51 @@ body {
 
   .pathCard {
     position: relative;
-    transform: none !important;
 
     width: min(82vw, 320px);
     height: 460px;
+
+    transform: none;
+    flex-shrink: 0;
+  }
+
+  .pathCard__title {
+    font-size: 17px;
+  }
+
+  .pathCard__back {
+    font-size: 14px;
   }
 }
 
-/* IMAC / LARGE SCREENS */
+/* =========================================
+   SMALL PHONES — UP TO 360PX
+   ========================================= */
+
+@media (max-width: 360px) {
+  .path__stage {
+    padding-top: 85px;
+  }
+
+  .path__titleMain {
+    font-size: 34px;
+  }
+
+  .path__titleSub {
+    font-size: 14px;
+  }
+
+  .pathCard {
+    width: 86vw;
+    height: 400px;
+  }
+}
+
+/* =========================================
+   LARGE DESKTOP — 1900PX+
+   ========================================= */
 
 @media (min-width: 1900px) {
-  .path .nav {
-    top: 36px;
-    left: 60px;
-    right: 60px;
-  }
-
-  .path .nav-button {
-    font-size: 22px;
-  }
-
-  .path .nav-title-button {
-    font-size: 27px;
-  }
-
-  .path .nav-right {
-    gap: 30px;
-  }
-
   .path__stage {
     min-height: 110vh;
     padding-top: 145px;
@@ -426,7 +453,7 @@ body {
   }
 
   .path__cards {
-    width: 1700px;
+    width: min(94vw, 1700px);
     height: 700px;
     min-height: 700px;
   }
@@ -435,7 +462,9 @@ body {
     width: 460px;
     height: 650px;
 
-    transform: translateX(calc(var(--offset) * 560px));
+    transform: translateX(
+      calc(var(--offset) * 560px)
+    );
   }
 
   .pathCard__title {
@@ -445,4 +474,84 @@ body {
   .pathCard__back {
     font-size: 22px;
   }
+}
+
+/* PATH TITLE — MATCH DEAR PERI */
+
+.path__title {
+  width: min(1400px, 94vw);
+  margin: 0 auto 45px;
+  text-align: center;
+  line-height: normal;
+}
+
+.path__titleMain {
+  display: block;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: clamp(44px, 4.5vw, 100px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.path__titleSub {
+  display: block;
+  margin-top: 30px;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(17px, 1.5vw, 26px);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .path__titleMain {
+    font-size: clamp(42px, 6vw, 64px);
+  }
+
+  .path__titleSub {
+    font-size: clamp(16px, 2.4vw, 21px);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .path__title {
+    width: 92vw;
+    margin-bottom: 32px;
+  }
+
+  .path__titleMain {
+    font-size: clamp(36px, 9vw, 52px);
+  }
+
+  .path__titleSub {
+    font-size: clamp(15px, 3.8vw, 18px);
+    margin-top: 24px;
+  }
+}
+/* Move Path heading and cards down */
+
+.path__stage {
+  padding-top: clamp(150px, 12vh, 200px);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .path__stage {
+    padding-top: 135px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .path__stage {
+    padding-top: 115px;
+  }
+}
+.path__titleMain {
+  font-size: clamp(39.6px, 4.05vw, 80px);
 }

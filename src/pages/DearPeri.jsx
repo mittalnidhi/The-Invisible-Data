@@ -1,10 +1,11 @@
+
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./DearPeri.css";
-import workshop1 from "../assets/workshop-1.jpg";
+import Navbar from "./Navbar";
+
 import insituWomen from "../assets/insitu-women.png";
 import personalDataImg from "../assets/personal-data.png";
-
 
 const sections = [
   {
@@ -15,14 +16,7 @@ const sections = [
     route: "/collective-data",
     type: "data",
   },
-  {
-    title: "In situ Sense Making",
-    statement: "Bodies make meaning through everyday life",
-    subtext:
-      "Understand how symptoms are interpreted through relationships, identity, work, autonomy, body image, dismissal, sexual life, and medical costs (click to learn more)",
-    route: "/insitu",
-    type: "sense",
-  },
+  
   {
     title: "Collect Your Own Data",
     statement: "Personal data can become body literacy",
@@ -33,7 +27,7 @@ const sections = [
   },
 ];
 
-/* auto load all workshop images */
+/* AUTO LOAD ALL WORKSHOP IMAGES */
 
 const photoModules = import.meta.glob(
   "../assets/workshop-*.{jpg,jpeg,png,webp}",
@@ -46,7 +40,6 @@ const photoModules = import.meta.glob(
 const photos = Object.values(photoModules);
 
 export default function DearPeri() {
-  const navigate = useNavigate();
   const [activePhoto, setActivePhoto] = useState(0);
 
   const prevPhoto = () => {
@@ -63,40 +56,11 @@ export default function DearPeri() {
 
   return (
     <main className="dearPeri">
-      <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
-      {/* navbar */}
 
-      <nav className="nav">
-        <button
-          className="nav-button nav-title-button"
-          onClick={() => navigate("/")}
-        >
-          INVISIBLE DATA
-        </button>
+      {/* SHARED NAVBAR */}
+      <Navbar theme="light" />
 
-        <div className="nav-right">
-          <button
-            className="nav-button"
-            onClick={() => navigate("/about")}
-          >
-            ABOUT
-          </button>
-
-          <button
-            className="nav-button"
-            onClick={() => navigate("/path")}
-          >
-            PATH
-          </button>
-
-          <button className="nav-button nav-button--active">
-            DEAR PERI
-          </button>
-        </div>
-      </nav>
-
-      {/* hero */}
-
+      {/* HERO */}
       <section className="dearPeriHero">
         <h1>
           Dear Peri is a space
@@ -109,8 +73,7 @@ export default function DearPeri() {
           and personal data reflections.
         </p>
 
-        {/* landscape photo carousel */}
-
+        {/* LANDSCAPE PHOTO CAROUSEL */}
         <div className="dearPeriCarousel">
           <button
             className="carouselArrow"
@@ -135,24 +98,17 @@ export default function DearPeri() {
             →
           </button>
         </div>
-
-      
-
-        
       </section>
 
-      {/* timeline */}
-
+      {/* TIMELINE */}
       <section className="dearPeriTimeline">
-        {sections.map((item, index) => (
+        {sections.map((item) => (
           <article
             className="timelineRow"
             key={item.title}
           >
-            
 
-            {/* clickable carousel */}
-
+            {/* CLICKABLE CIRCLE */}
             <Link
               to={item.route}
               className="timelineCircle"
@@ -163,20 +119,16 @@ export default function DearPeri() {
                 {item.title}
               </span>
             </Link>
-             <div className="timelineDivider" />
 
+            <div className="timelineDivider" />
 
-            {/* text */}
-
+            {/* TEXT */}
             <div className="timelineText">
               <h2>{item.statement}</h2>
               <p>{item.subtext}</p>
             </div>
 
-            <div className="timelineText timelineText--narrow"></div>
-            
-
-            
+            <div className="timelineText timelineText--narrow" />
           </article>
         ))}
       </section>
@@ -184,8 +136,9 @@ export default function DearPeri() {
   );
 }
 
-/* main switcher */
-
+/* =========================================
+   MAIN SWITCHER
+   ========================================= */
 
 function CircleAnimation({ type }) {
   if (type === "data") return <CollectiveDataArt />;
@@ -194,9 +147,9 @@ function CircleAnimation({ type }) {
   return <CollectOwnDataArt />;
 }
 
-
-/* collective data */
-
+/* =========================================
+   COLLECTIVE DATA
+   ========================================= */
 
 function CollectiveDataArt() {
   const words = [
@@ -239,9 +192,9 @@ function CollectiveDataArt() {
   );
 }
 
-
-/* in-situ part */
-
+/* =========================================
+   IN-SITU SENSE MAKING
+   ========================================= */
 
 function SenseMakingArt() {
   const words = [
@@ -275,9 +228,9 @@ function SenseMakingArt() {
   );
 }
 
-
-/* workshop */
-
+/* =========================================
+   WORKSHOP
+   ========================================= */
 
 function WorkshopArt() {
   return (
@@ -313,8 +266,9 @@ function WorkshopArt() {
   );
 }
 
-/* personal data */
-
+/* =========================================
+   PERSONAL DATA
+   ========================================= */
 
 function CollectOwnDataArt() {
   const words = [
@@ -338,11 +292,12 @@ function CollectOwnDataArt() {
         <span />
         <span />
       </div>
+
       <img
-      src={personalDataImg}
-      alt="Personal data"
-      className="personalDataImage"
-    />
+        src={personalDataImg}
+        alt="Personal data"
+        className="personalDataImage"
+      />
 
       <div className="paper paper--two">
         <span />
@@ -357,12 +312,11 @@ function CollectOwnDataArt() {
         <span />
       </div>
 
-      <div className="penMain">
-        <span />
-      </div>
-
       {words.map((word, i) => (
-        <em key={word} className={`collectWord collectWord--${i + 1}`}>
+        <em
+          key={word}
+          className={`collectWord collectWord--${i + 1}`}
+        >
           {word}
         </em>
       ))}

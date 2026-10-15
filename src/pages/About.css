@@ -1,3 +1,4 @@
+/* ABOUT PAGE — consolidated, responsive styles */
 html,
 body {
   margin: 0;
@@ -14,122 +15,87 @@ body {
   overflow: visible;
 }
 
-/* navbar */
-
-/* navbar */
-
+/* Navigation */
 .nav {
   position: fixed;
-  top: clamp(16px, 3vh, 28px);
-  left: clamp(16px, 1.7vw, 32px);
-  right: clamp(16px, 1.7vw, 32px);
+  top: clamp(14px, 2vw, 34px);
+  left: clamp(18px, 2.5vw, 56px);
+  right: clamp(18px, 2.5vw, 56px);
   z-index: 9999;
-
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
+  justify-content: space-between;
+  gap: 16px;
+  color: #fff;
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(12px, 1.35vw, 18px);
-  letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
+}
 
-  color: #ffffff;
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 54px);
 }
 
 .nav-button {
   border: 0;
   background: transparent;
-  color: #ffffff;
-
-  font: inherit;
-  cursor: pointer;
-
+  color: #fff;
+  font-family: inherit;
+  font-size: clamp(12px, 1.05vw, 23px);
+  font-weight: 700;
+  letter-spacing: clamp(0.06em, 0.22vw, 0.18em);
+  white-space: nowrap;
   padding: 0;
   margin: 0;
-
-  white-space: nowrap;
+  cursor: pointer;
 }
 
-.nav-button:hover {
-  color: #bebfc1;
-}
+.nav-button:hover { color: #bebfc1; }
 
 .nav-title-button {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: clamp(13px, 1.2vw, 26px);
 }
 
-.nav-right {
-  display: flex;
-  gap: clamp(12px, 3vw, 34px);
+.about .nav-button--active {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
-/* nav typewriter */
-
-/* nav typewriter */
-
+/* Navigation typewriter animation */
 .nav-typing .type-nav {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-
   width: 0ch;
-
   animation-fill-mode: forwards;
   animation-timing-function: steps(var(--chars), end);
 }
 
-.type-title {
-  --chars: 15;
-  animation-name: typeNav;
-  animation-duration: 1s;
-  animation-delay: 0s;
-}
-
-.type-about {
-  --chars: 5;
-  animation-name: typeNav;
-  animation-duration: 0.45s;
-  animation-delay: 1.3s;
-}
-
-.type-path {
-  --chars: 4;
-  animation-name: typeNav;
-  animation-duration: 0.38s;
-  animation-delay: 1.8s;
-}
-
-.type-dear {
-  --chars: 9;
-  animation-name: typeNav;
-  animation-duration: 0.7s;
-  animation-delay: 2.25s;
-}
+.type-title { --chars: 15; animation: typeNav 1s steps(var(--chars), end) 0s forwards; }
+.type-about { --chars: 5; animation: typeNav 0.45s steps(var(--chars), end) 1.3s forwards; }
+.type-path { --chars: 4; animation: typeNav 0.38s steps(var(--chars), end) 1.8s forwards; }
+.type-dear { --chars: 9; animation: typeNav 0.7s steps(var(--chars), end) 2.25s forwards; }
 
 @keyframes typeNav {
-  from {
-    width: 0ch;
-  }
-
-  to {
-    width: calc(var(--chars) * 1ch);
-  }
+  from { width: 0ch; }
+  to { width: calc(var(--chars) * 1ch); }
 }
 
-/* page */
-
+/* Pinned About stage */
 .about__stage {
   position: relative;
   height: 100vh;
-  width: 100vw;
+  height: 100dvh;
+  width: 100%;
   overflow: hidden;
   background: #323741;
 }
 
-/* left dots */
-
+/* Progress dots */
 .about__leftDots {
   position: absolute;
   left: clamp(18px, 3vw, 34px);
@@ -149,288 +115,170 @@ body {
   opacity: 0.45;
 }
 
-.about__dot--active {
-  background: #ffffff;
-  opacity: 1;
-}
+.about__dot--active { background: #fff; opacity: 1; }
 
-/* text */
-
+/* Animated headlines */
 .about__copy {
   position: absolute;
   left: 8vw;
-  top: 18vh;
-  width: 72vw;
+  top: 20vh;
+  width: 78vw;
   z-index: 10;
 }
 
 .about__headline {
   position: absolute;
   margin: 0;
-  color: #ffffff;
-  font-size: clamp(2.8rem, 5.8vw, 7.2rem);
-  line-height: 1.20;
-  letter-spacing: -0.001em;
-  font-weight: 600;
+  max-width: 1100px;
+  color: #fff;
+  font-family: "Cascadia Code", "Courier New", monospace;
+  font-size: clamp(28px, 3.2vw, 54px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  overflow-wrap: break-word;
   will-change: opacity, transform;
 }
 
 .about__headline--two {
   opacity: 0;
   transform: translateY(30px);
-  font-size: clamp(2.1rem, 4.4vw, 5.4rem);
+  font-size: clamp(26px, 3vw, 50px);
+  line-height: 1.3;
 }
 
-/* blue box */
-
+/* Animated statistic boxes */
 .about__dataBox {
   position: absolute;
   right: 0;
   bottom: 0;
-
   width: 160px;
   height: 120px;
-
-  background: #051c41;
+  max-width: 52vw;
+  max-height: 70vh;
+  padding: 12px;
+  box-sizing: border-box;
+  overflow: hidden;
   z-index: 50;
-
+  background: #051c41;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-
-  padding: 12px;
-  box-sizing: border-box;
-
-  overflow: hidden;
 }
 
-/* ASCII num  */
+.about__dataBox--two {
+  right: 0;
+  bottom: 0;
+  z-index: 45;
+  background: #255a97;
+  opacity: 0;
+}
+
+.about__dataBox--three {
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  background: #417cbe;
+  opacity: 0;
+}
 
 .about__asciiNumber {
   position: absolute;
   top: 16px;
   left: 18px;
   margin: 0;
-  color: #ffffff;
+  color: #fff;
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(5px, 0.65vw, 12px);
-  line-height: 0.88;
+  font-size: clamp(7px, 0.62vw, 16px);
+  line-height: 0.95;
   letter-spacing: -1px;
   font-weight: 900;
   white-space: pre;
   text-align: left;
-
-  text-shadow:
-    1px 0 rgba(255, 255, 255, 0.18),
-    -1px 0 rgba(0, 0, 0, 0.45);
+  text-shadow: 1px 0 rgba(255, 255, 255, 0.18), -1px 0 rgba(0, 0, 0, 0.45);
 }
 
-/* responsive */
-
-@media (max-width: 768px) {
-  .aboutNav {
-    top: 18px;
-    left: 16px;
-    right: 16px;
-    font-size: clamp(10px, 2.7vw, 13px);
-    letter-spacing: 0.06em;
-    gap: 12px;
-  }
-
-  .aboutNav__right {
-    gap: clamp(8px, 2.4vw, 14px);
-  }
-
-  .about__copy {
-    left: 10vw;
-    top: 20vh;
-    width: 82vw;
-  }
-
-  .about__headline {
-    font-size: clamp(2rem, 10vw, 4rem);
-    line-height: 1.10;
-  }
-
-  .about__headline--two {
-    font-size: clamp(1.7rem, 8vw, 3.4rem);
-  }
-}
-.about__dataBox--two {
-  background: #597997;
-  z-index: 45;
-  opacity: 0;
-    right: 0;
-  bottom: 0;
-}
-
-.about__dataBox--two .about__asciiNumber {
-  color: #ffffff;
-}
+.about__dataBox--two .about__asciiNumber { color: #fff; }
 
 .about__boxLabel {
   position: absolute;
   left: 18px;
   bottom: 16px;
-
   color: #fcfcfc;
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(1.8rem, 4vw, 5.2rem);
   font-weight: 900;
   letter-spacing: -0.08em;
 }
-.about__dataBox--two {
-  background: #255a97;
-  z-index: 45;
-  opacity: 0;
-}
-.about__dataBox--three {
-  background: #417cbe;
-  z-index: 40;
-  opacity: 0;
-  right: 0;
-  bottom: 0;
-}
-.about__headline {
-  font-size: clamp(2.8rem, 4vw, 7.2rem);
-}
+
+/* Scroll cue and view toggle */
 .about-scroll-tip {
   position: fixed;
   left: 24px;
   bottom: 24px;
   z-index: 1000;
   pointer-events: none;
-
-  color: #ffffff;
+  color: #fff;
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(13px, 1.2vw, 18px);
   letter-spacing: 0.08em;
   text-transform: lowercase;
-
   animation: cursorFlicker 1s steps(2) infinite;
 }
-.about__finalText {
-  position: absolute;
-  left: 8vw;
-  top: 18vh;
-  width: min(58vw, 900px);
-  z-index: 120;
 
-  font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(1.3rem, 2.1vw, 2.6rem);
-  line-height: 1.35;
-  letter-spacing: 0.02em;
-
-  pointer-events: none;
-}
-
-.about__finalTextBase,
-.about__finalTextTyped {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-}
-
-.about__finalTextBase {
-  color: #b9bcc0;
-  opacity: 0;
-}
-
-.about__finalTextTyped {
-  color: #ffffff;
-  opacity: 1;
-}
-.about .nav-button--active {
-  color: #ffffff;
-  text-decoration: underline;
-  text-underline-offset: 6px;
-}
 .about__viewToggle {
   position: fixed;
   bottom: 28px;
   left: 28px;
   z-index: 99999;
-
   border: none;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   color: #d9d9d9;
-
   padding: 10px 18px;
-
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: 13px;
   letter-spacing: 0.08em;
-
   cursor: pointer;
-
   backdrop-filter: blur(8px);
-  transition: all 0.25s ease;
+  transition: background 0.25s ease;
 }
 
-.about__viewToggle:hover {
-  background: rgba(255,255,255,0.14);
+.about__viewToggle:hover { background: rgba(255, 255, 255, 0.14); }
+
+/* Tablet / iPad */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .nav-button { font-size: clamp(11px, 1.6vw, 16px); letter-spacing: 0.06em; }
+  .nav-right { gap: clamp(12px, 1.8vw, 24px); }
+  .about__copy { left: 8vw; top: 22vh; width: 84vw; }
+  .about__headline { font-size: clamp(28px, 4vw, 42px); line-height: 1.3; letter-spacing: -0.03em; }
+  .about__headline--two { font-size: clamp(26px, 3.8vw, 40px); }
+  .about__finalText { left: 8vw; width: 82vw; font-size: clamp(20px, 2.8vw, 29px); }
+  .about__asciiNumber { font-size: clamp(6px, 0.78vw, 11px); }
 }
 
-/*box is responsive*/
-
-.nav {
-  position: fixed;
-  top: clamp(14px, 2vw, 34px);
-  left: clamp(18px, 2.5vw, 56px);
-  right: clamp(18px, 2.5vw, 56px);
-  z-index: 300;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  font-family: "Cascadia Code", "Courier New", monospace;
+/* Mobile */
+@media (max-width: 600px) {
+  .nav { top: 14px; left: 14px; right: 14px; gap: 8px; }
+  .nav-right { gap: clamp(7px, 2vw, 12px); }
+  .nav-button { font-size: clamp(9px, 2.6vw, 11px); letter-spacing: 0.04em; }
+  .nav-title-button { font-size: clamp(10px, 2.7vw, 12px); }
+  .about__copy { left: 8vw; top: 23vh; width: 85vw; }
+  .about__headline { font-size: clamp(21px, 5.5vw, 30px); line-height: 1.35; letter-spacing: -0.025em; }
+  .about__headline--two { font-size: clamp(20px, 5.2vw, 28px); line-height: 1.4; }
+  .about__finalText { left: 8vw; top: 20vh; width: 84vw; font-size: clamp(17px, 4.5vw, 23px); line-height: 1.4; }
+  .about__leftDots { left: 12px; gap: 12px; }
+  .about__dot { width: 5px; height: 5px; }
+  .about__dataBox { max-width: 75vw; max-height: 45vh; }
+  .about__asciiNumber { font-size: clamp(5px, 1.25vw, 8px); }
+  .about__boxLabel { font-size: clamp(22px, 6vw, 38px); }
+  .about__viewToggle { left: 14px; bottom: 14px; font-size: 11px; padding: 8px 12px; }
+  .about-scroll-tip { font-size: 12px; }
 }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: clamp(16px, 2.2vw, 54px);
-}
-
-.nav-button {
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-
-  font-family: inherit;
-  font-size: clamp(12px, 1.05vw, 23px);
-  font-weight: 700;
-  letter-spacing: clamp(0.06em, 0.22vw, 0.18em);
-  white-space: nowrap;
-}
-
-.nav-title-button {
-  font-size: clamp(13px, 1.2vw, 26px);
-}
-
-.about__dataBox {
-  max-width: 52vw;
-  max-height: 70vh;
-  overflow: hidden;
-}
-
-.about__asciiNumber {
-  font-size: clamp(7px, 0.62vw, 16px);
-  line-height: 0.95;
-}
-
-@media (max-width: 1100px) {
-  .nav-button {
-    font-size: clamp(11px, 1.6vw, 16px);
-    letter-spacing: 0.06em;
-  }
-
-  .nav-right {
-    gap: clamp(12px, 1.8vw, 24px);
-  }
-
-  .about__asciiNumber {
-    font-size: clamp(6px, 0.78vw, 11px);
-  }
+/* Short screens / landscape */
+@media (max-height: 650px) {
+  .about__copy { top: 16vh; }
+  .about__headline { font-size: clamp(20px, 3vw, 42px); }
+  .about__headline--two { font-size: clamp(19px, 2.8vw, 38px); }
+  .about__finalText { top: 14vh; font-size: clamp(16px, 2.3vw, 28px); }
 }

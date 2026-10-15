@@ -1,32 +1,28 @@
+
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./PersonalData.css";
+import Navbar from "../pages/Navbar";
 
 export default function PersonalData() {
   return (
     <main className="personalData">
-      <div id="timeout-warning">
-        Are you still there? Redirecting home in 10 seconds...
-      </div>
 
-      <nav className="nav">
-        <Link to="/" className="nav__brand">
-          INVISIBLE DATA
-        </Link>
+      {/* Global Navbar */}
+      <Navbar theme="dark" />
 
-        <div className="nav__links">
-          <Link to="/about">ABOUT</Link>
-          <Link to="/path">PATH</Link>
-          <Link to="/dearperi">DEAR PERI</Link>
-        </div>
-      </nav>
-
+      {/* Secondary Navigation */}
       <section className="personalData__subnav">
-        <NavLink to="/collective-data">Collective Data</NavLink>
-        <NavLink to="/insitu">Sense Making</NavLink>
-        <NavLink to="/personal-data">Engage with your own data</NavLink>
+        <NavLink to="/collective-data">
+          Collective Data
+        </NavLink>
+
+        <NavLink to="/personal-data">
+          Engage with your own data
+        </NavLink>
       </section>
 
+      {/* Introduction */}
       <section className="personalData__intro">
         <p>PERSONAL DATA</p>
 
@@ -39,8 +35,8 @@ export default function PersonalData() {
         </h2>
       </section>
 
+      {/* Download Activities */}
       <section className="downloadActivities">
-        
         <a
           href="/arc-assets/dear-peri-activities.pdf"
           download
@@ -49,6 +45,7 @@ export default function PersonalData() {
           Download Activities PDF
         </a>
       </section>
+
     </main>
   );
 }

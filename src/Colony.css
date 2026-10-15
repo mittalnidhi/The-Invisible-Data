@@ -1091,3 +1091,10 @@
     margin-left: 0;
   }
 }
+/* Fix Age graph vertical overflow — mobile only */
+
+@media screen and (max-width: 767px) {
+  .colony-chart-content > .colony-graph-container:last-child {
+    height: 230px;
+  }
+}

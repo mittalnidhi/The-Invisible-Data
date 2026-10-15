@@ -171,6 +171,47 @@ export default function ColonySilhouette(props) {
     size.height,
   ]);
 
+/* =========================================
+   DISMISS TOOLTIP ON OUTSIDE TAP
+========================================= */
+
+useEffect(() => {
+  const handleOutsidePointer = (event) => {
+    const svg = svgRef.current;
+    const tooltip = tooltipRef.current;
+
+    if (!svg || !tooltip) return;
+
+    const target = event.target;
+
+    // Keep the tooltip when tapping a symptom dot
+    if (
+      target instanceof Element &&
+      target.closest("circle.symptom-point") &&
+      svg.contains(target)
+    ) {
+      return;
+    }
+
+    // Hide when tapping anywhere else
+    d3.select(tooltip)
+      .interrupt()
+      .style("opacity", 0);
+  };
+
+  document.addEventListener(
+    "pointerdown",
+    handleOutsidePointer
+  );
+
+  return () => {
+    document.removeEventListener(
+      "pointerdown",
+      handleOutsidePointer
+    );
+  };
+}, []);
+
   /* =========================================
      RENDER
   ========================================= */
@@ -348,7 +389,17 @@ function drawSilhouettePoints({
           tooltipElement
         );
       }
-    });
+    })
+    .on("click", function(event, d) {
+  event.stopPropagation();
+
+  showTooltip(
+    event,
+    d.description,
+    tooltipRef.current,
+    "center"
+  );
+});
 
   /* ANIMATE POSITION + RADIUS */
 

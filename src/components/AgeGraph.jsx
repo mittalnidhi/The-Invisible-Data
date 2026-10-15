@@ -21,7 +21,14 @@ function AgeGraph() {
     useEffect(() => {
 		if(size.width === 0 || size.height === 0) return;
 
-        const margin = { top: 20, right: 20, bottom: 50, left: 70 };
+        const isMobile = window.innerWidth <= 767;
+
+const margin = {
+  top: 20,
+  right: 20,
+  bottom: isMobile ? 54 : 50,
+  left: 70,
+};
 
         const svg = d3.select(svgRef.current);
         svg.selectAll("*").remove();
@@ -53,12 +60,7 @@ function AgeGraph() {
 			.attr("font-size", size.width > 400 ? "12pt" : "9pt")
 			.attr("fill", "white")
 			.attr("text-anchor", "middle")
-			.attr(
-                "transform",
-                `translate(${(size.width - margin.right + margin.left) / 2}, ${
-                    size.height - (window.innerWidth <= 767 ? 14 : 5)
-                })`
-                )
+			.attr("transform", `translate(${(size.width - margin.right + margin.left) / 2}, ${size.height - 5})`)
 		svg.append("text")
 			.text("Mentions")
 			.attr("font-size", size.width > 400 ? "12pt" : "9pt")

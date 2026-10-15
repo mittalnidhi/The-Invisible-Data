@@ -1,6 +1,8 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
+import { createPortal } from "react-dom";
 import * as d3 from "d3";
+
 import {
   useResizeObserver,
   useDebounceCallback,
@@ -14,7 +16,6 @@ import colorMap from "../data/colorMap.json";
 ========================================= */
 
 const DESIGN_WIDTH = 700;
-const SILHOUETTE_RATIO = 1241 / 1754;
 
 /* =========================================
    MAIN COMPONENT
@@ -171,116 +172,123 @@ export default function ColonySilhouette(props) {
     size.height,
   ]);
 
-/* =========================================
-   DISMISS TOOLTIP ON OUTSIDE TAP
-========================================= */
+  /* =========================================
+     DISMISS TOOLTIP ON OUTSIDE TAP
 
-useEffect(() => {
-  const handleOutsidePointer = (event) => {
-    const svg = svgRef.current;
-    const tooltip = tooltipRef.current;
+     Only touch interactions are affected.
+     Desktop hover behavior is unchanged.
+  ========================================= */
 
-    if (!svg || !tooltip) return;
+  useEffect(() => {
+    const handleOutsideTap = (event) => {
+      if (event.pointerType !== "touch") return;
 
-    const target = event.target;
+      const svg = svgRef.current;
+      const tooltip = tooltipRef.current;
 
-    // Keep the tooltip when tapping a symptom dot
-    if (
-      target instanceof Element &&
-      target.closest("circle.symptom-point") &&
-      svg.contains(target)
-    ) {
-      return;
-    }
+      if (!svg || !tooltip) return;
 
-    // Hide when tapping anywhere else
-    d3.select(tooltip)
-      .interrupt()
-      .style("opacity", 0);
-  };
+      const target = event.target;
 
-  document.addEventListener(
-    "pointerdown",
-    handleOutsidePointer
-  );
+      // Do not dismiss when tapping a symptom dot.
+      if (
+        target instanceof Element &&
+        target.closest("circle.symptom-point") &&
+        svg.contains(target)
+      ) {
+        return;
+      }
 
-  return () => {
-    document.removeEventListener(
+      hideSymptomTooltip(tooltip);
+    };
+
+    document.addEventListener(
       "pointerdown",
-      handleOutsidePointer
+      handleOutsideTap
     );
-  };
-}, []);
+
+    return () => {
+      document.removeEventListener(
+        "pointerdown",
+        handleOutsideTap
+      );
+    };
+  }, []);
 
   /* =========================================
      RENDER
   ========================================= */
 
   return (
-    <div
-      ref={containerRef}
-      className="silhouette colony-silhouette-inner"
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "auto",
-        aspectRatio: `${1241} / ${1754}`,
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        flexShrink: 0,
-      }}
-    >
-      {/* TOOLTIP */}
-
-      
-<div
-  ref={tooltipRef}
-  id="colony-tooltip"
-  style={{
-    position: "fixed",
-    opacity: 0,
-    pointerEvents: "none",
-    zIndex: 9999,
-
-    width: "260px",
-    maxWidth: "calc(100vw - 32px)",
-    padding: "14px 16px",
-
-    backgroundColor: "rgba(5, 20, 35, 0.96)",
-    color: "white",
-    borderRadius: "10px",
-
-    fontFamily: "Inter, sans-serif",
-    fontSize: "13px",
-    lineHeight: 1.5,
-    whiteSpace: "normal",
-    overflowWrap: "break-word",
-    boxSizing: "border-box",
-  }}
-/>
-
-
-      {/* MAIN SVG */}
-
-      <svg
-        ref={svgRef}
-        width="100%"
-        height="100%"
-        viewBox={`0 0 ${size.width || 700} ${
-          size.height || 990
-        }`}
-        preserveAspectRatio="xMidYMid meet"
+    <>
+      <div
+        ref={containerRef}
+        className="silhouette colony-silhouette-inner"
         style={{
-          position: "absolute",
-          inset: 0,
-          display: "block",
+          position: "relative",
           width: "100%",
-          height: "100%",
-          overflow: "visible",
+          height: "auto",
+          aspectRatio: "1241 / 1754",
+          backgroundSize: "100% 100%",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          flexShrink: 0,
         }}
-      />
-    </div>
+      >
+        {/* MAIN SVG */}
+
+        <svg
+          ref={svgRef}
+          width="100%"
+          height="100%"
+          viewBox={`0 0 ${size.width || 700} ${
+            size.height || 990
+          }`}
+          preserveAspectRatio="xMidYMid meet"
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "block",
+            width: "100%",
+            height: "100%",
+            overflow: "visible",
+          }}
+        />
+      </div>
+
+      {/* TOOLTIP RENDERED OUTSIDE SILHOUETTE */}
+
+      {createPortal(
+        <div
+          ref={tooltipRef}
+          id="colony-tooltip"
+          style={{
+            position: "fixed",
+            left: 0,
+            top: 0,
+            opacity: 0,
+            pointerEvents: "none",
+            zIndex: 99999,
+
+            width: "260px",
+            maxWidth: "calc(100vw - 32px)",
+            padding: "14px 16px",
+
+            backgroundColor: "rgba(5, 20, 35, 0.96)",
+            color: "white",
+            borderRadius: "10px",
+
+            fontFamily: "Inter, sans-serif",
+            fontSize: "13px",
+            lineHeight: 1.5,
+            whiteSpace: "normal",
+            overflowWrap: "break-word",
+            boxSizing: "border-box",
+          }}
+        />,
+        document.body
+      )}
+    </>
   );
 }
 
@@ -351,10 +359,15 @@ function drawSilhouettePoints({
     )
     .style("cursor", "pointer");
 
-  /* MOUSE + TOUCH INTERACTIONS */
+  /* =========================================
+     DESKTOP HOVER + MOBILE TAP
+  ========================================= */
 
   merged
     .on("pointerenter", function (event, d) {
+      // Desktop / laptop hover only.
+      if (event.pointerType === "touch") return;
+
       showSymptomTooltip(
         event,
         d,
@@ -368,38 +381,37 @@ function drawSilhouettePoints({
     })
 
     .on("pointermove", function (event) {
+      // Desktop / laptop only.
+      if (event.pointerType === "touch") return;
+
       moveSymptomTooltip(
         event,
         tooltipElement
       );
     })
 
-    .on("pointerleave", function () {
-      hideSymptomTooltip(tooltipElement);
+    .on("pointerleave", function (event) {
+      // Do not dismiss mobile tooltips.
+      if (event.pointerType !== "touch") {
+        hideSymptomTooltip(tooltipElement);
+      }
 
       d3.select(this)
         .attr("stroke-width", 0);
     })
 
     .on("click", function (event, d) {
-      if (event.pointerType === "touch") {
-        showSymptomTooltip(
-          event,
-          d,
-          tooltipElement
-        );
-      }
-    })
-    .on("click", function(event, d) {
-  event.stopPropagation();
+      // Only touch activates persistent tooltip.
+      if (event.pointerType !== "touch") return;
 
-  showTooltip(
-    event,
-    d.description,
-    tooltipRef.current,
-    "center"
-  );
-});
+      event.stopPropagation();
+
+      showSymptomTooltip(
+        event,
+        d,
+        tooltipElement
+      );
+    });
 
   /* ANIMATE POSITION + RADIUS */
 
@@ -502,7 +514,7 @@ function getRadius(value) {
 }
 
 /* =========================================
-   TOOLTIP
+   TOOLTIP — SHOW
 ========================================= */
 
 function showSymptomTooltip(
@@ -523,13 +535,20 @@ function showSymptomTooltip(
   );
 }
 
+/* =========================================
+   TOOLTIP — MOVE
+========================================= */
 
-function moveSymptomTooltip(event, tooltipElement) {
+function moveSymptomTooltip(
+  event,
+  tooltipElement
+) {
   if (!tooltipElement) return;
 
   const tooltip = d3.select(tooltipElement);
 
-  const rect = tooltipElement.getBoundingClientRect();
+  const rect =
+    tooltipElement.getBoundingClientRect();
 
   const offset = 18;
   const padding = 12;
@@ -537,11 +556,17 @@ function moveSymptomTooltip(event, tooltipElement) {
   let x = event.clientX + offset;
   let y = event.clientY + offset;
 
-  if (x + rect.width > window.innerWidth - padding) {
+  if (
+    x + rect.width >
+    window.innerWidth - padding
+  ) {
     x = event.clientX - rect.width - offset;
   }
 
-  if (y + rect.height > window.innerHeight - padding) {
+  if (
+    y + rect.height >
+    window.innerHeight - padding
+  ) {
     y = event.clientY - rect.height - offset;
   }
 
@@ -553,6 +578,9 @@ function moveSymptomTooltip(event, tooltipElement) {
     .style("top", `${y}px`);
 }
 
+/* =========================================
+   TOOLTIP — HIDE
+========================================= */
 
 function hideSymptomTooltip(
   tooltipElement

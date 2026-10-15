@@ -1025,3 +1025,69 @@
   }
 }
 
+
+/* =========================================
+   MOBILE ONLY — LEFT PANEL FIX
+========================================= */
+
+@media screen and (max-width: 767px) {
+
+  .colony-filter-panel {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible;
+  }
+
+  .colony-filter-content {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 26px 20px !important;
+    gap: 0;
+  }
+
+  /* Prevent the symptom list from stretching */
+  .colony-symptom-list {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-top: 18px;
+    margin-bottom: 24px;
+  }
+
+  /* Override h-full on ColonySymptoms */
+  .colony-symptom-list > div {
+    height: auto !important;
+    padding: 0;
+    gap: 10px;
+  }
+
+  /* Each symptom gets its own row */
+  .colony-symptom-list .chart-text {
+    font-size: clamp(12px, 3.3vw, 15px);
+    line-height: 1.4;
+  }
+
+  .colony-symptom-list .chart-bar {
+    min-height: 18px;
+  }
+
+  .colony-symptom-list .relative.flex.flex-row.items-center {
+    height: auto !important;
+    min-height: 42px;
+    gap: 12px;
+  }
+
+  .colony-view-options {
+    margin-top: 8px;
+    margin-bottom: 18px;
+  }
+
+  .colony-stage-row {
+    margin-top: 12px;
+    gap: 14px;
+  }
+
+  .colony-stage-selector {
+    margin-left: 0;
+  }
+}

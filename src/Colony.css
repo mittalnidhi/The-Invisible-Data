@@ -1,289 +1,142 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+
+/* =========================================
+   GLOBAL COLONY PAGE
+========================================= */
+
 .colony-main {
-    color: white;
-    font-family: 'Inter', 'Courier';
-    font-weight: 400;
-    line-height: 1.8;
-    background-image: url("/image 131.png");
-    background-size:cover;
-    overflow: auto;
-    pointer-events: auto;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: auto;
+
+  color: white;
+  font-family: "Inter", "Courier New", sans-serif;
+  font-weight: 400;
+  line-height: 1.8;
+
+  background-image: url("/image 131.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow-x: clip;
+  overflow-y: visible;
+  pointer-events: auto;
 }
 
-.colony-title {
-    color: white;
-    font-family: 'Fragment Mono', Courier, monospace;
-    font-size: 20pt;
+.colony-main,
+.colony-main * {
+  box-sizing: border-box;
 }
 
-.navbar-divider-left {
-    display: inline;
-    border: 1px solid #444;
-    height: 20px;
-}
-
-.navbar-divider-right {
-    display: inline;
-    border: 1px solid #BBB;
-    height: 20px;
-}
-
-.blue-button {
-    background-color: #A4C4CC;
-    color: #2F3F4F;
-    padding: 8px 12px;
-    margin: 0 40px;
-    border-radius: 4px;
-    transition: background-color 150ms;
-}
-
-.blue-button:hover {
-    background-color: #BEE2EB;
-}
-
-#colony-tooltip {
-    background-color: #0008;
-    pointer-events: none;
-    opacity: 0;
-    z-index: 20;
-}
-
-.gray-panel {
-    background-color: #c2c5d0;
-    mix-blend-mode: color-burn;
-    border: 2px solid #45144B;
-    border-radius: 60px;
-    filter: drop-shadow(0px 2px 2px dimgray);
-}
-
-.gray-panel-content { 
-    padding: 60px 20px;
-}
-
-.filter-header-main {
-    font-size: 20pt;
-    font-weight: 500;
-    padding-left: 10px;
-}
-
-.filter-header-main + * {
-    padding-right: 10px;
-}
-
-.filter-header {
-    font-size: 18pt;
-    font-weight: 500;
-    padding-left: 20px;
-}
-
-.chart-text {
-    font-size: 19pt;
-}
-
-.divided-option {
-    font-size: 18pt;
-    border-bottom: 2px solid #E9ADDF00;
-    cursor: pointer;
-    transition: border-bottom-color 200ms;
-}
-
-.divided-option:hover {
-    border-bottom: 2px solid hsl(310, 30%, 90%, 50%); 
-}
-
-.divided-option-selected {
-    border-bottom: 2px solid #E9ADDF; 
-}
-
-.divided-option-selected:hover {
-    border-bottom: 2px solid #E9ADDF; 
-}
-
-.pill-container {
-    background-color: #3A4041;
-    border: 4px solid #3A4041;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 80px;   /* increase width */
-    height: 40px;       /* increase height */
-    padding: 4px 5px;
-    gap: 3px;
-    
-}
-
-.pill-option {
-    padding: 4px 16px;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: background-color 200ms, color 200ms;
-     white-space: nowrap; /* prevents text breaking */
-}
-
-.pill-option:hover {
-    background-color: #5c6668;
-}
-
-.pill-option-selected {
-    background-color: #E4E9EA;
-    color: #2F3F4F;
-}
-
-.pill-option-selected:hover {
-    background-color: #ffffff;
-}
-
-.clear-filter {
-    font-size: 16pt;
-    color: black;
-    background-color: #FEFCFC;
-    padding: 5px 6px;
-    border-radius: 12px;
-    filter: drop-shadow(0px 0px 0px black);
-    transition: background-color 200ms, filter 200ms;
-}
-
-.clear-filter:hover {
-    background-color: #C0F7DF;
-    filter: drop-shadow(0px 2px 4px black);
-}
-
-.silhouette {
-    background-image: url("/Nidhi-ColonyViz-sil.png");
-    background-size: cover;
-}
-
-@media screen and (max-width: 2000px) {
-    .colony-title {
-        font-size: 18pt;
-    }
-
-    .filter-header-main {
-        font-size: 18pt;
-    }
-
-    .filter-header, .clear-filter {
-        font-size: 16pt;
-    }
-
-    .chart-text, .divided-option, .pill-option {
-        font-size: 16pt;
-    }
-}
-
-@media screen and (max-width: 1700px) {
-    .colony-title {
-        font-size: 15pt;
-    }
-
-    .filter-header-main {
-        font-size: 16pt;
-        padding-left: 10px;
-    }
-
-    .filter-header, .clear-filter {
-        font-size: 14pt;
-        padding-left: 10px;
-    }
-
-    .chart-text, .divided-option, .pill-option {
-        font-size: 14pt;
-    }
-}
-
-@media screen and (max-width: 1400px) {
-    .colony-title {
-        font-size: 11pt;
-    }
-
-    .filter-header-main {
-        font-size: 13pt;
-    }
-
-    .filter-header, .clear-filter {
-        font-size: 12pt;
-    }
-
-    .chart-text, .divided-option, .pill-option {
-        font-size: 10pt;
-    }
-}
-
-/* nav+subnav*/
+/* =========================================
+   NAVBAR
+========================================= */
 
 .colony-navbar {
+  position: relative;
+  z-index: 100;
+
   width: 100%;
   min-height: 112px;
   padding: 28px 48px 0;
+
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+
   align-items: start;
-  position: relative;
-  z-index: 100;
+  gap: 16px;
 }
 
 .colony-brand {
   justify-self: start;
   color: white;
   text-decoration: none;
-   font-family: "Cascadia Code", "Courier New", monospace;
+
+  font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(13px, 1vw, 22px);
   font-weight: 400;
   letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .colony-nav-links {
   justify-self: end;
+
   display: flex;
   align-items: center;
-  gap: clamp(16px, 1.6vw, 32px);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  gap: clamp(12px, 1.6vw, 32px);
 }
 
 .colony-nav-links a {
   color: white;
   text-decoration: none;
+
   font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(11px, 0.8vw, 14px);
+  font-size: clamp(11px, 0.8vw, 18px);
   font-weight: 400;
   letter-spacing: 0.08em;
+
   padding-bottom: 5px;
   border-bottom: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .colony-nav-links a:hover {
   border-bottom-color: white;
 }
 
-/* line under PATH */
 .colony-path-link {
   border-bottom: 1px solid white !important;
 }
 
-/* subnav buttons */
+/* =========================================
+   SUBNAV
+========================================= */
+
 .colony-subnav {
   justify-self: center;
   margin-top: 34px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(10px, 1vw, 18px);
   flex-wrap: wrap;
-   font-family: "Cascadia Code", "Courier New", monospace;
+
+  gap: clamp(10px, 1vw, 18px);
+
+  font-family: "Cascadia Code", "Courier New", monospace;
 }
 
 .colony-subnav-link {
   color: #dbe6ea;
   text-decoration: none;
+
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(12px, 0.8vw, 15px);
   font-weight: 400;
   letter-spacing: 0.04em;
+  white-space: nowrap;
+
   padding: 9px 17px;
   border-radius: 999px;
+
   background: rgba(180, 200, 210, 0.14);
   border: 1px solid rgba(255, 255, 255, 0.22);
-  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .colony-subnav-link:hover {
@@ -298,71 +151,588 @@
   border-color: #a4c4cc;
 }
 
-/* for laptops- low res */
+/* =========================================
+   MAIN THREE-COLUMN LAYOUT
+========================================= */
 
-@media screen and (max-width: 1450px) {
+.colony-layout {
+  position: relative;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(0, 0.9fr)
+    minmax(0, 1.05fr);
+
+  align-items: start;
+  column-gap: clamp(16px, 1.6vw, 36px);
+
+  width: 96%;
+  max-width: 2200px;
+
+  margin: clamp(65px, 8vh, 120px) auto 70px;
+
+  height: auto;
+  min-height: 0;
+}
+
+/* =========================================
+   LEFT SYMPTOM PANEL
+========================================= */
+
+.colony-filter-panel {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+  height: clamp(650px, 78vh, 950px);
+
+  background: rgba(2, 8, 30, 0.92);
+  border: 2px solid rgba(0, 0, 0, 0.9);
+  border-radius: 38px;
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.colony-filter-content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  padding: clamp(26px, 2vw, 44px);
+}
+
+/* =========================================
+   RIGHT HORMONE PANEL
+========================================= */
+
+.colony-charts-column {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.colony-chart-panel {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+  height: clamp(650px, 78vh, 950px);
+
+  background: rgba(24, 116, 157, 0.28);
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  border-radius: 38px;
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.colony-chart-content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  padding: clamp(26px, 2vw, 44px);
+  gap: 18px;
+}
+
+/* =========================================
+   PANEL HEADINGS
+========================================= */
+
+.colony-heading-row {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+}
+
+.colony-heading-row h5 {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.colony-heading-row > :last-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.colony-title {
+  color: white;
+  font-family: "Fragment Mono", Courier, monospace;
+  font-size: clamp(16px, 1.3vw, 25px);
+}
+
+.filter-header-main {
+  font-size: clamp(18px, 1.2vw, 25px);
+  font-weight: 500;
+  line-height: 1.4;
+  padding-left: 0;
+}
+
+.filter-header-main + * {
+  padding-right: 0;
+}
+
+.filter-header {
+  font-size: clamp(16px, 1.05vw, 22px);
+  font-weight: 500;
+  padding-left: 0;
+}
+
+/* =========================================
+   SYMPTOM CHART
+========================================= */
+
+.colony-symptom-list {
+  flex: 1;
+  min-height: 0;
+
+  margin-top: 18px;
+  margin-bottom: 22px;
+}
+
+.chart-text {
+  font-size: clamp(13px, 1vw, 21px);
+  line-height: 1.45;
+  min-width: 0;
+}
+
+.chart-bar {
+  min-width: 2px;
+
+  transition:
+    background-color 200ms ease,
+    opacity 200ms ease;
+}
+
+/* =========================================
+   VIEW SELECTOR
+========================================= */
+
+.colony-view-options {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.divided-option {
+  font-size: clamp(13px, 0.95vw, 20px);
+
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+
+  transition: border-bottom-color 200ms;
+}
+
+.divided-option:hover {
+  border-bottom-color: hsla(310, 30%, 90%, 0.5);
+}
+
+.divided-option-selected,
+.divided-option-selected:hover {
+  border-bottom-color: #e9addf;
+}
+
+/* =========================================
+   STAGE SELECTOR
+========================================= */
+
+.colony-stage-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.colony-stage-selector {
+  width: max-content;
+  max-width: 100%;
+  flex: 0 0 auto;
+  margin-left: 0;
+}
+
+.pill-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: max-content;
+  min-width: 0;
+  max-width: 100%;
+
+  min-height: 44px;
+  height: auto;
+
+  padding: 4px;
+  gap: 3px;
+
+  background: #3a4041;
+  border: 4px solid #3a4041;
+  border-radius: 24px;
+}
+
+.pill-option {
+  padding: 7px 16px;
+
+  font-size: clamp(13px, 0.85vw, 17px);
+  line-height: 1.2;
+
+  border-radius: 18px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition:
+    background-color 200ms,
+    color 200ms;
+}
+
+.pill-option:hover {
+  background: #5c6668;
+}
+
+.pill-option-selected {
+  background: #e4e9ea;
+  color: #2f3f4f;
+}
+
+.pill-option-selected:hover {
+  background: white;
+}
+
+/* =========================================
+   HORMONE + AGE GRAPHS
+========================================= */
+
+.colony-graph-container {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+  height: clamp(180px, 22vh, 290px);
+
+  flex-shrink: 0;
+}
+
+.colony-graph-container svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.colony-hormone-options {
+  width: 100%;
+  min-width: 0;
+}
+
+/* =========================================
+   CLEAR FILTERS
+========================================= */
+
+.colony-clear-filters {
+  margin: 20px 16px;
+}
+
+.clear-filter {
+  font-size: clamp(13px, 0.85vw, 17px);
+  color: black;
+
+  background: #fefcfc;
+
+  padding: 7px 10px;
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 200ms,
+    filter 200ms;
+}
+
+.clear-filter:hover {
+  background: #c0f7df;
+  filter: drop-shadow(0 2px 4px black);
+}
+
+/* =========================================
+   SILHOUETTE — BASE
+========================================= */
+
+.colony-silhouette-panel {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100%;
+  min-width: 0;
+  height: auto;
+
+  overflow: visible;
+}
+
+.silhouette,
+.colony-silhouette-inner {
+  background-image: url("/Nidhi-ColonyViz-sil.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.colony-silhouette-inner {
+  position: relative;
+
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+
+  aspect-ratio: 1241 / 1754;
+  flex-shrink: 0;
+
+  margin: 0 auto;
+}
+
+.colony-silhouette-inner svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================
+   TOOLTIP
+========================================= */
+
+
+#colony-tooltip {
+  position: fixed;
+  width: 260px;
+  max-width: calc(100vw - 32px);
+  height: auto;
+
+  white-space: normal;
+  overflow-wrap: break-word;
+
+  pointer-events: none;
+  z-index: 9999;
+}
+
+
+/* =========================================
+   ORIGINAL SHARED STYLES
+========================================= */
+
+.gray-panel {
+  background: rgba(2, 8, 30, 0.9);
+  border: 2px solid rgba(0, 0, 0, 0.9);
+  border-radius: 38px;
+
+  mix-blend-mode: normal;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.35));
+}
+
+.gray-panel-content {
+  padding: clamp(26px, 2vw, 44px);
+}
+
+.blue-button {
+  background: #a4c4cc;
+  color: #2f3f4f;
+
+  padding: 8px 12px;
+  margin: 0 40px;
+
+  border-radius: 4px;
+
+  transition: background-color 150ms;
+}
+
+.blue-button:hover {
+  background: #bee2eb;
+}
+
+.navbar-divider-left {
+  display: inline;
+  border: 1px solid #444;
+  height: 20px;
+}
+
+.navbar-divider-right {
+  display: inline;
+  border: 1px solid #bbb;
+  height: 20px;
+}
+
+/* =========================================
+   LARGE DESKTOP — 1600px+
+========================================= */
+
+@media screen and (min-width: 1600px) {
+  .colony-layout {
+    width: 97%;
+    max-width: 2400px;
+
+    grid-template-columns:
+      minmax(0, 1.05fr)
+      minmax(0, 0.9fr)
+      minmax(0, 1.05fr);
+
+    column-gap: clamp(24px, 2vw, 48px);
+    margin-top: clamp(80px, 9vh, 135px);
+  }
+
+  .colony-filter-panel,
+  .colony-chart-panel {
+    height: clamp(730px, 80vh, 1000px);
+  }
+
+  .colony-silhouette-inner {
+    width: min(100%, 520px);
+  }
+
+  .colony-graph-container {
+    height: clamp(220px, 24vh, 310px);
+  }
+
+  .chart-text {
+    font-size: clamp(17px, 1.05vw, 22px);
+  }
+
+  .filter-header-main {
+    font-size: clamp(20px, 1.25vw, 27px);
+  }
+
+  .filter-header {
+    font-size: clamp(18px, 1.1vw, 23px);
+  }
+}
+
+/* =========================================
+   EXTRA LARGE DESKTOP — 2200px+
+========================================= */
+
+@media screen and (min-width: 2200px) {
+  .colony-layout {
+    max-width: 2600px;
+  }
+
+  .colony-silhouette-inner {
+    width: min(100%, 600px);
+  }
+
+  .colony-filter-panel,
+  .colony-chart-panel {
+    height: clamp(780px, 80vh, 1100px);
+  }
+}
+
+/* =========================================
+   LAPTOP — 1024px TO 1599px
+========================================= */
+
+@media screen and (min-width: 1024px) and (max-width: 1599px) {
   .colony-navbar {
     min-height: 104px;
     padding: 24px 34px 0;
-    grid-template-columns: 0.9fr auto 0.9fr;
-    font-family: "Cascadia Code", "Courier New", monospace;
-  }
-
-  .colony-subnav {
-    margin-top: 30px;
-    gap: 18px;
-  }
-
-  .colony-subnav-link {
-    font-size: 13px;
-    padding: 8px 14px;
   }
 
   .colony-nav-links {
     gap: 16px;
   }
 
-  .colony-nav-links a,
-  .colony-brand {
-    font-size: 16px;
-  }
-}
-
-/*for iMac */
-
-@media screen and (min-width: 1900px) {
-  .colony-navbar {
-    min-height: 130px;
-    padding: 38px 72px 0;
-  }
-
-  .colony-brand {
-    font-size: 24px;
-  }
-
-  .colony-nav-links a {
-    font-size: 18px;
-  }
-
   .colony-subnav {
-    margin-top: 42px;
-    gap: 20px;
+    margin-top: 30px;
+    gap: 12px;
   }
 
   .colony-subnav-link {
-    font-size: 18px;
-    padding: 11px 22px;
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .colony-layout {
+    width: 97%;
+
+    grid-template-columns:
+      minmax(0, 1.1fr)
+      minmax(0, 0.8fr)
+      minmax(0, 1.1fr);
+
+    column-gap: 14px;
+    margin-top: 75px;
+  }
+
+  .colony-filter-panel,
+  .colony-chart-panel {
+    height: 680px;
+  }
+
+  .colony-filter-content,
+  .colony-chart-content {
+    padding: 24px 18px;
+  }
+
+  .colony-silhouette-panel {
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .colony-silhouette-inner {
+    width: min(100%, 350px);
+    max-width: 100%;
+  }
+
+  .colony-graph-container {
+    height: 175px;
+  }
+
+  .chart-text {
+    font-size: clamp(12px, 1vw, 16px);
+  }
+
+  .filter-header-main {
+    font-size: clamp(16px, 1.2vw, 20px);
+  }
+
+  .filter-header {
+    font-size: clamp(14px, 1vw, 18px);
+  }
+
+  .divided-option {
+    font-size: clamp(12px, 0.9vw, 16px);
   }
 }
 
-/* tablet */
+/* =========================================
+   TABLET — 768px TO 1023px
+========================================= */
 
-@media screen and (max-width: 900px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
   .colony-navbar {
     grid-template-columns: 1fr;
-    row-gap: 18px;
-    min-height: auto;
+    row-gap: 16px;
+
     padding: 24px 24px 0;
+    min-height: auto;
+
     text-align: center;
   }
 
@@ -377,450 +747,219 @@
   }
 
   .colony-nav-links {
-    flex-wrap: wrap;
     justify-content: center;
   }
-}
-.colony-nav-links a {
-  color: white;
-  text-decoration: none;
 
-  font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: clamp(12px, 1.2vw, 20px);
-
-  font-weight: 400;
-  letter-spacing: 0.08em;
-
-  padding-bottom: 5px;
-
-  border-bottom: 1px solid transparent;
-}
-
-
-/* =========================================
-   RESPONSIVE FIXES — COLONY PAGE
-   Add at the very bottom of existing CSS
-   ========================================= */
-
-/* GLOBAL */
-
-.colony-main,
-.colony-main *,
-.colony-navbar,
-.colony-navbar * {
-  box-sizing: border-box;
-}
-
-.colony-main {
-  width: 100%;
-  min-width: 0;
-  min-height: 100vh;
-  min-height: 100dvh;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  overflow-x: auto;
-}
-
-.colony-main img,
-.colony-main svg {
-  max-width: 100%;
-}
-
-/* =========================================
-   SMALL LAPTOP
-   901px – 1450px
-   ========================================= */
-
-@media screen and (min-width: 901px)
-and (max-width: 1450px) {
-
-  .colony-navbar {
-    grid-template-columns:
-      minmax(0, 1fr)
-      auto
-      minmax(0, 1fr);
-
-    column-gap: 16px;
-    padding: 24px 28px 0;
-  }
-
-  .colony-brand {
-    font-size: clamp(12px, 1.1vw, 16px);
-    white-space: nowrap;
-  }
-
-  .colony-nav-links {
-    gap: clamp(10px, 1.2vw, 18px);
-  }
-
-  .colony-nav-links a {
-    font-size: clamp(11px, 1vw, 15px);
-    white-space: nowrap;
-  }
-
-  .colony-subnav {
-    gap: clamp(7px, 0.8vw, 14px);
-    flex-wrap: wrap;
-  }
-
-  .colony-subnav-link {
-    font-size: clamp(11px, 0.9vw, 13px);
-    padding: 8px 12px;
-    white-space: nowrap;
-  }
-
-  .blue-button {
-    margin: 0 16px;
-  }
-
-  .gray-panel-content {
-    padding: 40px 18px;
-  }
-
-  .pill-container {
-    min-width: 0;
-    max-width: 100%;
-  }
-
-  .pill-option {
-    padding: 4px 10px;
-  }
-}
-
-/* =========================================
-   TABLET
-   601px – 900px
-   ========================================= */
-
-@media screen and (min-width: 601px)
-and (max-width: 900px) {
-
-  .colony-navbar {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-rows: auto auto;
-
-    width: 100%;
-    min-height: auto;
-
-    padding: 24px 24px 0;
-    column-gap: 16px;
-    row-gap: 22px;
-
+  .colony-layout {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: left;
+
+    width: min(92%, 720px);
+
+    gap: 35px;
+    margin-top: 55px;
   }
 
-  .colony-brand {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: start;
-
-    font-size: 15px;
-    white-space: nowrap;
-  }
-
-  .colony-nav-links {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
-
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 16px;
-  }
-
-  .colony-nav-links a {
-    font-size: 13px;
-    white-space: nowrap;
-  }
-
-  .colony-subnav {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-self: center;
-
+  .colony-filter-panel,
+  .colony-charts-column,
+  .colony-chart-panel {
     width: 100%;
-    margin-top: 0;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
   }
 
-  .colony-subnav-link {
-    font-size: 12px;
-    padding: 8px 13px;
-    white-space: nowrap;
+  .colony-filter-panel,
+  .colony-chart-panel {
+    height: auto;
+    min-height: 600px;
   }
 
-  /* Content */
+  .colony-filter-content,
+  .colony-chart-content {
+    height: auto;
+    min-height: 600px;
 
-  .colony-title {
-    font-size: 16px;
+    padding: 30px 26px;
+  }
+
+  .colony-symptom-list {
+    flex: none;
+    min-height: 390px;
+  }
+
+  .colony-silhouette-panel {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+
+  .colony-silhouette-inner {
+    width: min(100%, 400px);
+  }
+
+  .colony-graph-container {
+    height: 230px;
+  }
+
+  .chart-text {
+    font-size: 17px;
   }
 
   .filter-header-main {
-    font-size: 17px;
-    padding-left: 8px;
+    font-size: 21px;
   }
 
   .filter-header {
-    font-size: 15px;
-    padding-left: 8px;
+    font-size: 18px;
   }
 
-  .chart-text,
   .divided-option {
-    font-size: 14px;
-  }
-
-  .gray-panel {
-    border-radius: 36px;
-  }
-
-  .gray-panel-content {
-    padding: 32px 16px;
-  }
-
-  .pill-container {
-    min-width: 0;
-    max-width: 100%;
-    height: auto;
-    min-height: 40px;
-    flex-wrap: wrap;
-  }
-
-  .pill-option {
-    font-size: 12px;
-    padding: 5px 10px;
-  }
-
-  .blue-button {
-    margin: 0 10px;
-  }
-
-  .clear-filter {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
 /* =========================================
-   MOBILE
-   Up to 600px
-   ========================================= */
+   MOBILE — BELOW 768px
+========================================= */
 
-@media screen and (max-width: 600px) {
-
-  .colony-main {
-    width: 100%;
-    min-height: 100dvh;
-    background-position: center;
-    overflow-x: auto;
-  }
-
-  /* NAVBAR */
-
+@media screen and (max-width: 767px) {
   .colony-navbar {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
 
     width: 100%;
     min-height: auto;
 
-    padding: 20px 16px 0;
-    column-gap: 10px;
-    row-gap: 22px;
+    padding: 22px 16px 0;
 
-    align-items: center;
-    text-align: left;
+    text-align: center;
+  }
+
+  .colony-brand,
+  .colony-subnav,
+  .colony-nav-links {
+    justify-self: center;
   }
 
   .colony-brand {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: start;
-
-    font-size: clamp(11px, 3vw, 14px);
-    letter-spacing: 0.02em;
-    white-space: nowrap;
+    font-size: 14px;
   }
 
   .colony-nav-links {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
-
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: flex-end;
-
-    gap: clamp(6px, 2vw, 12px);
-    min-width: 0;
+    justify-content: center;
+    gap: 18px;
   }
 
   .colony-nav-links a {
-    font-size: clamp(9px, 2.4vw, 12px);
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-    padding-bottom: 4px;
+    font-size: 12px;
   }
 
-  /* SUBNAV */
-
   .colony-subnav {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-self: center;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
     margin-top: 0;
     gap: 8px;
   }
 
   .colony-subnav-link {
-    font-size: clamp(10px, 2.7vw, 12px);
+    font-size: 11px;
     padding: 8px 12px;
-    white-space: nowrap;
-    text-align: center;
   }
 
-  /* TYPOGRAPHY */
+  .colony-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  .colony-title {
-    font-size: clamp(14px, 4vw, 17px);
-    line-height: 1.5;
+    width: 94%;
+
+    gap: 30px;
+    margin: 40px auto 50px;
+  }
+
+  .colony-filter-panel,
+  .colony-charts-column,
+  .colony-chart-panel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .colony-filter-panel,
+  .colony-chart-panel {
+    height: auto;
+    min-height: 0;
+
+    border-radius: 30px;
+    overflow: visible;
+  }
+
+  .colony-filter-content,
+  .colony-chart-content {
+    height: auto;
+    min-height: 0;
+
+    padding: 28px 18px;
+  }
+
+  .colony-symptom-list {
+    flex: none;
+    min-height: 360px;
+  }
+
+  .colony-silhouette-panel {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+
+  .colony-silhouette-inner {
+    width: min(100%, 320px);
+  }
+
+  .colony-graph-container {
+    height: clamp(180px, 55vw, 250px);
+  }
+
+  .colony-chart-content {
+    gap: 20px;
   }
 
   .filter-header-main {
-    font-size: 15px;
-    padding-left: 6px;
-    line-height: 1.5;
+    font-size: 18px;
   }
 
   .filter-header {
-    font-size: 13px;
-    padding-left: 6px;
-    line-height: 1.5;
+    font-size: 16px;
   }
 
   .chart-text {
-    font-size: 12px;
-    line-height: 1.6;
+    font-size: clamp(12px, 3.2vw, 16px);
   }
 
   .divided-option {
-    font-size: 12px;
-    line-height: 1.6;
+    font-size: clamp(12px, 3vw, 15px);
   }
 
-  /* PANELS */
-
-  .gray-panel {
-    max-width: 100%;
-    border-radius: 24px;
-  }
-
-  .gray-panel-content {
-    padding: 24px 12px;
-  }
-
-  /* FILTER PILLS */
-
-  .pill-container {
-    min-width: 0;
-    max-width: 100%;
-
-    height: auto;
-    min-height: 40px;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
-    gap: 4px;
-    padding: 4px;
-    border-radius: 16px;
+  .colony-stage-row {
+    gap: 14px;
+    margin-top: 20px;
   }
 
   .pill-option {
-    font-size: 11px;
-    padding: 5px 9px;
-    white-space: nowrap;
+    font-size: 14px;
+    padding: 7px 14px;
   }
 
-  /* BUTTONS */
-
-  .blue-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    max-width: 100%;
-    margin: 6px;
-    padding: 8px 10px;
-
-    font-size: 12px;
-    text-align: center;
-  }
-
-  .clear-filter {
-    font-size: 12px;
-    padding: 5px 8px;
-  }
-
-  /* DIVIDERS */
-
-  .navbar-divider-left,
-  .navbar-divider-right {
-    height: 16px;
-  }
-
-  /* SILHOUETTE */
-
-  .silhouette {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  .colony-clear-filters {
+    margin: 16px 8px;
   }
 }
 
 /* =========================================
-   VERY SMALL MOBILE
-   Up to 380px
-   ========================================= */
+   VERY SMALL MOBILE — BELOW 390px
+========================================= */
 
-@media screen and (max-width: 380px) {
-
+@media screen and (max-width: 390px) {
   .colony-navbar {
-    padding: 16px 12px 0;
-    column-gap: 6px;
-    row-gap: 18px;
-  }
-
-  .colony-brand {
-    font-size: 10px;
-  }
-
-  .colony-nav-links {
-    gap: 6px;
-  }
-
-  .colony-nav-links a {
-    font-size: 9px;
-    letter-spacing: 0;
+    padding: 18px 10px 0;
   }
 
   .colony-subnav {
@@ -829,47 +968,60 @@ and (max-width: 900px) {
 
   .colony-subnav-link {
     font-size: 10px;
-    padding: 7px 10px;
+    padding: 7px 9px;
   }
 
-  .gray-panel-content {
-    padding: 18px 10px;
+  .colony-filter-content,
+  .colony-chart-content {
+    padding: 24px 12px;
   }
 
-  .filter-header-main {
-    font-size: 13px;
+  .colony-silhouette-inner {
+    width: min(100%, 290px);
   }
 
-  .filter-header,
-  .chart-text,
-  .divided-option {
-    font-size: 11px;
-  }
-
-  .pill-option {
-    font-size: 10px;
-    padding: 4px 7px;
+  .chart-text {
+    font-size: 12px;
   }
 }
 
-/* =========================================
-   MOBILE LANDSCAPE
-   ========================================= */
+/* Reduce both containers by 10% */
 
-@media screen and (max-height: 500px)
-and (orientation: landscape) {
+.colony-filter-panel,
+.colony-chart-panel {
+  height: clamp(585px, 70.2vh, 855px);
+}
 
-  .colony-navbar {
-    padding-top: 12px;
-    row-gap: 10px;
+/* Increase silhouette by 10% on desktop and laptop */
+
+@media screen and (min-width: 1024px) {
+  .colony-silhouette-panel {
+    overflow: visible;
   }
 
-  .colony-subnav {
-    margin-top: 0;
+  .colony-silhouette-inner {
+    width: 110% !important;
+    max-width: none !important;
+    height: auto !important;
+    aspect-ratio: 1241 / 1754;
+    flex-shrink: 0;
   }
 
-  .gray-panel-content {
-    padding-top: 16px;
-    padding-bottom: 16px;
+  .colony-silhouette-inner svg {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
   }
 }
+
+/* Move silhouette upward */
+
+
+@media screen and (min-width: 1024px) {
+  .colony-silhouette-panel {
+    position: relative;
+    top: -70px;
+    transform: none !important;
+  }
+}
+

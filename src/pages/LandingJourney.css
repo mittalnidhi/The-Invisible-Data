@@ -137,7 +137,7 @@ canvas {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: #33393f;
+  background: #02192f;
   overflow: hidden;
   touch-action: none;
 }
@@ -146,18 +146,13 @@ canvas {
   position: absolute;
   left: 50%;
   bottom: 30px;
-
-  width: min(1000px, 86vw);
-
+  width: min(1200px, 88vw);
   color: #bebfc1;
   font-family: "Cascadia Code", monospace;
-
-  font-size: clamp(30px, 4rem, 85px);
-  font-weight: 700;
-
-  line-height: 1.1;
+  font-size: clamp(20px, 3rem, 85px);
+  font-weight: 500;
+  line-height: 1.4;
   letter-spacing: -0.02em;
-
   transform: translate(-50%, 0);
   transition: transform 0.35s ease-out, color 0.35s ease-out;
 }
@@ -304,5 +299,50 @@ canvas {
 
   .nav-title-button {
     font-size: 12px;
+  }
+}
+/* iPad */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .intro-scroll-text {
+    width: 86vw;
+    font-size: clamp(20px, 2.8vw, 28px);
+    line-height: 1.4;
+  }
+
+  .intro-paragraph + .intro-paragraph {
+    margin-top: 36px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .intro-scroll-text {
+    width: 88vw;
+    font-size: clamp(16px, 4vw, 20px);
+    line-height: 1.45;
+  }
+
+  .intro-paragraph + .intro-paragraph {
+    margin-top: 28px;
+  }
+}
+
+.intro-paragraph {
+  margin: 0;
+}
+
+.intro-paragraph + .intro-paragraph {
+  margin-top: 48px;
+}
+
+@media (max-width: 1024px) {
+  .intro-paragraph + .intro-paragraph {
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-paragraph + .intro-paragraph {
+    margin-top: 24px;
   }
 }

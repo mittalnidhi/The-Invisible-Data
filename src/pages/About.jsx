@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import "./About.css";
@@ -153,6 +153,7 @@ function toAsciiNumber(num) {
 
 export default function About() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const stageRef = useRef(null);
 
@@ -191,6 +192,12 @@ export default function About() {
 
     const host = stageRef.current;
     if (!host) return;
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
+    gsap.set(textOneRef.current, {
+      autoAlpha: 1,
+      y: 0,
+    });
 
     const ctx = gsap.context(() => {
       const render = (p) => {
@@ -411,7 +418,6 @@ export default function About() {
       className="about"
       onMouseMove={(e) => setMouse({ x: e.clientX, y: e.clientY })}
     >
-      <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
       <nav className="nav">
       <button
         className="nav-button nav-title-button"

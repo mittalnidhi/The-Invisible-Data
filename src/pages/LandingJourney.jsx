@@ -11,8 +11,10 @@ const FULL_IMAGE_LOOP_TIME = ASCII_FRAMES.length * IMAGE_DURATION;
 const CAPTION_LINE_1 = "Mapping the Perimenopausal Data Gap";
 const CAPTION_LINE_2 = "in Women’s Health";
 
-const INTRO_TEXT =
-  "Perimenopause is a midlife women's health issue affecting millions of women across the globe, yet health education and research in this phase is limited. Even when this phase is studied, it does not capture lived experiences of women.";
+const INTRO_TEXT = [
+  "Perimenopause is a significant yet often overlooked phase of women's health, affecting millions worldwide. Despite its widespread impact, research and healthcare often fail to capture the complexity of women's lived experiences.",
+  
+  "The Invisible Data transforms thousands of personal stories into interactive data visualizations, revealing patterns across symptoms, emotions, and everyday life. Designed as a body literacy platform, it helps women connect the dots, better understand their changing bodies, and recognize that they are not alone in their experiences."];
 
 export default function LandingJourney() {
   const canvasRef = useRef(null);
@@ -22,12 +24,12 @@ export default function LandingJourney() {
   const [titleDone, setTitleDone] = useState(false);
   const [captionLine1, setCaptionLine1] = useState("");
   const [captionLine2, setCaptionLine2] = useState("");
-  const [mode, setMode] = useState("title");
+  const [mode, setMode] = useState("animation");
   const [introProgress, setIntroProgress] = useState(0);
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(true);
 
-  const modeRef = useRef("title");
-  const animationStartRef = useRef(null);
+  const modeRef = useRef("animation");
+  const animationStartRef = useRef(performance.now());
   const shatterStartRef = useRef(null);
   const navStartRef = useRef(null);
   const fadeStartRef = useRef(null);
@@ -68,7 +70,7 @@ export default function LandingJourney() {
 
     const updateProgress = (delta) => {
       setIntroProgress((prev) => {
-        const next = prev + delta;
+        const next = delta > 0 ? 1 : prev;
         const clamped = Math.min(Math.max(next, 0), 1);
 
         if (clamped >= 1 && !hasNavigatedRef.current) {
@@ -541,7 +543,7 @@ export default function LandingJourney() {
       onClick={handleClick}
       onMouseMove={(e) => setMouse({ x: e.clientX, y: e.clientY })}
     >
-    <div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
+    
       <canvas ref={canvasRef} />
           <audio
             ref={audioRef}
@@ -603,23 +605,16 @@ export default function LandingJourney() {
       )}
 
       {mode === "intro" && (
-        <section className="intro-scroll-lock">
-          <p
-            className="intro-scroll-text"
-            style={{
-              opacity: 0.3 + introProgress * 0.7,
-              color: `rgb(${190 + introProgress * 65}, ${
-                190 + introProgress * 65
-              }, ${190 + introProgress * 65})`,
-              transform: `translate(-50%, ${
-                72 - introProgress * 108
-              }vh)`,
-            }}
-          >
-            {INTRO_TEXT}
-          </p>
-        </section>
-      )}
+  <section className="intro-scroll-lock">
+    <div className="intro-scroll-text">
+      {INTRO_TEXT.map((paragraph, index) => (
+        <p key={index} className="intro-paragraph">
+          {paragraph}
+        </p>
+      ))}
+    </div>
+  </section>
+)}
     </main>
   );
 }

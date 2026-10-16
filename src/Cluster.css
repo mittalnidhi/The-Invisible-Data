@@ -658,3 +658,159 @@ and (orientation: landscape) {
     font-size: 11px;
   }
 }
+
+/* ==============================================
+   CLUSTER PAGE: BALANCED PANELS + RESPONSIVE GRID
+   Scoped to .cluster-page to avoid Colony changes.
+   ============================================== */
+.cluster-page .cluster-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(16px, 2.5vw, 48px);
+  width: min(94%, 1800px);
+  margin: clamp(22px, 3vw, 48px) auto 64px;
+}
+.cluster-page .cluster-layout > * { min-width: 0; }
+.cluster-page .cluster-filter-panel {
+  display: flex;
+  flex-direction: column;
+  height: clamp(440px, 62vh, 680px);
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+.cluster-page .cluster-filter-heading {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 26px 14px 18px;
+}
+.cluster-page .cluster-symptom-content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+}
+.cluster-page #accordion-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.cluster-page #accordion-container > .symptom-accordion {
+  flex: 1 0 auto;
+  min-height: 0;
+}
+.cluster-page .cluster-center-panel { min-width: 0; }
+.cluster-page .cluster-chart-surface {
+  position: relative;
+  width: 100%;
+  height: clamp(380px, 60vh, 680px);
+  overflow: hidden;
+  border-radius: 26px;
+  background: #fff;
+}
+.cluster-page .cluster-caption {
+  margin: 18px 0 0;
+  line-height: 1.6;
+}
+.cluster-page .cluster-right-column { min-width: 0; }
+.cluster-page .cluster-body-panel {
+  position: relative;
+  height: clamp(440px, 62vh, 680px);
+  overflow: hidden;
+}
+.cluster-page .cluster-body-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 22px;
+}
+.cluster-page .cluster-body-inner > .silhouette {
+  width: auto;
+  height: 90%;
+  max-width: 100%;
+  aspect-ratio: 1241 / 1754;
+  inset: 0;
+  margin: auto;
+}
+.cluster-page .cluster-actions { padding: 18px 10px; }
+.cluster-page .cluster-actions .hover-instruction { margin: 24px 0 0; }
+
+@media (max-width: 1100px) {
+  .cluster-page .cluster-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    width: min(94%, 900px);
+  }
+  .cluster-page .cluster-right-column {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .cluster-page .cluster-body-panel { width: min(48%, 330px); height: 420px; flex-shrink: 0; }
+  .cluster-page .cluster-actions { flex: 1; }
+}
+@media (max-width: 767px) {
+  .cluster-page .cluster-layout {
+    display: flex;
+    flex-direction: column;
+    width: min(94%, 540px);
+    gap: 28px;
+    margin-top: 32px;
+  }
+  .cluster-page .cluster-layout > * { width: 100%; }
+  .cluster-page .cluster-filter-panel { height: auto; min-height: 0; border-radius: 28px; }
+  .cluster-page .cluster-filter-heading { padding: 24px 16px 20px; }
+  .cluster-page .cluster-symptom-content { flex: 0 0 auto; }
+  .cluster-page #accordion-container { height: auto; overflow: visible; }
+  .cluster-page #accordion-container > .symptom-accordion { flex: 0 0 auto; }
+  .cluster-page .cluster-chart-surface { height: clamp(310px, 82vw, 480px); border-radius: 22px; }
+  .cluster-page .cluster-caption { font-size: clamp(13px, 3.4vw, 16px); margin-top: 16px; }
+  .cluster-page .cluster-right-column { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .cluster-page .cluster-body-panel { width: 100%; height: clamp(390px, 110vw, 580px); border-radius: 28px; }
+  .cluster-page .cluster-actions { padding: 16px 6px; }
+  .cluster-page .cluster-actions .hover-instruction { margin-top: 16px; font-size: 13px; }
+}
+
+/* =========================================
+   CLUSTER — RESTORE TRANSPARENT PANELS
+   ========================================= */
+
+/* Left symptom panel */
+.cluster-filter-panel {
+  background: rgba(2, 12, 35, 0.68) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Right silhouette panel */
+.cluster-silhouette-panel {
+  background: rgba(2, 12, 35, 0.68) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Remove opaque background layers */
+.cluster-filter-panel .gray-panel,
+.cluster-silhouette-panel .gray-panel {
+  background: transparent !important;
+}
+
+/* Keep accordion rows translucent */
+.cluster-filter-panel .symptom-accordion {
+  background-color: transparent;
+}
+
+.cluster-filter-panel .symptom-accordion:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.cluster-filter-panel .symptom-accordion.active {
+  background-color: rgba(255, 255, 255, 0.16);
+}

@@ -1,3 +1,4 @@
+
 [
     {
         "id": "Confusion",
@@ -17,9 +18,15 @@
             { "label": "Lack of clarity", "rank": 2, "stories": [
                 "One day I was completely fine and the next I felt like my body had turned against me. Some weeks it is insomnia and panic attacks, other weeks it is joint pain and exhaustion. I never know what version of myself I am waking up to."
             ] },
-            { "label": "Emotional Unstability", "rank": 3, "stories": [] },
-            { "label": "Self- Doubt", "rank": 4, "stories": [] },
-            { "label": "Need for Direction", "rank": 5, "stories": [] }
+            { "label": "Emotional Unstability", "rank": 3, "stories": [
+                "I cried because my husband bought the wrong bread. Literally bread. Five minutes later I was laughing at how ridiculous it was and then I started crying again. I used to be such a calm person. Now the smallest things set me off and I hate that my family has to deal with it."
+            ] },
+            { "label": "Self- Doubt", "rank": 4, "stories": [
+                "I keep wondering if I'm just being dramatic. Maybe everyone my age is tired and forgetful and I'm making a big deal out of nothing. But then I have another night where I wake up sweating with my heart racing and I know something isn't right. It's exhausting constantly questioning myself."
+            ] },
+            { "label": "Need for Direction", "rank": 5, "stories": [
+                "Can someone please tell me where to even start? Do I see my regular doctor, a gynecologist, an endocrinologist? Do I need hormone tests? I'm reading so much conflicting information online and honestly it's making me more anxious. I just want someone to explain what is happening and what I can actually do about it."
+            ] }
         ]
     },
     {
@@ -30,17 +37,32 @@
         "spreadY": 220,
         "turbulence": 0.28,
         "nodes": [
-            { "label": "Loss of Identity", "rank": 1, "stories": [] },
-            { "label": "Autonomy", "rank": 2, "stories": [] },
-            { "label": "Self image", "rank": 3, "stories": [] },
-            { "label": "Career change", "rank": 4, "stories": [] },
-            { "label": "Body trust", "rank": 5, "stories": [] },
-            { "label": "Lack of Confidence", "rank": 6, "stories": [] },
-            { "label": "Relationship changes", "rank": 6, "stories": [] },
-            { "label": "Ageing parents", "rank": 6, "stories": [] }
+            { "label": "Loss of Identity", "rank": 1, "stories": [
+                "I look at old pictures of myself and wonder where that woman went. I used to be outgoing, spontaneous, always planning something. Now I cancel plans because I'm exhausted or anxious or just don't feel like myself. I know people change as they get older but this feels different. It's like I've lost a part of who I was."
+            ] },
+            { "label": "Autonomy", "rank": 2, "stories": [
+                "The hardest part is feeling like I have no control over my own body anymore. I can plan my day perfectly and then a migraine or sudden exhaustion ruins everything. I've started leaving gaps in my schedule because I never know how I'll feel. I miss being able to make plans without worrying about my body."
+            ] },
+            { "label": "Self image", "rank": 3, "stories": [
+                "I've gained weight around my stomach even though I haven't really changed how I eat. My clothes don't fit and I don't recognize myself in the mirror some mornings. Everyone keeps telling me to exercise more but I'm already trying. I wish people understood how frustrating it is to feel uncomfortable in your own skin."
+            ] },
+            { "label": "Career change", "rank": 4, "stories": [
+                "I've worked in finance for almost twenty years and suddenly I'm struggling to keep up in meetings. I forget what I was saying halfway through a sentence. Last month I seriously considered quitting because I thought I was losing my ability to do my job. I never imagined I'd be questioning my career at this age."
+            ] },
+            { "label": "Body trust", "rank": 5, "stories": [
+                "I used to know my body so well. I knew exactly when my period was coming, how much sleep I needed, what foods made me feel good. Now none of those rules seem to apply. I can do everything right and still feel terrible. It's strange realizing the body you've lived in for decades suddenly feels unfamiliar."
+            ] },
+            { "label": "Lack of Confidence", "rank": 6, "stories": [
+                "I used to speak up in every meeting without thinking twice. Now I rehearse what I'm going to say because I'm terrified I'll forget a word or lose my train of thought. Nobody at work has said anything, but I've become so conscious of it that sometimes I just stay quiet."
+            ] },
+            { "label": "Relationship changes", "rank": 6, "stories": [
+                "My husband thinks I'm pulling away from him. I don't blame him because I barely want to be touched lately and I'm irritated half the time. But it's not that I don't love him. I just don't feel comfortable in my body right now. I wish I knew how to explain that without him taking it personally."
+            ] },
+            { "label": "Ageing parents", "rank": 6, "stories": [
+                "I'm dealing with my mother's health appointments, my teenagers, a full-time job, and whatever is happening to my hormones. Some days I feel like everyone needs something from me and there's absolutely nothing left. My mom is getting older and needs more help, but I'm struggling myself and nobody seems to notice."
+            ] }
         ]
     },
-
     {
         "id": "healthcare",
         "title": "HEALTHCARE GAPS",
@@ -57,10 +79,18 @@
                 "Over the next year, the symptoms got worse. I started forgetting words, waking up drenched in sweat, and avoiding social situations because of my anxiety. It wasn't until I found other women online describing the exact same experiences that I realized I wasn't imagining it. The validation I found from strangers on the internet was something I couldn't get from my healthcare provider.",
                 "Looking back, what hurt most was being made to feel unreliable as a narrator of my own body. The symptoms were difficult, but the dismissal made them much harder to carry."
             ] },
-            { "label": "Lack of treatment", "rank": 2, "stories": [] },
-            { "label": "Dismissal", "rank": 3, "stories": [] },
-            { "label": "Age bias", "rank": 4, "stories": [] },
-            { "label": "Delayed diagnosis", "rank": 5, "stories": [] }
+            { "label": "Lack of treatment", "rank": 2, "stories": [
+                "I've been to two doctors about my night sweats and insomnia. One told me to cut down on caffeine and the other suggested meditation. I'm already doing both. I'm not expecting some magic pill, but surely there are other options? I feel like I'm being sent home to figure everything out myself."
+            ] },
+            { "label": "Dismissal", "rank": 3, "stories": [
+                "I finally worked up the courage to tell my doctor that I was having terrible anxiety and memory problems. She barely looked up from her computer and said it was probably because I was busy with work and kids. The whole appointment lasted maybe seven minutes. I sat in my car afterward and cried."
+            ] },
+            { "label": "Age bias", "rank": 4, "stories": [
+                "I'm 38 and every time I bring up perimenopause someone tells me I'm too young. My periods have completely changed, I'm waking up drenched in sweat and my anxiety is through the roof. I understand there could be other causes, but can we at least have the conversation instead of dismissing it because of my age?"
+            ] },
+            { "label": "Delayed diagnosis", "rank": 5, "stories": [
+                "It took almost three years before anyone mentioned perimenopause to me. Three years of blood tests, referrals, anxiety medication and wondering if something was seriously wrong. When a new doctor finally connected the symptoms, I felt relieved but also angry. Why did it take so long for someone to put the pieces together?"
+            ] }
         ]
     },
     {
@@ -71,13 +101,27 @@
         "spreadY": 180,
         "turbulence": 0.95,
         "nodes": [
-            { "label": "Sleep disruption", "rank": 1, "stories": [] },
-            { "label": "Brain fog", "rank": 2, "stories": [] },
-            { "label": "Heat spikes", "rank": 3, "stories": [] },
-            { "label": "Body pain", "rank": 4, "stories": [] },
-            { "label": "Mood volatility", "rank": 5, "stories": [] },
-            { "label": "Fatigue", "rank": 6, "stories": [] },
-            { "label": "Low libido", "rank": 6, "stories": [] }
+            { "label": "Sleep disruption", "rank": 1, "stories": [
+                "It's 3:17 in the morning and here I am again, wide awake for absolutely no reason. I fall asleep fine but wake up around 2 or 3 every single night. Then my brain starts thinking about everything I've ever done wrong. By the time my alarm goes off I'm exhausted. I honestly can't remember the last time I slept through the night."
+            ] },
+            { "label": "Brain fog", "rank": 2, "stories": [
+                "Yesterday I forgot the name of a coworker I've known for six years. I could picture his face, remember where he sits, everything except his name. Then I walked into the kitchen and forgot why I was there. These things sound small but when they happen every day you start getting scared."
+            ] },
+            { "label": "Heat spikes", "rank": 3, "stories": [
+                "Does anyone else go from completely normal to feeling like they're standing inside an oven in about ten seconds? My face turns bright red, sweat starts running down my back and then suddenly I'm freezing because my clothes are damp. It happened during a presentation last week and I wanted the floor to swallow me."
+            ] },
+            { "label": "Body pain", "rank": 4, "stories": [
+                "I wake up feeling like I've run a marathon even though I haven't done anything. My knees hurt, my shoulders are stiff and sometimes my fingers ache so badly I struggle to open jars. I've had tests done and nothing obvious showed up. It's hard explaining pain that seems to move around your body."
+            ] },
+            { "label": "Mood volatility", "rank": 5, "stories": [
+                "Some mornings I wake up in the worst mood and I genuinely don't know why. Nobody has done anything wrong. The house is quiet, the coffee is good, everything is fine. But I feel this horrible irritation bubbling under the surface. Then by lunchtime I'm completely normal again. It's so confusing."
+            ] },
+            { "label": "Fatigue", "rank": 6, "stories": [
+                "This isn't normal tiredness. I can sleep eight hours and still feel like I haven't slept at all. By three in the afternoon I'm struggling to keep my eyes open at my desk. I used to go to the gym after work and cook dinner. Now getting through the workday feels like an achievement."
+            ] },
+            { "label": "Low libido", "rank": 6, "stories": [
+                "I used to have a healthy sex drive and now it's like someone switched it off. I love my partner and I still find him attractive, but the desire just isn't there. It's affecting our relationship because he thinks it's about him. I feel guilty and frustrated and I don't know how to fix something I can't even explain."
+            ] }
         ]
     },
     {
@@ -88,11 +132,21 @@
         "spreadY": 165,
         "turbulence": 0.82,
         "nodes": [
-            { "label": "Workplace masking", "rank": 1, "stories": [] },
-            { "label": "Withdrawing socially", "rank": 2, "stories": [] },
-            { "label": "Relationship strain", "rank": 3, "stories": [] },
-            { "label": "Public discomfort", "rank": 4, "stories": [] },
-            { "label": "Isolation", "rank": 5, "stories": [] }
+            { "label": "Workplace masking", "rank": 1, "stories": [
+                "Nobody at work knows how much I'm struggling. I show up, smile, answer emails and pretend everything is normal. Meanwhile I've been awake since 3am and I'm terrified I'll forget something important. I keep a notebook with me everywhere now because I don't trust my memory. By the time I get home I'm completely drained from pretending I'm fine."
+            ] },
+            { "label": "Withdrawing socially", "rank": 2, "stories": [
+                "I've become the friend who always cancels. Birthdays, dinners, weekend plans, you name it. Sometimes I'm exhausted, sometimes I'm anxious and sometimes I just don't have the energy to make conversation. My friends have slowly stopped inviting me and I can't even blame them. I miss them, but I also don't know how to show up anymore."
+            ] },
+            { "label": "Relationship strain", "rank": 3, "stories": [
+                "My husband and I have been arguing over the smallest things lately. He says I've changed and honestly I agree with him. I'm irritable, tired and not interested in intimacy most days. We used to be able to talk about everything but now I feel like we're both walking on eggshells. I wish there was a way for him to understand what this feels like."
+            ] },
+            { "label": "Public discomfort", "rank": 4, "stories": [
+                "I had a hot flash while standing in line at the grocery store. My face went red, I started sweating and I could feel people looking at me. I know they probably weren't even paying attention, but I felt so embarrassed. Now I always check whether places have air conditioning before I go anywhere. It's ridiculous how much this has changed my everyday life."
+            ] },
+            { "label": "Isolation", "rank": 5, "stories": [
+                "The loneliest part is that nobody really talks about this. My friends are either not going through it yet or don't want to discuss it. My mother just says she doesn't remember having any problems. So I sit here googling symptoms at midnight and reading posts from strangers who somehow understand me better than the people around me."
+            ] }
         ]
     },
     {
@@ -103,10 +157,18 @@
         "spreadY": 200,
         "turbulence": 0.5,
         "nodes": [
-            { "label": "Finding language", "rank": 1, "stories": [] },
-            { "label": "Community knowledge", "rank": 2, "stories": [] },
-            { "label": "Small experiments", "rank": 3, "stories": [] },
-            { "label": "Recognition", "rank": 4, "stories": [] }
+            { "label": "Finding language", "rank": 1, "stories": [
+                "For the longest time I couldn't explain what was happening. I kept saying I felt weird or unlike myself. Then I started reading about perimenopause and suddenly there were actual words for things I'd been experiencing. Brain fog, night sweats, hormonal changes. Just being able to name what I was going through made me feel a little less lost."
+            ] },
+            { "label": "Community knowledge", "rank": 2, "stories": [
+                "I learned more from women sharing their experiences online than I did from months of trying to figure things out alone. Someone mentioned waking up at 3am every night and I nearly cried because I thought I was the only one. Not every suggestion works for everyone, obviously, but hearing other women's stories has made such a difference."
+            ] },
+            { "label": "Small experiments", "rank": 3, "stories": [
+                "I've started changing one thing at a time instead of trying to fix everything overnight. First I stopped having coffee after lunch. Then I started keeping track of my sleep and symptoms. Some changes help and some don't, but at least I feel like I'm learning something about my body instead of just reacting to whatever happens."
+            ] },
+            { "label": "Recognition", "rank": 4, "stories": [
+                "I finally saw a doctor who actually listened. She didn't rush me or tell me it was all stress. She asked questions about my sleep, periods, mood and everything else I'd been dealing with. I walked out feeling emotional because for the first time in years I felt like someone believed me. I didn't realize how much I needed that."
+            ] }
         ]
     },
     {
@@ -117,11 +179,21 @@
         "spreadY": 220,
         "turbulence": 0.34,
         "nodes": [
-            { "label": "New baseline", "rank": 1, "stories": [] },
-            { "label": "Self trust", "rank": 2, "stories": [] },
-            { "label": "Selective care", "rank": 3, "stories": [] },
-            { "label": "Boundaries", "rank": 4, "stories": [] },
-            { "label": "Reorientation", "rank": 5, "stories": [] }
+            { "label": "New baseline", "rank": 1, "stories": [
+                "I've stopped waiting to feel exactly like I did at 30. I don't think that's going to happen, and maybe that's okay. Some days are still difficult, but I'm learning what my body needs now instead of constantly comparing myself to who I used to be. It's taken a while to get here."
+            ] },
+            { "label": "Self trust", "rank": 2, "stories": [
+                "I spent so long being told everything was normal that I started ignoring my own instincts. Now when something feels off, I pay attention. I write things down, ask questions and don't feel embarrassed about getting another opinion. I'm still figuring things out, but I trust myself more than I did a year ago."
+            ] },
+            { "label": "Selective care", "rank": 3, "stories": [
+                "I've realized I don't need to try every supplement, diet or wellness trend someone recommends. I was spending so much money and energy chasing solutions. Now I focus on a few things that seem to help me and discuss treatment options with a doctor I trust. It's much less overwhelming."
+            ] },
+            { "label": "Boundaries", "rank": 4, "stories": [
+                "I used to say yes to everything. Extra work, family obligations, social plans, all of it. Now if I'm exhausted, I say no. My family wasn't thrilled at first because they're used to me handling everything. But I've realized I can't keep taking care of everyone else while completely ignoring myself."
+            ] },
+            { "label": "Reorientation", "rank": 5, "stories": [
+                "This phase has forced me to rethink a lot of things. How I work, how I rest, what I want from my relationships and even what I want the next twenty years to look like. I wouldn't say I'm grateful for the symptoms because some of them have been awful. But I am starting to feel like there's another version of me on the other side of this, and I'm curious to meet her."
+            ] }
         ]
     }
 ]

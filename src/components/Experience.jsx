@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Experience.css";
-import * as d3 from "d3";
 import { showTooltip, moveTooltip, hideTooltip } from '../utils';
 import ExperienceViewer from "./ExperienceViewer";
 import { NavLink } from "react-router-dom";
 import experienceMusic from "../assets/experience-music.mp3";
+import experienceData from "../data/experiences_dummy.json";
 
 const PHASE_DEPTH = 1100;
 const FOCAL_LENGTH = 760;
@@ -226,9 +226,9 @@ export default function Experience(props) {
     });
     const [scrollY, setScrollY] = useState(0);
 
-    const worlds = useMemo(() => buildPhaseWorlds(), []);
+    const worlds = useMemo(() => buildPhaseWorlds(), [props.storyData]);
     // const dust = useMemo(() => buildDust(), []);
-	const [currentLabel, setCurrentLabel] = useState({label: 'none', stories: []});
+	const [currentLabel, setCurrentLabel] = useState(null);
 
 	const viewerProps = {
 		currentLabel: currentLabel,
@@ -236,6 +236,13 @@ export default function Experience(props) {
 		storyData: props.storyData,
 		setStoryData: props.setStoryData
 	}
+
+    useEffect(() => {
+        if (!currentLabel) return;
+        const oldOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => { document.body.style.overflow = oldOverflow; };
+    }, [currentLabel]);
 
     useEffect(() => {
         const onResize = () => {
@@ -576,15 +583,23 @@ export default function Experience(props) {
                 }
             }
 
+            // Size the phase heading by its measured width, not only viewport width.
+            // Canvas text does not wrap automatically, so fit it explicitly.
+            const phaseTitle = String(activeWorld?.title ?? "");
+            const titleMaxWidth = viewport.width * (viewport.width <= 600 ? 0.88 : 0.92);
+            let titleFontSize = viewport.width <= 600
+                ? Math.min(56, viewport.width * 0.13)
+                : Math.min(115, viewport.width * 0.12);
+            ctx.font = `700 ${titleFontSize}px Inter, Arial, sans-serif`;
+            const titleMeasuredWidth = ctx.measureText(phaseTitle).width;
+            if (titleMeasuredWidth > titleMaxWidth && titleMeasuredWidth > 0) {
+                titleFontSize *= titleMaxWidth / titleMeasuredWidth;
+                ctx.font = `700 ${titleFontSize}px Inter, Arial, sans-serif`;
+            }
             ctx.fillStyle = `rgba(${activeWorld.tint},0.3)`;
-            ctx.font = `700 ${Math.min(115, viewport.width * 0.20)}px Inter, Arial, sans-serif`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fillText(
-                activeWorld.title,
-                viewport.width * 0.5,
-                viewport.height * 0.78,
-            );
+            ctx.fillText(phaseTitle, viewport.width * 0.5, viewport.height * 0.78, titleMaxWidth);
 
             const vignette = ctx.createRadialGradient(
                 viewport.width / 2,
@@ -610,27 +625,16 @@ export default function Experience(props) {
 		const canvas = canvasRef.current;
 		if (!canvas) return;
 
-		const handleClick = (event) => {
-			const rect = canvas.getBoundingClientRect();
-			const mouseX = event.clientX - rect.left;
-			const mouseY = event.clientY - rect.top;
-
-			// Check which node was clicked, if any
-			clickZones.forEach(zone => {
-				if (mouseX >= zone.x && mouseX <= zone.x + zone.w &&
-					mouseY >= zone.y && mouseY <= zone.y + zone.h) {
-					console.log("Clicked node:", zone.node.label);
-					setCurrentLabel(zone.node);
-					d3.select('#exp-viewer')
-						.style('opacity', 1)
-						.style('pointer-events', 'all');
-					d3.select(canvasRef.current)
-						.classed('canvas-blur', true);
-					d3.select('body')
-						.style('overflow', 'hidden')
-				}
-			});
-		};
+        const handleClick = (event) => {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+            const zone = clickZones.find(z =>
+                mouseX >= z.x && mouseX <= z.x + z.w &&
+                mouseY >= z.y && mouseY <= z.y + z.h
+            );
+            if (zone) setCurrentLabel(zone.node);
+        };
 
 		const handleMouseMove = (event) => {
 			const rect = canvas.getBoundingClientRect();
@@ -690,7 +694,6 @@ export default function Experience(props) {
         src={experienceMusic}
         preload="auto"
         />
-			<div id="timeout-warning">Are you still there? Redirecting home in 10 seconds...</div>
             <canvas ref={canvasRef} className="experience__canvas" />
             <div
   className={`experience-scroll-hint ${scrollY > 50 ? "experience-scroll-hint--hidden" : ""}`}

@@ -1096,3 +1096,24 @@
     height: 250px;
   }
 }
+
+/* MOBILE ONLY — keep Age graph inside its panel */
+
+@media screen and (max-width: 767px) {
+  .colony-chart-panel {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible;
+  }
+
+  .colony-chart-content {
+    height: auto !important;
+    min-height: 0 !important;
+    padding-bottom: 35px !important;
+  }
+
+  .colony-chart-content > .colony-graph-container:last-child {
+    height: 250px;
+    margin-bottom: 0;
+  }
+}

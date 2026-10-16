@@ -646,9 +646,10 @@ export default function About() {
 
         scrub: true,
 
-        // On mobile, CSS sticky holds the stage while the document scrolls.
-        // Desktop keeps the original GSAP pin behavior.
-        pin: window.innerWidth > 600 ? host : false,
+        // One pinning system on both desktop and mobile.
+        pin: host,
+        pinSpacing: true,
+        invalidateOnRefresh: true,
 
         anticipatePin: 1,
 

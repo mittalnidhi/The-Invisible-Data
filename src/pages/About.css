@@ -476,3 +476,28 @@ body {
     font-size: clamp(19px, 2.8vw, 38px);
   }
 }
+
+/* ABOUT — MOBILE SCROLL CORRECTION */
+
+@media (max-width: 600px) {
+  .about {
+    position: relative;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .about__stage {
+    position: relative !important;
+    top: auto !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 100svh !important;
+    overflow: hidden !important;
+  }
+
+  .about__dataBox {
+    max-width: none !important;
+    max-height: none !important;
+  }
+}

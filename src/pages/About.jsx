@@ -646,7 +646,9 @@ export default function About() {
 
         scrub: true,
 
-        pin: host,
+        // Mobile uses a fixed stage instead of GSAP pinning, which can
+        // shift when the browser toolbar changes the visual viewport.
+        pin: window.innerWidth > 600 ? host : false,
 
         anticipatePin: 1,
 

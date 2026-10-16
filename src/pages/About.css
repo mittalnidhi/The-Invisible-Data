@@ -303,3 +303,22 @@ body {
     height: 100dvh;
   }
 }
+/* Mobile-only scroll stability fix. Add at the end of About.css. */
+@media (max-width: 600px) {
+  /* The document provides scroll progress; the stage never moves. */
+  .about {
+    min-height: calc(100svh + 3000px);
+    height: auto;
+  }
+  .about__stage {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+  }
+  .about__dataBox {
+    max-width: none;
+    max-height: none;
+  }
+}

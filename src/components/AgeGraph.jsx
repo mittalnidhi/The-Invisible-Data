@@ -52,11 +52,11 @@ function AgeGraph() {
     // More space below the graph for axis numbers
     // and the "Age Range" title.
     const margin = {
-      top: 20,
-      right: 20,
-      bottom: isMobile ? 85 : 80,
-      left: 70,
-    };
+  top: 20,
+  right: isMobile ? 26 : 20,
+  bottom: isMobile ? 76 : 85,
+  left: 70,
+};
 
     const svg = d3.select(svgRef.current);
 

@@ -1117,20 +1117,22 @@
     margin-bottom: 0;
   }
 }
-/* Give the Age graph breathing room inside the panel */
-.colony-chart-content {
-  padding-bottom: 50px;
+
+/* AGE GRAPH — KEEP TITLE ABOVE PANEL BORDER */
+
+/* Laptop and desktop: move the whole SVG up without changing its size */
+@media screen and (min-width: 768px) {
+  .colony-chart-content .age-panel {
+    position: relative;
+    top: -36px;
+  }
 }
 
-/* Mobile: preserve responsive panel height */
+/* Mobile */
 @media screen and (max-width: 767px) {
-  .colony-chart-panel {
-    height: auto !important;
-    min-height: 0 !important;
-  }
-
-  .colony-chart-content {
-    height: auto !important;
-    padding-bottom: 45px !important;
+  .colony-chart-content .age-panel {
+    position: relative;
+    top: -18px;
   }
 }
+

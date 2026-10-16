@@ -932,3 +932,60 @@ and (orientation: landscape) {
     min-width: 0;
   }
 }
+
+/* MOBILE NAVBAR — KEEP SUBNAV ON ONE ROW */
+
+@media (max-width: 767px) {
+  .colony-navbar {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-rows: auto auto !important;
+    width: 100% !important;
+    padding: 18px 12px 0 !important;
+    column-gap: 8px !important;
+    row-gap: 20px !important;
+    align-items: center !important;
+  }
+
+  .colony-brand {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    justify-self: start !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+
+  .colony-nav-links {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    justify-self: end !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+  }
+
+  .colony-nav-links a {
+    font-size: 10px !important;
+    white-space: nowrap !important;
+  }
+
+  .colony-subnav {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    justify-self: center !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 6px !important;
+    margin-top: 0 !important;
+  }
+
+  .colony-subnav-link {
+    flex: 0 1 auto !important;
+    padding: 8px 7px !important;
+    font-size: clamp(8px, 2.4vw, 11px) !important;
+    white-space: nowrap !important;
+    letter-spacing: 0 !important;
+  }
+}

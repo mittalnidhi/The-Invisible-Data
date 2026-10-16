@@ -1117,3 +1117,20 @@
     margin-bottom: 0;
   }
 }
+/* Give the Age graph breathing room inside the panel */
+.colony-chart-content {
+  padding-bottom: 50px;
+}
+
+/* Mobile: preserve responsive panel height */
+@media screen and (max-width: 767px) {
+  .colony-chart-panel {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .colony-chart-content {
+    height: auto !important;
+    padding-bottom: 45px !important;
+  }
+}

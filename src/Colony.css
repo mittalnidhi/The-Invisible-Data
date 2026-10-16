@@ -1091,3 +1091,8 @@
     margin-left: 0;
   }
 }
+@media screen and (max-width: 767px) {
+  .colony-chart-content > .colony-graph-container:last-child {
+    height: 250px;
+  }
+}

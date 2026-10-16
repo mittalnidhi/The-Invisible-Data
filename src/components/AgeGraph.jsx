@@ -49,12 +49,12 @@ function AgeGraph() {
 
     const isMobile = window.innerWidth <= 767;
 
-    // Extra bottom space keeps the age ticks
-    // and "Age Range" title inside the SVG.
+    // More space below the graph for axis numbers
+    // and the "Age Range" title.
     const margin = {
       top: 20,
       right: 20,
-      bottom: isMobile ? 62 : 60,
+      bottom: isMobile ? 85 : 80,
       left: 70,
     };
 
@@ -132,7 +132,7 @@ function AgeGraph() {
             margin.right +
             margin.left) /
           2
-        },${size.height - 28})`
+        },${size.height - 20})`
       );
 
     // ---------------- Y AXIS TITLE ----------------
@@ -198,7 +198,7 @@ function AgeGraph() {
       .attr("fill", "#f6f5f5")
       .style("opacity", 0);
 
-    // ---------------- INTERACTION ----------------
+    // ---------------- INTERACTION OVERLAY ----------------
 
     svg
       .append("rect")

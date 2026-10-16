@@ -646,8 +646,8 @@ export default function About() {
 
         scrub: true,
 
-        // Mobile uses a fixed stage instead of GSAP pinning, which can
-        // shift when the browser toolbar changes the visual viewport.
+        // On mobile, CSS sticky holds the stage while the document scrolls.
+        // Desktop keeps the original GSAP pin behavior.
         pin: window.innerWidth > 600 ? host : false,
 
         anticipatePin: 1,

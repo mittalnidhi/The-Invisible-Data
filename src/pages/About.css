@@ -1,4 +1,8 @@
-/* ABOUT PAGE — consolidated, responsive styles */
+
+/* =========================================
+   ABOUT PAGE — COMPLETE CSS
+   ========================================= */
+
 html,
 body {
   margin: 0;
@@ -9,23 +13,29 @@ body {
 }
 
 .about {
+  position: relative;
   min-height: 3200px;
   background: #323741;
   font-family: "Cascadia Code", "Courier New", monospace;
   overflow: visible;
 }
 
-/* Navigation */
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
 .nav {
   position: fixed;
   top: clamp(14px, 2vw, 34px);
   left: clamp(18px, 2.5vw, 56px);
   right: clamp(18px, 2.5vw, 56px);
   z-index: 9999;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+
   color: #fff;
   font-family: "Cascadia Code", "Courier New", monospace;
 }
@@ -50,7 +60,9 @@ body {
   cursor: pointer;
 }
 
-.nav-button:hover { color: #bebfc1; }
+.nav-button:hover {
+  color: #bebfc1;
+}
 
 .nav-title-button {
   display: flex;
@@ -65,7 +77,10 @@ body {
   text-underline-offset: 6px;
 }
 
-/* Navigation typewriter animation */
+/* =========================================
+   NAVIGATION TYPEWRITER ANIMATION
+   ========================================= */
+
 .nav-typing .type-nav {
   display: inline-block;
   overflow: hidden;
@@ -75,17 +90,40 @@ body {
   animation-timing-function: steps(var(--chars), end);
 }
 
-.type-title { --chars: 15; animation: typeNav 1s steps(var(--chars), end) 0s forwards; }
-.type-about { --chars: 5; animation: typeNav 0.45s steps(var(--chars), end) 1.3s forwards; }
-.type-path { --chars: 4; animation: typeNav 0.38s steps(var(--chars), end) 1.8s forwards; }
-.type-dear { --chars: 9; animation: typeNav 0.7s steps(var(--chars), end) 2.25s forwards; }
-
-@keyframes typeNav {
-  from { width: 0ch; }
-  to { width: calc(var(--chars) * 1ch); }
+.type-title {
+  --chars: 15;
+  animation: typeNav 1s steps(var(--chars), end) 0s forwards;
 }
 
-/* Pinned About stage */
+.type-about {
+  --chars: 5;
+  animation: typeNav 0.45s steps(var(--chars), end) 1.3s forwards;
+}
+
+.type-path {
+  --chars: 4;
+  animation: typeNav 0.38s steps(var(--chars), end) 1.8s forwards;
+}
+
+.type-dear {
+  --chars: 9;
+  animation: typeNav 0.7s steps(var(--chars), end) 2.25s forwards;
+}
+
+@keyframes typeNav {
+  from {
+    width: 0ch;
+  }
+
+  to {
+    width: calc(var(--chars) * 1ch);
+  }
+}
+
+/* =========================================
+   ABOUT STAGE
+   ========================================= */
+
 .about__stage {
   position: relative;
   height: 100vh;
@@ -95,12 +133,16 @@ body {
   background: #323741;
 }
 
-/* Progress dots */
+/* =========================================
+   PROGRESS DOTS
+   ========================================= */
+
 .about__leftDots {
   position: absolute;
   left: clamp(18px, 3vw, 34px);
   top: 54%;
   transform: translateY(-50%);
+
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -115,9 +157,15 @@ body {
   opacity: 0.45;
 }
 
-.about__dot--active { background: #fff; opacity: 1; }
+.about__dot--active {
+  background: #fff;
+  opacity: 1;
+}
 
-/* Animated headlines */
+/* =========================================
+   ANIMATED HEADLINES
+   ========================================= */
+
 .about__copy {
   position: absolute;
   left: 8vw;
@@ -130,12 +178,14 @@ body {
   position: absolute;
   margin: 0;
   max-width: 1100px;
+
   color: #fff;
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(28px, 3.2vw, 54px);
   font-weight: 400;
   line-height: 1.25;
   letter-spacing: -0.035em;
+
   overflow-wrap: break-word;
   will-change: opacity, transform;
 }
@@ -147,20 +197,27 @@ body {
   line-height: 1.3;
 }
 
-/* Animated statistic boxes */
+/* =========================================
+   ANIMATED STATISTIC BOXES
+   ========================================= */
+
 .about__dataBox {
   position: absolute;
   right: 0;
   bottom: 0;
+
   width: 160px;
   height: 120px;
   max-width: 52vw;
   max-height: 70vh;
+
   padding: 12px;
   box-sizing: border-box;
   overflow: hidden;
   z-index: 50;
+
   background: #051c41;
+
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -182,11 +239,16 @@ body {
   opacity: 0;
 }
 
+/* =========================================
+   ASCII NUMBERS
+   ========================================= */
+
 .about__asciiNumber {
   position: absolute;
   top: 16px;
   left: 18px;
   margin: 0;
+
   color: #fff;
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(7px, 0.62vw, 16px);
@@ -195,15 +257,21 @@ body {
   font-weight: 900;
   white-space: pre;
   text-align: left;
-  text-shadow: 1px 0 rgba(255, 255, 255, 0.18), -1px 0 rgba(0, 0, 0, 0.45);
+
+  text-shadow:
+    1px 0 rgba(255, 255, 255, 0.18),
+    -1px 0 rgba(0, 0, 0, 0.45);
 }
 
-.about__dataBox--two .about__asciiNumber { color: #fff; }
+.about__dataBox--two .about__asciiNumber {
+  color: #fff;
+}
 
 .about__boxLabel {
   position: absolute;
   left: 18px;
   bottom: 16px;
+
   color: #fcfcfc;
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(1.8rem, 4vw, 5.2rem);
@@ -211,114 +279,200 @@ body {
   letter-spacing: -0.08em;
 }
 
-/* Scroll cue and view toggle */
+/* =========================================
+   SCROLL CUE
+   ========================================= */
+
 .about-scroll-tip {
   position: fixed;
   left: 24px;
   bottom: 24px;
   z-index: 1000;
   pointer-events: none;
+
   color: #fff;
   font-family: "Cascadia Code", "Courier New", monospace;
   font-size: clamp(13px, 1.2vw, 18px);
   letter-spacing: 0.08em;
   text-transform: lowercase;
+
   animation: cursorFlicker 1s steps(2) infinite;
 }
 
-.about__viewToggle {
-  position: fixed;
-  bottom: 28px;
-  left: 28px;
-  z-index: 99999;
-  border: none;
-  background: rgba(255, 255, 255, 0.08);
-  color: #d9d9d9;
-  padding: 10px 18px;
-  font-family: "Cascadia Code", "Courier New", monospace;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-  transition: background 0.25s ease;
+@keyframes cursorFlicker {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
 }
 
-.about__viewToggle:hover { background: rgba(255, 255, 255, 0.14); }
+/* =========================================
+   TABLET
+   ========================================= */
 
-/* Tablet / iPad */
 @media (min-width: 601px) and (max-width: 1024px) {
-  .nav-button { font-size: clamp(11px, 1.6vw, 16px); letter-spacing: 0.06em; }
-  .nav-right { gap: clamp(12px, 1.8vw, 24px); }
-  .about__copy { left: 8vw; top: 22vh; width: 84vw; }
-  .about__headline { font-size: clamp(28px, 4vw, 42px); line-height: 1.3; letter-spacing: -0.03em; }
-  .about__headline--two { font-size: clamp(26px, 3.8vw, 40px); }
-  .about__finalText { left: 8vw; width: 82vw; font-size: clamp(20px, 2.8vw, 29px); }
-  .about__asciiNumber { font-size: clamp(6px, 0.78vw, 11px); }
+  .nav-button {
+    font-size: clamp(11px, 1.6vw, 16px);
+    letter-spacing: 0.06em;
+  }
+
+  .nav-right {
+    gap: clamp(12px, 1.8vw, 24px);
+  }
+
+  .about__copy {
+    left: 8vw;
+    top: 22vh;
+    width: 84vw;
+  }
+
+  .about__headline {
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.3;
+    letter-spacing: -0.03em;
+  }
+
+  .about__headline--two {
+    font-size: clamp(26px, 3.8vw, 40px);
+  }
+
+  .about__asciiNumber {
+    font-size: clamp(6px, 0.78vw, 11px);
+  }
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .nav { top: 14px; left: 14px; right: 14px; gap: 8px; }
-  .nav-right { gap: clamp(7px, 2vw, 12px); }
-  .nav-button { font-size: clamp(9px, 2.6vw, 11px); letter-spacing: 0.04em; }
-  .nav-title-button { font-size: clamp(10px, 2.7vw, 12px); }
-  .about__copy { left: 8vw; top: 23vh; width: 85vw; }
-  .about__headline { font-size: clamp(21px, 5.5vw, 30px); line-height: 1.35; letter-spacing: -0.025em; }
-  .about__headline--two { font-size: clamp(20px, 5.2vw, 28px); line-height: 1.4; }
-  .about__finalText { left: 8vw; top: 20vh; width: 84vw; font-size: clamp(17px, 4.5vw, 23px); line-height: 1.4; }
-  .about__leftDots { left: 12px; gap: 12px; }
-  .about__dot { width: 5px; height: 5px; }
-  .about__dataBox { max-width: 75vw; max-height: 45vh; }
-  .about__asciiNumber { font-size: clamp(5px, 1.25vw, 8px); }
-  .about__boxLabel { font-size: clamp(22px, 6vw, 38px); }
-  .about__viewToggle { left: 14px; bottom: 14px; font-size: 11px; padding: 8px 12px; }
-  .about-scroll-tip { font-size: 12px; }
-}
+/* =========================================
+   MOBILE — STICKY SCROLL STAGE
+   ========================================= */
 
-/* Short screens / landscape */
-@media (max-height: 650px) {
-  .about__copy { top: 16vh; }
-  .about__headline { font-size: clamp(20px, 3vw, 42px); }
-  .about__headline--two { font-size: clamp(19px, 2.8vw, 38px); }
-  .about__finalText { top: 14vh; font-size: clamp(16px, 2.3vw, 28px); }
-}
-/* Add to the very bottom of your existing About.css.
-   Mobile-only corrections; desktop remains unchanged. */
 @media (max-width: 600px) {
-  /* Let GSAP's pin spacer determine scroll height. */
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
   .about {
-    min-height: 0;
-    height: auto;
-  }
-
-  /* Don't cap the GSAP-driven dimensions on mobile. */
-  .about__dataBox {
-    max-width: none;
-    max-height: none;
-  }
-
-  /* Prevent browser defaults from introducing a bottom gap. */
-  .about__stage {
-    height: 100vh;
-    height: 100dvh;
-  }
-}
-/* Mobile-only scroll stability fix. Add at the end of About.css. */
-@media (max-width: 600px) {
-  /* The document provides scroll progress; the stage never moves. */
-  .about {
+    position: relative;
+    width: 100%;
     min-height: calc(100svh + 3000px);
     height: auto;
+    overflow: visible;
   }
+
+  /*
+   * Sticky stage remains visible while the
+   * page supplies scrolling distance.
+   * Requires the matching updated About.jsx.
+   */
+
   .about__stage {
-    position: fixed;
-    inset: 0;
+    position: sticky;
+    top: 0;
+    inset: auto;
+
     width: 100%;
     height: 100svh;
+
     overflow: hidden;
+    background: #323741;
   }
+
+  /* Navigation */
+
+  .nav {
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    gap: 8px;
+  }
+
+  .nav-right {
+    gap: clamp(7px, 2vw, 12px);
+  }
+
+  .nav-button {
+    font-size: clamp(9px, 2.6vw, 11px);
+    letter-spacing: 0.04em;
+  }
+
+  .nav-title-button {
+    font-size: clamp(10px, 2.7vw, 12px);
+  }
+
+  /* Headlines */
+
+  .about__copy {
+    left: 8vw;
+    top: 23vh;
+    width: 85vw;
+  }
+
+  .about__headline {
+    font-size: clamp(21px, 5.5vw, 30px);
+    line-height: 1.35;
+    letter-spacing: -0.025em;
+  }
+
+  .about__headline--two {
+    font-size: clamp(20px, 5.2vw, 28px);
+    line-height: 1.4;
+  }
+
+  /* Progress dots */
+
+  .about__leftDots {
+    left: 12px;
+    gap: 12px;
+  }
+
+  .about__dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  /*
+   * Remove desktop size caps.
+   * GSAP controls box width and height.
+   */
+
   .about__dataBox {
     max-width: none;
     max-height: none;
+  }
+
+  /* ASCII numbers */
+
+  .about__asciiNumber {
+    font-size: clamp(5px, 1.25vw, 8px);
+  }
+
+  .about__boxLabel {
+    font-size: clamp(22px, 6vw, 38px);
+  }
+
+  .about-scroll-tip {
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   SHORT SCREENS / LANDSCAPE
+   ========================================= */
+
+@media (max-height: 650px) {
+  .about__copy {
+    top: 16vh;
+  }
+
+  .about__headline {
+    font-size: clamp(20px, 3vw, 42px);
+  }
+
+  .about__headline--two {
+    font-size: clamp(19px, 2.8vw, 38px);
   }
 }

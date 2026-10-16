@@ -1204,3 +1204,130 @@ body {
 .collectiveData__intro {
   margin-top: 180px;
 }
+/* =========================================================
+   RESPONSIVE LAYOUT ONLY — preserves desktop visual styling
+   ========================================================= */
+.collectiveData, .collectiveData * { box-sizing: border-box; }
+.collectiveData { max-width: 100%; }
+.collectiveData__intro h1, .treatmentGridHeader h2,
+.triggerEcology__header h2 { overflow-wrap: anywhere; }
+
+@media (max-width: 1300px) {
+  .treatmentGridWrap { grid-template-columns: minmax(0, 1fr); gap: 42px; }
+  .treatmentGridArea {
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 12px 12px 115px 0;
+    grid-template-columns: 260px max-content;
+    grid-template-rows: auto 145px;
+  }
+  .treatmentSidePanel {
+    transform: none;
+    margin-top: 0;
+    width: min(100%, 620px);
+    max-width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas: 'treatment symptoms' 'guide guide';
+    gap: 24px;
+  }
+  .treatmentFilters, .symptomFilters { width: 100%; min-width: 0; transform: none; }
+  .treatmentGuide { width: 100%; min-width: 0; margin: 0; }
+}
+
+@media (max-width: 900px) {
+  .collectiveData { min-height: 100vh; padding-bottom: 90px; }
+  .collectiveData__subnav { max-width: calc(100% - 32px); }
+  .collectiveData__intro { margin-top: 85px; margin-bottom: 48px; padding-inline: 16px; }
+  .ringGuide { width: min(760px, calc(100% - 32px)); }
+  .ringGuide__text p:last-child { transform: none; margin-top: 16px; }
+  .symptomLegend { width: calc(100% - 32px); margin-bottom: 54px; }
+  .collectiveGraphBlock {
+    width: calc(100% - 32px);
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .collectiveGraphBlock > svg, .d3SymptomGraph {
+    display: block;
+    width: min(100%, 620px);
+    min-width: 0;
+    height: auto;
+    flex-shrink: 1;
+  }
+  .hoverInfoPanel { width: min(100%, 620px); text-align: left; }
+  .hoverInfoPanel__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .graphDivider { margin: 65px auto; }
+  .treatmentGridSection { width: calc(100% - 32px); margin-top: 65px; }
+  .treatmentGridHeader { margin-bottom: 42px; }
+  .treatmentGridHeader h2 { width: 100%; font-size: clamp(28px, 5vw, 48px); }
+  .triggerEcology { width: calc(100% - 32px); margin: 75px auto; }
+  .triggerEcology__header h2 { font-size: clamp(28px, 5vw, 48px); margin-bottom: 48px; }
+  .triggerEcology__chart { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; padding-bottom: 170px; }
+  .triggerEcology__svg { width: 100%; min-width: 850px; max-width: none; }
+  .triggerEcology__legend--right {
+    position: sticky;
+    left: 0;
+    bottom: auto;
+    transform: none;
+    width: min(100%, 850px);
+    margin: 24px 0 0;
+    justify-content: flex-start;
+    gap: 12px 20px;
+  }
+  .triggerEcology__legend div { white-space: normal; }
+}
+
+@media (max-width: 600px) {
+  .collectiveData__subnav {
+    width: calc(100% - 28px);
+    max-width: none;
+    padding-top: 100px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .collectiveData__subnav a {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+  .collectiveData__intro { margin-top: 60px; margin-bottom: 34px; }
+  .collectiveData__intro h1 { width: 100%; font-size: clamp(28px, 7vw, 38px); letter-spacing: .025em; }
+  .ringGuide__content { flex-direction: column; gap: 18px; }
+  .ringGuide__text { text-align: center; }
+  .ringGuide__text p { font-size: 15px; }
+  .symptomLegend { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .symptomLegend__item { min-width: 0; }
+  .symptomLegend__item p { font-size: 12px; overflow-wrap: anywhere; }
+  .symptomLegend__item span { flex: 0 0 9px; }
+  .hoverInfoPanel__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+  .hoverInfoPanel__grid strong { overflow-wrap: anywhere; }
+  .treatmentGridArea {
+    grid-template-columns: 155px max-content;
+    grid-template-rows: auto 145px;
+    padding-bottom: 105px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .treatmentGrid__yLabel { white-space: normal; font-size: 12px; }
+  .treatmentSidePanel { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+  .treatmentFilters button, .symptomFilters button { padding: 11px 9px; font-size: 12px; }
+  .treatmentGuide { padding: 18px; }
+  .guideItem p { font-size: 12px; }
+  .triggerEcology__chart { padding-bottom: 185px; }
+  .triggerEcology__svg { min-width: 760px; }
+  .triggerEcology__legend--right { width: min(100%, 760px); }
+}
+
+@media (max-width: 380px) {
+  .collectiveData__subnav { padding-top: 112px; }
+  .collectiveData__subnav a { font-size: 12px; }
+  .symptomLegend { gap: 10px 8px; }
+  .hoverInfoPanel__grid { grid-template-columns: 1fr; }
+  .treatmentGridArea { grid-template-columns: 135px max-content; }
+  .treatmentSidePanel { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'treatment' 'symptoms' 'guide'; }
+}

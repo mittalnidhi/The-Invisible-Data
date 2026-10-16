@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import ClusterChart from './ClusterChart';
 import ClusterSilhouette from './ClusterSilhouette';
 import ClusterSymptoms from './ClusterSymptoms';
-import './Cluster.css';
+import '../Cluster.css';
 
 export default function Cluster() {
   const [currentSymptom, setCurrentSymptom] = useState('');

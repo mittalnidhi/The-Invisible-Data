@@ -386,6 +386,12 @@ export default function About() {
 
       const render = (p) => {
 
+        // Mobile-only sizing; desktop values are preserved.
+        const mobile = window.innerWidth <= 600;
+        const viewportW = window.innerWidth;
+        const viewportH = window.innerHeight;
+
+
         const firstBoxEnd = 0.65;
 
         const firstP = clamp01(p / firstBoxEnd);
@@ -406,9 +412,9 @@ export default function About() {
 
         gsap.set(boxOneRef.current, {
 
-          width: lerp(90, Math.min(window.innerWidth * 0.32, 620), firstP),
+          width: lerp(90, (mobile ? viewportW * 0.58 : Math.min(viewportW * 0.32, 620)), firstP),
 
-          height: lerp(70, Math.min(window.innerHeight * 0.34, 420), firstP),
+          height: lerp(70, (mobile ? viewportH * 0.42 : Math.min(viewportH * 0.34, 420)), firstP),
 
         });
 
@@ -486,9 +492,9 @@ export default function About() {
 
         gsap.set(boxTwoRef.current, {
 
-          width: lerp(115, Math.min(window.innerWidth * 0.43, 780), secondP),
+          width: lerp(115, (mobile ? viewportW * 0.82 : Math.min(viewportW * 0.43, 780)), secondP),
 
-          height: lerp(90, Math.min(window.innerHeight * 0.50, 590), secondP),
+          height: lerp(90, (mobile ? viewportH * 0.68 : Math.min(viewportH * 0.50, 590)), secondP),
 
           x: 0,
 
@@ -566,9 +572,9 @@ export default function About() {
 
         gsap.set(boxThreeRef.current, {
 
-          width: lerp(150, Math.min(window.innerWidth * 0.54, 990), thirdP),
+          width: lerp(150, (mobile ? viewportW : Math.min(viewportW * 0.54, 990)), thirdP),
 
-          height: lerp(140, Math.min(window.innerHeight * 0.70, 860), thirdP),
+          height: lerp(140, (mobile ? viewportH : Math.min(viewportH * 0.70, 860)), thirdP),
 
           x: 0,
 
@@ -705,17 +711,7 @@ export default function About() {
 
       <Navbar theme="dark" />
 
-      <button
-
-        className="about__viewToggle"
-
-        onClick={() => navigate("/pageview")}
-
-      >
-
-        Page view
-
-      </button>
+      
 
       <section ref={stageRef} className="about__stage">
 

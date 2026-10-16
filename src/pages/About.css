@@ -282,3 +282,24 @@ body {
   .about__headline--two { font-size: clamp(19px, 2.8vw, 38px); }
   .about__finalText { top: 14vh; font-size: clamp(16px, 2.3vw, 28px); }
 }
+/* Add to the very bottom of your existing About.css.
+   Mobile-only corrections; desktop remains unchanged. */
+@media (max-width: 600px) {
+  /* Let GSAP's pin spacer determine scroll height. */
+  .about {
+    min-height: 0;
+    height: auto;
+  }
+
+  /* Don't cap the GSAP-driven dimensions on mobile. */
+  .about__dataBox {
+    max-width: none;
+    max-height: none;
+  }
+
+  /* Prevent browser defaults from introducing a bottom gap. */
+  .about__stage {
+    height: 100vh;
+    height: 100dvh;
+  }
+}

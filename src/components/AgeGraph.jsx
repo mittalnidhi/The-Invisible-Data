@@ -17,6 +17,7 @@ const ageData = [
 
 function AgeGraph() {
   const svgRef = useRef(null);
+  const containerRef = useRef(null);
 
   const [size, setSize] = useState({
     width: 0,
@@ -30,11 +31,11 @@ function AgeGraph() {
         height: height || 0,
       });
     },
-    200
+    150
   );
 
   useResizeObserver({
-    ref: svgRef,
+    ref: containerRef,
     onResize,
   });
 
@@ -47,18 +48,25 @@ function AgeGraph() {
       return;
     }
 
-    const isMobile = window.innerWidth <= 767;
+    const isMobile = size.width <= 400;
 
-    // More space below the graph for axis numbers
-    // and the "Age Range" title.
     const margin = {
-  top: 20,
-  right: isMobile ? 26 : 20,
-  bottom: isMobile ? 76 : 85,
-  left: 70,
-};
+      top: 22,
+      right: isMobile ? 28 : 25,
+      bottom: 68,
+      left: isMobile ? 62 : 70,
+    };
+
+    const width = size.width;
+    const height = size.height;
+
+    const plotBottom = height - margin.bottom;
 
     const svg = d3.select(svgRef.current);
+
+    svg
+      .attr("viewBox", `0 0 ${width} ${height}`)
+      .attr("preserveAspectRatio", "xMidYMid meet");
 
     svg.selectAll("*").remove();
 
@@ -69,7 +77,7 @@ function AgeGraph() {
       .domain(ageData.map((d) => d.age))
       .range([
         margin.left,
-        size.width - margin.right,
+        width - margin.right,
       ]);
 
     const y = d3
@@ -80,29 +88,32 @@ function AgeGraph() {
       ])
       .nice()
       .range([
-        size.height - margin.bottom,
+        plotBottom,
         margin.top,
       ]);
 
     // ---------------- X AXIS ----------------
 
-    svg
+    const xAxis = svg
       .append("g")
       .attr(
         "transform",
-        `translate(0,${
-          size.height - margin.bottom
-        })`
+        `translate(0,${plotBottom})`
       )
       .call(d3.axisBottom(x))
       .style(
         "font-size",
-        size.width > 400 ? "10pt" : "8pt"
+        isMobile ? "10px" : "12px"
       );
+
+    xAxis
+      .selectAll("text")
+      .attr("fill", "white")
+      .attr("dy", "1em");
 
     // ---------------- Y AXIS ----------------
 
-    svg
+    const yAxis = svg
       .append("g")
       .attr(
         "transform",
@@ -111,48 +122,39 @@ function AgeGraph() {
       .call(d3.axisLeft(y).ticks(5))
       .style(
         "font-size",
-        size.width > 400 ? "10pt" : "8pt"
+        isMobile ? "10px" : "12px"
       );
 
+    yAxis
+      .selectAll("text")
+      .attr("fill", "white");
+
     // ---------------- X AXIS TITLE ----------------
+    // Positioned relative to the X-axis,
+    // NOT relative to the bottom of the SVG.
 
     svg
       .append("text")
       .text("Age Range")
-      .attr(
-        "font-size",
-        size.width > 400 ? "12pt" : "9pt"
-      )
+      .attr("x", (margin.left + width - margin.right) / 2)
+      .attr("y", plotBottom + 45)
+      .attr("font-size", isMobile ? "12px" : "15px")
+      .attr("font-weight", "500")
       .attr("fill", "white")
-      .attr("text-anchor", "middle")
-      .attr(
-        "transform",
-        `translate(${
-          (size.width -
-            margin.right +
-            margin.left) /
-          2
-        },${size.height - 20})`
-      );
+      .attr("text-anchor", "middle");
 
     // ---------------- Y AXIS TITLE ----------------
 
     svg
       .append("text")
       .text("Mentions")
-      .attr(
-        "font-size",
-        size.width > 400 ? "12pt" : "9pt"
-      )
+      .attr("font-size", isMobile ? "12px" : "15px")
       .attr("fill", "white")
       .attr("text-anchor", "middle")
       .attr(
         "transform",
         `translate(20,${
-          (size.height -
-            margin.bottom +
-            margin.top) /
-          2
+          (plotBottom + margin.top) / 2
         }) rotate(-90)`
       );
 
@@ -179,10 +181,7 @@ function AgeGraph() {
     const hoverLine = svg
       .append("line")
       .attr("y1", margin.top)
-      .attr(
-        "y2",
-        size.height - margin.bottom
-      )
+      .attr("y2", plotBottom)
       .attr("stroke", "#f6f4f4")
       .attr("stroke-dasharray", "4 4")
       .attr("stroke-width", 3)
@@ -198,7 +197,7 @@ function AgeGraph() {
       .attr("fill", "#f6f5f5")
       .style("opacity", 0);
 
-    // ---------------- INTERACTION OVERLAY ----------------
+    // ---------------- INTERACTION ----------------
 
     svg
       .append("rect")
@@ -206,15 +205,17 @@ function AgeGraph() {
       .attr("y", margin.top)
       .attr(
         "width",
-        size.width -
-          margin.left -
-          margin.right
+        Math.max(
+          0,
+          width - margin.left - margin.right
+        )
       )
       .attr(
         "height",
-        size.height -
-          margin.top -
-          margin.bottom
+        Math.max(
+          0,
+          plotBottom - margin.top
+        )
       )
       .attr("fill", "transparent")
       .on("mousemove", (event) => {
@@ -244,14 +245,30 @@ function AgeGraph() {
         hoverLine.style("opacity", 0);
         hoverLabel.style("opacity", 0);
       });
-  }, [size]);
+  }, [size.width, size.height]);
 
   return (
-    <div className="age-panel w-full h-full">
+    <div
+      ref={containerRef}
+      className="age-panel w-full h-full"
+      style={{
+        width: "100%",
+        height: "100%",
+        minWidth: 0,
+        minHeight: 0,
+        overflow: "hidden",
+      }}
+    >
       <svg
         ref={svgRef}
         width="100%"
         height="100%"
+        style={{
+          display: "block",
+          width: "100%",
+          height: "100%",
+          overflow: "hidden",
+        }}
       />
     </div>
   );
